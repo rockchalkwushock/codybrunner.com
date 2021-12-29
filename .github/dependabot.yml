@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: '/'
+    open-pull-requests-limit: 10
+    schedule:
+      day: 'sunday'
+      interval: 'weekly'
+      time: '22:00'
+      timezone: 'America/Bogota'
+    target-branch: 'development'
+
+  # There is unfortunately no support for pnpm currently.
+  # https://github.com/dependabot/dependabot-core/issues/1736
+  - package-ecosystem: 'npm'
+    directory: '/'
+    open-pull-requests-limit: 10
+    schedule:
+      day: 'sunday'
+      interval: 'weekly'
+      time: '22:00'
+      timezone: 'America/Bogota'
+    target-branch: 'development'

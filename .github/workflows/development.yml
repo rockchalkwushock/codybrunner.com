@@ -1,0 +1,51 @@
+name: Development
+
+on:
+  pull_request:
+    branches:
+      - 'chore/**'
+      - 'bug/**'
+      - 'feat/**'
+      - 'post/**'
+      - 'staging'
+      - '!production'
+
+jobs:
+  review_code:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['16.x']
+
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.0
+        with:
+          access_token: ${{ github.token }}
+
+      - name: Checkout Code
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install pnpm
+        run: sudo npm install -g pnpm
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Linting
+        run: pnpx eslint
+
+      - name: Type checking
+        run: pnpx tsc
+
+      - name: Build
+        run: pnpm build
+        env:
+          NODE_ENV: production
