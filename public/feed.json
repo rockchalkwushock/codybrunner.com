@@ -1,0 +1,45 @@
+{
+  "version": "https://jsonfeed.org/version/1",
+  "title": "https://codybrunner.com",
+  "home_page_url": "https://codybrunner.com",
+  "feed_url": "https://codybrunner.com/feed.json",
+  "description": "My stretch of pipe in the world wide inter-tubes.",
+  "author": {
+    "name": "Cody Brunner",
+    "url": "https://codybrunner.com"
+  },
+  "items": [
+    {
+      "id": "2022/one",
+      "url": "https://codybrunner.com/blog/2022/one",
+      "title": "Post One",
+      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "date_modified": "2022-01-01T05:00:00.000Z",
+      "date_published": "2022-01-01T05:00:00.000Z"
+    },
+    {
+      "id": "2022/two",
+      "url": "https://codybrunner.com/blog/2022/two",
+      "title": "Post Two",
+      "summary": "This is post number two",
+      "date_modified": "2022-02-26T05:00:00.000Z",
+      "date_published": "2022-02-26T05:00:00.000Z"
+    },
+    {
+      "id": "2022/three",
+      "url": "https://codybrunner.com/blog/2022/three",
+      "title": "Post Three",
+      "summary": "This is post number three",
+      "date_modified": "2022-05-13T05:00:00.000Z",
+      "date_published": "2022-05-13T05:00:00.000Z"
+    },
+    {
+      "id": "about",
+      "url": "https://codybrunner.com/about",
+      "title": "My Story",
+      "summary": "Learn more about Cody Brunner",
+      "date_modified": "2022-01-01T05:00:00.000Z",
+      "date_published": "2022-01-01T05:00:00.000Z"
+    }
+  ]
+}

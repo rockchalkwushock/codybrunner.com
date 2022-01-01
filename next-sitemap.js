@@ -6,10 +6,9 @@ const baseUrl =
 
 module.exports = {
   changefreq: 'weekly',
-  exclude: ['/api/*', '/server-sitemap.xml'],
+  exclude: ['/api/*'],
   generateRobotsTxt: true,
   robotsTxtOptions: {
-    additionalSitemaps: [`${baseUrl}/server-sitemap.xml`],
     policies: [
       {
         allow: '/',

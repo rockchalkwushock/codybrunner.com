@@ -36,8 +36,27 @@ class MyDocument extends Document {
           />
           <link href="/favicons/site.webmanifest" rel="manifest" />
           <link href="/favicons/favicon.ico" rel="shortcut icon" />
+          {/* RSS */}
+          <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="codybrunner.com RSS2 Feed"
+            href="https://opstrace.com/feed.xml"
+          />
+          <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="codybrunner.com Atom Feed"
+            href="https://opstrace.com/atom.xml"
+          />
+          <link
+            rel="alternate"
+            type="application/json"
+            title="codybrunner.com JSON Feed"
+            href="https://opstrace.com/feed.json"
+          />
         </Head>
-        <body className="">
+        <body className="bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-50">
           <Main />
           <NextScript />
         </body>

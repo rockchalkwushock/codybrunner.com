@@ -7,7 +7,7 @@ import { constants } from '@utils/constants'
 const Custom404: React.FC = () => {
   const { asPath } = useRouter()
   return (
-    <>
+    <section className="flex flex-col mx-auto space-y-8 max-w-prose">
       <NextSeo
         canonical={`${constants.url}${asPath}`}
         description="404 - Not Found"
@@ -18,7 +18,7 @@ const Custom404: React.FC = () => {
         title="Not Found"
       />
       <h1>Page Not Found</h1>
-    </>
+    </section>
   )
 }
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://codybrunner.com</id>
+    <title>https://codybrunner.com</title>
+    <updated>2022-01-01T04:47:03.453Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <author>
+        <name>Cody Brunner</name>
+        <uri>https://codybrunner.com</uri>
+    </author>
+    <link rel="alternate" href="https://codybrunner.com"/>
+    <link rel="self" href="https://codybrunner.com/atom.xml"/>
+    <subtitle>My stretch of pipe in the world wide inter-tubes.</subtitle>
+    <rights>All Content © 2021</rights>
+    <entry>
+        <title type="html"><![CDATA[Post One]]></title>
+        <id>2022/one</id>
+        <link href="https://codybrunner.com/blog/2022/one"/>
+        <updated>2022-01-01T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.]]></summary>
+        <published>2022-01-01T05:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Post Two]]></title>
+        <id>2022/two</id>
+        <link href="https://codybrunner.com/blog/2022/two"/>
+        <updated>2022-02-26T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is post number two]]></summary>
+        <published>2022-02-26T05:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Post Three]]></title>
+        <id>2022/three</id>
+        <link href="https://codybrunner.com/blog/2022/three"/>
+        <updated>2022-05-13T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is post number three]]></summary>
+        <published>2022-05-13T05:00:00.000Z</published>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[My Story]]></title>
+        <id>about</id>
+        <link href="https://codybrunner.com/about"/>
+        <updated>2022-01-01T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Learn more about Cody Brunner]]></summary>
+        <published>2022-01-01T05:00:00.000Z</published>
+    </entry>
+</feed>
