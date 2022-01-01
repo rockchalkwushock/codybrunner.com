@@ -24,10 +24,10 @@ export const PostCard: React.FC<PostCardProps> = ({
   return (
     <PostLink className="post-card group" slug={slug}>
       <div className="flex items-center space-x-6 md:space-x-0 md:space-y-6 md:flex-col">
-        <div className="w-28 md:w-32">
+        <div className="w-28 md:w-full">
           <Image
             alt=""
-            className="rounded-full bg-stone-100"
+            className="rounded-full md:rounded-none bg-stone-100"
             height={32}
             width={32}
             layout="responsive"
@@ -44,7 +44,7 @@ export const PostCard: React.FC<PostCardProps> = ({
                 'full-date-localized'
               )}
             </span>
-            <hr className="hidden w-full my-2 border-pink-500 md:block" />
+            <hr className="hidden w-full mt-2 border-pink-500 md:block" />
           </div>
           <p className="hidden font-semibold text-ellipsis md:block">
             {truncate(description)}

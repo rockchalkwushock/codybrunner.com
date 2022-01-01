@@ -17,14 +17,13 @@ const Home: React.FC<Props> = ({ featured, posts }) => {
   return (
     <>
       <header className="flex flex-col items-center p-4 space-y-4 bg-indigo-200 rounded-lg dark:bg-indigo-500 md:justify-evenly md:space-y-0 md:flex-row">
-        <div className="w-32 md:w-52">
+        <div className="relative w-48 h-48 bg-white border border-indigo-900 rounded-full">
           <Image
             alt="Cody Brunner Avatar"
             className="rounded-full"
-            height={32}
-            layout="responsive"
+            layout="fill"
+            objectFit="contain"
             src="/images/me.jpg"
-            width={32}
           />
         </div>
         <p className="md:w-60 md:text-lg">{constants.bio}</p>
