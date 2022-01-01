@@ -8,9 +8,9 @@
     "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": ["dom", "es2017"],
-    "module": "esnext",
-    "moduleResolution": "node",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
@@ -27,7 +27,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "ES5"
   },
   "exclude": ["node_modules"],
   "include": [
@@ -36,6 +36,7 @@
     "next.config.js",
     "next-env.d.ts",
     "next-seo.config.js",
-    "next-sitemap.js"
+    "next-sitemap.js",
+    "utils/generate-rss.js"
   ]
 }
