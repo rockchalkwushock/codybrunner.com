@@ -10,28 +10,12 @@
   },
   "items": [
     {
-      "id": "2022/one",
-      "url": "https://codybrunner.com/blog/2022/one",
-      "title": "Post One",
-      "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "id": "2022/happy-new-years",
+      "url": "https://codybrunner.com/blog/2022/happy-new-years",
+      "title": "Happy New Years",
+      "summary": "A post outlining my goals for 2022 and looking back on 2021.",
       "date_modified": "2022-01-01T05:00:00.000Z",
       "date_published": "2022-01-01T05:00:00.000Z"
-    },
-    {
-      "id": "2022/two",
-      "url": "https://codybrunner.com/blog/2022/two",
-      "title": "Post Two",
-      "summary": "This is post number two",
-      "date_modified": "2022-02-26T05:00:00.000Z",
-      "date_published": "2022-02-26T05:00:00.000Z"
-    },
-    {
-      "id": "2022/three",
-      "url": "https://codybrunner.com/blog/2022/three",
-      "title": "Post Three",
-      "summary": "This is post number three",
-      "date_modified": "2022-05-13T05:00:00.000Z",
-      "date_published": "2022-05-13T05:00:00.000Z"
     },
     {
       "id": "about",

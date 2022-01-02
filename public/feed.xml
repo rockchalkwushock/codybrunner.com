@@ -4,30 +4,16 @@
         <title>https://codybrunner.com</title>
         <link>https://codybrunner.com</link>
         <description>My stretch of pipe in the world wide inter-tubes.</description>
-        <lastBuildDate>Sat, 01 Jan 2022 04:47:03 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 02 Jan 2022 01:53:31 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
-        <copyright>All Content © 2021</copyright>
+        <copyright>All Content © 2022</copyright>
         <item>
-            <title><![CDATA[Post One]]></title>
-            <link>https://codybrunner.com/blog/2022/one</link>
-            <guid>2022/one</guid>
+            <title><![CDATA[Happy New Years]]></title>
+            <link>https://codybrunner.com/blog/2022/happy-new-years</link>
+            <guid>2022/happy-new-years</guid>
             <pubDate>Sat, 01 Jan 2022 05:00:00 GMT</pubDate>
-            <description><![CDATA[Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Post Two]]></title>
-            <link>https://codybrunner.com/blog/2022/two</link>
-            <guid>2022/two</guid>
-            <pubDate>Sat, 26 Feb 2022 05:00:00 GMT</pubDate>
-            <description><![CDATA[This is post number two]]></description>
-        </item>
-        <item>
-            <title><![CDATA[Post Three]]></title>
-            <link>https://codybrunner.com/blog/2022/three</link>
-            <guid>2022/three</guid>
-            <pubDate>Fri, 13 May 2022 05:00:00 GMT</pubDate>
-            <description><![CDATA[This is post number three]]></description>
+            <description><![CDATA[A post outlining my goals for 2022 and looking back on 2021.]]></description>
         </item>
         <item>
             <title><![CDATA[My Story]]></title>

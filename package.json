@@ -11,14 +11,13 @@
   "scripts": {
     "build": "next build",
     "dev": "next",
-    "export": "next export",
     "format": "prettier --write",
     "generate:sitemap": "next-sitemap",
     "generate:rss": "node ./.next/server/utils/generate-rss.js.js",
     "lint": "next lint",
     "postbuild": "run-p generate:sitemap generate:rss",
     "prepare": "husky install",
-    "prestart": "next export",
+    "prestart": "NODE_ENV=production npm run build && next export",
     "start": "serve out",
     "type-check": "tsc"
   },
