@@ -88,6 +88,7 @@ export const constants: Constants = {
     { path: '/', text: 'Home' },
     { path: '/about', text: 'About' },
     { path: '/blog', text: 'Blog' },
+    { path: '/uses', text: 'Uses' },
     // TODO Add projects page.
     // { path: '/projects', text: 'Projects' },
   ],
