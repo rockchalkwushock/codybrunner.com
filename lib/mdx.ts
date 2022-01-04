@@ -27,7 +27,7 @@ interface RawFrontMatter
   > {}
 
 export async function getMDXBySlug(
-  type: 'about' | 'blog',
+  type: 'about' | 'blog' | 'my-gear',
   slug: string
 ): Promise<MDXSource> {
   const file =
@@ -87,7 +87,7 @@ export async function prepareMDX(source: MDXSource): Promise<Post> {
     author: constants.author,
     assetPath: frontmatter.assetPath ?? null,
     canonicalUrl:
-      source.slug === 'about'
+      source.slug === 'about' || source.slug === 'my-gear'
         ? `${constants.url}/${source.slug}`
         : `${constants.url}/blog/${source.slug}`,
     createdAt: toISO8601(frontmatter.createdAt),
