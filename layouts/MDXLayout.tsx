@@ -174,7 +174,7 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
           />
         </article>
       </div>
-      {!post.slug.includes('about') && post.tags && (
+      {!post.slug.match(/(about|my-gear)/) && post.tags && (
         <section className="flex flex-col space-y-8">
           <hr className="w-full border-indigo-500 dark:border-pink-500" />
           <div className="flex items-center justify-between">

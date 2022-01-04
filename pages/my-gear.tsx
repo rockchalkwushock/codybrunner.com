@@ -8,7 +8,7 @@ import { getMDXBySlug, prepareMDX } from '@lib/mdx'
 
 interface Props extends Post {}
 
-const Uses: React.FC<Props> = post => {
+const MyGear: React.FC<Props> = post => {
   return (
     <>
       <NextSeo
@@ -45,9 +45,9 @@ const Uses: React.FC<Props> = post => {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const source = await getMDXBySlug('uses', 'uses')
+  const source = await getMDXBySlug('my-gear', 'my-gear')
   const post = await prepareMDX(source)
   return { props: { ...post } }
 }
 
-export default Uses
+export default MyGear
