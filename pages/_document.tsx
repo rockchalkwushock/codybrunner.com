@@ -56,7 +56,7 @@ class MyDocument extends Document {
             href="https://codybrunner.com/feed.json"
           />
         </Head>
-        <body className="bg-stone-50 text-stone-900 dark:bg-stone-900 dark:text-stone-50">
+        <body className="antialiased bg-stone-50 text-stone-900">
           <Main />
           <NextScript />
         </body>

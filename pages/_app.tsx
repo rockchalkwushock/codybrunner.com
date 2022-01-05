@@ -13,7 +13,7 @@ import { constants } from '@utils/constants'
 interface Props extends AppProps {}
 
 const App: React.FC<Props> = ({ Component, pageProps, router }) => {
-  const { instagram, linkedin, twitter } = constants.externalLinks
+  const [_, instagram, linkedin, twitter] = constants.socials
 
   return (
     <ThemeProvider attribute="class" enableColorScheme enableSystem>
@@ -24,7 +24,7 @@ const App: React.FC<Props> = ({ Component, pageProps, router }) => {
         type="Person"
         url={constants.url}
       />
-      <BaseLayout>
+      <BaseLayout route={router.route}>
         <AnimatePresence exitBeforeEnter>
           <Component {...pageProps} key={router.asPath} />
         </AnimatePresence>

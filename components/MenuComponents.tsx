@@ -189,7 +189,7 @@ export const AnimatedMobileNav: React.FC = () => {
       ref={containerRef}
     >
       <motion.div
-        className="absolute top-0 bottom-0 left-0 z-20 bg-indigo-200 shadow-lg dark:bg-indigo-800"
+        className="absolute top-0 bottom-0 left-0 z-20 bg-indigo-200 shadow-lg"
         variants={{
           closed: {
             clipPath: 'circle(1.875rem at 2.5rem 2.5rem)',
@@ -249,15 +249,13 @@ export const DesktopNav: React.FC = () => {
         {constants.menu.map(({ path, text }) => (
           <AnimatedMenuItem
             aria-disabled={asPath === path}
-            className="w-full text-center hover:text-indigo-500 dark:hover:text-pink-500"
+            className="w-full text-center hover:text-indigo-500"
             key={text.toLowerCase()}
           >
             <MenuLink
               aria-disabled={asPath === path}
               className={`${
-                asPath === path
-                  ? 'font-semibold text-pink-500 dark:text-indigo-500 underline'
-                  : ''
+                asPath === path ? 'font-semibold text-pink-500 underline' : ''
               }`}
               to={path}
             >

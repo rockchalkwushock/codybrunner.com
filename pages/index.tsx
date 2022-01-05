@@ -1,81 +1,250 @@
 import * as React from 'react'
 import { GetStaticProps } from 'next'
-import Script from 'next/script'
+import NextLink from 'next/link'
 
 import { Image } from '@components/Image'
-import { PostCard } from '@components/PostComponents'
 import { Post } from '@interfaces/post'
+import { getAllPostsFrontMatter } from '@utils/mdx'
+import { Container } from '@components/Container'
+import { ScheduleButton } from '@components/ScheduleButton'
+import { Icon } from '@components/Icon'
+import { formatDateTime } from '@utils/dateTime'
 import { constants } from '@utils/constants'
-import { filterPosts, getAllPostsFrontMatter } from '@utils/mdx'
 
 interface Props {
-  featured: Array<Post>
   posts: Array<Post>
 }
 
-const Home: React.FC<Props> = ({ featured, posts }) => {
+const Home: React.FC<Props> = ({ posts }) => {
   return (
     <>
-      <header className="flex flex-col items-center p-4 space-y-4 bg-indigo-200 rounded-lg dark:bg-indigo-500 md:justify-evenly md:space-y-0 md:flex-row">
-        <div className="relative w-48 h-48 bg-white border border-indigo-900 rounded-full">
-          <Image
-            alt="Cody Brunner Avatar"
-            className="rounded-full"
-            layout="fill"
-            objectFit="contain"
-            src="/images/me.jpg"
-          />
+      <Container
+        as="main"
+        className="px-8 text-xl text-justify grid-in-main space-y-14"
+      >
+        <div className="flex flex-col items-center justify-center p-6 mx-4 space-y-4 bg-indigo-100 rounded-lg shadow-lg md:mx-0 md:space-x-8 lg:p-12 md:space-y-0 md:flex-row">
+          <picture className="relative flex-none w-40 h-40 rounded-full md:h-44 md:w-44">
+            <Image
+              alt="Cody Brunner Avatar"
+              className="absolute flex-none object-cover w-40 h-40 rounded-full md:h-44 md:w-44"
+              height={176}
+              priority
+              src="/images/me.jpg"
+              width={176}
+            />
+          </picture>
+          <div className="space-y-2">
+            <h2 className="text-2xl font-bold">Hey, I&apos;m Cody 👋🏻</h2>
+            <p className="text-xl text-left lg:text-3xl lg:leading-snug">
+              I am a <strong className="font-bold">Software Developer</strong>{' '}
+              from the{' '}
+              <span aria-label="USA" className="font-bold">
+                USA
+              </span>{' '}
+              living in{' '}
+              <span aria-label="Colombia" className="font-bold">
+                Colombia
+              </span>{' '}
+              currently working as a{' '}
+              <span className="font-bold">Senior Developer</span> for{' '}
+              <a
+                aria-label="Link to LeanTech.io"
+                className="font-bold text-indigo-600 hover:underline"
+                href="https://www.leangroup.com/solutions/leantech"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                LeanTech
+              </a>
+              .
+            </p>
+          </div>
         </div>
-        <p className="md:w-60 md:text-lg">{constants.bio}</p>
-      </header>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        <div className="flex flex-col space-y-4">
-          <h2 className="text-2xl text-center">Featured Posts</h2>
-          <ul className="flex flex-col space-y-4">
-            {featured.map(post => (
-              <PostCard key={post.slug} {...post} />
-            ))}
-          </ul>
-        </div>
-        <div className="flex flex-col space-y-4">
-          <h2 className="text-2xl text-center">Latest Posts</h2>
-          <ul className="flex flex-col space-y-4">
+        <div className="space-y-8 md:space-y-14">
+          <div className="mx-4 md:mx-0 lg:text-center">
+            <p className="font-semibold leading-6 tracking-wide text-indigo-600 uppercase text-md lg:text-xl">
+              Blog
+            </p>
+            <h1 className="text-4xl font-extrabold leading-tight text-gray-900 tracking-light lg:text-5xl">
+              Latest Posts
+            </h1>
+            <p className="max-w-2xl mt-4 text-xl leading-9 text-gray-500 lg:text-xl lg:mx-auto">
+              Here are the latest posts from my blog. I write about many things,
+              but mostly you find articles on technology and my experiences as
+              an expat.
+            </p>
+          </div>
+          <ul className="flex flex-col items-center space-y-8">
             {posts.map(post => (
-              <PostCard key={post.slug} {...post} />
+              <li className="" key={post.slug}>
+                <div className="relative inline-block p-4 text-gray-900 rounded-md outline-none group hover:bg-stone-200 focus:shadow-sm focus:text-gray-700 ">
+                  <div className="relative z-10 space-y-4 pointer-events-none lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-y-6">
+                    <span
+                      className={
+                        !post.publishedAt
+                          ? 'w-min absolute -right-6 md:-right-8 md:-top-12 lg:-top-7 -top-10 py-1 px-4 h-min text-white font-bold shadow-lg shadow-orange-500 rounded-full bg-red-500'
+                          : 'hidden'
+                      }
+                    >
+                      Draft
+                    </span>
+                    <div className="flex items-center pr-4 lg:space-x-6 lg:pb-0 lg:col-span-3">
+                      <div className="flex-shrink-0 hidden w-12 h-12 lg:inline-block">
+                        <Image
+                          alt=""
+                          className="rounded-full"
+                          height={48}
+                          src={post.assetPath ?? ''}
+                          width={48}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <h1 className="text-2xl font-bold">{post.title}</h1>
+                        <p className="text-lg tracking-tight text-gray-800 lg:text-lg lg:leading-8">
+                          {post.description}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center pt-4 space-x-6 border-t border-gray-900 lg:pl-4 lg:space-x-0 lg:border-l lg:border-t-0">
+                      <div className="inline-block w-12 h-12 lg:hidden">
+                        <Image
+                          alt=""
+                          className="rounded-full"
+                          height={48}
+                          src={post.assetPath ?? ''}
+                          width={48}
+                        />
+                      </div>
+                      <div>
+                        <dl>
+                          <dt className="sr-only">Published on</dt>
+                          <dd className="text-base font-medium leading-6">
+                            <time>
+                              {formatDateTime(
+                                post.updatedAt ||
+                                  post.publishedAt ||
+                                  post.createdAt,
+                                'full-date-localized'
+                              )}
+                            </time>
+                          </dd>
+                        </dl>
+                        <ul className="flex flex-wrap items-center lg:items-start lg:space-y-2 lg:flex-col">
+                          {post.tags &&
+                            post.tags.map(tag => (
+                              <li
+                                className="flex items-center mr-2 text-base lg:mr-0"
+                                key={`${post.slug}--${tag}`}
+                              >
+                                <Icon name="hashtag" />
+                                <span>{tag}</span>
+                              </li>
+                            ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
             ))}
           </ul>
+          <div className="flex justify-end w-full">
+            <NextLink href="/blog" passHref>
+              <a className="px-6 py-2 transition-colors duration-200 ease-in-out bg-indigo-100 rounded-lg group hover:bg-indigo-200">
+                <Icon
+                  className="w-8 h-8 text-indigo-500 group-hover:text-pink-500"
+                  name="arrowRight"
+                />
+              </a>
+            </NextLink>
+          </div>
+          <hr className="border-red-500" />
+          {/* NOTE Project Section */}
+          {/* <div className="mx-4 md:mx-0 lg:text-center">
+            <p className="font-semibold leading-6 tracking-wide text-indigo-600 uppercase text-md lg:text-xl">
+              Projects
+            </p>
+            <p className="max-w-2xl mt-4 text-xl leading-9 text-gray-500 lg:text-xl lg:mx-auto">
+              Here are a few of my most recent projects. All source code can be
+              found on GitHub.
+            </p>
+          </div>
+          <ul className="flex flex-col space-y-8">
+            {myProjects.map(project => (
+              <li className="text-center border" key={project.name}>
+                <div className="relative inline-block p-4 text-gray-900 rounded-md outline-none group hover:bg-stone-200 focus:shadow-sm focus:text-gray-700 ">
+                  <div className="relative z-10 space-y-4 pointer-events-none lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-y-6">
+                    <div className="flex items-center pr-4 lg:space-x-6 lg:pb-0 lg:col-span-3">
+                      <div className="flex-shrink-0 hidden w-12 h-12 lg:inline-block">
+                        <Image
+                          alt=""
+                          className="rounded-full"
+                          height={48}
+                          src={project.assetPath}
+                          width={48}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <h1 className="text-2xl font-bold">{project.name}</h1>
+                        <p className="text-lg tracking-tight text-gray-800 lg:text-lg lg:leading-8">
+                          {project.description}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex items-center pt-4 space-x-6 border-t border-gray-900 lg:pl-4 lg:space-x-0 lg:border-l lg:border-t-0">
+                      <div className="inline-block w-12 h-12 lg:hidden">
+                        <Image
+                          alt=""
+                          className="rounded-full"
+                          height={48}
+                          src={project.assetPath}
+                          width={48}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className="flex justify-end w-full">
+            <NextLink href="/projects" passHref>
+              <a className="px-6 py-2 transition-colors duration-200 ease-in-out bg-indigo-100 rounded-lg group hover:bg-indigo-200">
+                <Icon
+                  className="w-8 h-8 text-indigo-500 group-hover:text-pink-500"
+                  name="arrowRight"
+                />
+              </a>
+            </NextLink>
+          </div>
+          <hr className="border-red-500" /> */}
+          <div className="mx-4 md:mx-0 lg:text-center">
+            <p className="font-semibold leading-6 tracking-wide text-indigo-600 uppercase text-md lg:text-xl">
+              Contact Me
+            </p>
+            <p className="max-w-2xl my-4 text-xl leading-9 text-gray-500 lg:text-xl lg:mx-auto">
+              You can schedule a time to chat with me via phone or Google Meet
+              using Appointlet; and if you are interested in hiring me grab my
+              resume below.
+            </p>
+            <div className="flex flex-col space-y-8 md:flex-row md:space-y-0 md:justify-evenly">
+              <ScheduleButton />
+              <div className="flex justify-center">
+                <a
+                  aria-label={constants.externalLinks.resume.label}
+                  className="text-white bg-indigo-500 transition duration-200 ease-in-out rounded-lg inline-flex items-center px-4 py-2.5 no-underline font-semibold shadow-lg hover:bg-indigo-300 hover:text-pink-600 transform hover:shadow-none hover:scale-95 space-x-2"
+                  href={constants.externalLinks.resume.url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Icon name="resume" />
+                  <span>Cody&apos;s Resume</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="relative flex flex-col items-center justify-center h-52">
-        <h2 className="absolute z-10 text-4xl font-semibold text-white top-4 left-6 md:left-12">
-          Contact Me!
-        </h2>
-        <div className="absolute top-0 left-0 w-full overflow-hidden leading-none">
-          <svg
-            className="relative block w-full transform h-52"
-            data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,0V6c0,21.6,291,111.46,741,110.26,445.39,3.6,459-88.3,459-110.26V0Z"
-              className="fill-indigo-500"
-            ></path>
-          </svg>
-        </div>
-        <a
-          aria-label={constants.externalLinks.appointlet.label}
-          className="absolute appointlet-button top-18 left-24 md:left-52"
-          data-appointlet-modal
-          href={constants.externalLinks.appointlet.url}
-          // NOTE: This is needed due to my custom styles.
-          onClick={() => false}
-        >
-          {constants.externalLinks.appointlet.text}
-        </a>
-      </div>
-      <Script src="https://js.appointlet.com" />
+      </Container>
     </>
   )
 }
@@ -85,10 +254,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      featured: filterPosts(posts, ({ featured }) => !!featured) ?? [],
-      posts: filterPosts(posts, p => !p.featured)
-        .reverse()
-        .slice(0, 3),
+      posts: posts.reverse().slice(0, 5),
     },
   }
 }

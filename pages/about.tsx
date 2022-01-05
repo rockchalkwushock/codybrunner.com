@@ -5,6 +5,7 @@ import { ArticleJsonLd, NextSeo } from 'next-seo'
 import { Post } from '@interfaces/post'
 import { MDXLayout } from '@layouts/MDXLayout'
 import { getMDXBySlug, prepareMDX } from '@lib/mdx'
+import { Container } from '@components/Container'
 
 interface Props extends Post {}
 
@@ -39,7 +40,9 @@ const About: React.FC<Props> = post => {
         title={post.title}
         url={post.canonicalUrl}
       />
-      <MDXLayout {...post} />
+      <Container as="main">
+        <MDXLayout {...post} />
+      </Container>
     </>
   )
 }

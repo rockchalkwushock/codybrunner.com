@@ -1,14 +1,68 @@
 // See the Tailwind configuration guide for advanced usage
 // https://tailwindcss.com/docs/configuration
-const { fontFamily } = require('tailwindcss/defaultTheme')
+const { colors, fontFamily } = require('tailwindcss/defaultTheme')
 module.exports = {
   content: ['./components/*.tsx', './layouts/*.tsx', './pages/**/*.tsx'],
   darkMode: 'class',
   theme: {
     extend: {
+      animation: {
+        // utility: animation-wiggle
+        wiggle: 'wiggle 1s ease-in-out infinite',
+      },
+      backgroundImage: {
+        // bg-instagram
+        instagram:
+          'radial-gradient(circle at 30% 107%, #fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%)',
+      },
+      colors: {
+        current: 'currentColor',
+        transparent: 'transparent',
+        // bg-linkedin || text-linkedin
+        linkedin: '#0072B1',
+        // bg-twitter || text-twitter
+        twitter: '#1DA1F2',
+        ...colors,
+      },
       fontFamily: {
         ...fontFamily,
         sans: ['Quicksand', ...fontFamily.sans],
+      },
+      // Defines the template areas using 'grid-template-areas':
+      // Generates:
+      // - grid-areas-mobile
+      // - grid-areas-tablet
+      // - grid-areas-desktop
+      gridTemplateAreas: {
+        mobile: ['header', 'main', 'footer'],
+        tablet: ['header', 'main', 'footer'],
+        desktop: ['header header', 'aside main', 'footer footer'],
+      },
+      // Defines the template columns using 'grid-template-columns':
+      // Generates:
+      // - grid-cols-mobile
+      // - grid-cols-tablet
+      // - grid-cols-desktop
+      gridTemplateColumns: {
+        mobile: '1fr',
+        tablet: '1fr',
+        desktop: '1fr',
+      },
+      // Defines the template rows using 'grid-template-rows':
+      // Generates:
+      // - grid-rows-mobile
+      // - grid-rows-tablet
+      // - grid-rows-desktop
+      gridTemplateRows: {
+        mobile: 'auto 1fr auto',
+        tablet: 'auto 1fr auto',
+        desktop: 'auto 1fr auto',
+      },
+      keyframes: {
+        wiggle: {
+          '0% 100%': { transform: 'rotate(-12deg) scale(0.95)' },
+          '50%': { transform: 'rotate(12deg) scale(0.95)' },
+        },
       },
       typography: ({ theme }) => ({
         DEFAULT: {
@@ -112,5 +166,15 @@ module.exports = {
       }),
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@savvywombat/tailwindcss-grid-areas'),
+    require('@tailwindcss/typography'),
+  ],
+  variants: {
+    // Will enable the ability to do the following:
+    // grid-areas-mobile md:grid-areas-tablet lg:grid-areas-desktop.
+    gridTemplateAreas: ['responsive'],
+    gridTemplateColumns: ['responsive'],
+    gridTemplateRows: ['responsive'],
+  },
 }

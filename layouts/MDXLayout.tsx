@@ -60,14 +60,14 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
 
   return (
     <>
-      <div className="flex flex-col space-y-8 md:rounded-lg md:shadow-xl dark:md:rounded-none dark:md:shadow-none">
+      <div className="flex flex-col space-y-8 md:rounded-lg md:shadow-xl">
         <header className="flex flex-col w-full px-8 space-y-4 rounded-t-lg">
-          <h1 className="text-4xl font-medium leading-tight text-center text-indigo-700 dark:text-stone-100">
+          <h1 className="text-4xl font-medium leading-tight text-center text-indigo-700">
             {post.title}
           </h1>
           <div className="flex flex-col items-center w-full lg:flex-row lg:justify-between lg:items-start">
             <div className="flex items-center space-x-2">
-              <div className="relative bg-white border border-indigo-600 rounded-full dark:border-none h-9 w-9 lg:hidden">
+              <div className="relative bg-white border border-indigo-600 rounded-full h-9 w-9 lg:hidden">
                 <Image
                   alt="Cody Brunner Avatar"
                   className="rounded-full"
@@ -96,8 +96,8 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
             </div>
           </div>
         </header>
-        <hr className="mx-8 border-indigo-500 dark:border-pink-500" />
-        <article className="tracking-wide prose prose-lg text-justify md:px-8 md:pb-8 prose-slate dark:prose-invert">
+        <hr className="mx-8 border-indigo-500" />
+        <article className="px-8 prose prose-lg text-justify prose-slate">
           <MDXContent
             components={{
               div: ({ children, className }) => {
@@ -176,7 +176,7 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
       </div>
       {!post.slug.match(/(about|my-gear)/) && post.tags && (
         <section className="flex flex-col space-y-8">
-          <hr className="w-full border-indigo-500 dark:border-pink-500" />
+          <hr className="w-full border-indigo-500" />
           <div className="flex items-center justify-between">
             <ul className="flex space-x-3">
               {post.tags.map((tag, i) => (
@@ -190,7 +190,7 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
               onClick={() => navigator.clipboard.writeText(post.canonicalUrl)}
             />
           </div>
-          <hr className="w-full border-indigo-500 dark:border-pink-500" />
+          <hr className="w-full border-indigo-500" />
         </section>
       )}
       <section
@@ -204,7 +204,7 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
       >
         {post.previousPost && (
           <PostLink
-            className="flex items-center justify-center w-32 h-12 text-xl font-medium text-center transition duration-200 transform bg-indigo-200 rounded-lg shadow-lg md:w-40 dark:bg-indigo-500 dark:hover:bg-indigo-600 hover:bg-indigo-500 hover:text-white hover:shadow-none hover:scale-95"
+            className="flex items-center justify-center w-32 h-12 text-xl font-medium text-center transition duration-200 transform bg-indigo-200 rounded-lg shadow-lg md:w-40 hover:bg-indigo-500 hover:text-white hover:shadow-none hover:scale-95"
             slug={post.previousPost}
           >
             Previous
@@ -212,7 +212,7 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
         )}
         {post.nextPost && (
           <PostLink
-            className="flex items-center justify-center w-32 h-12 text-xl font-medium text-center transition duration-200 transform bg-indigo-200 rounded-lg shadow-lg md:w-40 dark:bg-indigo-500 dark:hover:bg-indigo-600 hover:bg-indigo-500 hover:text-white hover:shadow-none hover:scale-95"
+            className="flex items-center justify-center w-32 h-12 text-xl font-medium text-center transition duration-200 transform bg-indigo-200 rounded-lg shadow-lg md:w-40 hover:bg-indigo-500 hover:text-white hover:shadow-none hover:scale-95"
             slug={post.nextPost}
           >
             <span>Next</span>
