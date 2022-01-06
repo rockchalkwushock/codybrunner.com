@@ -38,13 +38,17 @@ const Topic: React.FC<Props> = ({ posts, tag, tags }) => {
       <Container as="main" className="px-8 text-xl grid-in-main space-y-14">
         <h1 className="text-3xl text-center">
           Posts tagged with:{' '}
-          <span className="font-bold text-pink-500">{tag}</span>
+          <span className="font-bold text-pink-500 dark:text-aura-pink">
+            {tag}
+          </span>
         </h1>
 
         <Posts posts={posts} />
 
         <div className="flex flex-col items-center space-y-6">
-          <h2 className="text-2xl">Other Tags</h2>
+          <h2 className="text-2xl font-semibold dark:text-aura-red">
+            Other Tags
+          </h2>
           <Tags tags={tags} />
         </div>
       </Container>

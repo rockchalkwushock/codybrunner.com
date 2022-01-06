@@ -19,7 +19,7 @@ const Home: React.FC<Props> = ({ posts }) => {
   return (
     <>
       <Container as="main" className="px-8 text-xl grid-in-main space-y-14">
-        <div className="flex flex-col items-center justify-center p-6 mx-4 space-y-4 bg-indigo-100 rounded-lg shadow-lg md:mx-0 md:space-x-8 lg:p-12 md:space-y-0 md:flex-row">
+        <div className="flex flex-col items-center justify-center p-6 mx-4 space-y-4 bg-indigo-100 rounded-lg shadow-md shadow-indigo-300 dark:shadow-aura-gray dark:bg-aura-purple-fading md:mx-0 md:space-x-8 lg:p-12 md:space-y-0 md:flex-row">
           <picture className="relative flex-none w-40 h-40 rounded-full md:h-44 md:w-44">
             <Image
               alt="Cody Brunner Avatar"
@@ -35,18 +35,24 @@ const Home: React.FC<Props> = ({ posts }) => {
             <p className="text-xl text-left lg:text-3xl lg:leading-snug">
               I am a <strong className="font-bold">Software Developer</strong>{' '}
               from the{' '}
-              <span aria-label="USA" className="font-bold">
+              <span
+                aria-label="USA"
+                className="font-bold dark:text-gradient dark:bg-gradient-to-br dark:from-red-700 dark:via-white dark:to-blue-700"
+              >
                 USA
               </span>{' '}
               living in{' '}
-              <span aria-label="Colombia" className="font-bold">
+              <span
+                aria-label="Colombia"
+                className="font-bold dark:text-gradient dark:bg-gradient-to-br from-yellow-400 dark:via-blue-400 dark:to-red-600"
+              >
                 Colombia
               </span>{' '}
               currently working as a{' '}
               <span className="font-bold">Senior Developer</span> for{' '}
               <a
                 aria-label="Link to LeanTech.io"
-                className="font-bold text-indigo-600 hover:underline"
+                className="font-bold text-indigo-600 dark:text-aura-pink hover:underline"
                 href="https://www.leangroup.com/solutions/leantech"
                 rel="noopener noreferrer"
                 target="_blank"
@@ -59,10 +65,10 @@ const Home: React.FC<Props> = ({ posts }) => {
         </div>
         <div className="space-y-8 md:space-y-14">
           <div className="mx-4 md:mx-0 lg:text-center">
-            <p className="font-semibold leading-6 tracking-wide text-indigo-600 uppercase text-md lg:text-xl">
+            <p className="font-semibold leading-6 tracking-wide text-indigo-600 uppercase dark:text-aura-purple text-md lg:text-xl">
               Blog
             </p>
-            <h1 className="text-4xl font-extrabold leading-tight text-gray-900 tracking-light lg:text-5xl">
+            <h1 className="text-4xl font-extrabold leading-tight text-gray-900 dark:text-aura-blue tracking-light lg:text-5xl">
               Latest Posts
             </h1>
             <p className="max-w-2xl mt-4 text-xl leading-9 text-gray-500 lg:text-xl lg:mx-auto">
@@ -74,15 +80,15 @@ const Home: React.FC<Props> = ({ posts }) => {
           <Posts posts={posts} />
           <div className="flex justify-end w-full">
             <NextLink href="/blog" passHref>
-              <a className="px-6 py-2 transition-colors duration-200 ease-in-out bg-indigo-100 rounded-lg group hover:bg-indigo-200">
+              <a className="px-6 py-2 transition-colors duration-200 ease-in-out bg-indigo-100 rounded-lg shadow-md shadow-indigo-300 dark:shadow-aura-gray dark:bg-aura-purple-fading group hover:bg-indigo-200 hover:dark:bg-aura-pink">
                 <Icon
-                  className="w-8 h-8 text-indigo-500 group-hover:text-pink-500"
+                  className="w-8 h-8 text-indigo-500 dark:text-aura-green group-hover:dark:text-aura-gray group-hover:text-pink-500"
                   name="arrowRight"
                 />
               </a>
             </NextLink>
           </div>
-          <hr className="border-red-500" />
+          <hr className="border-red-500 dark:border-aura-purple" />
           {/* NOTE Project Section */}
           {/* <div className="mx-4 md:mx-0 lg:text-center">
             <p className="font-semibold leading-6 tracking-wide text-indigo-600 uppercase text-md lg:text-xl">
@@ -143,7 +149,7 @@ const Home: React.FC<Props> = ({ posts }) => {
           </div>
           <hr className="border-red-500" /> */}
           <div className="mx-4 md:mx-0 lg:text-center">
-            <p className="font-semibold leading-6 tracking-wide text-indigo-600 uppercase text-md lg:text-xl">
+            <p className="font-semibold leading-6 tracking-wide text-indigo-600 uppercase dark:text-aura-purple text-md lg:text-xl">
               Contact Me
             </p>
             <p className="max-w-2xl my-4 text-xl leading-9 text-gray-500 lg:text-xl lg:mx-auto">
@@ -156,7 +162,7 @@ const Home: React.FC<Props> = ({ posts }) => {
               <div className="flex justify-center">
                 <a
                   aria-label={constants.externalLinks.resume.label}
-                  className="text-white bg-indigo-500 transition duration-200 ease-in-out rounded-lg inline-flex items-center px-4 py-2.5 no-underline font-semibold shadow-lg hover:bg-indigo-300 hover:text-pink-600 transform hover:shadow-none hover:scale-95 space-x-2"
+                  className="text-white bg-indigo-500 shadow-md hover:shadow-none shadow-indigo-300 dark:shadow-aura-gray dark:bg-aura-pink dark:text-aura-black dark:hover:bg-aura-purple-fading dark:hover:text-aura-white transition duration-200 ease-in-out rounded-lg inline-flex items-center px-4 py-2.5 no-underline font-semibold hover:bg-indigo-300 hover:text-pink-600 transform hover:scale-95 space-x-2"
                   href={constants.externalLinks.resume.url}
                   rel="noopener noreferrer"
                   target="_blank"

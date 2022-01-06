@@ -27,13 +27,19 @@ async function generate() {
   })
 
   const source = await getMDXBySlug('about', 'about')
+  const source2 = await getMDXBySlug('my-gear', 'my-gear')
   const aboutPage = await prepareMDX(source)
+  const gearPage = await prepareMDX(source2)
   const posts = await getAllPostsFrontMatter()
 
-  const items = [...posts, aboutPage]
+  const items = [...posts, aboutPage, gearPage]
 
   items.forEach(item => {
     feed.addItem({
+      author: constants.author,
+      category: item.tags,
+      // content: item.source, // TODO Figure out how to parse this correctly for RSS.
+      copyright: constants.copyright,
       date: new Date(item.createdAt),
       description: item.description,
       id: item.slug,

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://codybrunner.com</id>
     <title>https://codybrunner.com</title>
-    <updated>2022-01-02T01:53:31.506Z</updated>
+    <updated>2022-01-06T16:20:39.163Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Cody Brunner</name>
@@ -18,7 +18,9 @@
         <link href="https://codybrunner.com/blog/2022/happy-new-years"/>
         <updated>2022-01-01T05:00:00.000Z</updated>
         <summary type="html"><![CDATA[A post outlining my goals for 2022 and looking back on 2021.]]></summary>
+        <category/>
         <published>2022-01-01T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
     </entry>
     <entry>
         <title type="html"><![CDATA[My Story]]></title>
@@ -26,6 +28,27 @@
         <link href="https://codybrunner.com/about"/>
         <updated>2022-01-01T05:00:00.000Z</updated>
         <summary type="html"><![CDATA[Learn more about Cody Brunner]]></summary>
+        <category/>
+        <category/>
+        <category/>
+        <category/>
+        <category/>
+        <category/>
+        <category/>
+        <category/>
+        <category/>
+        <category/>
         <published>2022-01-01T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[My Gear]]></title>
+        <id>my-gear</id>
+        <link href="https://codybrunner.com/my-gear"/>
+        <updated>2022-01-01T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The hardware, software, and tooling I use as a developer in my daily.]]></summary>
+        <category/>
+        <published>2022-01-03T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
     </entry>
 </feed>

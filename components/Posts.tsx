@@ -24,45 +24,40 @@ export const Posts: React.FC<Props> = ({ posts }) => {
           title,
           updatedAt,
         }) => (
-          <li className="rounded-md shadow-md md:w-2/3 bg-indigo-50" key={slug}>
+          <li className="post-item" key={slug}>
             <NextLink
               href={{
                 pathname: '/blog/[...slug]',
                 query: { slug: slug.split('/') },
               }}
               passHref
-              scroll={false}
             >
               <a aria-label={`Link to ${title} Post`}>
-                <div className="relative p-4 text-gray-900 rounded-md outline-none cursor-pointer group hover:bg-stone-200 focus:shadow-sm focus:text-gray-700 ">
+                <div className="post-card">
                   <div className="relative space-y-4 pointer-events-none lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-y-6">
-                    <span
-                      className={
-                        !publishedAt
-                          ? 'w-min absolute -right-6 md:-right-8 md:-top-12 lg:-top-7 -top-10 py-1 px-4 h-min text-white font-bold shadow-lg shadow-orange-500 rounded-full bg-red-500'
-                          : 'hidden'
-                      }
-                    >
+                    <span className={!publishedAt ? 'draft-badge' : 'hidden'}>
                       Draft
                     </span>
                     <div className="flex items-center pr-4 lg:space-x-6 lg:pb-0 lg:col-span-3">
                       <div className="flex-shrink-0 hidden w-12 h-12 lg:inline-block">
                         <Image
                           alt="// TODO"
-                          className="rounded-full"
+                          className="rounded-full bg-aura-white"
                           height={48}
                           src={assetPath ?? '/images/pen-and-paper.svg'}
                           width={48}
                         />
                       </div>
                       <div className="space-y-2">
-                        <h1 className="text-2xl font-bold">{title}</h1>
-                        <p className="text-lg tracking-tight text-gray-800 lg:text-lg lg:leading-8">
+                        <h1 className="text-2xl font-bold dark:text-aura-white">
+                          {title}
+                        </h1>
+                        <p className="text-lg tracking-tight text-gray-800 dark:text-aura-white lg:text-lg lg:leading-8">
                           {description}
                         </p>
                       </div>
                     </div>
-                    <div className="flex items-center pt-4 space-x-6 border-t border-gray-900 lg:pl-4 lg:space-x-0 lg:border-l lg:border-t-0">
+                    <div className="flex items-center pt-4 space-x-6 border-t border-gray-900 dark:border-aura-white lg:pl-4 lg:space-x-0 lg:border-l lg:border-t-0">
                       <div className="inline-block w-12 h-12 lg:hidden">
                         <Image
                           alt="// TODO"
@@ -75,7 +70,7 @@ export const Posts: React.FC<Props> = ({ posts }) => {
                       <div>
                         <dl>
                           <dt className="sr-only">Published on</dt>
-                          <dd className="text-base font-medium leading-6">
+                          <dd className="text-base font-medium leading-6 dark:text-aura-white">
                             <time>
                               {formatDateTime(
                                 updatedAt || publishedAt || createdAt,

@@ -7,10 +7,11 @@ interface Props {}
 
 const pickStyles = (text: string) => {
   const styles: Record<string, string> = {
-    github: 'md:hover:bg-black',
-    instagram: 'md:hover:bg-instagram',
-    linkedin: 'md:hover:bg-linkedin',
-    twitter: 'md:hover:bg-twitter',
+    github:
+      'md:hover:bg-black md:hover:text-white dark:md:hover:bg-aura-purple-fading',
+    instagram: 'md:hover:bg-instagram md:hover:text-white',
+    linkedin: 'md:hover:bg-linkedin md:hover:text-white',
+    twitter: 'md:hover:bg-twitter md:hover:text-white',
   }
   return styles[text]
 }

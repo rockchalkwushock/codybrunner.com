@@ -15,7 +15,9 @@
       "title": "Happy New Years",
       "summary": "A post outlining my goals for 2022 and looking back on 2021.",
       "date_modified": "2022-01-01T05:00:00.000Z",
-      "date_published": "2022-01-01T05:00:00.000Z"
+      "date_published": "2022-01-01T05:00:00.000Z",
+      "author": {},
+      "tags": []
     },
     {
       "id": "about",
@@ -23,7 +25,19 @@
       "title": "My Story",
       "summary": "Learn more about Cody Brunner",
       "date_modified": "2022-01-01T05:00:00.000Z",
-      "date_published": "2022-01-01T05:00:00.000Z"
+      "date_published": "2022-01-01T05:00:00.000Z",
+      "author": {},
+      "tags": []
+    },
+    {
+      "id": "my-gear",
+      "url": "https://codybrunner.com/my-gear",
+      "title": "My Gear",
+      "summary": "The hardware, software, and tooling I use as a developer in my daily.",
+      "date_modified": "2022-01-01T05:00:00.000Z",
+      "date_published": "2022-01-03T05:00:00.000Z",
+      "author": {},
+      "tags": []
     }
   ]
 }

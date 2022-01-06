@@ -22,7 +22,7 @@ export const Aside: React.FC<Props> = post => {
   return (
     // TODO Look into the scroll-m-# class and how it works
     <aside className="hidden lg:block">
-      <div className="sticky top-0 flex flex-col items-start lg:block lg:border-l lg:border-l-indigo-500 lg:px-4 lg:pt-4">
+      <div className="sticky top-0 flex flex-col items-start lg:block lg:border-l lg:border-l-indigo-500 dark:lg:border-l-aura-orange lg:px-4 lg:pt-4">
         <Image
           alt=""
           className="bg-indigo-100 rounded-full"
@@ -31,38 +31,36 @@ export const Aside: React.FC<Props> = post => {
           width={90}
         />
         <div className="flex flex-col space-y-8">
-          <dl className="flex flex-col space-y-1">
-            <dt className="font-semibold text-indigo-700">Published On</dt>
+          <dl className="aside-section">
+            <dt>Published On</dt>
             <dd className="text-base font-medium leading-6">
               <time dateTime={publishedOn}>{publishedOn}</time>
             </dd>
           </dl>
           {updatedOn && (
-            <dl className="flex flex-col space-y-1">
-              <dt className="font-semibold text-indigo-700">Updated On</dt>
+            <dl className="aside-section">
+              <dt>Updated On</dt>
               <dd className="text-base font-medium leading-6">
                 <time dateTime={updatedOn}>{updatedOn}</time>
               </dd>
             </dl>
           )}
-          <dl className="flex flex-col space-y-1">
-            <dt className="font-semibold text-indigo-700">Read Time</dt>
+          <dl className="aside-section">
+            <dt>Read Time</dt>
             <dd className="text-base font-medium leading-6">
               {post.readingTime}
             </dd>
           </dl>
           {asPath !== '/about' && (
-            <dl className="flex flex-col space-y-1">
-              <dt className="font-semibold text-indigo-700">Tags</dt>
+            <dl className="aside-section">
+              <dt>Tags</dt>
               <dd className="text-base font-medium leading-6">
-                <ul className="flex flex-wrap">
-                  <Tags tags={post.tags} />
-                </ul>
+                <Tags tags={post.tags} />
               </dd>
             </dl>
           )}
-          <dl className="flex flex-col space-y-1">
-            <dt className="font-semibold text-indigo-700">Share</dt>
+          <dl className="aside-section">
+            <dt>Share</dt>
             <dd>
               <Share {...post} />
             </dd>

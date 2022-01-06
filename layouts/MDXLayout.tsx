@@ -20,12 +20,12 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
     <div className="flex flex-col space-y-8 lg:col-span-3">
       <div className="flex flex-col items-center space-y-8">
         <header className="flex flex-col w-full px-8 space-y-4 rounded-t-lg">
-          <h1 className="text-4xl font-medium leading-tight text-center text-indigo-700 lg:text-5xl">
+          <h1 className="text-4xl font-medium leading-tight text-center text-indigo-700 dark:text-aura-purple lg:text-5xl">
             {post.title}
           </h1>
           <div className="flex flex-col items-center w-full lg:flex-row lg:justify-between lg:items-start">
             <div className="flex items-center space-x-2 lg:hidden">
-              <div className="relative bg-white border border-indigo-600 rounded-full h-9 w-9">
+              <div className="relative bg-white border border-indigo-600 rounded-full dark:border-aura-purple h-9 w-9">
                 <Image
                   alt="Cody Brunner Avatar"
                   className="rounded-full"
@@ -55,7 +55,7 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
           </div>
         </header>
         {/* <hr className="w-full border-indigo-500 lg:hidden" /> */}
-        <article className="px-8 prose prose-lg text-justify prose-slate lg:prose-xl">
+        <article className="px-8 prose prose-xl prose-slate lg:prose-2xl dark:prose-invert">
           <MDXContent
             components={{
               div: ({ children, className }) =>
@@ -103,11 +103,8 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
                 query: { slug: post.previousPost.split('/') },
               }}
               passHref
-              scroll={false}
             >
-              <a className="flex items-center justify-center w-32 h-12 text-xl font-medium text-center transition duration-200 transform bg-indigo-200 rounded-lg shadow-lg md:w-40 hover:bg-indigo-500 hover:text-white hover:shadow-none hover:scale-95">
-                Previous
-              </a>
+              <a className="pagination-button">Previous</a>
             </NextLink>
           )}
           {post.nextPost && (
@@ -117,11 +114,8 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
                 query: { slug: post.nextPost.split('/') },
               }}
               passHref
-              scroll={false}
             >
-              <a className="flex items-center justify-center w-32 h-12 text-xl font-medium text-center transition duration-200 transform bg-indigo-200 rounded-lg shadow-lg md:w-40 hover:bg-indigo-500 hover:text-white hover:shadow-none hover:scale-95">
-                Next
-              </a>
+              <a className="pagination-button">Next</a>
             </NextLink>
           )}
         </section>

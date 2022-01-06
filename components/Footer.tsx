@@ -25,7 +25,7 @@ export const Footer: React.FC<Props> = ({ currentRoute }) => {
           rel="noopener noreferrer"
           target="_blank"
         >
-          <span className="text-xl font-semibold">
+          <span className="text-xl font-semibold dark:text-aura-red hover:underline">
             {constants.externalLinks.source.text}
           </span>
         </a>

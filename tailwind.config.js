@@ -1,6 +1,20 @@
 // See the Tailwind configuration guide for advanced usage
 // https://tailwindcss.com/docs/configuration
 const { colors, fontFamily } = require('tailwindcss/defaultTheme')
+
+const aura = {
+  black: '#15141b',
+  blue: '#82e2ff',
+  gray: '#6d6d6d',
+  green: '#61ffca',
+  orange: '#ffca85',
+  pink: '#f694ff',
+  purple: '#a277ff',
+  'purple-fading': '#3d375e7f',
+  red: '#ff6767',
+  white: '#edecee',
+}
+
 module.exports = {
   content: ['./components/*.tsx', './layouts/*.tsx', './pages/**/*.tsx'],
   darkMode: 'class',
@@ -22,6 +36,10 @@ module.exports = {
         linkedin: '#0072B1',
         // bg-twitter || text-twitter
         twitter: '#1DA1F2',
+        // bg-aura-black || text-aura-black
+        aura: {
+          ...aura,
+        },
         ...colors,
       },
       fontFamily: {
@@ -69,6 +87,7 @@ module.exports = {
           css: {
             a: {
               color: theme('colors.blue.600'),
+              fontWeight: theme('fontWeight.semibold'),
             },
             'a code': {
               color: theme('colors.blue.600'),
@@ -116,8 +135,13 @@ module.exports = {
             'h4 a': {
               color: theme('colors.indigo.600'),
             },
-            pre: {},
-            'pre code': {},
+            img: {
+              borderRadius: theme('borderRadius.lg'),
+            },
+            p: {
+              letterSpacing: theme('letterSpacing.wide'),
+              textAlign: 'justify',
+            },
             strong: {
               color: theme('colors.pink.600'),
               fontWeight: theme('fontWeight.bold'),
@@ -126,40 +150,40 @@ module.exports = {
         },
         invert: {
           css: {
+            color: aura.white, // X
             a: {
-              color: theme('colors.blue.500'),
+              color: aura.green,
             },
-            'a code': {
-              color: theme('colors.blue.500'),
+            'a > code': {
+              color: aura.orange,
             },
             blockquote: {
-              backgroundColor: theme('colors.stone.800'),
-              borderLeftColor: theme('colors.indigo.500'),
+              backgroundColor: aura['purple-fading'],
+              borderLeftColor: aura.purple,
             },
             code: {
-              color: theme('colors.indigo.500'),
+              color: aura.orange,
             },
             del: {
-              color: theme('colors.red.500'),
+              color: aura.red,
             },
             em: {
-              color: theme('colors.green.500'),
-              fontWeight: theme('fontWeight.medium'),
+              color: aura.blue,
             },
             'h1 a': {
-              color: theme('colors.white'),
+              color: aura.orange,
             },
             'h2 a': {
-              color: theme('colors.white'),
+              color: aura.purple,
             },
             'h3 a': {
-              color: theme('colors.white'),
+              color: aura.purple,
             },
             'h4 a': {
-              color: theme('colors.white'),
+              color: aura.pink,
             },
             strong: {
-              color: theme('colors.pink.500'),
+              color: aura.red,
             },
           },
         },
