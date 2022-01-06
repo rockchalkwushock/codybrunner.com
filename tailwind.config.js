@@ -105,16 +105,16 @@ module.exports = {
               fontWeight: theme('fontWeight.medium'),
             },
             'h1 a': {
-              color: theme('colors.slate.900'),
+              color: theme('colors.indigo.600'),
             },
             'h2 a': {
-              color: theme('colors.slate.900'),
+              color: theme('colors.indigo.600'),
             },
             'h3 a': {
-              color: theme('colors.slate.900'),
+              color: theme('colors.indigo.600'),
             },
             'h4 a': {
-              color: theme('colors.slate.900'),
+              color: theme('colors.indigo.600'),
             },
             pre: {},
             'pre code': {},

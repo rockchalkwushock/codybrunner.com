@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
 import { DefaultSeo, SocialProfileJsonLd } from 'next-seo'
-import { AnimatePresence } from 'framer-motion'
 import { ThemeProvider } from 'next-themes'
 
 import '../styles/global.scss'
@@ -25,9 +24,7 @@ const App: React.FC<Props> = ({ Component, pageProps, router }) => {
         url={constants.url}
       />
       <BaseLayout route={router.route}>
-        <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} key={router.asPath} />
-        </AnimatePresence>
+        <Component {...pageProps} key={router.asPath} />
       </BaseLayout>
     </ThemeProvider>
   )

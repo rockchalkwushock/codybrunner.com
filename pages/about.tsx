@@ -2,10 +2,11 @@ import * as React from 'react'
 import { GetStaticProps } from 'next'
 import { ArticleJsonLd, NextSeo } from 'next-seo'
 
+import { Aside } from '@components/Aside'
+import { Container } from '@components/Container'
 import { Post } from '@interfaces/post'
 import { MDXLayout } from '@layouts/MDXLayout'
 import { getMDXBySlug, prepareMDX } from '@lib/mdx'
-import { Container } from '@components/Container'
 
 interface Props extends Post {}
 
@@ -40,8 +41,12 @@ const About: React.FC<Props> = post => {
         title={post.title}
         url={post.canonicalUrl}
       />
-      <Container as="main">
+      <Container
+        as="main"
+        className="relative grid-in-main lg:grid lg:grid-cols-4 lg:gap-x-6"
+      >
         <MDXLayout {...post} />
+        <Aside {...post} />
       </Container>
     </>
   )

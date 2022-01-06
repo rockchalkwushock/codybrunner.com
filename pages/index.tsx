@@ -2,14 +2,14 @@ import * as React from 'react'
 import { GetStaticProps } from 'next'
 import NextLink from 'next/link'
 
-import { Image } from '@components/Image'
-import { Post } from '@interfaces/post'
-import { getAllPostsFrontMatter } from '@utils/mdx'
 import { Container } from '@components/Container'
-import { ScheduleButton } from '@components/ScheduleButton'
 import { Icon } from '@components/Icon'
-import { formatDateTime } from '@utils/dateTime'
+import { Image } from '@components/Image'
+import { Posts } from '@components/Posts'
+import { ScheduleButton } from '@components/ScheduleButton'
+import { Post } from '@interfaces/post'
 import { constants } from '@utils/constants'
+import { getAllPostsFrontMatter } from '@utils/mdx'
 
 interface Props {
   posts: Array<Post>
@@ -18,10 +18,7 @@ interface Props {
 const Home: React.FC<Props> = ({ posts }) => {
   return (
     <>
-      <Container
-        as="main"
-        className="px-8 text-xl text-justify grid-in-main space-y-14"
-      >
+      <Container as="main" className="px-8 text-xl grid-in-main space-y-14">
         <div className="flex flex-col items-center justify-center p-6 mx-4 space-y-4 bg-indigo-100 rounded-lg shadow-lg md:mx-0 md:space-x-8 lg:p-12 md:space-y-0 md:flex-row">
           <picture className="relative flex-none w-40 h-40 rounded-full md:h-44 md:w-44">
             <Image
@@ -74,80 +71,7 @@ const Home: React.FC<Props> = ({ posts }) => {
               an expat.
             </p>
           </div>
-          <ul className="flex flex-col items-center space-y-8">
-            {posts.map(post => (
-              <li className="" key={post.slug}>
-                <div className="relative inline-block p-4 text-gray-900 rounded-md outline-none group hover:bg-stone-200 focus:shadow-sm focus:text-gray-700 ">
-                  <div className="relative z-10 space-y-4 pointer-events-none lg:space-y-0 lg:grid lg:grid-cols-4 lg:gap-y-6">
-                    <span
-                      className={
-                        !post.publishedAt
-                          ? 'w-min absolute -right-6 md:-right-8 md:-top-12 lg:-top-7 -top-10 py-1 px-4 h-min text-white font-bold shadow-lg shadow-orange-500 rounded-full bg-red-500'
-                          : 'hidden'
-                      }
-                    >
-                      Draft
-                    </span>
-                    <div className="flex items-center pr-4 lg:space-x-6 lg:pb-0 lg:col-span-3">
-                      <div className="flex-shrink-0 hidden w-12 h-12 lg:inline-block">
-                        <Image
-                          alt=""
-                          className="rounded-full"
-                          height={48}
-                          src={post.assetPath ?? ''}
-                          width={48}
-                        />
-                      </div>
-                      <div className="space-y-2">
-                        <h1 className="text-2xl font-bold">{post.title}</h1>
-                        <p className="text-lg tracking-tight text-gray-800 lg:text-lg lg:leading-8">
-                          {post.description}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-center pt-4 space-x-6 border-t border-gray-900 lg:pl-4 lg:space-x-0 lg:border-l lg:border-t-0">
-                      <div className="inline-block w-12 h-12 lg:hidden">
-                        <Image
-                          alt=""
-                          className="rounded-full"
-                          height={48}
-                          src={post.assetPath ?? ''}
-                          width={48}
-                        />
-                      </div>
-                      <div>
-                        <dl>
-                          <dt className="sr-only">Published on</dt>
-                          <dd className="text-base font-medium leading-6">
-                            <time>
-                              {formatDateTime(
-                                post.updatedAt ||
-                                  post.publishedAt ||
-                                  post.createdAt,
-                                'full-date-localized'
-                              )}
-                            </time>
-                          </dd>
-                        </dl>
-                        <ul className="flex flex-wrap items-center lg:items-start lg:space-y-2 lg:flex-col">
-                          {post.tags &&
-                            post.tags.map(tag => (
-                              <li
-                                className="flex items-center mr-2 text-base lg:mr-0"
-                                key={`${post.slug}--${tag}`}
-                              >
-                                <Icon name="hashtag" />
-                                <span>{tag}</span>
-                              </li>
-                            ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <Posts posts={posts} />
           <div className="flex justify-end w-full">
             <NextLink href="/blog" passHref>
               <a className="px-6 py-2 transition-colors duration-200 ease-in-out bg-indigo-100 rounded-lg group hover:bg-indigo-200">

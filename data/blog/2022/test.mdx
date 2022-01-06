@@ -1,0 +1,103 @@
+---
+createdAt: 01/01/2022
+description: Template for testing @tailwindcss/typography styles
+tags:
+  - one
+  - two
+  - three
+  - four
+  - five
+  - six
+  - seven
+  - personal
+title: Prose Style Temaplate
+---
+
+import Signature from '../components/Signature.tsx'
+
+# H1
+
+## H2
+
+### H3
+
+#### H4
+
+##### H5
+
+###### H6
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+---
+
+Lorem ipsum dolor **sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. [Duis aute](https://cnn.com) irure dolor in reprehenderit in voluptate velit esse cillum dolore eu _fugiat nulla pariatur_. Excepteur sint `occaecat` cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ~~Excepteur~~ sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+---
+
+1. one
+2. two
+3. three
+
+---
+
+- alpha
+- bravo
+- charlie
+
+---
+
+[`inline code in a link`](https://cnn.com)
+
+---
+
+> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+---
+
+> Lorem ipsum dolor **sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. [Duis aute](https://cnn.com) irure dolor in reprehenderit in voluptate velit esse cillum dolore eu _fugiat nulla pariatur_. Excepteur sint `occaecat` cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+---
+
+<kbd>CTRL X</kbd> + <kbd>Y</kbd> + <kbd>Return</kbd>
+
+---
+
+```typescript:interfaces/post.ts
+import { Maybe } from './helpers'
+
+export interface Post {
+  author: string
+  canonicalUrl: string
+  createdAt: string
+  description: string
+  featured?: boolean
+  nextPost?: Maybe<string>
+  previousPost?: Maybe<string>
+  publishedAt?: Maybe<string>
+  readingTime: string
+  slug: string
+  source: string
+  tags?: Array<string>
+  title: string
+  updatedAt?: Maybe<string>
+  words: number
+}
+```
+
+```elixir:lib/content/post.ex
+defmodule App.Content.Post do
+  alias App.Repo
+
+  def create_post(attrs) do
+    %Post{}
+    |> Repo.create!(attrs)
+  end
+end
+```
+
+<Signature>~ Cody 🚀</Signature>

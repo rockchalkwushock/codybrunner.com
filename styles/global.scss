@@ -36,6 +36,30 @@ body {
   kbd {
     @apply border-2 border-indigo-500 px-1.5 py-0.5 rounded-md text-base;
   }
+  .contains-task-list {
+    @apply list-none pl-0 md:pl-4;
+    .task-list-item {
+      @apply tracking-normal leading-6 text-left pl-0;
+      &::before {
+        content: none; // removes the dot
+      }
+      *:first-child,
+      *:last-child {
+        @apply my-0.5;
+      }
+      input[type='checkbox'] {
+        @apply shrink-0 appearance-none border border-indigo-500 h-4 w-4 rounded-full my-0 mr-1 checked:bg-indigo-500;
+      }
+      ul > li {
+        @apply text-base;
+        &::marker {
+          content: '-';
+          @apply text-blue-500;
+        }
+      }
+    }
+  }
+
   .rehype-code-title:defined {
     @apply border-b border-indigo-500 leading-7 night-owl-theme px-6 py-2 rounded-tl-lg rounded-tr-lg;
   }
@@ -62,23 +86,4 @@ body {
 
 body.modal-open {
   @apply overflow-y-hidden;
-}
-
-//
-
-.svg-wrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.svg-wrapper svg {
-  transform: rotateY(180deg);
-}
-
-.svg-wrapper .shape-fill {
-  fill: #6366f1;
 }

@@ -3,10 +3,11 @@ import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { BlogJsonLd, NextSeo } from 'next-seo'
 
-import { PostCard } from '@components/PostComponents'
+import { Posts } from '@components/Posts'
 import { Post } from '@interfaces/post'
 import { constants } from '@utils/constants'
 import { getAllPostsFrontMatter } from '@utils/mdx'
+import { Container } from '@components/Container'
 
 interface Props {
   posts: Array<Post>
@@ -36,12 +37,12 @@ const BlogIndex: React.FC<Props> = ({ posts }) => {
         title="codybrunner-dev.vercel.app | Blog"
         url={`${constants.url}${asPath}`}
       />
-      <h1 className="text-3xl text-center">Blog</h1>
-      <ul className="grid grid-cols-1 gap-4 md:grid-cols-2">
-        {posts.map(post => (
-          <PostCard key={post.slug} {...post} />
-        ))}
-      </ul>
+      <Container
+        as="main"
+        className="px-8 text-xl text-justify grid-in-main space-y-14"
+      >
+        <Posts posts={posts} />
+      </Container>
     </>
   )
 }
