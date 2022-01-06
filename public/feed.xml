@@ -4,7 +4,7 @@
         <title>https://codybrunner.com</title>
         <link>https://codybrunner.com</link>
         <description>My stretch of pipe in the world wide inter-tubes.</description>
-        <lastBuildDate>Sun, 02 Jan 2022 01:53:31 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 06 Jan 2022 16:20:39 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>All Content © 2022</copyright>
@@ -14,6 +14,7 @@
             <guid>2022/happy-new-years</guid>
             <pubDate>Sat, 01 Jan 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[A post outlining my goals for 2022 and looking back on 2021.]]></description>
+            <category>undefined</category>
         </item>
         <item>
             <title><![CDATA[My Story]]></title>
@@ -21,6 +22,24 @@
             <guid>about</guid>
             <pubDate>Sat, 01 Jan 2022 05:00:00 GMT</pubDate>
             <description><![CDATA[Learn more about Cody Brunner]]></description>
+            <category>undefined</category>
+            <category>undefined</category>
+            <category>undefined</category>
+            <category>undefined</category>
+            <category>undefined</category>
+            <category>undefined</category>
+            <category>undefined</category>
+            <category>undefined</category>
+            <category>undefined</category>
+            <category>undefined</category>
+        </item>
+        <item>
+            <title><![CDATA[My Gear]]></title>
+            <link>https://codybrunner.com/my-gear</link>
+            <guid>my-gear</guid>
+            <pubDate>Mon, 03 Jan 2022 05:00:00 GMT</pubDate>
+            <description><![CDATA[The hardware, software, and tooling I use as a developer in my daily.]]></description>
+            <category>undefined</category>
         </item>
     </channel>
 </rss>

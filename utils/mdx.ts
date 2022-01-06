@@ -77,12 +77,7 @@ export async function getAllPostsFrontMatter(): Promise<Array<Post>> {
       )
     )
   } else {
-    return addsPaginationToPosts(
-      sortPosts(
-        filterPosts(posts, ({ publishedAt }) => !!publishedAt),
-        byDate
-      )
-    )
+    return addsPaginationToPosts(sortPosts(posts, byDate))
   }
 }
 
