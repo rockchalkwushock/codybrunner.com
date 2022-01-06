@@ -10,7 +10,7 @@ export const Tags: React.FC<Props> = ({ tags }) => {
   return (
     <ul className="flex flex-wrap">
       {tags?.map(tag => (
-        <li key={tag} className="tag">
+        <li key={tag} className="app-tag">
           <NextLink href={{ pathname: '/tags/[tag]', query: { tag } }} passHref>
             <a>
               <Icon name="hashtag" />

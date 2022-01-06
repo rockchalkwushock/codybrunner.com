@@ -137,10 +137,11 @@ module.exports = {
             },
             img: {
               borderRadius: theme('borderRadius.lg'),
+              marginLeft: 'auto',
+              marginRight: 'auto',
             },
             p: {
               letterSpacing: theme('letterSpacing.wide'),
-              textAlign: 'justify',
             },
             strong: {
               color: theme('colors.pink.600'),

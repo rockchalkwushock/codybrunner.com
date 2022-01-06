@@ -55,7 +55,7 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
           </div>
         </header>
         {/* <hr className="w-full border-indigo-500 lg:hidden" /> */}
-        <article className="px-8 prose prose-xl prose-slate lg:prose-2xl dark:prose-invert">
+        <article className="w-screen px-8 prose prose-xl break-words lg:w-full prose-slate lg:prose-2xl dark:prose-invert">
           <MDXContent
             components={{
               div: ({ children, className }) =>
@@ -92,26 +92,26 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
             post.previousPost && post.nextPost
               ? 'justify-between'
               : post.previousPost
-              ? 'justify-start'
-              : 'justify-end'
+              ? 'justify-end'
+              : 'justify-start'
           }`}
         >
-          {post.previousPost && (
+          {post.nextPost && (
             <NextLink
               href={{
                 pathname: '/blog/[...slug]',
-                query: { slug: post.previousPost.split('/') },
+                query: { slug: post.nextPost.split('/') },
               }}
               passHref
             >
               <a className="pagination-button">Previous</a>
             </NextLink>
           )}
-          {post.nextPost && (
+          {post.previousPost && (
             <NextLink
               href={{
                 pathname: '/blog/[...slug]',
-                query: { slug: post.nextPost.split('/') },
+                query: { slug: post.previousPost.split('/') },
               }}
               passHref
             >

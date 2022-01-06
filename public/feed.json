@@ -10,14 +10,238 @@
   },
   "items": [
     {
+      "id": "2017/hello-world",
+      "url": "https://codybrunner.com/blog/2017/hello-world",
+      "title": "Hello World",
+      "summary": "My first blog post.",
+      "date_modified": "2017-05-23T05:00:00.000Z",
+      "date_published": "2017-05-23T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2017/higher-order-components",
+      "url": "https://codybrunner.com/blog/2017/higher-order-components",
+      "title": "Higher Order Components",
+      "summary": "A short piece on higher-order-functions in React.",
+      "date_modified": "2017-05-24T05:00:00.000Z",
+      "date_published": "2017-05-24T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2017/deploying-with-now",
+      "url": "https://codybrunner.com/blog/2017/deploying-with-now",
+      "title": "Deploying With Now",
+      "summary": "How to deploy with Zeit's Now platform.",
+      "date_modified": "2017-06-02T05:00:00.000Z",
+      "date_published": "2017-06-02T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2017/one-year",
+      "url": "https://codybrunner.com/blog/2017/one-year",
+      "title": "One Year Of Web Development",
+      "summary": "Looking back on one year of learning web-development.",
+      "date_modified": "2017-07-11T05:00:00.000Z",
+      "date_published": "2017-07-11T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2017/what-i-learned-relearning-graphql",
+      "url": "https://codybrunner.com/blog/2017/what-i-learned-relearning-graphql",
+      "title": "What I Learned Re-learning GraphQL",
+      "summary": "Some items I picked up when re-learning Facebook's GraphQL.",
+      "date_modified": "2017-07-25T05:00:00.000Z",
+      "date_published": "2017-07-25T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2017/automating-with-circleci",
+      "url": "https://codybrunner.com/blog/2017/automating-with-circleci",
+      "title": "Automating With CircleCi 2.0",
+      "summary": "How to automate your workflow with CircleCi 2.0 & Zeit's Now platform.",
+      "date_modified": "2017-10-05T05:00:00.000Z",
+      "date_published": "2017-10-05T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2017/rewriting-my-site-with-hugo",
+      "url": "https://codybrunner.com/blog/2017/rewriting-my-site-with-hugo",
+      "title": "Rewriting My Site With Hugo",
+      "summary": "What I learned while rebuilding my site/blog with Hugo.",
+      "date_modified": "2017-12-18T05:00:00.000Z",
+      "date_published": "2017-12-18T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2017/up-and-running-with-iterm-and-zsh",
+      "url": "https://codybrunner.com/blog/2017/up-and-running-with-iterm-and-zsh",
+      "title": "Up & Running With iTerm & Zsh",
+      "summary": "How to get started with iTerm2, ZSH, & VSCode.",
+      "date_modified": "2017-12-19T05:00:00.000Z",
+      "date_published": "2017-12-19T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2018/happy-new-years",
+      "url": "https://codybrunner.com/blog/2018/happy-new-years",
+      "title": "Happy New Years!",
+      "summary": "Where I've been and where I'm going in 2018.",
+      "date_modified": "2018-02-05T05:00:00.000Z",
+      "date_published": "2018-02-05T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2018/how-to-build-a-telegram-bot-with-nodejs",
+      "url": "https://codybrunner.com/blog/2018/how-to-build-a-telegram-bot-with-nodejs",
+      "title": "How to build a Telegram Bot with NodeJS",
+      "summary": "My experience in building a bot for the popular Telegram Messenger Platform.",
+      "date_modified": "2018-02-11T05:00:00.000Z",
+      "date_published": "2018-02-11T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2018/turn-the-page",
+      "url": "https://codybrunner.com/blog/2018/turn-the-page",
+      "title": "Turn the page",
+      "summary": "The admission and realization that I desperately need help.",
+      "date_modified": "2018-02-20T05:00:00.000Z",
+      "date_published": "2018-02-20T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2018/into-the-great-unknown",
+      "url": "https://codybrunner.com/blog/2018/into-the-great-unknown",
+      "title": "Into The Great Unknown",
+      "summary": "Turning a new leaf and starting fresh in Portland, Oregon.",
+      "date_modified": "2018-05-24T05:00:00.000Z",
+      "date_published": "2018-05-24T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2018/getting-started-with-python3",
+      "url": "https://codybrunner.com/blog/2018/getting-started-with-python3",
+      "title": "Getting Started With Python3",
+      "summary": "Installation and setup of Python3 on macOS & development with Visual Studio Code.",
+      "date_modified": "2018-06-20T05:00:00.000Z",
+      "date_published": "2018-06-20T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2018/building-a-black-jack-advice-generator-with-python",
+      "url": "https://codybrunner.com/blog/2018/building-a-black-jack-advice-generator-with-python",
+      "title": "Building A Black Jack Advice Generator With Python",
+      "summary": "How to build a simple black jack advice generator using Python.",
+      "date_modified": "2018-06-28T05:00:00.000Z",
+      "date_published": "2018-06-28T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2018/writing-a-connect-four-game-in-python",
+      "url": "https://codybrunner.com/blog/2018/writing-a-connect-four-game-in-python",
+      "title": "Writing A Connect Four Game Reader In Python",
+      "summary": "Writing a program that will read moves and populate a game board for the popular game Connect Four using Python.",
+      "date_modified": "2018-06-29T05:00:00.000Z",
+      "date_published": "2018-06-29T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2018/recursion-memoization-in-python",
+      "url": "https://codybrunner.com/blog/2018/recursion-memoization-in-python",
+      "title": "Recursion & Memoization In Python",
+      "summary": "Working through Fibonacci using recursion and memoization in Python.",
+      "date_modified": "2018-07-13T05:00:00.000Z",
+      "date_published": "2018-07-13T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2018/building-a-stopwatch-with-javascript",
+      "url": "https://codybrunner.com/blog/2018/building-a-stopwatch-with-javascript",
+      "title": "Building A Stopwatch With JavaScript",
+      "summary": "A guide for how to build a stopwatch with JavaScript.",
+      "date_modified": "2018-08-01T05:00:00.000Z",
+      "date_published": "2018-08-01T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2018/through-the-storm",
+      "url": "https://codybrunner.com/blog/2018/through-the-storm",
+      "title": "Through The Storm",
+      "summary": "Two years of hard work finally delivered my first dev job.",
+      "date_modified": "2018-09-07T05:00:00.000Z",
+      "date_published": "2018-09-07T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2019/building-a-react-project-from-scratch-with-typescript",
+      "url": "https://codybrunner.com/blog/2019/building-a-react-project-from-scratch-with-typescript",
+      "title": "Building A React Project From Scratch With TypeScript",
+      "summary": "Setting up a React project with Webpack 4, Babel 7, & TypeScript.",
+      "date_modified": "2019-02-19T05:00:00.000Z",
+      "date_published": "2019-02-19T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2021/looking-at-2021-with-2020-vision",
+      "url": "https://codybrunner.com/blog/2021/looking-at-2021-with-2020-vision",
+      "title": "Looking At 2021 With 2020 Vision",
+      "summary": "A look back on 2020 and looking ahead to 2021.",
+      "date_modified": "2021-01-01T05:00:00.000Z",
+      "date_published": "2021-01-01T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2021/how-to-kill-processes-on-macos",
+      "url": "https://codybrunner.com/blog/2021/how-to-kill-processes-on-macos",
+      "title": "How To Kill Processes On MacOS",
+      "summary": "A quick posts on how to kill processes on macOS.",
+      "date_modified": "2021-01-04T05:00:00.000Z",
+      "date_published": "2021-01-04T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2021/renting-as-an-expat-in-colombia",
+      "url": "https://codybrunner.com/blog/2021/renting-as-an-expat-in-colombia",
+      "title": "Renting As An Expat In Colombia",
+      "summary": "My experience with renting property in Colombia as an expat.",
+      "date_modified": "2021-03-18T05:00:00.000Z",
+      "date_published": "2021-03-18T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2021/migrating-from-yarn-to-pnpm",
+      "url": "https://codybrunner.com/blog/2021/migrating-from-yarn-to-pnpm",
+      "title": "Migrating From Yarn To Pnpm",
+      "summary": "My experience moving from classic yarn to pnpm as my package manager in JavaScript land.",
+      "date_modified": "2021-06-08T05:00:00.000Z",
+      "date_published": "2021-06-08T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2021/creating-animated-social-icons-with-tailwindcss",
+      "url": "https://codybrunner.com/blog/2021/creating-animated-social-icons-with-tailwindcss",
+      "title": "Creating Animated Social Icons With TailwindCSS",
+      "summary": "How I created the animated social icons on my website using TailwindCSS.",
+      "date_modified": "2021-06-09T05:00:00.000Z",
+      "date_published": "2021-06-09T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2021/scripting-in-iterm2",
+      "url": "https://codybrunner.com/blog/2021/scripting-in-iterm2",
+      "title": "Python Scripting In iTerm2",
+      "summary": "How to use the Python Scripting API in iTerm2 to open several tabs and execute commands in those tabs.",
+      "date_modified": "2021-08-24T05:00:00.000Z",
+      "date_published": "2021-08-28T05:00:00.000Z",
+      "author": {}
+    },
+    {
       "id": "2022/happy-new-years",
       "url": "https://codybrunner.com/blog/2022/happy-new-years",
       "title": "Happy New Years",
       "summary": "A post outlining my goals for 2022 and looking back on 2021.",
       "date_modified": "2022-01-01T05:00:00.000Z",
       "date_published": "2022-01-01T05:00:00.000Z",
-      "author": {},
-      "tags": []
+      "author": {}
     },
     {
       "id": "about",
@@ -26,8 +250,7 @@
       "summary": "Learn more about Cody Brunner",
       "date_modified": "2022-01-01T05:00:00.000Z",
       "date_published": "2022-01-01T05:00:00.000Z",
-      "author": {},
-      "tags": []
+      "author": {}
     },
     {
       "id": "my-gear",
@@ -36,8 +259,7 @@
       "summary": "The hardware, software, and tooling I use as a developer in my daily.",
       "date_modified": "2022-01-01T05:00:00.000Z",
       "date_published": "2022-01-03T05:00:00.000Z",
-      "author": {},
-      "tags": []
+      "author": {}
     }
   ]
 }

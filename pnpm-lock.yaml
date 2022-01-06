@@ -22,6 +22,7 @@ specifiers:
   husky: ^7.0.0
   lint-staged: ~12.1.4
   mdx-bundler: ~8.0.1
+  mdx-embed: ~0.0.22
   next: ~12.0.7
   next-seo: ~4.28.1
   next-sitemap: ~1.6.203
@@ -57,6 +58,7 @@ dependencies:
   esbuild: 0.14.9
   feed: 4.2.2
   mdx-bundler: 8.0.1_esbuild@0.14.9
+  mdx-embed: 0.0.22_73e8d0148a4c5c71ceb6a02bbce55c80
   next: 12.0.7_f974e9ff7578644a22f9bc9f9222c405
   next-seo: 4.28.1_d837ce8f3acb2f60f8b7454672a9bcea
   next-themes: 0.0.15_d837ce8f3acb2f60f8b7454672a9bcea
@@ -5625,6 +5627,23 @@ packages:
       xdm: 3.3.1
     transitivePeerDependencies:
       - supports-color
+    dev: false
+
+  /mdx-embed/0.0.22_73e8d0148a4c5c71ceb6a02bbce55c80:
+    resolution:
+      {
+        integrity: sha512-Wf9zsrPAYk+QVssBvKKOCqiGcWXOa0z76PObdEY5Oaq8rDvqlbSM/wv7YZ4LWiVOkNsK0mUF44A8o9QXxT+LLQ==,
+      }
+    peerDependencies:
+      '@mdx-js/mdx': ^1.6.16
+      '@mdx-js/react': ^1.6.16
+      react: ^16.9.0
+      react-dom: ^16.9.0
+    dependencies:
+      '@mdx-js/mdx': 1.6.22
+      '@mdx-js/react': 1.6.22_react@17.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
     dev: false
 
   /memorystream/0.3.1:

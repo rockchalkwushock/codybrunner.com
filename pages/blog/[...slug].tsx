@@ -47,7 +47,7 @@ const BlogPost: React.FC<Props> = post => {
       />
       <Container
         as="main"
-        className="relative grid-in-main lg:grid lg:grid-cols-4 lg:gap-x-6"
+        className="grid-in-main lg:grid lg:grid-cols-4 lg:gap-x-6"
       >
         <MDXLayout {...post} />
         <Aside {...post} />
