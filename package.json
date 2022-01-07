@@ -16,7 +16,7 @@
     "generate:sitemap": "next-sitemap",
     "generate:rss": "node ./.next/server/utils/generate-rss.js.js",
     "lint": "next lint",
-    "prepare": "husky install",
+    "prepare": "npx only-allow pnpm && husky install",
     "ship": "pnpm run build && pnpm run generate:sitemap && pnpm run generate:rss && pnpm run export",
     "start": "serve out",
     "type-check": "tsc"
