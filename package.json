@@ -8,16 +8,17 @@
     "url": "https://codybrunner.com"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=14"
+  },
   "scripts": {
-    "build": "next build",
+    "build": "next build && yarn run generate:sitemap && yarn run generate:rss && next export",
     "dev": "next",
     "format": "prettier --write",
     "generate:sitemap": "next-sitemap",
     "generate:rss": "node ./.next/server/utils/generate-rss.js.js",
     "lint": "next lint",
-    "postbuild": "run-p generate:sitemap generate:rss",
     "prepare": "husky install",
-    "prestart": "NODE_ENV=production npm run build && next export",
     "start": "serve out",
     "type-check": "tsc"
   },
@@ -30,6 +31,7 @@
     "esbuild": "~0.14.9",
     "feed": "~4.2.2",
     "mdx-bundler": "~8.0.1",
+    "mdx-embed": "~0.0.22",
     "next": "~12.0.7",
     "next-seo": "~4.28.1",
     "next-themes": "~0.0.15",
@@ -61,7 +63,6 @@
     "husky": "^7.0.0",
     "lint-staged": "~12.1.4",
     "next-sitemap": "~1.6.203",
-    "npm-run-all": "~4.1.5",
     "postcss": "~8.4.5",
     "postcss-import": "~14.0.2",
     "postcss-preset-env": "~7.1.0",

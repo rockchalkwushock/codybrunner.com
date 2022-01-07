@@ -39,17 +39,18 @@ export const Posts: React.FC<Props> = ({ posts }) => {
                       Draft
                     </span>
                     <div className="flex items-center pr-4 lg:space-x-6 lg:pb-0 lg:col-span-3">
-                      <div className="flex-shrink-0 hidden w-12 h-12 lg:inline-block">
+                      {/* Tablet & Desktop View */}
+                      <div className="relative flex-shrink-0 hidden w-12 h-12 overflow-hidden bg-indigo-200 border border-indigo-200 rounded-full dark:bg-aura-white dark:border-aura-green lg:inline-block">
                         <Image
                           alt="// TODO"
-                          className="rounded-full bg-aura-white"
+                          className="absolute rounded-full"
                           height={48}
                           src={assetPath ?? '/images/pen-and-paper.svg'}
                           width={48}
                         />
                       </div>
                       <div className="space-y-2">
-                        <h1 className="text-2xl font-bold dark:text-aura-white">
+                        <h1 className="text-2xl font-bold text-left dark:text-aura-white">
                           {title}
                         </h1>
                         <p className="text-lg tracking-tight text-gray-800 dark:text-aura-white lg:text-lg lg:leading-8">
@@ -58,10 +59,11 @@ export const Posts: React.FC<Props> = ({ posts }) => {
                       </div>
                     </div>
                     <div className="flex items-center pt-4 space-x-6 border-t border-gray-900 dark:border-aura-white lg:pl-4 lg:space-x-0 lg:border-l lg:border-t-0">
-                      <div className="inline-block w-12 h-12 lg:hidden">
+                      {/* Mobile View */}
+                      <div className="relative flex-shrink-0 inline-block w-12 h-12 overflow-hidden bg-indigo-200 border border-indigo-200 rounded-full dark:bg-aura-white dark:border-aura-green lg:hidden">
                         <Image
                           alt="// TODO"
-                          className="rounded-full"
+                          className="absolute rounded-full"
                           height={48}
                           src={assetPath ?? '/images/pen-and-paper.svg'}
                           width={48}

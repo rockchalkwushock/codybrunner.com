@@ -13,14 +13,14 @@ async function generate() {
     },
     description: constants.description,
     copyright: constants.copyright,
-    // favicon: '',
+    // favicon: '// TODO',
     feedLinks: {
       json: `${constants.url}/feed.json`,
       rss2: `${constants.url}/feed.xml`,
       atom: `${constants.url}/atom.xml`,
     },
     id: constants.url,
-    // image: '',
+    // image: '// TODO',
     link: constants.url,
     title: constants.url,
     updated: new Date(),
@@ -37,7 +37,7 @@ async function generate() {
   items.forEach(item => {
     feed.addItem({
       author: constants.author,
-      category: item.tags,
+      // category: item.tags, // TODO Read up on this property the following does not work.
       // content: item.source, // TODO Figure out how to parse this correctly for RSS.
       copyright: constants.copyright,
       date: new Date(item.createdAt),
