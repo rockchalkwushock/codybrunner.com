@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { AppProps } from 'next/app'
 import { DefaultSeo, SocialProfileJsonLd } from 'next-seo'
-import { AnimatePresence } from 'framer-motion'
 import { ThemeProvider } from 'next-themes'
 
 import '../styles/global.scss'
@@ -9,11 +8,22 @@ import SEO from '../next-seo.config'
 
 import { BaseLayout } from '@layouts/BaseLayout'
 import { constants } from '@utils/constants'
+import { isServer } from '@utils/helpers'
 
 interface Props extends AppProps {}
 
 const App: React.FC<Props> = ({ Component, pageProps, router }) => {
-  const { instagram, linkedin, twitter } = constants.externalLinks
+  const [_, instagram, linkedin, twitter] = constants.socials
+
+  React.useEffect(() => {
+    if (isServer) return
+    router.events.on('routeChangeComplete', () => {
+      window.scrollTo({
+        behavior: 'smooth',
+        top: 0,
+      })
+    })
+  }, [router])
 
   return (
     <ThemeProvider attribute="class" enableColorScheme enableSystem>
@@ -24,10 +34,8 @@ const App: React.FC<Props> = ({ Component, pageProps, router }) => {
         type="Person"
         url={constants.url}
       />
-      <BaseLayout>
-        <AnimatePresence exitBeforeEnter>
-          <Component {...pageProps} key={router.asPath} />
-        </AnimatePresence>
+      <BaseLayout route={router.route}>
+        <Component {...pageProps} key={router.asPath} />
       </BaseLayout>
     </ThemeProvider>
   )

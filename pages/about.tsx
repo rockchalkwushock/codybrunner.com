@@ -2,9 +2,54 @@ import * as React from 'react'
 import { GetStaticProps } from 'next'
 import { ArticleJsonLd, NextSeo } from 'next-seo'
 
+import { Aside } from '@components/Aside'
+import { Container } from '@components/Container'
 import { Post } from '@interfaces/post'
 import { MDXLayout } from '@layouts/MDXLayout'
 import { getMDXBySlug, prepareMDX } from '@lib/mdx'
+
+const technologies = [
+  'apollographql',
+  'bootstrap',
+  'chakra-ui',
+  'css3',
+  'django',
+  'elixir',
+  'fly.io',
+  'gatsbyjs',
+  'graphql',
+  'heroku',
+  'html5',
+  'javascript',
+  'mongodb',
+  'netlify',
+  'nextjs',
+  'nodejs',
+  'phoenix',
+  'postgresql',
+  'python',
+  'reactjs',
+  'react-query',
+  'redux',
+  'styled-components',
+  'tailwindcss',
+  'typescript',
+  'vercel',
+  'x-state',
+]
+
+const customTags = [
+  'Colombia',
+  'expatriate',
+  'Elixir Developer',
+  'Frontend Developer',
+  'Fullstack Developer',
+  'Python Developer',
+  'React Developer',
+  'Software Developer',
+  'Web Developer',
+  ...technologies,
+]
 
 interface Props extends Post {}
 
@@ -19,7 +64,7 @@ const About: React.FC<Props> = post => {
             authors: [post.author],
             modifiedTime: post.updatedAt ?? undefined,
             publishedTime: post.publishedAt ?? undefined,
-            // tags: customTags, // TODO
+            tags: customTags,
           },
           type: 'article',
           url: post.canonicalUrl,
@@ -39,7 +84,13 @@ const About: React.FC<Props> = post => {
         title={post.title}
         url={post.canonicalUrl}
       />
-      <MDXLayout {...post} />
+      <Container
+        as="main"
+        className="relative grid-in-main lg:grid lg:grid-cols-4 lg:gap-x-6"
+      >
+        <MDXLayout {...post} />
+        <Aside {...post} />
+      </Container>
     </>
   )
 }

@@ -2,6 +2,8 @@ import * as React from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import { ArticleJsonLd, NextSeo } from 'next-seo'
 
+import { Aside } from '@components/Aside'
+import { Container } from '@components/Container'
 import { Post } from '@interfaces/post'
 import { MDXLayout } from '@layouts/MDXLayout'
 import { appRegex, paths } from '@utils/constants'
@@ -43,7 +45,13 @@ const BlogPost: React.FC<Props> = post => {
         title={post.title}
         url={post.canonicalUrl}
       />
-      <MDXLayout {...post} />
+      <Container
+        as="main"
+        className="grid-in-main lg:grid lg:grid-cols-4 lg:gap-x-6"
+      >
+        <MDXLayout {...post} />
+        <Aside {...post} />
+      </Container>
     </>
   )
 }

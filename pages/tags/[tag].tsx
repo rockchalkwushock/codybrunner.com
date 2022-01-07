@@ -3,8 +3,9 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 
-import { PostCard } from '@components/PostComponents'
-import { Tag } from '@components/Tag'
+import { Container } from '@components/Container'
+import { Posts } from '@components/Posts'
+import { Tags } from '@components/Tags'
 import { Post } from '@interfaces/post'
 import { constants } from '@utils/constants'
 import {
@@ -34,27 +35,23 @@ const Topic: React.FC<Props> = ({ posts, tag, tags }) => {
         }}
         title={tag}
       />
-      <h1 className="text-2xl text-center">
-        Posts tagged with:{' '}
-        <span className="font-bold text-pink-500">{tag}</span>
-      </h1>
+      <Container as="main" className="px-8 text-xl grid-in-main space-y-14">
+        <h1 className="text-3xl text-center">
+          Posts tagged with:{' '}
+          <span className="font-bold text-pink-500 dark:text-aura-pink">
+            {tag}
+          </span>
+        </h1>
 
-      <ul className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        {posts.map(post => (
-          <PostCard key={post.slug} {...post} />
-        ))}
-      </ul>
+        <Posts posts={posts} />
 
-      <div className="flex flex-col items-center space-y-6">
-        <h2 className="text-2xl">Other Tags</h2>
-        <ul className="grid grid-cols-3 gap-4 md:grid-cols-5">
-          {tags.map(tag => (
-            <li key={tag}>
-              <Tag tag={tag} />
-            </li>
-          ))}
-        </ul>
-      </div>
+        <div className="flex flex-col items-center space-y-6">
+          <h2 className="text-2xl font-semibold dark:text-aura-red">
+            Other Tags
+          </h2>
+          <Tags tags={tags} />
+        </div>
+      </Container>
     </>
   )
 }

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://codybrunner.com</id>
     <title>https://codybrunner.com</title>
-    <updated>2022-01-02T01:53:31.506Z</updated>
+    <updated>2022-01-07T02:27:05.518Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Cody Brunner</name>
@@ -13,12 +13,238 @@
     <subtitle>My stretch of pipe in the world wide inter-tubes.</subtitle>
     <rights>All Content © 2022</rights>
     <entry>
+        <title type="html"><![CDATA[Hello World]]></title>
+        <id>2017/hello-world</id>
+        <link href="https://codybrunner.com/blog/2017/hello-world"/>
+        <updated>2017-05-23T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[My first blog post.]]></summary>
+        <published>2017-05-23T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Higher Order Components]]></title>
+        <id>2017/higher-order-components</id>
+        <link href="https://codybrunner.com/blog/2017/higher-order-components"/>
+        <updated>2017-05-24T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A short piece on higher-order-functions in React.]]></summary>
+        <published>2017-05-24T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Deploying With Now]]></title>
+        <id>2017/deploying-with-now</id>
+        <link href="https://codybrunner.com/blog/2017/deploying-with-now"/>
+        <updated>2017-06-02T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How to deploy with Zeit's Now platform.]]></summary>
+        <published>2017-06-02T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[One Year Of Web Development]]></title>
+        <id>2017/one-year</id>
+        <link href="https://codybrunner.com/blog/2017/one-year"/>
+        <updated>2017-07-11T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Looking back on one year of learning web-development.]]></summary>
+        <published>2017-07-11T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[What I Learned Re-learning GraphQL]]></title>
+        <id>2017/what-i-learned-relearning-graphql</id>
+        <link href="https://codybrunner.com/blog/2017/what-i-learned-relearning-graphql"/>
+        <updated>2017-07-25T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Some items I picked up when re-learning Facebook's GraphQL.]]></summary>
+        <published>2017-07-25T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Automating With CircleCi 2.0]]></title>
+        <id>2017/automating-with-circleci</id>
+        <link href="https://codybrunner.com/blog/2017/automating-with-circleci"/>
+        <updated>2017-10-05T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How to automate your workflow with CircleCi 2.0 & Zeit's Now platform.]]></summary>
+        <published>2017-10-05T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Rewriting My Site With Hugo]]></title>
+        <id>2017/rewriting-my-site-with-hugo</id>
+        <link href="https://codybrunner.com/blog/2017/rewriting-my-site-with-hugo"/>
+        <updated>2017-12-18T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[What I learned while rebuilding my site/blog with Hugo.]]></summary>
+        <published>2017-12-18T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Up & Running With iTerm & Zsh]]></title>
+        <id>2017/up-and-running-with-iterm-and-zsh</id>
+        <link href="https://codybrunner.com/blog/2017/up-and-running-with-iterm-and-zsh"/>
+        <updated>2017-12-19T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How to get started with iTerm2, ZSH, & VSCode.]]></summary>
+        <published>2017-12-19T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Happy New Years!]]></title>
+        <id>2018/happy-new-years</id>
+        <link href="https://codybrunner.com/blog/2018/happy-new-years"/>
+        <updated>2018-02-05T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Where I've been and where I'm going in 2018.]]></summary>
+        <published>2018-02-05T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[How to build a Telegram Bot with NodeJS]]></title>
+        <id>2018/how-to-build-a-telegram-bot-with-nodejs</id>
+        <link href="https://codybrunner.com/blog/2018/how-to-build-a-telegram-bot-with-nodejs"/>
+        <updated>2018-02-11T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[My experience in building a bot for the popular Telegram Messenger Platform.]]></summary>
+        <published>2018-02-11T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Turn the page]]></title>
+        <id>2018/turn-the-page</id>
+        <link href="https://codybrunner.com/blog/2018/turn-the-page"/>
+        <updated>2018-02-20T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The admission and realization that I desperately need help.]]></summary>
+        <published>2018-02-20T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Into The Great Unknown]]></title>
+        <id>2018/into-the-great-unknown</id>
+        <link href="https://codybrunner.com/blog/2018/into-the-great-unknown"/>
+        <updated>2018-05-24T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Turning a new leaf and starting fresh in Portland, Oregon.]]></summary>
+        <published>2018-05-24T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Getting Started With Python3]]></title>
+        <id>2018/getting-started-with-python3</id>
+        <link href="https://codybrunner.com/blog/2018/getting-started-with-python3"/>
+        <updated>2018-06-20T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Installation and setup of Python3 on macOS & development with Visual Studio Code.]]></summary>
+        <published>2018-06-20T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Building A Black Jack Advice Generator With Python]]></title>
+        <id>2018/building-a-black-jack-advice-generator-with-python</id>
+        <link href="https://codybrunner.com/blog/2018/building-a-black-jack-advice-generator-with-python"/>
+        <updated>2018-06-28T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How to build a simple black jack advice generator using Python.]]></summary>
+        <published>2018-06-28T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Writing A Connect Four Game Reader In Python]]></title>
+        <id>2018/writing-a-connect-four-game-in-python</id>
+        <link href="https://codybrunner.com/blog/2018/writing-a-connect-four-game-in-python"/>
+        <updated>2018-06-29T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Writing a program that will read moves and populate a game board for the popular game Connect Four using Python.]]></summary>
+        <published>2018-06-29T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Recursion & Memoization In Python]]></title>
+        <id>2018/recursion-memoization-in-python</id>
+        <link href="https://codybrunner.com/blog/2018/recursion-memoization-in-python"/>
+        <updated>2018-07-13T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Working through Fibonacci using recursion and memoization in Python.]]></summary>
+        <published>2018-07-13T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Building A Stopwatch With JavaScript]]></title>
+        <id>2018/building-a-stopwatch-with-javascript</id>
+        <link href="https://codybrunner.com/blog/2018/building-a-stopwatch-with-javascript"/>
+        <updated>2018-08-01T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A guide for how to build a stopwatch with JavaScript.]]></summary>
+        <published>2018-08-01T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Through The Storm]]></title>
+        <id>2018/through-the-storm</id>
+        <link href="https://codybrunner.com/blog/2018/through-the-storm"/>
+        <updated>2018-09-07T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Two years of hard work finally delivered my first dev job.]]></summary>
+        <published>2018-09-07T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Building A React Project From Scratch With TypeScript]]></title>
+        <id>2019/building-a-react-project-from-scratch-with-typescript</id>
+        <link href="https://codybrunner.com/blog/2019/building-a-react-project-from-scratch-with-typescript"/>
+        <updated>2019-02-19T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Setting up a React project with Webpack 4, Babel 7, & TypeScript.]]></summary>
+        <published>2019-02-19T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Looking At 2021 With 2020 Vision]]></title>
+        <id>2021/looking-at-2021-with-2020-vision</id>
+        <link href="https://codybrunner.com/blog/2021/looking-at-2021-with-2020-vision"/>
+        <updated>2021-01-01T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A look back on 2020 and looking ahead to 2021.]]></summary>
+        <published>2021-01-01T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[How To Kill Processes On MacOS]]></title>
+        <id>2021/how-to-kill-processes-on-macos</id>
+        <link href="https://codybrunner.com/blog/2021/how-to-kill-processes-on-macos"/>
+        <updated>2021-01-04T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A quick posts on how to kill processes on macOS.]]></summary>
+        <published>2021-01-04T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Renting As An Expat In Colombia]]></title>
+        <id>2021/renting-as-an-expat-in-colombia</id>
+        <link href="https://codybrunner.com/blog/2021/renting-as-an-expat-in-colombia"/>
+        <updated>2021-03-18T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[My experience with renting property in Colombia as an expat.]]></summary>
+        <published>2021-03-18T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Migrating From Yarn To Pnpm]]></title>
+        <id>2021/migrating-from-yarn-to-pnpm</id>
+        <link href="https://codybrunner.com/blog/2021/migrating-from-yarn-to-pnpm"/>
+        <updated>2021-06-08T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[My experience moving from classic yarn to pnpm as my package manager in JavaScript land.]]></summary>
+        <published>2021-06-08T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Creating Animated Social Icons With TailwindCSS]]></title>
+        <id>2021/creating-animated-social-icons-with-tailwindcss</id>
+        <link href="https://codybrunner.com/blog/2021/creating-animated-social-icons-with-tailwindcss"/>
+        <updated>2021-06-09T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How I created the animated social icons on my website using TailwindCSS.]]></summary>
+        <published>2021-06-09T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python Scripting In iTerm2]]></title>
+        <id>2021/scripting-in-iterm2</id>
+        <link href="https://codybrunner.com/blog/2021/scripting-in-iterm2"/>
+        <updated>2021-08-24T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How to use the Python Scripting API in iTerm2 to open several tabs and execute commands in those tabs.]]></summary>
+        <published>2021-08-28T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Happy New Years]]></title>
         <id>2022/happy-new-years</id>
         <link href="https://codybrunner.com/blog/2022/happy-new-years"/>
         <updated>2022-01-01T05:00:00.000Z</updated>
         <summary type="html"><![CDATA[A post outlining my goals for 2022 and looking back on 2021.]]></summary>
         <published>2022-01-01T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
     </entry>
     <entry>
         <title type="html"><![CDATA[My Story]]></title>
@@ -27,5 +253,15 @@
         <updated>2022-01-01T05:00:00.000Z</updated>
         <summary type="html"><![CDATA[Learn more about Cody Brunner]]></summary>
         <published>2022-01-01T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[My Gear]]></title>
+        <id>my-gear</id>
+        <link href="https://codybrunner.com/my-gear"/>
+        <updated>2022-01-01T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The hardware, software, and tooling I use as a developer in my daily.]]></summary>
+        <published>2022-01-03T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
     </entry>
 </feed>
