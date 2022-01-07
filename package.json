@@ -8,6 +8,10 @@
     "url": "https://codybrunner.com"
   },
   "license": "MIT",
+  "engines": {
+    "node": ">=14",
+    "pnpm": ">=6"
+  },
   "scripts": {
     "build": "next build",
     "dev": "next",
