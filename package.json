@@ -9,17 +9,16 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">=14",
-    "pnpm": ">=6"
+    "node": ">=14"
   },
   "scripts": {
-    "build": "next build && pnpm run generate:sitemap && pnpm run generate:rss && next export",
+    "build": "next build && yarn run generate:sitemap && yarn run generate:rss && next export",
     "dev": "next",
     "format": "prettier --write",
     "generate:sitemap": "next-sitemap",
     "generate:rss": "node ./.next/server/utils/generate-rss.js.js",
     "lint": "next lint",
-    "prepare": "npx only-allow pnpm && husky install",
+    "prepare": "husky install",
     "start": "serve out",
     "type-check": "tsc"
   },
