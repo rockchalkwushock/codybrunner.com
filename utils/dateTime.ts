@@ -2,7 +2,7 @@ import { format as f } from 'date-fns'
 
 const formats = {
   'day-month': 'dd MMMM',
-  'full-date-localized': 'PPP',
+  'full-date-localized': 'PP',
   'full-year': 'yyyy',
   'short-weekday': 'EEE',
   'yr-mo-da': 'yyyy-MM-dd',
