@@ -1,0 +1,249 @@
+---
+assetPath: /images/terminal.svg
+createdAt: 01/07/2022
+description: Everything I have learned when it comes to SSH after setting up my Raspberry Pi Cluster.
+publishedAt: 01/13/2022
+tags:
+  - cli
+  - ssh
+title: A Far Too In-Depth Guide To SSH For Web Developers
+---
+
+import Giphy from '../components/Giphy.tsx'
+import Signature from '../components/Signature.tsx'
+
+In the last quarter of 2021 I began playing a lot with my Raspberry Pi and have been building a 2 node Pi cluster. In working on this side project I don't use the GUI version of Raspberry PiOS so I have had to upgrade my command line skills 10x. I really wanted to focus on securing the Pi from attackers and the first steps with that was making sure that ssh was locked down. I have used ssh for the last 6 years with services like GitHub and BitBucket, but I had never really done a deep dive on it. I had no idea about how to setup multiple keys, client/server configurations or how to harden ssh. Feel free to gloss over the stuff you don't need to or even care to know. I just find this stuff really cool!
+
+> A caveat to this post is everything here is done on macOS. Most of it will work on any Linux system, but for you Windows users I'm sorry...
+
+<Giphy giphyId="LAKIIRqtM1dqE" />
+
+## What Is SSH?
+
+SSH or secure shell, is a remote management tool that gives us access to other machines where you can then execute commands on that machine. I am a web developer by day and quickly becoming a home lab enthusiast by night so what ssh allows me to do is to remotely access my Pi cluster from my Mac. For the daytime web developer side of me I can remotely access my code on GitHub or perhaps ssh into an EC2 instance on AWS. The point is I can do any of that from all over the world as long as I have setup ssh correctly. Pretty neat!
+
+## How Does SSH Work?
+
+SSH works by establishing a secure connection between the client and server. All traffic is encrypted by default in ssh. When you ssh into a server for the first time you will be asked if you are certain you want to connect to the server. When you say "Yes" a cryptographic fingerprint of the server is stored in the `~/.ssh/known_hosts` file on your machine (aka: the client). This is protecting us from "man in the middle" attacks (MITM). Basically if a malicious entity setup a server with the same IP address and we attempted to connect ssh would be like _"Nah dog that ain't who you think it is and I aint connecting to that shit!"_ When the connection is established between your machine and the server depending on the rights that have been give to your user (or you gave yourself) you will be able to remotely execute commands on the server. For instance maybe your user only has read rights. Then you could perform commands like `ls` or `cat`, but you would never be able to write to a file or use `sudo` to change any configurations.
+
+## Finding SSH & Checking For Keys
+
+Most if not all machines these days ship with SSH, but to check if it is on our machine you can run:
+
+```shell
+which ssh # /usr/bin/ssh
+```
+
+Before going any further though you should check to see if any keys exist on the machine. We want to do this to prevent accidentally overwritting any ssh keys. There are two ways we can check this:
+
+```shell
+ssh-add -l # checks to see if any ssh-keys are loaded in the terminal session
+ls ~/.ssh # if no .ssh directory is found then you can bet there are no keys.
+```
+
+> If you do find that you have keys present please take note of the name of the file. If you having something like `id_rsa` then in the following sections you will want to make sure you add the `-f <filename>` flag when generating keys of the same type so the file is not overwritten. By default ssh names files based on the type of key you select and the default type is `rsa`.
+
+## SSHing Into A Server For The First Time
+
+As a developer if you are anything like me the only thing I ever needed ssh for was to work with GitHub so lets start off by being able to ssh with GitHub. The first thing you will want to do is generate an ssh key that is for your GitHub account. Let's say for example this is your personal GitHub account:
+
+```shell
+ssh-keygen -f ~/.ssh/personal_github -t ed25519 -C "email associated with GitHub"
+```
+
+You will be prompted to add a passphrase. This is not a password but something unique and that you can remember. Maybe something like:
+
+> `personal-octocat-<github-username>`
+
+Just make sure you write it down or can remember it because you will need it later.
+
+So let's pause for a moment and walk through what you just did.
+
+You told `ssh-keygen` to generate an ssh key of type `ed25519` and to generate the private and public keys in files named `personal_github.pub` and `personal_github` inside of the `~/.ssh` directory. You told it to add a comment to the key that has your email that's associated with your personal GitHub account as well. You can verify I'm not bullshitting you by checking the files:
+
+```shell
+ls ~/.ssh
+# personal_github
+# personal_github.pub
+cat ~/.ssh/personal_github.pub
+# ssh-ed25519 AAlZDI1NTE5AAAAIDKmJspv53xX2NP8MulPhY3A4FbymrW2 turd_ferguson@gmail.com
+```
+
+## Adding The Private Key To SSH Agent
+
+```shell
+eval "$(ssh-agent -s)"
+# > Agent pid 34567
+```
+
+```shell
+ssh-add --apple-use-keychain ~/.ssh/personal_github # macOS
+ssh-add ~/.ssh/personal_github # Linux
+# Type in your passphrase
+# Identity added: /Users/<username>/.ssh/personal_github (turd_ferguson@gmail.com)
+```
+
+```shell
+ssh-add -l
+# 256 SHA256:0ZMuKR4pjLm+rfNcie02QAu6Y turd_ferguson@gmail.com (ED25519)
+```
+
+Now that you have your keys generated and loaded into the terminal session run the following command and copy all the contents of your public key (i.e. `personal_github.pub` **not** `personal_github`).
+
+```shell
+cat ~/.ssh/personal_github.pub | pbcopy # macOS
+cat ~/.ssh/personal_github.pub | xsel - clipboard - input # Linux
+```
+
+This will pipe the output of the file to the clipboard. Navigate to the following [page](https://github.com/settings/keys) on your GitHub Settings. Then select add an _New SSH Key_ and paste the public key into the text area and click _Add SSH Key_.
+
+> NOTE: You should **NOT** see either of the following in what you paste. If you do, you have copied the private key by accident and should **NOT** add the key. Instead clear the text area and go back to your terminal to copy the correct file.
+
+```text
+-----BEGIN OPENSSH PRIVATE KEY-----
+super secret hashed key that if made public will cause you lots of headaches!
+-----END OPENSSH PRIVATE KEY-----
+```
+
+Now that GitHub knows your public key you can test out that the connection is established by running:
+
+```shell
+ssh -T git@github.com
+# Say "yes" to connecting
+# You should see:
+# > Hi git! You've successfully authenticated, but GitHub does not provie shell access.
+```
+
+## SSH Client Configuration
+
+We can make using your ssh key much easier by making use of the client config file for ssh. The file likely does not exist yet, but you can check by running:
+
+```shell
+ls ~/.ssh # do you see a file named "config" if not...
+touch ~/.ssh/config
+```
+
+You can then copy and paste the following, we will go over it shortly:
+
+```text:~/.ssh/config
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+
+Host <name>
+  HostName <ip-address|hostname>
+  IdentityFile ~/.ssh/<private-key>
+  IdentitiesOnly yes
+  User <username>
+```
+
+So first off you have a splat `*` which is saying for every `Host` that you add to this file in the future the following configuration should be applied. We want to add the keys to the `ssh-agent` and we want to use the macOS Keychain with passphrases you set for your ssh keys. Now in the future you won't have to run the `eval "$(ssh-agent -s)"` command everytime you start a terminal session. Instead ssh will do that behind the scenes when your session starts. It will aslo allow you to not have to type in your passphrase every time you ssh into a remote host.
+
+> NOTE: `UseKeychain` is only available to macOS users.
+
+The next thing you see is a definition for a `Host`. This key can be whatever you want it to be. It's how you are going to tell ssh which configuraiton to execute. So sticking with the example you can go with a name like `personal_github`. Now when you want to use ssh with your personal GitHub account you can run:
+
+```shell
+ssh personal_github
+```
+
+This works because the next line is specifying the `HostName` this is address of the server/machine you want to establish a remote connection with. In our case it is `github.com`. The next two lines refer to using _Identities_ this refers to the ssh keys you created. We are telling ssh that for this specific configuration if should look for the corresponding private key file and that we only want ssh to use the identities that are listed in this config file (there could be more identites loaded into the `ssh-agent`).
+
+The [SSH Academy](https://www.ssh.com/academy) has great documentation and you can find more on the `config` file [here](https://www.ssh.com/academy/ssh/config).
+
+#### Example Config
+
+Below is an example of what a config with multiple identities could end up looking like:
+
+```text:~/.ssh/config
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+
+Host cody-bb
+  HostName bitbucket.org
+  IdentityFile ~/.ssh/cody-bb
+  IdentitiesOnly yes
+  User git
+
+Host cody-gh
+  HostName github.com
+  IdentityFile ~/.ssh/cody-gh
+  IdentitiesOnly yes
+  User git
+
+Host work
+  HostName github.com
+  IdentityFile ~/.ssh/work
+  IdentitiesOnly yes
+  User git
+
+Host master
+  HostName raspberrypi-master-node.local
+  IdentityFile ~/.ssh/master
+  IdentitiesOnly yes
+  Port 222
+  User cody
+
+Host slave-1
+  HostName raspberrypi-slave-node-one.local
+  IdentityFile ~/.ssh/slave-1
+  IdentitiesOnly yes
+  Port 222
+  User cody
+
+Host slave-2
+  HostName raspberrypi-slave-node-two.local
+  IdentityFile ~/.ssh/slave-2
+  IdentitiesOnly yes
+  Port 222
+  User cody
+```
+
+```shell
+git clone git@github.com:rockchalkwushock/cositas.git
+ssh cody-gh
+# Cloning Repository...
+git clone git@github.com:cbrunner-lt/another-repo.git
+ssh work
+# Cloning Repository...
+ssh master
+# $ cody@master>
+ssh slave-1
+# $ cody@slave-1>
+```
+
+## SSH On The Server
+
+When it comes to ssh on the server there are a few things to know.
+
+1. Anytime a client connects to the server the public keys of the client will be stored in `~/.ssh/authorized_keys`. This is the destination of the `ssh-copy-id` command we ran earlier.
+2. On the client you were asked if you wanted to accept the connection when connecting to a server for the first time. A fingerprint for that server connection was added to the `~/.ssh/known_hosts` file. The server has a similar process; however this is not managed in one file. You will find files named `ssh_host_<type|name>_key.pub` under the `/etc/ssh/` direcotyr. These files hold the fingerprint for the client that connected under that specific `type` or `name` (i.e. on each of my Raspberry Pi's there is a `/etc/ssh/ssh_host_master_key.pub` present)
+3. Just as there is a config for the client where we setup the _easier_ ssh rules (i.e. `ssh master`) the server has it's own config file for describing how ssh should allow connections, what port to run on, who is authorized to use ssh, etc.
+4. On most servers the ssh service is actually under `sshd` the `d` standing for daemon and can be managed using `systemctl` (i.e. `systemctl status sshd`).
+5. You can find the ssh related system configurations underd `/etc/ssh/`
+
+## Quick Security For SSH Server
+
+When configuring your own server there are a few _low hanging fruit_ you can enable to drastically improve the security of your server:
+
+1. Disable Password Authentication.
+   - Only allow ssh keys for login.
+   - **NOTE** You should only do this after you have verified you have an account that you absolutely know you can ssh into using ssh-keys.
+2. Disable Root Login.
+   - No longer allow `root` to ssh into the server.
+3. Change the default SSH port.
+   - This is security through obfuscation, but it will stop the bots and most of the script kitties.
+4. Explicitly define the users allowed to ssh into the server.
+   - You can whitelist users who have permissions to remote access the server.
+
+```text:/etc/ssh/sshd_config
+Port 222
+AllowUsers cody
+PermitRootLogin no
+PasswordAuthentication no
+```
+
+As I do more and more with my Pi and work with services like GitHub, BitBucket, and AWS. I find myself using ssh more and more everyday. Having it setup correctly gives me the peace of mind I can access servers remotely from wherever I might be. I hope this post was informative and helped you.
+
+<Signature>~ Cody 🚀</Signature>
