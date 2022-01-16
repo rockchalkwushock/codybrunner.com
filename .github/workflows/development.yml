@@ -3,12 +3,7 @@ name: Development
 on:
   pull_request:
     branches:
-      - 'chore/**'
-      - 'bug/**'
-      - 'feat/**'
-      - 'post/**'
       - 'staging'
-      - '!production'
 
 jobs:
   review_code:
@@ -19,7 +14,7 @@ jobs:
 
     steps:
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.0
+        uses: styfle/cancel-workflow-action@0.9.1
         with:
           access_token: ${{ github.token }}
 
@@ -28,24 +23,36 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Get Yarn Cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install Node
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install pnpm
-        run: sudo npm install -g pnpm
-
       - name: Install Dependencies
-        run: pnpm install
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile
+        env:
+          CI: true
 
       - name: Linting
-        run: pnpx eslint
+        run: yarn run eslint
 
       - name: Type checking
-        run: pnpx tsc
+        run: yarn run tsc
 
       - name: Build
-        run: pnpm build
+        run: yarn build
         env:
           NODE_ENV: production
