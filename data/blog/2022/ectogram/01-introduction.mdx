@@ -1,0 +1,49 @@
+---
+assetPath: /images/elixir.png
+createdAt: 01/14/2022
+description: 'A clone of the popular social media platform, Instagram, written in Elixir & Ecto.'
+publishedAt: 01/16/2022
+tags:
+  - ecto
+  - elixir
+  - postgresql
+title: 'Ectogram: Introduction'
+---
+
+import Signature from '../components/Signature.tsx'
+
+They say the best way to learn is to build so to apply what I have learned in reading [Programming in Ecto](https://pragprog.com/titles/wmecto/programming-ecto/) I have decided to build a clone of the popular social media application, [Instagram](https://www.instagram.com/). Their is one catch to this clone, their will be no frontend. This is solely a clone of the functionality of Instagram from the perspective of the data layer.
+
+[Ecto](https://hexdocs.pm/ecto/Ecto.html) is the popular database wrapper in [Elixir](https://elixir-lang.org/) that follows in Elixir's footsteps by doing everything in a functional way. To be blunt with you:
+
+> I ❤️ Ecto!
+
+In my short time as a developer I've worked with [Mongoose](https://mongoosejs.com/), [Knex](https://knexjs.org/), [Sequelize](https://sequelize.org/) & [Django](https://docs.djangoproject.com/en/4.0/topics/db/queries/) when it comes to ORMs (Object Relational Maps). I'm not here to talk badly on any of the above. I really feel after learning how Ecto works it's vastly easier to reason about...especially for a developer who spends most of his time in Frontend Land with ReactJS.
+
+## The Plan
+
+This will not be a full featured copy of Instagram. That would take a couple months since this is a side project and I will be writing about it step-by-step. Things that will be missing at least in this initial build:
+
+- Advanced authentication via TOTP
+- Public/Private Users
+- Saved Post List / Ability to save a post to your saved lists
+
+What I will be able to do at the end of this series is to CRUD a user, post, comment, like, hashtag, and follower with their respective relationships in place, validation & constraints applied, and thorough testing.
+
+## Things To Note
+
+If you choose to follow along with the series the below is what I will be using so make sure you have the correct versions to avoid weird problems:
+
+- `elixir >= 1.13`
+- `ecto >= 3.7`
+- `postgresql >= 13`
+
+With `iex` I can pretty much do everything I would want or need to do and I will be using it extensively throughout this series. There is also the `psql` command line tool that you will have access too as well for querying the database. If command line tools are not your jam and you want to use a GUI tool their is nothing wrong with that. Below is a list of ones I have used in the past and are good options:
+
+- [Beekeeper Studio](https://www.beekeeperstudio.io/) **(I prefer this one)**
+- [PGAdmin 4](https://www.pgadmin.org/download/)
+- [Postico](https://eggerapps.at/postico/)
+
+With that I am ready to get started. As a final note the code for this series will be public on my [GitHub](https://github.com/rockchalkwushock) and will be organized so that each post corresponds with a branch and the corresponding pull request that merges to the `production` branch for the final product.
+
+<Signature>~ Cody 🚀</Signature>
