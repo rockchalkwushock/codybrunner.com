@@ -17,7 +17,11 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
   const MDXContent = React.useMemo(() => getMDXComponent(source), [source])
 
   return (
-    <div className="flex flex-col space-y-8 lg:col-span-3">
+    <div
+      className={`${
+        post.series ? 'lg:col-span-8' : 'lg:col-span-9'
+      } "flex flex-col space-y-8"`}
+    >
       <div className="flex flex-col items-center space-y-8">
         <header className="flex flex-col w-full px-8 space-y-4 rounded-t-lg">
           <h1 className="text-4xl font-medium leading-tight text-center text-indigo-700 dark:text-aura-purple lg:text-5xl">
