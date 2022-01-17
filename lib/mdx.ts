@@ -21,6 +21,7 @@ interface RawFrontMatter
     | 'description'
     | 'featured'
     | 'publishedAt'
+    | 'series'
     | 'tags'
     | 'title'
     | 'updatedAt'
@@ -122,6 +123,7 @@ export async function prepareMDX(source: MDXSource): Promise<Post> {
       ? toISO8601(frontmatter.publishedAt)
       : null,
     readingTime: text,
+    series: frontmatter.series ?? null,
     slug: source.slug,
     source: code,
     tags: frontmatter.tags
