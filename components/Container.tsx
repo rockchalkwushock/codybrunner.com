@@ -15,7 +15,7 @@ export const Container: React.FC<Props> = ({
     // FIXME
     // @ts-ignore
     <Element.as
-      className={`container max-w-3xl mx-auto lg:max-w-5xl ${className}`}
+      className={`container max-w-3xl mx-auto lg:max-w-7xl ${className}`}
     >
       {children}
     </Element.as>
