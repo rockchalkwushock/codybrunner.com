@@ -16,8 +16,30 @@ interface Props extends Post {
 export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
   const MDXContent = React.useMemo(() => getMDXComponent(source), [source])
 
+  const getPaginationValues = (
+    post: Pick<Post, 'nextPost' | 'previousPost' | 'series' | 'slug'>
+  ) => {
+    if (!post.series) {
+      return {
+        nextPost: post.nextPost,
+        previousPost: post.previousPost,
+      }
+    }
+    const idx = post.series!.entries.findIndex(entry => entry === post.slug)
+
+    return {
+      nextPost: post.series!.entries[idx + 1] ?? null,
+      previousPost: post.series!.entries[idx - 1] ?? null,
+    }
+  }
+
+  const { nextPost, previousPost } = getPaginationValues(post)
   return (
-    <div className="flex flex-col space-y-8 lg:col-span-3">
+    <div
+      className={`${
+        post.series ? 'lg:col-span-8' : 'lg:col-span-9'
+      } "flex flex-col space-y-8"`}
+    >
       <div className="flex flex-col items-center space-y-8">
         <header className="flex flex-col w-full px-8 space-y-4 rounded-t-lg">
           <h1 className="text-4xl font-medium leading-tight text-center text-indigo-700 dark:text-aura-purple lg:text-5xl">
@@ -55,7 +77,10 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
           </div>
         </header>
         {/* <hr className="w-full border-indigo-500 lg:hidden" /> */}
-        <article className="w-screen px-8 prose prose-xl break-words lg:w-full prose-slate lg:prose-2xl dark:prose-invert">
+        <article
+          className="w-screen px-8 prose prose-xl break-words lg:w-full prose-slate lg:prose-2xl dark:prose-invert"
+          id="postContent"
+        >
           <MDXContent
             components={{
               div: ({ children, className }) =>
@@ -89,29 +114,29 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
         )}
         <section
           className={`flex ${
-            post.previousPost && post.nextPost
+            previousPost && nextPost
               ? 'justify-between'
-              : post.previousPost
-              ? 'justify-end'
-              : 'justify-start'
+              : previousPost
+              ? 'justify-start'
+              : 'justify-end'
           }`}
         >
-          {post.nextPost && (
+          {previousPost && (
             <NextLink
               href={{
                 pathname: '/blog/[...slug]',
-                query: { slug: post.nextPost.split('/') },
+                query: { slug: previousPost.split('/') },
               }}
               passHref
             >
               <a className="pagination-button">Previous</a>
             </NextLink>
           )}
-          {post.previousPost && (
+          {nextPost && (
             <NextLink
               href={{
                 pathname: '/blog/[...slug]',
-                query: { slug: post.previousPost.split('/') },
+                query: { slug: nextPost.split('/') },
               }}
               passHref
             >

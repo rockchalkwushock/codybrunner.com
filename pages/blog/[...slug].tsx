@@ -9,6 +9,7 @@ import { MDXLayout } from '@layouts/MDXLayout'
 import { appRegex, paths } from '@utils/constants'
 import { getFiles } from '@utils/helpers'
 import { getAllPostsFrontMatter, getRelatedPosts, parsePost } from '@utils/mdx'
+import { SeriesTableOfContents } from '@components/SeriesTableOfContents'
 
 interface Props extends Post {
   relatedPosts?: Array<Post>
@@ -47,8 +48,9 @@ const BlogPost: React.FC<Props> = post => {
       />
       <Container
         as="main"
-        className="grid-in-main lg:grid lg:grid-cols-4 lg:gap-x-6"
+        className="grid-in-main lg:grid lg:grid-cols-12 lg:gap-x-2"
       >
+        <SeriesTableOfContents {...post} />
         <MDXLayout {...post} />
         <Aside {...post} />
       </Container>

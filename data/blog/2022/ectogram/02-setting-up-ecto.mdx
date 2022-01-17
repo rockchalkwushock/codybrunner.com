@@ -1,0 +1,317 @@
+---
+assetPath: /images/elixir.png
+createdAt: 01/14/2022
+description: 'Part 2 in the Ectogram series where I setup the project and make customizations to Ecto.'
+publishedAt: 01/17/2022
+series:
+  entries:
+    - '2022/ectogram/01-introduction'
+    - '2022/ectogram/02-setting-up-ecto'
+tags:
+  - ecto
+  - elixir
+  - postgresql
+title: 'Ectogram: Setting Up Ecto'
+---
+
+import Signature from '../components/Signature.tsx'
+
+I am assuming if you are following along with this series that you have `elixir`, `erlang`, & `postgresql` installed on your machine. Please refer back to the [intro post](https://codybrunner.com/blog/2022/ectogram/01-introduction) for the versions this post is following. With that let's dive in!
+
+## Adding & Configuring Ecto
+
+The first thing we will need to do is create an elixir project:
+
+```shell
+mix new ectogram --sup
+cd ectogram
+```
+
+This is a template of an elixir project. It has no dependencies present at all so to work with Ecto we will need to install it using `mix`. First open your `mix.exs` file and add the following, then run the below command:
+
+```elixir:mix.exs
+defp deps do
+  [
+    {:ecto_sql, "~> 3.0"},
+    {:postgrex, ">= 0.0.0"}
+  ]
+end
+```
+
+Then we can install the dependencies by running:
+
+```shell
+mix deps.get
+```
+
+With Ecto installed we now have access to the Ecto command line tools that have been added to `mix`. To generate Ectogram's Repo we will run:
+
+```shell
+mix ecto.gen.repo -r Ectogram.Repo
+```
+
+We will also create environment based configs that we will need later for testing:
+
+```shell
+touch config/{dev,test}.exs
+```
+
+Following the instructions output by the command we will update the `application.ex` and the `config.exs`:
+
+```elixir:lib/ectogram/application.ex
+def start(_type, _args) do
+    # ...
+    children = [
+      {Ectogram.Repo, []}
+    ]
+    # ...
+end
+```
+
+```elixir:config/config.exs
+import Config
+
+config :ectogram,
+	ecto_repos: [Ectogram.Repo]
+
+import_config "#{config_env()}.exs"
+```
+
+```elixir:config/dev.exs
+import Config
+
+config :ectogram, Ectogram.Repo,
+  database: "ectogram_dev",
+  username: "postgres", # Make sure you change to credentials on your machine!
+  password: "postgres", # Make sure you change to credentials on your machine!
+  hostname: "localhost"
+```
+
+```elixir:config/test.exs
+import Config
+
+config :ectogram, Ectogram.Repo,
+  username: "postgres", # Make sure you change to credentials on your machine!
+  password: "postgres", # Make sure you change to credentials on your machine!
+  hostname: "localhost",
+  database: "ectogram_test#{System.get_env("MIX_TEST_PARTITION")}",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  pool_size: 10
+```
+
+One last thing we need to do before creating the Ectogram database is to update our `mix.exs` config to be able to reach for the correct environment config at runtime:
+
+```diff:mix.exs
+defmodule Ectogram.MixProject do
+  use Mix.Project
+
+  def project do
+    [
+      app: :ectogram,
+      version: "0.1.0",
+      elixir: "~> 1.13",
++     elixirc_paths: elixirc_paths(Mix.env()),
+      start_permanent: Mix.env() == :prod,
+      deps: deps()
+    ]
+  end
+
+  # Run "mix help compile.app" to learn about applications.
+  def application do
+    [
+      extra_applications: [:logger],
+      mod: {Ectogram.Application, []}
+    ]
+  end
+
++ defp elixirc_paths(:test), do: ["lib", "test/support"]
++ defp elixirc_paths(_), do: ["lib"]
+
+  # Run "mix help deps" to learn about dependencies.
+  defp deps do
+    [
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, ">= 0.0.0"}
+    ]
+  end
+end
+```
+
+After making these configuration changes we can run the below to create the `ectogram_dev` database in Postgres.
+
+```shell
+mix ecto.create
+```
+
+And to verify that the database is infact on our machine we can run:
+
+```shell
+psql ectogram_dev
+ectogram_dev=#
+```
+
+## Customizing Ecto
+
+There are some customizations I want to make before proceeding onward to creating tables and schemas. The following can be done on a table-by-table and schema-by-schema basis; however the changes I want to make I want applied across all tables and schemas so applying these at the top level of Ectogram's configuration makes more sense. The first customization will be to change the defaults of [Ecto.Migration](https://hexdocs.pm/ecto_sql/Ecto.Migration.html#content). In our `config.exs` we will make another entry:
+
+```diff:config/config.exs
+import Config
+
++config :ectogram, Ectogram.Repo,
++  migration_foreign_key: [column: :id, type: :binary_id],
++  migration_primary_key: [name: :id, type: :binary_id],
++  migration_timestamps: [inserted_at: :created_at, type: :utc_datetime_usec, updated_at: :modified_at]
+
+config :ectogram,
+  ecto_repos: [Ectogram.Repo]
+
+import_config "#{config_env()}.exs"
+```
+
+The above changes do the following when we run a migration:
+
+1. All foreign keys by default are `:bigserial` and we are changing that to be `:binary_id` or UUIDs.
+2. All primary keys are also by default `:bigserial` and again we are changing that to be in a UUID format.
+3. We are renaming the default timestamps of `inserted_at` and `updated_at` to `created_at` and `modified_at`. Call me crazy I just like those better. The default type for timestamps is `:naive_datetime` and I prefer to set it to `:utc_datetime_usec`.
+
+Next we will create a custom schema for Ectogram to override defaults of [Ecto.Schema](https://hexdocs.pm/ecto/Ecto.Schema.html#content). This will make sure that our schema is inline with our tables so when we preform a changeset we don't get told things like _"`inserted_at` does not exist did you mean `created_at`"_.
+
+```shell
+touch /lib/ectogram/schema.ex
+```
+
+```elixir:lib/ectogram/schema.ex
+defmodule Ectogram.Schema do
+  @moduledoc """
+  Customizes the properties of Ecto.Schema.
+
+  Now instead of:
+    use Ecto.Schema
+  do:
+    use Ectogram.Schema
+  """
+  defmacro __using__(_) do
+    quote do
+      use Ecto.Schema
+      @foreign_key_type :binary_id
+      @primary_key {:id, :binary_id, autogenerate: true}
+      @timestamps_opts [inserted_at: :created_at, type: :utc_datetime_usec, updated_at: :modified_at]
+    end
+  end
+end
+```
+
+## Prepping The Test Suite
+
+```shell
+mkdir test/support && touch test/support/data_case.ex
+```
+
+The `Ectogram.DataCase` is an `ExUnit.CaseTemplate` that we can use in our tests that essentially bootstrap the testing environment. In our case we need to have access to a database to run our tests so a sandbox is spun up. Every test will create a transaction and on the completion of that test the transaction will be rolled back automatically preventing their being stale data that could effect other tests. You can read more about it in the [guide](https://hexdocs.pm/phoenix/testing_contexts.html#the-datacase) on Phoenix's website.
+
+```elixir:test/support/data_case.ex
+defmodule Ectogram.DataCase do
+  use ExUnit.CaseTemplate
+
+  using do
+    quote do
+      alias Ectogram.Repo
+
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query
+      import Ectogram.DataCase
+    end
+  end
+
+  setup tags do
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Ectogram.Repo, shared: not tags[:async])
+    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
+    :ok
+  end
+
+  def errors_on(changeset) do
+    Ecto.Changeset.traverse_errors(changeset, fn {message, opts} ->
+      Regex.replace(~r"%{(\w+)}", message, fn _, key ->
+        opts |> Keyword.get(String.to_existing_atom(key), key) |> to_string()
+      end)
+    end)
+  end
+end
+```
+
+```diff:test/test_helper.exs
+ExUnit.start()
++ Ecto.Adapters.SQL.Sandbox.mode(Ectogram.Repo, :manual)
+```
+
+## Final Housekeeping
+
+The last few things we will do before getting started is to add aliases to the project for faster command line magic, add a `seeds.exs` file for the future, and a super magical `.iex.exs`!
+
+```shell
+touch priv/repo/seeds.ex .iex.exs
+```
+
+The `.iex.exs` will be loaded by `iex` when we fire it up. This will make our lives easier later on when we are using `iex` because we can have our modules already aliased and ready to be accessed faster!
+
+```elixir:.iex.exs
+alias Ectogram.{Repo}
+
+import_if_available Ecto.Query
+
+import_if_available Ecto.Changeset
+```
+
+And the final thing to do are to add some nice aliases for setting up and tearing down Ectogram's database. You will notice their is even a call to the `seeds.exs` file we created. It won't do anything yet, but in the next post we will begin adding seeds as we build out the data structures for the user.
+
+```diff:mix.exs
+defmodule Ectogram.MixProject do
+  use Mix.Project
+
+  def project do
+    [
+      app: :ectogram,
+      version: "0.1.0",
+      elixir: "~> 1.13",
+      elixirc_paths: elixirc_paths(Mix.env()),
+      start_permanent: Mix.env() == :prod,
+-     deps: deps()
++     deps: deps(),
++     aliases: aliases()
+    ]
+  end
+
+  # Run "mix help compile.app" to learn about applications.
+  def application do
+    [
+      extra_applications: [:logger],
+      mod: {Ectogram.Application, []}
+    ]
+  end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
+
+  # Run "mix help deps" to learn about dependencies.
+  defp deps do
+    [
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, ">= 0.0.0"}
+    ]
+  end
+
++ defp aliases do
++   [
++     setup: ["deps.get", "ecto.setup"],
++     "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
++     "ecto.reset": ["ecto.drop", "ecto.setup"],
++     test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"]
++   ]
++ end
+end
+```
+
+And with that we are ready to forge ahead into building out the first data structure and table in Ectogram, our user! You can find all the code pertaining to this post in [PR#1](https://github.com/rockchalkwushock/ectogram/pull/1).
+
+<Signature>~ Cody 🚀</Signature>

@@ -93,7 +93,7 @@ const MyGear: React.FC<Props> = post => {
       />
       <Container
         as="main"
-        className="relative grid-in-main lg:grid lg:grid-cols-4 lg:gap-x-6"
+        className="relative grid-in-main lg:grid lg:grid-cols-12 lg:gap-x-2"
       >
         <MDXLayout {...post} />
         <Aside {...post} />

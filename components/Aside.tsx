@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 
 import { Image } from './Image'
 import { Share } from './Share'
+import { TableOfContents } from './TableOfContents'
 import { Tags } from './Tags'
 import { Post } from '@interfaces/post'
 import { formatDateTime } from '@utils/dateTime'
@@ -21,7 +22,11 @@ export const Aside: React.FC<Props> = post => {
 
   return (
     // TODO Look into the scroll-m-# class and how it works
-    <aside className="hidden lg:block lg:col-span-1">
+    <aside
+      className={`${
+        post.series ? 'lg:col-span-2' : 'lg:col-span-3'
+      } "hidden lg:block"`}
+    >
       <div className="sticky top-0 flex flex-col items-start space-y-4 lg:block lg:border-l lg:border-l-indigo-500 dark:lg:border-l-aura-orange lg:px-4 lg:pt-4">
         <div className="relative w-24 h-24 overflow-hidden bg-transparent border border-indigo-200 rounded-full dark:bg-aura-white dark:border-aura-orange">
           <Image
@@ -69,6 +74,7 @@ export const Aside: React.FC<Props> = post => {
             </dd>
           </dl>
         </div>
+        <TableOfContents {...post} />
       </div>
     </aside>
   )

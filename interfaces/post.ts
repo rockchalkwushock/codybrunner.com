@@ -11,10 +11,14 @@ export interface Post {
   previousPost?: Maybe<string>
   publishedAt?: Maybe<string>
   readingTime: string
+  series?: Maybe<{
+    entries: Array<string>
+  }>
   slug: string
   source: string
   tags?: Array<string>
   title: string
+  toc: Maybe<Array<{ id: string; text: string }>>
   updatedAt?: Maybe<string>
   words: number
 }
