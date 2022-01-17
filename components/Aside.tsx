@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 
 import { Image } from './Image'
 import { Share } from './Share'
+import { TableOfContents } from './TableOfContents'
 import { Tags } from './Tags'
 import { Post } from '@interfaces/post'
 import { formatDateTime } from '@utils/dateTime'
@@ -69,6 +70,7 @@ export const Aside: React.FC<Props> = post => {
             </dd>
           </dl>
         </div>
+        <TableOfContents {...post} />
       </div>
     </aside>
   )
