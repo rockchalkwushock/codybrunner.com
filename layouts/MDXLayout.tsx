@@ -16,6 +16,24 @@ interface Props extends Post {
 export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
   const MDXContent = React.useMemo(() => getMDXComponent(source), [source])
 
+  const getPaginationValues = (
+    post: Pick<Post, 'nextPost' | 'previousPost' | 'series' | 'slug'>
+  ) => {
+    if (!post.series) {
+      return {
+        nextPost: post.nextPost,
+        previousPost: post.previousPost,
+      }
+    }
+    const idx = post.series!.entries.findIndex(entry => entry === post.slug)
+
+    return {
+      nextPost: post.series!.entries[idx + 1] ?? null,
+      previousPost: post.series!.entries[idx - 1] ?? null,
+    }
+  }
+
+  const { nextPost, previousPost } = getPaginationValues(post)
   return (
     <div
       className={`${
@@ -96,29 +114,29 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
         )}
         <section
           className={`flex ${
-            post.previousPost && post.nextPost
+            previousPost && nextPost
               ? 'justify-between'
-              : post.previousPost
-              ? 'justify-end'
-              : 'justify-start'
+              : previousPost
+              ? 'justify-start'
+              : 'justify-end'
           }`}
         >
-          {post.nextPost && (
+          {previousPost && (
             <NextLink
               href={{
                 pathname: '/blog/[...slug]',
-                query: { slug: post.nextPost.split('/') },
+                query: { slug: previousPost.split('/') },
               }}
               passHref
             >
               <a className="pagination-button">Previous</a>
             </NextLink>
           )}
-          {post.previousPost && (
+          {nextPost && (
             <NextLink
               href={{
                 pathname: '/blog/[...slug]',
-                query: { slug: post.previousPost.split('/') },
+                query: { slug: nextPost.split('/') },
               }}
               passHref
             >
