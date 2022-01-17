@@ -55,7 +55,10 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
           </div>
         </header>
         {/* <hr className="w-full border-indigo-500 lg:hidden" /> */}
-        <article className="w-screen px-8 prose prose-xl break-words lg:w-full prose-slate lg:prose-2xl dark:prose-invert">
+        <article
+          className="w-screen px-8 prose prose-xl break-words lg:w-full prose-slate lg:prose-2xl dark:prose-invert"
+          id="postContent"
+        >
           <MDXContent
             components={{
               div: ({ children, className }) =>

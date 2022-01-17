@@ -15,6 +15,7 @@ export interface Post {
   source: string
   tags?: Array<string>
   title: string
+  toc: Maybe<Array<{ id: string; text: string }>>
   updatedAt?: Maybe<string>
   words: number
 }

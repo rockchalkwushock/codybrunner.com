@@ -81,6 +81,31 @@ export async function prepareMDX(source: MDXSource): Promise<Post> {
     },
   })
 
+  // FIXME: This is jankity af! Can be consolidated and written much better.
+  const toc = source.file
+    .split('\n')
+    .filter(line => line.match(/^###*\s/))
+    .map(raw => ({
+      // Formats the heading text to be
+      // ex: Why Is JavaScript So Hard?
+      // ex: why-is-javascript-so-hard
+      id: raw
+        // Strips out md headers tags
+        .replace(/^###*\s/, '')
+        .toLowerCase()
+        // Strips whitespace and replaces with -
+        .replace(/\s/g, '-')
+        // Strips Punctuation
+        .replace(/[.,\/#!?$@%'\^&\*;:{}=\_`~()]/g, '')
+        // Strips Emojis
+        .replace(
+          /([\u2700-\u27BF]|[\uE000-\uF8FF]|\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|[\u2011-\u26FF]|\uD83E[\uDD10-\uDDFF])/g,
+          ''
+        )
+        .trim(),
+      text: raw.replace(/^###*\s/, ''),
+    }))
+
   const { text, words } = readingTime(code)
 
   return {
@@ -103,6 +128,7 @@ export async function prepareMDX(source: MDXSource): Promise<Post> {
       ? frontmatter.tags.map(t => t.toLocaleLowerCase())
       : undefined,
     title: frontmatter.title,
+    toc: toc.length > 0 ? toc : null,
     updatedAt: frontmatter.updatedAt ? toISO8601(frontmatter.updatedAt) : null,
     words,
   }
