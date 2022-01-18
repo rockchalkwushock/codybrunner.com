@@ -25,7 +25,7 @@ export const Aside: React.FC<Props> = post => {
     <aside
       className={`${
         post.series ? 'lg:col-span-2' : 'lg:col-span-3'
-      } "hidden lg:block"`}
+      } hidden lg:block`}
     >
       <div className="sticky top-0 flex flex-col items-start space-y-4 lg:block lg:border-l lg:border-l-indigo-500 dark:lg:border-l-aura-orange lg:px-4 lg:pt-4">
         <div className="relative w-24 h-24 overflow-hidden bg-transparent border border-indigo-200 rounded-full dark:bg-aura-white dark:border-aura-orange">
