@@ -33,7 +33,9 @@ const parseEntryToTitle = (str: string) => {
 export const SeriesTableOfContents: React.FC<Props> = ({ series }) => {
   const { asPath } = useRouter()
   return series ? (
-    <aside className={`${series ? 'lg:block lg:col-span-2' : 'lg:hidden'}`}>
+    <aside
+      className={`${series ? 'lg:block lg:col-span-2' : 'lg:hidden'} hidden`}
+    >
       <div className="sticky top-0 flex flex-col items-start space-y-4 lg:block lg:px-4 lg:pt-4">
         <details className="" open>
           <summary className="text-2xl font-semibold text-indigo-700 list-none dark:text-aura-orange">

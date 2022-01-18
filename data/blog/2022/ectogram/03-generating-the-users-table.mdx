@@ -1,0 +1,151 @@
+---
+assetPath: /images/elixir.png
+createdAt: 01/14/2022
+description: 'Part 3 in the Ectogram series where I generate the user table migration and schema.'
+series:
+  entries:
+    - '2022/ectogram/01-introduction'
+    - '2022/ectogram/02-setting-up-ecto'
+    - '2022/ectogram/03-generating-the-users-table'
+tags:
+  - ecto
+  - elixir
+  - postgresql
+title: 'Ectogram: Generating The Users Table'
+---
+
+import Signature from '../components/Signature.tsx'
+
+## Generating The Users Table
+
+```shell
+mix ecto.gen.migration add_users
+```
+
+```elixir:priv/repo/migrations/2022019111111_add_users.exs
+defmodule Ectogram.Repo.Migrations.AddUsers do
+  use Ecto.Migration
+
+  def change do
+    # Here is where we will create tables, indexes, constraints, etc.
+  end
+end
+```
+
+```diff:priv/repo/migrations/2022019111111_add_users.exs
+defmodule Ectogram.Repo.Migrations.AddUsers do
+  use Ecto.Migration
+
+  def change do
++    execute "CREATE EXTENSION IF NOT EXISTS citext", ""
+
++   create table(:users) do
++     add :avatar, :string, null: true
++     add :bio, :string, null: true
++     add :birth_date, :date, null: false
++     add :email, :citext, null: false
++     add :hashed_password, :string, null: false
++     add :name, :string, null: false
++     add :phone, :string, null: false
++     add :url, :string, null: false
++     add :username, :string, null: false
++     add :verified, :boolean, null: false, default: false
++
++     timestamps()
++   end
+
++    create constraint(:users, :older_than_18, check: "date_part('year', age(birth_date)) >= 18")
++    create index(:users, [:email], unique: true)
++    create index(:users, [:phone], unique: true)
++    create index(:users, [:username], unique: true)
+  end
+end
+```
+
+```shell
+mix ecto.migrate
+15:51:30.524 [info]  == Running 20220116203624 Ectogram.Repo.Migrations.AddUsers.change/0 forward
+
+15:51:30.528 [info]  execute "CREATE EXTENSION IF NOT EXISTS citext"
+
+15:51:30.571 [info]  create table users
+
+15:51:30.575 [info]  create check constraint eighteen_or_older_only on table users
+
+15:51:30.578 [info]  create index users_email_index
+
+15:51:30.579 [info]  create index users_phone_index
+
+15:51:30.580 [info]  create index users_username_index
+
+15:51:30.581 [info]  == Migrated 20220116203624 in 0.0s
+```
+
+## Adding The User Schema
+
+```shell
+touch lib/ectogram/user.ex
+```
+
+```elixir:lib/ectogram/user.ex
+defmodule Ectogram.User do
+  use Ectogram.Schema
+  import Ecto.Changeset
+
+  schema "users" do
+    field :avatar, :string
+    field :bio, :string
+    field :birth_date, :date
+    field :email, :string
+    field :hashed_password, :string, redact: true
+    field :name, :string
+    field :password, :string, virtual: true, redact: true
+    field :phone, :string
+    field :url, :string
+    field :username, :string
+    field :verified, :boolean, default: false
+
+    timestamps()
+  end
+end
+```
+
+# NOTE Update iex.exs
+
+```shell
+iex -S mix
+iex(1)> attrs = %{birth_date: ~D[1992-05-20], email: "turd@gmail.com", name: "Turd Ferguson", password: "h3ll0-W0rld123**", phone: "+13168675309", username: "@darealturd"}
+%{
+  birth_date: ~D[1992-05-20],
+  email: "turd@gmail.com",
+  name: "Turd Ferguson",
+  password: "h3ll0-W0rld123**",
+  phone: "+13168675309",
+  username: "@darealturd"
+}
+iex(2)> %User{} |> User.registration_changeset(attrs) |> Repo.insert()
+16:20:30.567 [debug] QUERY OK source="users" db=1.4ms decode=0.5ms queue=1.1ms idle=788.3ms
+SELECT TRUE FROM "users" AS u0 WHERE (u0."email" = $1) LIMIT 1 ["cody.b.dev@gmail.com"]
+
+16:20:30.819 [debug] QUERY OK db=3.2ms queue=0.9ms idle=1040.5ms
+INSERT INTO "users" ("birth_date","email","hashed_password","name","phone","url","username","verified","created_at","modified_at","id") VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) [~D[1992-05-20], "turd@gmail.com", "$2b$12$477Xs4N8CFWRsApsaTZ5U.DJ1CI1Vrw7TmQ48yBHrgNm1Ezv6ft5a", "Turd Ferguson", "+13168675309", "https://ectogram.com/darealturd", "@darealturd", false, ~U[2022-01-16 21:20:30.813578Z], ~U[2022-01-16 21:20:30.813578Z], <<231, 2, 239, 229, 4, 67, 76, 127, 141, 182, 59, 8, 87, 47, 116, 240>>]
+{:ok,
+ #Ectogram.User<
+   __meta__: #Ecto.Schema.Metadata<:loaded, "users">,
+   avatar: nil,
+   bio: nil,
+   birth_date: ~D[1992-05-20],
+   created_at: ~U[2022-01-16 21:20:30.813578Z],
+   email: "turd@gmail.com",
+   id: "e702efe5-0443-4c7f-8db6-3b08572f74f0",
+   modified_at: ~U[2022-01-16 21:20:30.813578Z],
+   name: "Turd Ferguson",
+   phone: "+13168675309",
+   url: "https://ectogram.com/darealturd",
+   username: "@darealturd",
+   verified: false,
+   ...
+ >}
+```
+
+<Signature>~ Cody 🚀</Signature>
