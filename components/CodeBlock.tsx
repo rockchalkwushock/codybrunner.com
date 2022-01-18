@@ -26,7 +26,10 @@ export const CodeBlock: React.FC<Props> = ({ code, language }) => {
       {({ className, style, tokens, getLineProps, getTokenProps }) => {
         return (
           <>
-            <pre className={`${className} group relative`} style={style}>
+            <pre
+              className={`${className} group relative shadow-md shadow-indigo-100 dark:shadow-aura-purple-fading`}
+              style={style}
+            >
               {status === 'inactive' ? (
                 <Icon
                   className="absolute w-6 h-6 transition duration-200 ease-in-out opacity-0 cursor-pointer right-4 group-hover:opacity-100 group-hover:text-yellow-300"
