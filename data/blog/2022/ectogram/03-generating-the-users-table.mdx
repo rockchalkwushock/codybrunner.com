@@ -323,8 +323,7 @@ defmodule Ectogram.User do
 end
 ```
 
-For brevity I removed a lot of the validations that are being ran to condense this section down you can view the whole file [here](https://github.com/
-rockchalkwushock/ectogram/blob/production/lib/ectogram/user.ex#L41).
+For brevity I removed a lot of the validations that are being ran to condense this section down you can view the whole file [here](https://github.com/rockchalkwushock/ectogram/blob/production/lib/ectogram/user.ex#L41).
 
 The first thing that happens is that we _cast_ the input (`attrs`) against our data. In the case of `registration_changeset/3` our data is the `%User{}` struct which is empty. That call to `cast/3` will **ONLY** cast the keys that we permit it too. That is where the concatenation of `@required_fields` and `@optional_fields` comes in. These are the keys we are telling Ecto to apply as pending changes.
 
