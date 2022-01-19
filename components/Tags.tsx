@@ -11,7 +11,14 @@ export const Tags: React.FC<Props> = ({ tags }) => {
     <ul className="flex flex-wrap">
       {tags?.map(tag => (
         <li key={tag} className="app-tag">
-          <NextLink href={{ pathname: '/tags/[tag]', query: { tag } }} passHref>
+          <NextLink
+            href={{
+              pathname: '/tags/[tag]',
+              // HACK: Fixes the ci/cd tag issue.
+              query: { tag: tag.replace('/', '-') },
+            }}
+            passHref
+          >
             <a>
               <Icon name="hashtag" />
               <span>{tag}</span>
