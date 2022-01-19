@@ -58,7 +58,10 @@ const Topic: React.FC<Props> = ({ posts, tag, tags }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPostsFrontMatter()
-  const filePaths = getTags(posts).map(tag => ({ params: { tag } }))
+  const filePaths = getTags(posts).map(tag => ({
+    // HACK: Fixes the ci/cd tag issue.
+    params: { tag: tag.includes('/') ? tag.replace('/', '-') : tag },
+  }))
 
   return {
     fallback: false,
@@ -70,14 +73,18 @@ export const getStaticProps: GetStaticProps<
   Props,
   { tag: string }
 > = async ctx => {
-  const tag = ctx.params!.tag
+  // HACK: Fixes the ci/cd tag issue.
+  const tag = ctx.params!.tag.includes('ci-cd')
+    ? ctx.params!.tag.replace('-', '/')
+    : ctx.params!.tag
+
   const posts = await getAllPostsFrontMatter()
   const postsByTag = getPostsByTag(posts, tag)
   const tags = getTags(posts)
     // Remove the current tag from the list of all other tags.
     .filter(t => t !== tag)
     .sort((a, b) => (a > b ? 1 : -1))
-
+  console.log({ tags })
   return {
     props: {
       posts: sortPosts(postsByTag, byDate).reverse(),
