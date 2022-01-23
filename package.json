@@ -46,7 +46,7 @@
     "rehype-slug": "~5.0.0",
     "remark-external-links": "~9.0.1",
     "remark-gfm": "~3.0.1",
-    "sass": "~1.48.0"
+    "sass": "~1.49.0"
   },
   "devDependencies": {
     "@savvywombat/tailwindcss-grid-areas": "~2.0.0",
