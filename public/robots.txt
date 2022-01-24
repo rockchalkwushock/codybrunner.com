@@ -7,7 +7,7 @@ User-agent: *
 Disallow: /api
 
 # Host
-Host: localhost:3000
+Host: https://codybrunner.com
 
 # Sitemaps
-Sitemap: localhost:3000/sitemap.xml
+Sitemap: https://codybrunner.com/sitemap.xml

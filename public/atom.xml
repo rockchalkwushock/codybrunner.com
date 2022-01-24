@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://codybrunner.com</id>
     <title>https://codybrunner.com</title>
-    <updated>2022-01-07T02:27:05.518Z</updated>
+    <updated>2022-01-24T00:25:00.206Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Cody Brunner</name>
@@ -220,15 +220,6 @@
         <rights>All Content © 2022</rights>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Creating Animated Social Icons With TailwindCSS]]></title>
-        <id>2021/creating-animated-social-icons-with-tailwindcss</id>
-        <link href="https://codybrunner.com/blog/2021/creating-animated-social-icons-with-tailwindcss"/>
-        <updated>2021-06-09T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[How I created the animated social icons on my website using TailwindCSS.]]></summary>
-        <published>2021-06-09T05:00:00.000Z</published>
-        <rights>All Content © 2022</rights>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Python Scripting In iTerm2]]></title>
         <id>2021/scripting-in-iterm2</id>
         <link href="https://codybrunner.com/blog/2021/scripting-in-iterm2"/>
@@ -244,6 +235,60 @@
         <updated>2022-01-01T05:00:00.000Z</updated>
         <summary type="html"><![CDATA[A post outlining my goals for 2022 and looking back on 2021.]]></summary>
         <published>2022-01-01T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Creating Animated Social Icons With TailwindCSS]]></title>
+        <id>2021/creating-animated-social-icons-with-tailwindcss</id>
+        <link href="https://codybrunner.com/blog/2021/creating-animated-social-icons-with-tailwindcss"/>
+        <updated>2021-06-09T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How I created the animated social icons on my website using TailwindCSS.]]></summary>
+        <published>2021-06-09T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A Far Too In-Depth Guide To SSH For Web Developers]]></title>
+        <id>2022/a-far-too-in-depth-guide-to-ssh-for-web-developers</id>
+        <link href="https://codybrunner.com/blog/2022/a-far-too-in-depth-guide-to-ssh-for-web-developers"/>
+        <updated>2022-01-07T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Everything I have learned when it comes to SSH after setting up my Raspberry Pi Cluster.]]></summary>
+        <published>2022-01-13T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Ectogram: Introduction]]></title>
+        <id>2022/ectogram/01-introduction</id>
+        <link href="https://codybrunner.com/blog/2022/ectogram/01-introduction"/>
+        <updated>2022-01-14T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A clone of the popular social media platform, Instagram, written in Elixir & Ecto.]]></summary>
+        <published>2022-01-16T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Ectogram: Setting Up Ecto]]></title>
+        <id>2022/ectogram/02-setting-up-ecto</id>
+        <link href="https://codybrunner.com/blog/2022/ectogram/02-setting-up-ecto"/>
+        <updated>2022-01-14T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Part 2 in the Ectogram series where I setup the project and make customizations to Ecto.]]></summary>
+        <published>2022-01-17T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Ectogram: Generating The Users Table]]></title>
+        <id>2022/ectogram/03-generating-the-users-table</id>
+        <link href="https://codybrunner.com/blog/2022/ectogram/03-generating-the-users-table"/>
+        <updated>2022-01-14T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Part 3 in the Ectogram series where I generate the user table migration and schema.]]></summary>
+        <published>2022-01-18T05:00:00.000Z</published>
+        <rights>All Content © 2022</rights>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Ectogram: Testing Ecto]]></title>
+        <id>2022/ectogram/04-testing-ecto</id>
+        <link href="https://codybrunner.com/blog/2022/ectogram/04-testing-ecto"/>
+        <updated>2022-01-20T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Part 4 in the Ectogram series where I cut my teeth on testing the user schema with ExUnit.]]></summary>
+        <published>2022-01-24T05:00:00.000Z</published>
         <rights>All Content © 2022</rights>
     </entry>
     <entry>

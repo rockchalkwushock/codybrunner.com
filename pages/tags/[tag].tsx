@@ -84,7 +84,7 @@ export const getStaticProps: GetStaticProps<
     // Remove the current tag from the list of all other tags.
     .filter(t => t !== tag)
     .sort((a, b) => (a > b ? 1 : -1))
-  console.log({ tags })
+
   return {
     props: {
       posts: sortPosts(postsByTag, byDate).reverse(),

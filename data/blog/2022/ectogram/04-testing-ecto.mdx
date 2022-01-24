@@ -1,0 +1,254 @@
+---
+assetPath: /images/elixir.png
+createdAt: 01/20/2022
+description: 'Part 4 in the Ectogram series where I cut my teeth on testing the user schema with ExUnit.'
+publishedAt: 01/24/2022
+series:
+  entries:
+    - '2022/ectogram/01-introduction'
+    - '2022/ectogram/02-setting-up-ecto'
+    - '2022/ectogram/03-generating-the-users-table'
+    - '2022/ectogram/04-testing-ecto'
+tags:
+  - ecto
+  - elixir
+  - postgresql
+title: 'Ectogram: Testing Ecto'
+---
+
+import Giphy from '../components/Giphy.tsx'
+import Signature from '../components/Signature.tsx'
+
+I will be honest when I say any testing experience I have is like 4 years old, it is with [Jest](https://jestjs.io/) in JavaScript Land, and only on the frontend...so yeeaaah this will be a learning experience. I guarentee you there are better approaches to testing using [ExUnit](https://hexdocs.pm/ex_unit/ExUnit.html) that I just have not discovered yet. I am making it a point to make sure there are some basic tests in place for all the _contexts_ that represent Ectogram. Like Allen Iverson once said:
+
+<Giphy giphyId="3oEjI105rmEC22CJFK" />
+
+and yeah Allen, I need lots of practice. 🤣 What better way to learn testing than when recreating a platform that serves over 1 billion active users.🥲
+
+## Understanding DataCase
+
+We already got our test environment setup in [this post](https://codybrunner.com/blog/2022/ectogram/02-setting-up-ecto) and one of the things we added was a [ExUnit.CaseTemplate](https://hexdocs.pm/ex_unit/ExUnit.CaseTemplate.html) we can import into each of our tests. It's purpose is just as it says to be a template that brings in all the tools we need for a specific kind of test. Since we are working with Ecto it would be smart to make sure we have all the tools we need to work with Ecto.
+
+It also adds an `errors_on/1` helper that will make for easy inspection of invalid changesets later on in our tests.
+
+```elixir:test/support/data_case.ex
+defmodule Ectogram.DataCase do
+  use ExUnit.CaseTemplate
+
+  using do
+    quote do
+      alias Ectogram.Repo
+
+      import Ecto
+      import Ecto.Changeset
+      import Ecto.Query
+      import Ectogram.DataCase
+    end
+  end
+
+  setup tags do
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Ectogram.Repo, shared: not tags[:async])
+    on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
+    :ok
+  end
+
+  def errors_on(changeset) do
+    Ecto.Changeset.traverse_errors(changeset, fn {message, opts} ->
+      Regex.replace(~r"%{(\w+)}", message, fn _, key ->
+        opts |> Keyword.get(String.to_existing_atom(key), key) |> to_string()
+      end)
+    end)
+  end
+end
+```
+
+## Creating A User Fixture
+
+I am basing a lot of what I am doing off of the scaffolding you get when generating a new [Phoenix](https://www.phoenixframework.org/) project. In Phoenix you will get these things called _fixtures_ generated for free when you use the `mix phx.gen.context` generator so that's where I am starting.
+
+Since I am already using `faker` for seeds I decided to just copy and paste that code from `seeds.exs` into the `@valid_attrs` attribute. The first pass I was like yeah this is dope it is working and then I realized to fail tests I would need to pass in invalid fields. I opted to use a map and then use [Map.merge/2](https://hexdocs.pm/elixir/Map.html#merge/2) to update the original map.
+
+> I realize at the time of writing this and reading the docs on `Map.merge/2` it is safer to use `Kernel.struct/2` because technically the `valid_attrs` is a representation of the `%User{}` struct. The current implementation will merge **any** key given in the second map into the first. I made a note to myself to update this in the code base 🥲
+
+The `user_fixture/1` will act just as `register_user/1` in returning either a user that now exists in the database or changeset with an error message.
+
+```elixir:test/support/fixtures/user_fixtures.ex
+defmodule Ectogram.UserFixtures do
+  import Ectogram
+  import Faker
+
+  @valid_attrs %{
+    avatar: Faker.Avatar.image_url(),
+    # Ensures string does not exceed 'max' validation.
+    bio: String.slice(Faker.Lorem.paragraph(), 0..240),
+    # Ensures user is of age constraint.
+    birth_date: Faker.Date.date_of_birth(18..30),
+    email: Faker.Internet.email(),
+    # Ensures string does not contain any punctuation (i.e. Henry O'Leary).
+    name: String.replace(Faker.Person.first_name() <> Faker.Person.last_name(), ~r/[[:punct:]]/, ""),
+    # Ensures string meets 'format' validation.
+    password: String.capitalize(Faker.Internet.slug(["foo", "bar", "baz"], ["_"]) <> "#{random_between(2,99)}"),
+    # Ensures string meets 'format' validation.
+    phone: String.replace(Faker.Phone.EnGb.number(), ~r/\s/, ""),
+    # Ensures string does not exceed 'max' validation.
+    username: "@#{String.slice(Faker.Internet.user_name(), 0..19)}"
+  }
+
+  def user_fixture(attrs \\ %{}) do
+    attrs = Map.merge(@valid_attrs, attrs)
+    case register_user(attrs) do
+      {:ok, user} ->
+        user
+      {:error, changeset} ->
+        changeset
+    end
+  end
+end
+```
+
+We do need to update the `test_helper.exs` file so `faker` is added to the test environment when our test suite starts up:
+
+```diff:test/test_helper.exs
+ExUnit.start()
++ Faker.start()
+Ecto.Adapters.SQL.Sandbox.mode(Ectogram.Repo, :manual)
+```
+
+## Testing Reads
+
+Since we can now bootstrap a user or if needed multiple users into the database we can get started by making sure we can read the user(s) from the database.
+
+```elixir:test/ectogram/user_test.ex
+defmodule Ectogram.UserTest do
+  use Ectogram.DataCase
+
+  alias Ectogram.{User}
+  import Ectogram
+  import Ectogram.UserFixtures
+
+  describe "get_user!/1" do
+    setup do
+      %{user: user_fixture()}
+    end
+
+    test "raises if id is invalid" do
+      assert_raise Ecto.NoResultsError, fn ->
+        get_user!(Ecto.UUID.generate())
+      end
+    end
+
+    test "should return the user if the id exists", %{user: user} do
+      %User{id: id} = get_user!(user.id)
+      assert user.id == id
+    end
+  end
+end
+```
+
+So very similarly to JavaScript Land their is a describe, test, and setup block. The `setup/1` block is amazing in my opinion because it cuts down on having to create a user or resource in every test manually. As you can see in the code sample above we return a map with a `user` everytime the setup block is invoked, and it just so happens that will occur right before every test is ran.
+
+The great thing about how Ecto handles testing in our sandbox is every test is executed as a transaction. At the beginning of the transaction we already have a user present in the database to test against. We then perform whatever query we want to test against that user and on completion of the test Ecto will rollback the transaction. This means if we updated the user's name when the test finishes the user's name will return to the initial value. This protects us from issues surrounding artifacts from previous tests interfering with future tests.
+
+> The SQL Sandbox is precisely what allows our tests to write to the database without affecting any of the other tests. In a nutshell, at the beginning of every test, we start a transaction in the database. When the test is over, we automatically rollback the transaction, effectively erasing all of the data created in the test. ~ [Testing Contexts](https://hexdocs.pm/phoenix/testing_contexts.html)
+
+Since our `get_user!/1` is defined with a `!` we expect that if a user is not found with the given id it should raise and error from Ecto. We can verify that with `assert_raise/2`. I'll admit I didn't fully understand this one at first but basically the first argument is the expected error to be raised an then we execute the query inside the second argument that is an anonymous function. My assumption is that the anonymous function keeps the error scoped locally so it can be compared against the given error. If it was not done this way it would actually break the test because the error would bubble up out of the scope of the test crashing the test suite...but I could be wrong. Need to ask smarter people than me. `Ecto.UUID` gives us the ability to have a random uuid available to fail the test.
+
+The second test is pretty straight forward and honestly could be reduced down to the following:
+
+```elixir
+assert get_user!(user.id)
+```
+
+I just went for an approach that was more explicit to a first time reader.
+
+## Testing Inserts
+
+Our insert method for the user is `register_user/1` and there are a lot of cases to test with all the validation and unique constraints that are present. For brevity I have removed a lot of the tests, but they can be found in the pull request link at the end of the post.
+
+In the first test we just check that if we hand nothing to `register_user/1` that it fails with all the required fields corresponding validation errors. In the second test we are checking that the super cool SQL constraint we wrote is actually working.
+
+> A quick note: I found that if I needed to call `user_fixture/1` inside of a test I needed to add new values for the uniquely constrained fields. I am not entirely sure why this is, but my assumption is that `user_fixture/1` is cached in memory with the values `faker` initially populates the user with so calling it over and over again will just attempt to create the same user again and again which will fail the unique constraints. I need to consult smart people to verify, but that's my theory.
+
+The last test is just an example of one of the many checks of the unique constraints being verified.
+
+```elixir:test/ectogram/user_test.ex
+defmodule Ectogram.UserTest do
+  use Ectogram.DataCase
+
+  alias Ectogram.{User}
+  import Ectogram
+  import Ectogram.UserFixtures
+
+  describe "register_user/1" do
+    setup do
+      %{user: user_fixture()}
+    end
+
+    test "missing required fields leads to errors" do
+      {:error, changeset} = register_user(%{})
+
+      assert %{
+               birth_date: ["can't be blank"],
+               email: ["can't be blank"],
+               name: ["can't be blank"],
+               password: ["can't be blank"],
+               phone: ["can't be blank"],
+               url: ["can't be blank"],
+               username: ["can't be blank"]
+             } = errors_on(changeset)
+    end
+
+    # ...
+
+    test "throws constraint error if user is not 18 or over" do
+      changeset =
+        user_fixture(%{
+          birth_date: ~D[2015-05-15],
+          email: "dracula@gmail.com"
+        })
+
+      assert %{
+               birth_date: ["Must be 18 or older!"]
+             } = errors_on(changeset)
+    end
+
+    # ...
+
+    test "throws unique constraint error if username already exists", %{user: user} do
+      changeset =
+        user_fixture(%{
+          email: "jimnasium@gmail.com",
+          phone: "+13157777213",
+          url: "https://ectogram.com/adifferentuser",
+          username: user.username
+        })
+
+      assert %{
+               username: ["has already been taken"]
+             } = errors_on(changeset)
+    end
+  end
+end
+```
+
+## Testing Updates And Deletes
+
+I did not write code for these actions with the User context and schema. At the moment I don't want to do anything surrounding that. In future contexts though there will be the ability to update and delete resources so I will cover that in those modules.
+
+## Running Tests In Async Mode
+
+I acutally forgot all about enabling this and didn't realize it until writing this post. Yet another thing to _circle back_ too. 🤦🏻‍♂️ We can enable `async` mode by adding the following to our test:
+
+```diff:/test/ectogram/user_test.ex
+defmodule Ectogram.UserTest do
+- use Ectogram.DataCase
++ use Ectogram.DataCase, async: true
+# ...
+end
+```
+
+What this is doing is telling ExUnit that it can run each test suite with the `async` tag concurrently to one another. The individiual tests in each test suite are still ran serially though. So say Ectogram ends up having like 200 test files/suites. If we didn't add the `async` tag the suites would be ran serially as well as their internal tests which could be a pretty lenghty process. By running the test suites asynchronously we will speed up the time it takes our test sutie to complete by a lot!
+
+And that does it for testing at least for the user context and schema. In the next post I am going to add most if not all of the rest of Ectogram's data models and we will cover probably what kicks my ass the most when it comes to SQL in general: _associations_. As always the code for this post can be found in [PR#3](https://github.com/rockchalkwushock/ectogram/pull/3).
+
+<Signature>~ Cody 🚀</Signature>
