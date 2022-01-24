@@ -217,15 +217,6 @@
       "author": {}
     },
     {
-      "id": "2021/creating-animated-social-icons-with-tailwindcss",
-      "url": "https://codybrunner.com/blog/2021/creating-animated-social-icons-with-tailwindcss",
-      "title": "Creating Animated Social Icons With TailwindCSS",
-      "summary": "How I created the animated social icons on my website using TailwindCSS.",
-      "date_modified": "2021-06-09T05:00:00.000Z",
-      "date_published": "2021-06-09T05:00:00.000Z",
-      "author": {}
-    },
-    {
       "id": "2021/scripting-in-iterm2",
       "url": "https://codybrunner.com/blog/2021/scripting-in-iterm2",
       "title": "Python Scripting In iTerm2",
@@ -241,6 +232,60 @@
       "summary": "A post outlining my goals for 2022 and looking back on 2021.",
       "date_modified": "2022-01-01T05:00:00.000Z",
       "date_published": "2022-01-01T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2021/creating-animated-social-icons-with-tailwindcss",
+      "url": "https://codybrunner.com/blog/2021/creating-animated-social-icons-with-tailwindcss",
+      "title": "Creating Animated Social Icons With TailwindCSS",
+      "summary": "How I created the animated social icons on my website using TailwindCSS.",
+      "date_modified": "2021-06-09T05:00:00.000Z",
+      "date_published": "2021-06-09T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2022/a-far-too-in-depth-guide-to-ssh-for-web-developers",
+      "url": "https://codybrunner.com/blog/2022/a-far-too-in-depth-guide-to-ssh-for-web-developers",
+      "title": "A Far Too In-Depth Guide To SSH For Web Developers",
+      "summary": "Everything I have learned when it comes to SSH after setting up my Raspberry Pi Cluster.",
+      "date_modified": "2022-01-07T05:00:00.000Z",
+      "date_published": "2022-01-13T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2022/ectogram/01-introduction",
+      "url": "https://codybrunner.com/blog/2022/ectogram/01-introduction",
+      "title": "Ectogram: Introduction",
+      "summary": "A clone of the popular social media platform, Instagram, written in Elixir & Ecto.",
+      "date_modified": "2022-01-14T05:00:00.000Z",
+      "date_published": "2022-01-16T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2022/ectogram/02-setting-up-ecto",
+      "url": "https://codybrunner.com/blog/2022/ectogram/02-setting-up-ecto",
+      "title": "Ectogram: Setting Up Ecto",
+      "summary": "Part 2 in the Ectogram series where I setup the project and make customizations to Ecto.",
+      "date_modified": "2022-01-14T05:00:00.000Z",
+      "date_published": "2022-01-17T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2022/ectogram/03-generating-the-users-table",
+      "url": "https://codybrunner.com/blog/2022/ectogram/03-generating-the-users-table",
+      "title": "Ectogram: Generating The Users Table",
+      "summary": "Part 3 in the Ectogram series where I generate the user table migration and schema.",
+      "date_modified": "2022-01-14T05:00:00.000Z",
+      "date_published": "2022-01-18T05:00:00.000Z",
+      "author": {}
+    },
+    {
+      "id": "2022/ectogram/04-testing-ecto",
+      "url": "https://codybrunner.com/blog/2022/ectogram/04-testing-ecto",
+      "title": "Ectogram: Testing Ecto",
+      "summary": "Part 4 in the Ectogram series where I cut my teeth on testing the user schema with ExUnit.",
+      "date_modified": "2022-01-20T05:00:00.000Z",
+      "date_published": "2022-01-24T05:00:00.000Z",
       "author": {}
     },
     {
