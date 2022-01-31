@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import { BlogJsonLd, NextSeo } from 'next-seo'
+import { ArticleJsonLd, NextSeo } from 'next-seo'
 
 import { Posts } from '@components/Posts'
 import { Post } from '@interfaces/post'
@@ -27,7 +27,7 @@ const BlogIndex: React.FC<Props> = ({ posts }) => {
         }}
         title="Blog"
       />
-      <BlogJsonLd
+      <ArticleJsonLd
         authorName={constants.author}
         dateModified={posts[0].updatedAt!}
         datePublished={posts[0].publishedAt || posts[0].createdAt}
