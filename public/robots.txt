@@ -11,3 +11,4 @@ Host: https://codybrunner.com
 
 # Sitemaps
 Sitemap: https://codybrunner.com/sitemap.xml
+Sitemap: https://codybrunner.com/sitemap-0.xml
