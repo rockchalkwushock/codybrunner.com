@@ -252,10 +252,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.0.tgz#7f698254aadf921e48dda8c0a6b304026b8a9323"
   integrity sha512-JLo+Y592QzIE+q7Dl2pMUtt4q8SKYI5jDrZxrozEQxnGVOyYE+GWK9eLkwTaeN9DDctlaRAQ3TBmzZ1qdLE30A==
 
-"@savvywombat/tailwindcss-grid-areas@~2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@savvywombat/tailwindcss-grid-areas/-/tailwindcss-grid-areas-2.0.0.tgz#514082b94a3f3b26ae11690bf1879d0e465a4ea3"
-  integrity sha512-fp58ck66Lb3KvKJfPQ4mupYronrKoNgYWCzDDrCmUtBxeULuhBs/lJrh1MqgXkNdM1H7r4qtekiRk/hCKp1W1g==
+"@savvywombat/tailwindcss-grid-areas@~2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@savvywombat/tailwindcss-grid-areas/-/tailwindcss-grid-areas-2.0.1.tgz#33133cdd833da07a311021bc1123a56d0d124d2c"
+  integrity sha512-ZOUC3aykNi02MnK/ShX1GO41c7igK5FG9TjUWjlnfRZg7BURv+3Ik17zmvHjlXoKkBN9oumW18aBIeQCeF/I7Q==
   dependencies:
     lodash "^4.17.21"
 
