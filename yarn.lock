@@ -3069,10 +3069,10 @@ mdx-bundler@~8.0.1:
     uuid "^8.3.2"
     xdm "^3.3.0"
 
-mdx-embed@~0.0.23:
-  version "0.0.23"
-  resolved "https://registry.yarnpkg.com/mdx-embed/-/mdx-embed-0.0.23.tgz#88036a558c76bc23bb5f84bb56d74945dadc15aa"
-  integrity sha512-Gp50YydnRiOucjWF4UzG8p4q5dm4BxYvWpHpQFFia5vE/S8PwTdLbWo/VqPhP2PdM8RlwqNpprZqXF0zWW/ZCA==
+mdx-embed@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/mdx-embed/-/mdx-embed-1.0.0.tgz#b1d6ae7fe8d27299769430b2ea7df280ae85c539"
+  integrity sha512-Ey2TqM7EA+EKHXUheD4me1rfxYvd633ZqoRIFv1shsfSxUQ+5776hUtPYm5g8WMZAKOkzta7cZKZ/ipUWCNoXQ==
 
 merge-stream@^2.0.0:
   version "2.0.0"
