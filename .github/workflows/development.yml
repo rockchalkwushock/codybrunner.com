@@ -48,7 +48,7 @@ jobs:
           NODE_ENV: production
 
       - name: Bundlecheck
-        uses: carlesnunez/check-my-bundlephobia@v1.7.0
+        uses: carlesnunez/check-my-bundlephobia@v1.8.0
         env:
           NODE_ENV: production
         with:
