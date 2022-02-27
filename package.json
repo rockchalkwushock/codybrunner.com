@@ -18,7 +18,6 @@
     "generate:sitemap": "next-sitemap",
     "generate:rss": "node ./.next/server/utils/generate-rss.js.js",
     "lint": "next lint",
-    "prepare": "husky install",
     "start": "serve out",
     "type-check": "tsc"
   },
