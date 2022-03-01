@@ -42,22 +42,19 @@ const Home: React.FC<Props> = ({ posts }) => {
                 USA
               </span>{' '}
               living in{' '}
-              <span
-                aria-label="Colombia"
-                className="font-bold dark:text-gradient dark:bg-gradient-to-br from-yellow-400 dark:via-blue-400 dark:to-red-600"
-              >
-                Colombia
+              <span aria-label="Portland, Oregon" className="font-bold">
+                Portland, Oregon
               </span>{' '}
               currently working as a{' '}
-              <span className="font-bold">Senior Developer</span> for{' '}
+              <span className="font-bold">Frontend Developer</span> for{' '}
               <a
-                aria-label="Link to LeanTech.io"
+                aria-label="Link to Appointlet"
                 className="font-bold text-indigo-600 dark:text-aura-pink hover:underline"
-                href="https://www.leangroup.com/solutions/leantech"
+                href="https://www.appointlet.com/"
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                LeanTech
+                Appointlet
               </a>
               .
             </p>
