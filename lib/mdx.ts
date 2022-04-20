@@ -65,7 +65,7 @@ export async function prepareMDX(source: MDXSource): Promise<Post> {
   const { default: remarkGfm } = await import('remark-gfm')
   const { code, frontmatter } = await bundleMDX<RawFrontMatter>({
     source: source.file,
-    xdmOptions(options, _frontmatter) {
+    mdxOptions(options, _frontmatter) {
       options.remarkPlugins = [
         ...(options.remarkPlugins ?? []),
 
