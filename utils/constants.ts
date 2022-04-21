@@ -13,7 +13,7 @@ const baseUrl =
   process.env.NODE_ENV === 'production'
     ? 'https://codybrunner.com'
     : 'http://localhost:3000'
-const location = 'Portland, Oregon'
+const location = 'Colombia'
 
 type Constants = {
   age: number
