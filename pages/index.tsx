@@ -35,31 +35,19 @@ const Home: React.FC<Props> = ({ posts }) => {
             <p className="text-xl text-left lg:text-3xl lg:leading-snug">
               I am a <strong className="font-bold">Software Developer</strong>{' '}
               from the{' '}
-              <span
-                aria-label="USA"
-                className="font-bold dark:text-gradient dark:bg-gradient-to-br dark:from-red-700 dark:via-white dark:to-blue-700"
-              >
-                USA
+              <span aria-label="USA" className="font-bold">
+                <span className="dark:text-red-500">U</span>
+                <span className="dark:text-white">S</span>
+                <span className="dark:text-blue-500">A</span>
               </span>{' '}
               living in{' '}
-              <span
-                aria-label="Colombia"
-                className="font-bold dark:text-gradient dark:bg-gradient-to-br from-yellow-400 dark:via-blue-400 dark:to-red-600"
-              >
-                Colombia
+              <span aria-label="Colombia" className="font-bold">
+                <span className="dark:text-yellow-500">Col</span>
+                <span className="dark:text-blue-500">om</span>
+                <span className="dark:text-red-500">bia</span>
               </span>{' '}
               currently working as a{' '}
-              <span className="font-bold">Senior Developer</span> for{' '}
-              <a
-                aria-label="Link to LeanTech.io"
-                className="font-bold text-indigo-600 dark:text-aura-pink hover:underline"
-                href="https://www.leangroup.com/solutions/leantech"
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                LeanTech
-              </a>
-              .
+              <span className="font-bold">Freelance Developer</span>.
             </p>
           </div>
         </div>
