@@ -36,25 +36,6 @@ class MyDocument extends Document {
           />
           <link href="/favicons/site.webmanifest" rel="manifest" />
           <link href="/favicons/favicon.ico" rel="shortcut icon" />
-          {/* RSS */}
-          <link
-            rel="alternate"
-            type="application/rss+xml"
-            title="codybrunner.com RSS2 Feed"
-            href="https://codybrunner.com/feed.xml"
-          />
-          <link
-            rel="alternate"
-            type="application/atom+xml"
-            title="codybrunner.com Atom Feed"
-            href="https://codybrunner.com/atom.xml"
-          />
-          <link
-            rel="alternate"
-            type="application/json"
-            title="codybrunner.com JSON Feed"
-            href="https://codybrunner.com/feed.json"
-          />
         </Head>
         <body className="antialiased bg-stone-50 text-stone-900 dark:bg-aura-black dark:text-aura-white">
           <Main />
