@@ -2,13 +2,13 @@
 pre-commit:
   parallel: true
   commands:
-    eslint:
-      # Diffs against staging
-      files: git diff --name-only staging
-      glob: '*.{js,ts,tsx}'
-      run: eslint --cache --fix {staged_files}
+    # eslint:
+    #   # Diffs against staging
+    #   files: git diff --name-only staging
+    #   glob: '*.{js,ts,tsx}'
+    #   run: yarn lint {staged_files}
     prettier:
       # Diffs against staging
       files: git diff --name-only staging
       glob: '*.{js,json,md,mdx,ts,tsx,yaml,yml}'
-      run: prettier --write {staged_files}
+      run: yarn format {staged_files}
