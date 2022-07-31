@@ -17,6 +17,15 @@ const config = {
   noindex: false,
   openGraph: {
     locale: constants.lang,
+    images: [
+      {
+        alt: 'Logo for codybrunner.com',
+        height: 800,
+        type: 'image/jpg',
+        url: 'https://codybrunner.com/favicons/logo.jpg',
+        width: 600,
+      },
+    ],
     site_name: constants.author,
     type: 'website',
     url: constants.url,

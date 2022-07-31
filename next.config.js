@@ -14,7 +14,6 @@ const customNextConfig = {
     path: '',
   },
   reactStrictMode: true,
-  swcMinify: true,
   webpack: (config, { dev, isServer }) => {
     if (!isServer) {
       // https://github.com/vercel/next.js/issues/7755
@@ -31,7 +30,6 @@ const customNextConfig = {
 
       config.entry = async () => {
         const entries = { ...(await originalEntry()) }
-        entries['utils/generate-rss.js'] = 'utils/generate-rss.js'
         return entries
       }
       // Replace React with Preact only in client production build

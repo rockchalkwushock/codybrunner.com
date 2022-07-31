@@ -103,7 +103,7 @@ export const MDXLayout: React.FC<Props> = ({ source, ...post }) => {
         </article>
       </div>
       <div className="flex flex-col px-8 space-y-8">
-        {!post.slug.match(/(about|my-gear)/) && post.tags && (
+        {!post.slug.match(/(about)/) && post.tags && (
           <section className="flex flex-col space-y-8">
             {/* <hr className="w-full border-indigo-500" /> */}
             <div className="flex items-center justify-between">

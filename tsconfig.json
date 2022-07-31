@@ -36,7 +36,6 @@
     "next.config.js",
     "next-env.d.ts",
     "next-seo.config.js",
-    "next-sitemap.js",
-    "utils/generate-rss.js"
+    "next-sitemap.config.js"
   ]
 }
