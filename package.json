@@ -58,7 +58,7 @@
     "eslint": "~8.20.0",
     "eslint-config-next": "~12.2.3",
     "eslint-config-prettier": "~8.5.0",
-    "next-sitemap": "~3.1.15",
+    "next-sitemap": "~3.1.17",
     "postcss": "~8.4.12",
     "postcss-import": "~14.1.0",
     "postcss-preset-env": "~7.7.2",
