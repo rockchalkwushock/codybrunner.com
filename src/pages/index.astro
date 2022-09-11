@@ -1,16 +1,80 @@
 ---
-import '@styles/global.css'
+import me from '@assets/me.jpg'
+import Head from '@components/Head.astro';
 ---
 
-<html lang="en">
+<html lang='en'>
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<Head />
 	</head>
-	<body class="antialiased text-base font-normal">
-		<h1 class="text-4xl text-purple-800">Astro</h1>
+	<body
+		class='antialiased bg-aura-black text-aura-white container flex flex-col max-w-4xl mx-auto text-lg font-normal min-h-screen space-y-8 py-8'
+	>
+		<header class='px-6 lg:px-0'></header>
+		<section class='px-6 lg:px-0'>
+			<div
+				class='shadow-aura-gray bg-aura-purple-fading flex flex-col items-center justify-center space-y-4 rounded-lg p-6 shadow-md md:mx-0 md:flex-row md:space-x-8 md:space-y-0 lg:p-12'
+			>
+				<picture
+					class='relative h-40 w-40 flex-none rounded-full md:h-44 md:w-44'
+				>
+					<img
+						alt='Cody Brunner Avatar'
+						class='absolute h-40 w-40 flex-none rounded-full object-cover md:h-44 md:w-44'
+						src={me}
+					/>
+				</picture>
+				<div class='space-y-2'>
+					<h2 class='text-2xl font-bold lg:text-4xl'>Hey I&apos;m Cody</h2>
+					<p class='text-left text-xl lg:text-3xl lg:leading-snug'>
+						I am a <strong class='font-bold'>Software Developer</strong>
+						from the
+						<span aria-label='USA' class='font-bold'>
+							<span class='text-red'>U</span>
+							<span class='text-white'>S</span>
+							<span class='text-blue'>A</span>
+						</span>
+						living in
+						<span aria-label='Colombia' class='font-bold'>
+							<span class='text-yellow'>Col</span>
+							<span class='text-blue'>om</span>
+							<span class='text-red'>bia</span>
+						</span>
+						currently working as a
+						<span class='font-bold'>Freelance Developer</span>.
+					</p>
+				</div>
+			</div>
+		</section>
+		<main class='flex-1 px-6 lg:px-0'>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit beatae
+				provident quidem expedita fuga veritatis eaque vitae fugit deserunt!
+				Nobis vero nemo id debitis explicabo amet dolorem aut dolore cupiditate?
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit beatae
+				provident quidem expedita fuga veritatis eaque vitae fugit deserunt!
+				Nobis vero nemo id debitis explicabo amet dolorem aut dolore cupiditate?
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit beatae
+				provident quidem expedita fuga veritatis eaque vitae fugit deserunt!
+				Nobis vero nemo id debitis explicabo amet dolorem aut dolore cupiditate?
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit beatae
+				provident quidem expedita fuga veritatis eaque vitae fugit deserunt!
+				Nobis vero nemo id debitis explicabo amet dolorem aut dolore cupiditate?
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit beatae
+				provident quidem expedita fuga veritatis eaque vitae fugit deserunt!
+				Nobis vero nemo id debitis explicabo amet dolorem aut dolore cupiditate?
+			</p>
+		</main>
+		<footer class='px-6 lg:px-0'>
+			<p class='text-center'>All Content © 2022</p>
+		</footer>
 	</body>
 </html>
