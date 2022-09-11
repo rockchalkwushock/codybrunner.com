@@ -1,0 +1,6 @@
+
+*.md
+*.mdx
+LICENSE
+package.json
+tsconfig.json

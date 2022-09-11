@@ -1,0 +1,12 @@
+# https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
+pre-commit:
+  # parallel: true
+  commands:
+    eslint:
+      files: git diff --name-only staging
+      glob: '*.{astro,js,ts,jsx,tsx}'
+      run: pnpm lint {staged_files}
+    prettier:
+      files: git diff --name-only staging
+      glob: '*.{astro,js,json,md,mdx,ts,tsx,yaml,yml}'
+      run: pnpm format {staged_files}
