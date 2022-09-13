@@ -1,0 +1,79 @@
+---
+import { Icon } from 'astro-icon'
+import { twMerge } from 'tailwind-merge'
+import Link from './Link.astro'
+
+type IconName =
+	| 'about'
+	| 'blog'
+	| 'bookShelf'
+	| 'github'
+	| 'home'
+	| 'instagram'
+	| 'linkedIn'
+	| 'portfolio'
+	| 'schedule'
+	| 'twitter'
+	| 'uses'
+
+const iconMap: Record<IconName, string> = {
+	about: 'eva:question-mark-circle-outline',
+	blog: 'system-uicons:book-text',
+	bookShelf: 'fluent:library-24-regular',
+	github: 'eva:github-outline',
+	home: 'carbon:home',
+	instagram: 'fe:instagram',
+	linkedIn: 'eva:linkedin-outline',
+	portfolio: 'uil:code-branch',
+	schedule: 'akar-icons:schedule',
+	twitter: 'eva:twitter-outline',
+	uses: 'entypo:tools',
+}
+
+export interface Props {
+	iconLabel: string
+	iconName: IconName
+	isExternal?: boolean
+	linkLabel: string
+	to: string
+}
+
+const BASE_STYLES = [
+  'relative',
+	'rounded-lg',
+	'bg-aura-black/40',
+	'p-2',
+	'lg:shadow-md',
+	'lg:shadow-black',
+	'lg:transition-all',
+	'lg:duration-200',
+	'lg:ease-in-out',
+  '[&>span]:text-blue',
+]
+
+const HOVER_STYLES = [
+	'lg:hover:scale-150',
+	'lg:hover:bg-aura-black',
+	'lg:hover:shadow-none',
+]
+
+const { pathname } = Astro.url
+const { iconLabel, iconName, isExternal, linkLabel, to } = Astro.props
+const icon = iconMap[iconName]
+const classNames = twMerge(
+	BASE_STYLES,
+  // Don't apply the hover effect to active links.
+	pathname === to ? undefined : HOVER_STYLES
+)
+---
+<!-- TODO: Add tooltip -->
+<li class={classNames}>
+	<Link
+		href={to}
+		isActive={pathname === to}
+		isExternal={isExternal}
+		label={linkLabel}
+	>
+		<Icon aria-label={iconLabel} class='h-10 w-10' name={icon} />
+	</Link>
+</li>
