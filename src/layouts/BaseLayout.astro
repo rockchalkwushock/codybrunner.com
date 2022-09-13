@@ -1,0 +1,39 @@
+---
+import Head from '@components/Head.astro'
+import Link from '@components/Link.astro'
+import Nav from '@components/Nav.astro'
+
+export interface Props {
+	description?: string
+	title?: string
+}
+
+const {
+	description = 'My stretch of pipe in the world wide inter-tubes.',
+	title = 'Home',
+} = Astro.props
+
+const year = new Date().getFullYear()
+---
+
+<!DOCTYPE html>
+<html lang='en-us'>
+	<head>
+		<Head description={description} title={title} />
+	</head>
+	<body
+		class='container mx-auto flex min-h-screen max-w-4xl flex-col space-y-8 bg-aura-black py-8 text-lg font-normal text-aura-white antialiased'
+	>
+		<header class='px-6 lg:px-0'></header>
+		<slot name='hero' />
+		<slot name='main' />
+		<Nav />
+		<footer class='flex w-full items-center justify-center px-6 lg:px-0'>
+			<Link class='text-center font-medium lg:hover:text-aura-red' href="https://github.com/rockchalkwushock/codybrunner.com" isExternal label="Link to codybrunner.com source code on GitHub.">
+				All Content © {year}
+			</Link>
+		</footer>
+	</body>
+</html>
+
+<!--  -->
