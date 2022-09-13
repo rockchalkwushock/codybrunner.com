@@ -6,9 +6,3 @@ html,
 body {
 	scroll-behavior: smooth;
 }
-
-@layer components {
-	.social-button {
-		@apply dark:text-aura-green bg-transparent flex items-center justify-center h-14 w-14 duration-100 ease-in-out rounded-full transition-all;
-	}
-}
