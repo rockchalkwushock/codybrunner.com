@@ -39,21 +39,20 @@ export interface Props {
 }
 
 const BASE_STYLES = [
-  'relative',
-	'rounded-lg',
 	'bg-aura-black/40',
 	'p-2',
-	'lg:shadow-md',
-	'lg:shadow-black',
-	'lg:transition-all',
+	'relative',
+	'rounded-lg',
 	'lg:duration-200',
 	'lg:ease-in-out',
-  '[&>span]:text-blue',
+	'lg:shadow-black',
+	'lg:shadow-md',
+	'lg:transition-all',
 ]
 
 const HOVER_STYLES = [
-	'lg:hover:scale-150',
 	'lg:hover:bg-aura-black',
+	'lg:hover:scale-150',
 	'lg:hover:shadow-none',
 ]
 
@@ -62,10 +61,11 @@ const { iconLabel, iconName, isExternal, linkLabel, to } = Astro.props
 const icon = iconMap[iconName]
 const classNames = twMerge(
 	BASE_STYLES,
-  // Don't apply the hover effect to active links.
+	// Don't apply the hover effect to active links.
 	pathname === to ? undefined : HOVER_STYLES
 )
 ---
+
 <!-- TODO: Add tooltip -->
 <li class={classNames}>
 	<Link

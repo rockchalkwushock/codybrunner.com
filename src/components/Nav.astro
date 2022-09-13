@@ -1,6 +1,6 @@
 ---
-import NavItem from "./NavItem.astro";
-import type { Props as NavItemProps } from "./NavItem.astro";
+import NavItem from './NavItem.astro'
+import type { Props as NavItemProps } from './NavItem.astro'
 
 /**
  * This Navigation Implementation was taken from:
@@ -12,98 +12,95 @@ import type { Props as NavItemProps } from "./NavItem.astro";
  */
 
 const navigation: Array<NavItemProps> = [
-  {
-    iconLabel: 'Home Icon.',
-    iconName: 'home',
-    linkLabel: 'Link to Home Page.',
-    to: '/'
-  },
-  {
-    iconLabel: 'Question Mark Icon.',
-    iconName: 'about',
-    linkLabel: 'Link to About Page.',
-    to: '/about'
-  },
-  {
-    iconLabel: 'Book Icon.',
-    iconName: 'blog',
-    linkLabel: 'Link to Blog Page.',
-    to: '/blog'
-  },
-  {
-    iconLabel: 'Books Icon.',
-    iconName: 'bookShelf',
-    linkLabel: 'Link to Book Shelf Page.',
-    to: '/book-shelf'
-  },
-  {
-    iconLabel: 'Git Branch Icon.',
-    iconName: 'portfolio',
-    linkLabel: 'Link to Portfolio Page.',
-    to: '/portfolio'
-  },
-  {
-    iconLabel: 'Calendar Icon.',
-    iconName: 'schedule',
-    isExternal: true,
-    linkLabel: "Link to Cody Brunner's Appointlet Booking Page.",
-    to: 'https://appt.link/cody-brunner-dev/video-call/'
-  },
-  {
-    iconLabel: 'Tools Icon.',
-    iconName: 'uses',
-    linkLabel: 'Link to Uses Page.',
-    to: '/uses'
-  },
-  {
-    iconLabel: 'GitHub Icon.',
-    iconName: 'github',
-    isExternal: true,
-    linkLabel: "Link to Cody Brunner's GitHub Account.",
-    to: 'https://github.com/rockchalkwushock'
-  },
-  {
-    iconLabel: 'Instagram Icon.',
-    iconName: 'instagram',
-    isExternal: true,
-    linkLabel: "Link to Cody Brunner's Instagram Account.",
-    to: 'https://www.instagram.com/rockchalkwushock'
-  },
-  {
-    iconLabel: 'LinkedIn Icon.',
-    iconName: 'linkedIn',
-    isExternal: true,
-    linkLabel: "Link to Cody Brunner's LinkedIn Account.",
-    to: 'https://www.linkedin.com/in/cody-brunner'
-  },
-  {
-    iconLabel: 'Twitter Icon.',
-    iconName: 'twitter',
-    isExternal: true,
-    linkLabel: "Link to Cody Brunner's Twitter Account.",
-    to: 'https://twitter.com/RockChalkDev'
-  },
+	{
+		iconLabel: 'Home Icon.',
+		iconName: 'home',
+		linkLabel: 'Link to Home Page.',
+		to: '/',
+	},
+	{
+		iconLabel: 'Question Mark Icon.',
+		iconName: 'about',
+		linkLabel: 'Link to About Page.',
+		to: '/about',
+	},
+	{
+		iconLabel: 'Book Icon.',
+		iconName: 'blog',
+		linkLabel: 'Link to Blog Page.',
+		to: '/blog',
+	},
+	{
+		iconLabel: 'Books Icon.',
+		iconName: 'bookShelf',
+		linkLabel: 'Link to Book Shelf Page.',
+		to: '/book-shelf',
+	},
+	{
+		iconLabel: 'Git Branch Icon.',
+		iconName: 'portfolio',
+		linkLabel: 'Link to Portfolio Page.',
+		to: '/portfolio',
+	},
+	{
+		iconLabel: 'Calendar Icon.',
+		iconName: 'schedule',
+		isExternal: true,
+		linkLabel: "Link to Cody Brunner's Appointlet Booking Page.",
+		to: 'https://appt.link/cody-brunner-dev/video-call/',
+	},
+	{
+		iconLabel: 'Tools Icon.',
+		iconName: 'uses',
+		linkLabel: 'Link to Uses Page.',
+		to: '/uses',
+	},
+	{
+		iconLabel: 'GitHub Icon.',
+		iconName: 'github',
+		isExternal: true,
+		linkLabel: "Link to Cody Brunner's GitHub Account.",
+		to: 'https://github.com/rockchalkwushock',
+	},
+	{
+		iconLabel: 'Instagram Icon.',
+		iconName: 'instagram',
+		isExternal: true,
+		linkLabel: "Link to Cody Brunner's Instagram Account.",
+		to: 'https://www.instagram.com/rockchalkwushock',
+	},
+	{
+		iconLabel: 'LinkedIn Icon.',
+		iconName: 'linkedIn',
+		isExternal: true,
+		linkLabel: "Link to Cody Brunner's LinkedIn Account.",
+		to: 'https://www.linkedin.com/in/cody-brunner',
+	},
+	{
+		iconLabel: 'Twitter Icon.',
+		iconName: 'twitter',
+		isExternal: true,
+		linkLabel: "Link to Cody Brunner's Twitter Account.",
+		to: 'https://twitter.com/RockChalkDev',
+	},
 ]
 
-const NAV_BASE_STYLES = [
-  'sticky',
-  'bottom-0',
-  'px-6',
-  'pb-6',
-  'lg:px-0'
-]
+const NAV_BASE_STYLES = ['bottom-0', 'pb-6', 'px-6', 'sticky', 'lg:px-0']
 
 const UL_BASE_STYLES = [
-  'flex',
-  'max-w-sm',
-  'items-center',
-  'space-x-3',
-  'overflow-x-scroll',
-  'rounded-2xl',
-  'bg-aura-purple-fading/100',
-  'p-4',
-  'md:mx-auto',
-  'md:max-w-fit'
+	'bg-aura-purple-fading/100',
+	'flex',
+	'items-center',
+	'max-w-sm',
+	'mx-auto',
+	'overflow-x-scroll',
+	'p-2',
+	'rounded-lg',
+	'space-x-3',
+	'sm:max-w-lg',
+	'sm:p-4',
+	'md:max-w-2xl',
+	'lg:max-w-fit',
 ]
 
 const firstLinks = navigation.slice(0, 7)
@@ -111,17 +108,9 @@ const socialLinks = navigation.slice(7)
 ---
 
 <nav class={NAV_BASE_STYLES.join(' ')}>
-  <ul class={UL_BASE_STYLES.join(' ')}>
-    {firstLinks.map((props) => (
-      <NavItem
-        {...props}
-      />
-    ))}
-    <hr class="h-16 border-l-2 border-aura-black/40" />
-    {socialLinks.map((props) => (
-      <NavItem
-        {...props}
-      />
-    ))}
-  </ul>
+	<ul class={UL_BASE_STYLES.join(' ')}>
+		{firstLinks.map(props => <NavItem {...props} />)}
+		<hr class='h-16 border-l-2 border-aura-black/40' />
+		{socialLinks.map(props => <NavItem {...props} />)}
+	</ul>
 </nav>
