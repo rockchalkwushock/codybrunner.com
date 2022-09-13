@@ -1,0 +1,44 @@
+---
+import { twMerge } from 'tailwind-merge'
+
+export interface Props {
+	readonly class?: string
+	readonly href: string
+	readonly isActive?: boolean
+	readonly isExternal?: boolean
+	readonly label: string
+}
+
+const BASE_STYLES = ['text-aura-purple']
+
+const { class: cls, href, isActive, isExternal, label } = Astro.props
+const classNames = twMerge(
+	BASE_STYLES,
+	cls,
+	// If this is an external link don't apply the
+	// active link styles to the link.
+	isExternal
+		? undefined
+		: isActive
+		? 'text-aura-orange'
+		: 'text-aura-purple'
+)
+---
+
+{
+	isExternal ? (
+		<a
+			aria-label={label}
+			class={classNames}
+			href={href}
+			rel='noopener noreferrer'
+			target='_blank'
+		>
+			<slot />
+		</a>
+	) : (
+		<a aria-label={label} class={classNames} href={href} rel='prefetch'>
+			<slot />
+		</a>
+	)
+}
