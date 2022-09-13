@@ -17,6 +17,7 @@ specifiers:
   postcss-preset-env: 7.8.1
   prettier: 2.7.1
   prettier-plugin-astro: 0.5.4
+  tailwind-merge: 1.6.0
   ts-prune: 0.10.3
 
 dependencies:
@@ -38,6 +39,7 @@ devDependencies:
   postcss-preset-env: 7.8.1_postcss@8.4.16
   prettier: 2.7.1
   prettier-plugin-astro: 0.5.4
+  tailwind-merge: 1.6.0
   ts-prune: 0.10.3
 
 packages:
@@ -5029,6 +5031,10 @@ packages:
     dependencies:
       '@pkgr/utils': 2.3.1
       tslib: 2.4.0
+    dev: true
+
+  /tailwind-merge/1.6.0:
+    resolution: {integrity: sha512-lfpys05uZMcVGIbgrrM/HlQGYKiPIcUhs76H1VrXo0gerpYkoLk4zjQTppdyAcBcmpzlzXJw7X0JniUKOr2hkg==}
     dev: true
 
   /tailwindcss/3.1.8_postcss@8.4.16:
