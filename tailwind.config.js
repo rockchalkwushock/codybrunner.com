@@ -31,8 +31,9 @@ module.exports = {
 		},
 		fontFamily: {
 			...fontFamily,
+			sans: ['Quicksand', ...fontFamily.sans],
 		},
 	},
-	plugins: [],
+	plugins: [require('@tailwindcss/typography')],
 	variants: {},
 }
