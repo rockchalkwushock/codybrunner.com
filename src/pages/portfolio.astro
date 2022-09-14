@@ -1,5 +1,151 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
+import Badge from '@components/Badge.astro'
+
+// TODO: Get icons for each technology.
+type Technology =
+	| 'astrojs'
+	| 'django'
+	| 'elixir'
+	| 'graphql'
+	| 'javascript'
+	| 'liveview'
+	| 'mdxjs'
+	| 'nextjs'
+	| 'phoenix'
+	| 'python'
+	| 'reactjs'
+	| 'react-query'
+	| 'tailwindcss'
+	| 'typescript'
+	| 'vitejs'
+	| 'vuejs'
+
+type Project = {
+	description: string
+	isArchived?: boolean
+	isContributor?: boolean
+	isOSS?: boolean
+	name: string
+	source: string
+	technologies: Array<Technology>
+	url?: string
+}
+
+const projects: Array<Project> = [
+	{
+		description: 'My personal webite, blog, and portfolio.',
+		name: 'codybrunner.com',
+		source: 'https://github.com/rockchalkwushock/codybrunner.com',
+		technologies: ['astrojs', 'mdxjs', 'tailwindcss', 'typescript'],
+		url: 'https://codybrunner.com',
+	},
+	{
+		description: 'A weather application built using the Open Weather Map API.',
+		name: 'weather-app',
+		source: 'https://github.com/rockchalkwushock/weather-app',
+		technologies: [
+			'react-query',
+			'reactjs',
+			'tailwindcss',
+			'typescript',
+			'vitejs',
+		],
+		url: 'https://weather-app-rockchalkwushock.vercel.app/',
+	},
+	{
+		description: 'A Tic-Tac-Toe game written using the React Context API.',
+		name: 'tic-tac-toe',
+		source: 'https://github.com/rockchalkwushock/tic-tac-toe',
+		technologies: ['reactjs', 'tailwindcss', 'typescript', 'vitejs'],
+		url: 'https://tic-tac-toe-indol-chi.vercel.app/',
+	},
+	{
+		description:
+			'Rehype plugin for parsing code blocks and adding titles to code blocks.',
+		isOSS: true,
+		name: 'rehype-code-titles',
+		source: 'https://github.com/rockchalkwushock/rehype-code-titles',
+		technologies: ['typescript'],
+		url: 'https://www.npmjs.com/package/rehype-code-titles',
+	},
+	{
+		description: 'Vkontakte OAuth for micro.',
+		isOSS: true,
+		name: 'microauth-vkontakte',
+		source: 'https://github.com/microauth/microauth-vkontakte',
+		technologies: ['javascript'],
+		url: 'https://www.npmjs.com/package/microauth-vkontakte',
+	},
+	{
+		description:
+			"Ectogram is a clone of the popular Instagram social media application using Elixir's popular database wrapper Ecto.",
+		name: 'ectogram',
+		source: 'https://github.com/rockchalkwushock/ectogram',
+		technologies: ['elixir'],
+		url: 'https://www.npmjs.com/package/rehype-code-titles',
+	},
+	{
+		description:
+			'Full-stack todo application. Backend hosted on Fly.io and frontend hosted on Vercel.',
+		name: 'todos',
+		source: 'https://github.com/rockchalkwushock/todos',
+		technologies: [
+			'elixir',
+			'graphql',
+			'nextjs',
+			'phoenix',
+			'react-query',
+			'tailwindcss',
+			'typescript',
+		],
+		url: '// TODO',
+	},
+	{
+		description:
+			'A Calendly-esque clone hosted on Fly.io and written with Phoenix LiveView.',
+		name: 'citax',
+		source: 'https://github.com/rockchalkwushock/citax',
+		technologies: ['elixir', 'liveview', 'phoenix', 'tailwindcss'],
+		url: 'https://citax.fly.dev/',
+	},
+	{
+		description: 'Query developers from GitHub using the GitHub API.',
+		isArchived: true,
+		name: 'dev-query',
+		source: 'https://github.com/rockchalkwushock/dev-query',
+		technologies: [
+			'graphql',
+			'nextjs',
+			'react-query',
+			'tailwindcss',
+			'typescript',
+		],
+	},
+	{
+		description:
+			'PardallMarkdown is a reactive publishing framework and engine written in Elixir. Instant websites and documentation websites.',
+		isContributor: true,
+		isOSS: true,
+		name: 'pardall_markdown',
+		source: 'https://github.com/alfredbaudisch/pardall_markdown',
+		technologies: ['elixir'],
+		url: 'https://hex.pm/packages/pardall_markdown',
+	},
+	{
+		description: 'A Fitbit Dashboard.',
+		isArchived: true,
+		name: 'django-fit',
+		source: 'https://github.com/rockchalkwushock/django-fit',
+		technologies: ['django', 'vuejs'],
+	},
+	{
+		description: 'A URL Shortener.',
+		name: 'Chakra',
+		source: 'https://github.com/rockchalkwushock/chakra',
+		technologies: ['elixir'],
+	},
+]
 ---
 
 <BaseLayout
@@ -7,6 +153,30 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 	title='Portfolio'
 >
 	<main class='flex-1 space-y-6 px-6 lg:px-0' slot='main'>
-		<h1>Portfolio Page</h1>
+		<ul class='grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+			{
+				projects.map(project => (
+					<li class='relative flex flex-col space-y-1 rounded-lg border p-4'>
+						{project.isArchived && (
+							<Badge class='absolute -top-1 -right-1 bg-aura-red px-1 py-0.5 font-semibold'>
+								Archived
+							</Badge>
+						)}
+						{project.isContributor && (
+							<Badge class='absolute -top-1 -right-1 bg-blue px-1 py-0.5 font-semibold'>
+								Contributor
+							</Badge>
+						)}
+						{project.isOSS && (
+							<Badge class='absolute -top-1 -right-1 bg-aura-orange px-1 py-0.5 font-semibold text-black'>
+								OSS
+							</Badge>
+						)}
+						<h2 class='font-semibold'>{project.name}</h2>
+						<p class='text-base'>{project.description}</p>
+					</li>
+				))
+			}
+		</ul>
 	</main>
 </BaseLayout>
