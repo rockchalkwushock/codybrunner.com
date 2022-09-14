@@ -1,9 +1,12 @@
 ---
+import type { Post } from '@interfaces/post'
 import '@styles/global.css'
+import '@fontsource/quicksand'
 
 export interface Props {
-  description: string
-  title: string
+  description?: string
+  post?: Post,
+  title?: string
 }
 
 const { description, title } = Astro.props
@@ -20,7 +23,7 @@ const siteTitle = `${title} | codybrunner.com`
 <meta name='author' content="Cody Brunner" />
 <meta name='description' content={description} />
 <meta name='title' content={siteTitle} />
-<title>codybrunner.com</title>
+<title>{siteTitle}</title>
 
 <!-- Open Graph / Facebook -->
 <meta property='og:description' content={description} />

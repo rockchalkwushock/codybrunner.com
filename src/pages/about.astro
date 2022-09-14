@@ -1,12 +1,23 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
+import PostLayout from '@layouts/PostLayout.astro'
+import type { Frontmatter } from '@interfaces/post'
+
+const [data] = await Astro.glob<Frontmatter>('../data/about.mdx')
+
+const { Content, frontmatter } = data
 ---
 
 <BaseLayout
-	description='A little about me and my journey into the Tech Industry.'
-	title='About'
+	description={frontmatter.description}
+	title={frontmatter.title}
 >
-	<main class='flex-1 space-y-6 px-6 lg:px-0' slot='main'>
-		<h1>About Page</h1>
+	<main class='w-full flex-1 space-y-6 px-6 lg:px-0' slot='main'>
+		<PostLayout>
+			<Fragment slot="header">
+				<h1 class="text-center text-4xl font-medium leading-tight text-aura-purple lg:text-5xl">{frontmatter.title}</h1>
+			</Fragment>
+			<Content slot="content" />
+		</PostLayout>
 	</main>
 </BaseLayout>
