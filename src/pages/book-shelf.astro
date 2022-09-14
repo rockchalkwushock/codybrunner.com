@@ -1,5 +1,177 @@
 ---
+import Badge from '@components/Badge.astro'
+import Link from '@components/Link.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
+import {Icon} from 'astro-icon'
+
+/**
+ * Homeboy was about 30 degress from making a serious fuckie wuckie and having to get into the forever box.
+ *
+ *
+ *
+ */
+
+type Book = {
+	authors: Array<string>
+	image: string
+	isCurrent?: boolean
+	name: string
+	url: string
+}
+
+const books: Array<Book> = [
+	{
+		authors: ['Andrew Henderson'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/41tJ6M5kzTL.jpg',
+		isCurrent: true,
+		name: 'Nomad Capitalist',
+		url: 'https://www.amazon.com/gp/product/B09F6RX17D/ref=kinw_myk_ro_title',
+	},
+	{
+		authors: ['Eva A. Mendes'],
+		image:
+			'https://images-na.ssl-images-amazon.com/images/W/WEBP_402378-T2/images/I/513+jrTQDsL.jpg',
+		isCurrent: true,
+		name: "Marriage and Lasting Relationships with Asperger's Syndrom",
+		url: 'https://www.amazon.com/gp/product/B00Y94ZTEA/ref=kinw_myk_ro_title',
+	},
+	{
+		authors: ['Saša Jurić'],
+		image:
+			'https://images.manning.com/360/480/resize/book/b/860dd1f-9401-4f00-be22-e00ad954be2f/Juric-Elixir-2ed-HI.jpg',
+		isCurrent: true,
+		name: 'Elixir in Action, 2nd Edition',
+		url: 'https://www.manning.com/books/elixir-in-action-second-edition',
+	},
+	{
+		authors: ['Bill Karwin'],
+		image:
+			'https://pragprog.com/titles/bksap1/sql-antipatterns-volume-1/bksap1-beta-500.jpg',
+		isCurrent: true,
+		name: 'SQL Antipatterns, Volume 1',
+		url: 'https://pragprog.com/titles/bksap1/sql-antipatterns-volume-1/',
+	},
+	{
+		authors: ['Bruce Williams', 'Ben Wilson'],
+		image:
+			'https://pragprog.com/titles/wwgraphql/craft-graphql-apis-in-elixir-with-absinthe/wwgraphql.jpg',
+		name: 'Craft GraphQL APIs in Elixir with Absinthe',
+		url: 'https://pragprog.com/titles/wwgraphql/craft-graphql-apis-in-elixir-with-absinthe/',
+	},
+	{
+		authors: ['Darin Wilson', 'Eric Meadows-Jönsson'],
+		image:
+			'https://pragprog.com/titles/wmecto/programming-ecto/wmecto_hu6d5b8b63a4954cb696e89b39f929331b_1356468_500x0_resize_q75_box.jpg',
+		name: 'Programming in Ecto',
+		url: 'https://pragprog.com/titles/wmecto/programming-ecto/',
+	},
+	{
+		authors: ['James Edward Gray, II', 'Bruce A. Tate'],
+		image:
+			'https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/jgotp.jpg',
+		name: 'Designing Elixir Systems with OTP',
+		url: 'https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/',
+	},
+	{
+		authors: ['Chris McCord', 'Bruce A. Tate', 'José Valim'],
+		image:
+			'https://pragprog.com/titles/phoenix14/programming-phoenix-1-4/phoenix14_hu6d5b8b63a4954cb696e89b39f929331b_925363_500x0_resize_q75_box.jpg',
+		name: 'Programming in Phoenix',
+		url: 'https://pragprog.com/titles/phoenix14/programming-phoenix-1-4/',
+	},
+	{
+		authors: ['Bruce A. Tate', 'Sophie DeBenedetto'],
+		image:
+			'https://pragprog.com/titles/liveview/programming-phoenix-liveview/liveview-beta-500.jpg',
+		name: 'Programming Phoenix LiveView',
+		url: 'https://pragprog.com/titles/liveview/programming-phoenix-liveview/',
+	},
+	{
+		authors: ['Ayn Rand'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/41fcHWI5mdL.jpg',
+		name: 'Anthem',
+		url: 'https://www.amazon.com/gp/product/B07V6TDF2X/ref=dbs_a_def_rwt_hsch_vapi_tkin_p1_i3',
+	},
+	{
+		authors: ['Ayn Rand'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51t7UPfbM4L.jpg',
+		name: 'The Fountainhead',
+		url: 'https://www.amazon.com/gp/product/B002OSXDAU/ref=dbs_a_def_rwt_hsch_vapi_tkin_p1_i1',
+	},
+	{
+		authors: ['Ayn Rand'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51-Obg7xgmL.jpg',
+		name: 'Atlas Shrugged',
+		url: 'https://www.amazon.com/gp/product/B003V8B5XO/ref=dbs_a_def_rwt_hsch_vapi_tkin_p1_i0',
+	},
+	{
+		authors: ['Paulo Coelho'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51Z0nLAfLmL.jpg',
+		name: 'The Alchemist',
+		url: 'https://www.amazon.com/Alchemist-Paulo-Coelho-ebook/dp/B00U6SFUSS/ref=sr_1_1?keywords=the+alchemist&qid=1663105115&s=digital-text&sprefix=the+al%2Cdigital-text%2C173&sr=1-1',
+	},
+	{
+		authors: ['Jocko Willink', 'Leif Babin'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51yoHjJDQ3L.jpg',
+		name: 'Exterme Ownership',
+		url: 'https://www.amazon.com/Extreme-Ownership-U-S-Navy-SEALs-ebook/dp/B0739PYQSS/ref=sr_1_1?keywords=extreme+ownership&qid=1663105147&s=digital-text&sprefix=ext%2Cdigital-text%2C132&sr=1-1',
+	},
+	{
+		authors: ['Mel Robbins'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51abdHvm+EL.jpg',
+		name: 'The 5 Second Rule',
+		url: 'https://www.amazon.com/Second-Rule-Transform-Confidence-Everyday-ebook/dp/B01MUSNFOO/ref=sr_1_1?keywords=the+5+second+rule&qid=1663105180&s=digital-text&sprefix=the+5+%2Cdigital-text%2C143&sr=1-1',
+	},
+	{
+		authors: ['Victor Hugo'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/41plteQRFCL.jpg',
+		name: 'Les Misérables',
+		url: 'https://www.amazon.com/Mis%C3%A9rables-Victor-Hugo-ebook/dp/B08P3MKHWM/ref=sr_1_1?keywords=les+miserables&qid=1663105202&s=digital-text&sprefix=les+mis%2Cdigital-text%2C137&sr=1-1',
+	},
+	{
+		authors: ['Robert T. Kiyosaki'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51u8ZRDCVoL.jpg',
+		name: 'Rich Dad, Poor Dad',
+		url: 'https://www.amazon.com/gp/product/B07C7M8SX9/ref=kinw_myk_ro_title',
+	},
+	{
+		authors: ['Dr. Edith Eva Eger'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51VsAwQZzYL.jpg',
+		name: 'The Choice: Embrace the Possible',
+		url: 'https://www.amazon.com/Choice-Embrace-Possible-Edith-Eger-ebook/dp/B01HMXRZ6O/ref=sr_1_1?keywords=the+choice+edith+eger&qid=1663105265&s=digital-text&sprefix=The+Choice%2Cdigital-text%2C145&sr=1-1',
+	},
+	{
+		authors: ['John Kim'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51A4OyuBHML.jpg',
+		name: 'A No BS Guide to Finding and Living Your Own Truth',
+		url: 'https://www.amazon.com/Angry-Therapist-Guide-Finding-Living-ebook/dp/B01IZT7YGA/ref=sr_1_1?crid=564V85ZF3P5A&keywords=A+No+BS+Guide+to+Finding+and+Living+Your+Own+Truth&qid=1663105319&s=digital-text&sprefix=a+no+bs+guide+to+finding+and+living+your+own+truth%2Cdigital-text%2C126&sr=1-1',
+	},
+	{
+		authors: ['Mark Manson'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/51mN3bY0JjL.jpg',
+		name: 'The Subtle Art of not Giving a Fuck',
+		url: 'https://www.amazon.com/Subtle-Art-Not-Giving-Counterintuitive-ebook/dp/B019MMUA8S/ref=sr_1_1?crid=3RUWUYF3I9M49&keywords=The+Subtle+Art+of+not+Giving+a+Fuck&qid=1663105346&s=digital-text&sprefix=the+subtle+art+of+not+giving+a+fuck%2Cdigital-text%2C114&sr=1-1',
+	},
+	{
+		authors: ['David Goggins'],
+		image:
+			'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/41amV20d1uL.jpg',
+		name: "Can't Hurt Me",
+		url: 'https://www.amazon.com/Cant-Hurt-Me-Master-Your-ebook/dp/B07H453KGH/ref=d_msx_wsirn_v1_sccl_1_4/144-1853898-0090712?pd_rd_w=yHLjE&content-id=amzn1.sym.edd207be-8a1c-4e1d-9856-c764818e859d&pf_rd_p=edd207be-8a1c-4e1d-9856-c764818e859d&pf_rd_r=ZH1769K6Y57FFEM336TN&pd_rd_wg=GUP4k&pd_rd_r=536b8914-c0d9-412d-a1e7-4ac636e5a3be&pd_rd_i=B07H453KGH&psc=1',
+	},
+]
 ---
 
 <BaseLayout
@@ -8,5 +180,28 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 >
 	<main class='flex-1 space-y-6 px-6 lg:px-0' slot='main'>
 		<h1>Book Shelf Page</h1>
+
+		<ul
+			class='grid grid-cols-1 place-items-center gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'
+		>
+			{
+				books.map(book => (
+					<li class="relative">
+						{book.isCurrent && (
+							<Badge class="absolute -top-4 -right-4 rounded-full bg-white">
+								<Icon class="h-8" name="flat-color-icons:reading" />
+							</Badge>
+						)}
+						<Link
+							href={book.url}
+							isExternal
+							label={`Link to purchase ${book.name}.`}
+						>
+							<img alt={book.name} class='h-48' src={book.image} />
+						</Link>
+					</li>
+				))
+			}
+		</ul>
 	</main>
 </BaseLayout>
