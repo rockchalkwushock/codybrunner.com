@@ -29,7 +29,8 @@
 		"@astrojs/tailwind": "1.0.0",
 		"@fontsource/quicksand": "~4.5.10",
 		"astro": "1.2.1",
-		"astro-icon": "0.7.3"
+		"astro-icon": "0.7.3",
+		"mdx-embed": "~1.0.0"
 	},
 	"devDependencies": {
 		"@evilmartians/lefthook": "1.1.1",
