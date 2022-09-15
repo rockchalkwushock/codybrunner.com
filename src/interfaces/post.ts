@@ -70,6 +70,7 @@ export interface Frontmatter {
 	readingTime: string
 	/* Generated */
 	relatedPosts: Array<Post>
+	series?: Record<'entries', Array<string>> | null
 	/* Generated */
 	slug: string
 	tags: Array<Tag>
