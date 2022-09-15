@@ -1,0 +1,282 @@
+---
+author: Cody Brunner
+category: technology
+coverImage: ~
+createdAt: 06/09/2021
+description: How I created the animated social icons on my website using TailwindCSS.
+draft: false
+keywords:
+  - animation
+  - animated icons
+  - tailwindcss
+publishedAt: 06/09/2021
+tags:
+  - tailwindcss
+title: Creating Animated Social Icons With TailwindCSS
+updatedAt: 01/07/2022
+---
+
+> With Tailwind 3.0 coming out a month or so ago now and a refactor to my website I have updated this post to reflect those changes.
+
+One thing I will adamantly tell people is I am not a designer or UI/UX developer. I can barely dress myself in a fashionable sense (this was solved by marrying a Colombian woman 🤣😏) so what makes you think I can give you anything but a website from 1993. Lately I have been working a lot with [TailwindCSS](https://tailwindcss.com/) and I honestly cannot recommend it enough. In my 2.5 years at Appointlet I significantly upped my CSS skills which was something I desperately needed. I wanted to start trying to spice up aspects of my website and did some reading and looking at examples of how to use animations and transitions in Tailwind. The result can be seen in the GIF below as well as on this site.
+
+<div class='relative mb-6 h-32 w-full md:h-44'>
+	<iframe
+		allowfullscreen
+		class='giphy-embed absolute'
+		height='100%'
+		src="https://giphy.com/embed/NN8tOZFfTWNNPH24k4"
+		title="Giphy Embed: NN8tOZFfTWNNPH24k4"
+		width='100%'></iframe>
+</div>
+
+<div class='relative mb-6 h-32 w-full md:h-44'>
+	<iframe
+		allowfullscreen
+		class='giphy-embed absolute'
+		height='100%'
+		src="https://giphy.com/embed/nmHu08S6MBZmWOcfb8"
+		title="Giphy Embed: nmHu08S6MBZmWOcfb8"
+		width='100%'></iframe>
+</div>
+
+The above represent the original animated icons circa [codybrunner.dev](#), which no longer exists. The below are the current animated icons on this site.
+
+<div class='relative mb-6 h-32 w-full md:h-44'>
+	<iframe
+		allowfullscreen
+		class='giphy-embed absolute'
+		height='100%'
+		src="https://giphy.com/embed/S5Dd0DwxqZFGcnz0qs"
+		title="Giphy Embed: S5Dd0DwxqZFGcnz0qs"
+		width='100%'></iframe>
+</div>
+
+<div class='relative mb-6 h-32 w-full md:h-44'>
+	<iframe
+		allowfullscreen
+		class='giphy-embed absolute'
+		height='100%'
+		src="https://giphy.com/embed/dcYK6X3UieHibpnbWy"
+		title="Giphy Embed: dcYK6X3UieHibpnbWy"
+		width='100%'></iframe>
+</div>
+
+You can see it's a little less jankity than it was with the layout shift due to the padding being added on hover. I also switch to making use of the `group` and `group-hover:` utilities instead of just `hover:`.
+
+## Setting up the icons
+
+You can see on my site I show off to visitors my GitHub, Instagram, LinkedIn, and Twitter. I do that using the icons from [react-icons](https://react-icons.github.io/react-icons/). To consolidate the lengthy `className` declarations that can come with using Tailwind I created a custom component that contains those styles (you can see that in the sass file below):
+
+> Before each icon was hard coded. Instead I created an array of objects to loop over that hold the necessary information. This cut down on JSX I had to write.
+
+```tsx:components/SocialIcons.tsx
+import * as React from 'react'
+
+import { Icon } from './Icon'
+import { constants } from '@utils/constants'
+
+interface Props {}
+
+export const SocialLinks: React.FC<Props> = () => {
+  return (
+    <ul className="flex items-center justify-center space-x-2">
+      {constants.socials.map(({ label, text, url }) => (
+        <li className="social-button" key={`social-links-${label}`}>
+          <a
+            aria-label={label}
+            href={url}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Icon className="w-8 h-8" name={text.toLowerCase()}
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+```
+
+```scss:styles/global.scss
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+  .social-button {
+    @apply dark:text-aura-green text-indigo-500 bg-transparent flex items-center justify-center h-11 w-11 duration-100 ease-in-out rounded-full transition-all;
+  }
+}
+```
+
+## Extending Tailwind: Custom Colors & Gradients
+
+The first thing I wanted to do was make these icons use the branding colors of their respective service. This was pretty simple for GitHub, LinkedIn, & Twitter; however Instagram is not just one color, it uses a gradient. Some quick searching online lead me to this [CodePen](https://codepen.io/thomasrye/pen/VaRoYv) . Tailwind supports gradients so what I could do was add the gradient effect I found to the `backgroundImage` key.
+
+- [Tailwind Gradient Colors](https://tailwindcss.com/docs/gradient-color-stops#customizing)
+
+```diff:tailwind.config.js
+module.exports = {
+  content: ['./components/*.tsx', './layouts/*.tsx', './pages/**/*.tsx'],
+  darkMode: 'class',
+  theme: {
+    extend: {
++     backgroundImage: {
++       // bg-instagram || text-instagram
++       instagram: 'radial-gradient(circle at 30% 107%, #fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,+#285aeb 90%)'
++     },
+      colors: {
+        current: 'currentColor',
+        transparent: 'transparent',
++       // bg-linkedIn || text-linkedIn
++       linkedIn: '#0072B1',
++       // bg-twitter || text-twitter
++       twitter: '#1DA1F2',
++       // bg-aura-black || text-aura-black
++       aura: {
++         black: '#15141b',
++         blue: '#82e2ff',
++         gray: '#6d6d6d',
++         green: '#61ffca',
++         orange: '#ffca85',
++         pink: '#f694ff',
++         purple: '#a277ff',
++         'purple-fading': '#3d375e7f',
++         red: '#ff6767',
++         white: '#edecee',
++       }
+        ...colors,
+      },
+    }
+  }
+}
+```
+
+> Since the icons are no longer hard coded I created a simple function that houses an object with the specific hover styles I want to be applied depending on the social icon that's being actively hovered on.
+
+```diff:components/SocialIcons.tsx
+import * as React from 'react'
+
+import { Icon } from './Icon'
+import { constants } from '@utils/constants'
+
+interface Props {}
+
++ const pickStyles = (text: string) => {
++   const styles: Record<string, string> = {
++    github:
++      'md:hover:bg-black md:hover:text-white dark:md:hover:bg-aura-purple-fading',
++    instagram: 'md:hover:bg-instagram md:hover:text-white',
++    linkedin: 'md:hover:bg-linkedin md:hover:text-white',
++    twitter: 'md:hover:bg-twitter md:hover:text-white',
++   }
++   return styles[text]
++ }
+
+export const SocialLinks: React.FC<Props> = () => {
+  return (
+    <ul className="flex items-center justify-center space-x-2">
+      {constants.socials.map(({ label, text, url }) => (
+-       <li className="social-button" key={`social-links-${label}`}>
++       <li
++         className={`social-button ${pickStyles(text.toLowerCase())}`}
++         key={`social-links-${label}`}
++       >
+          <a
+            aria-label={label}
+            href={url}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Icon className="w-8 h-8" name={text.toLowerCase()} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+```
+
+## Extending Tailwind: Custom Animations
+
+Based on the desired effect I wanted and looking at what Tailwind shipped with natively I found I would need to extend the configuration yet again to create a custom animation utility to use. I would need to extend the `keyframes` configuration with the desired effects I wanted and then I could use that custom keyframe in my custom animation.
+
+- [Tailwind Animations](https://tailwindcss.com/docs/animation)
+
+```diff:tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
++     animation: {
++       // utility: animation-wiggle
++       wiggle: 'wiggle 1s ease-in-out infinite',
++     },
++     keyframes: {
++       wiggle: {
++         '0% 100%': { transform: 'rotate(-12deg) scale(0.95)' },
++         '50%': { transform: 'rotate(12deg) scale(0.95)' },
++       }
++     }
+    }
+  }
+}
+```
+
+## Triggering the animation on hover
+
+Tailwind ships with utilities for handling states such as `focus` and `hover`. I could use the `hover:animate-wiggle` utility to trigger the animation when a user mouses over the icon giving the wiggle effect and branded background color.
+
+> This was a good start but I found it's actually better to use the `group` and `group-hover:` utilities for triggering this animation.
+
+```diff:components/SocialIcons.tsx
+import * as React from 'react'
+
+import { Icon } from './Icon'
+import { constants } from '@utils/constants'
+
+interface Props {}
+
+const pickStyles = (text: string) => {
+  const styles: Record<string, string> = {
+    github:
+      'md:hover:bg-black md:hover:text-white dark:md:hover:bg-aura-purple-fading',
+    instagram: 'md:hover:bg-instagram md:hover:text-white',
+    linkedin: 'md:hover:bg-linkedin md:hover:text-white',
+    twitter: 'md:hover:bg-twitter md:hover:text-white',
+  }
+  return styles[text]
+}
+
+export const SocialLinks: React.FC<Props> = () => {
+  return (
+    <ul className="flex items-center justify-center space-x-2">
+      {constants.socials.map(({ label, text, url }) => (
+        <li
+-         className={`social-button ${pickStyles(text.toLowerCase())}`}
++         className={`social-button group ${pickStyles(text.toLowerCase())}`}
+          key={`social-links-${label}`}
+        >
+          <a
+            aria-label={label}
+            href={url}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <Icon
+-             className="w-8 h-8"
++             className="w-8 h-8 md:group-hover:animate-wiggle"
+              name={text.toLowerCase()}
+            />
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
+```
+
+And that's it, really was pretty easy to get this setup and I am really impressed with how it turned out. As I stated at the beginning of the article this is not really my cup of tea, but Tailwind made it very simple to get a really cool effect setup in the UI.
+
+<div class="text-center">~ Cody 🚀</div>
