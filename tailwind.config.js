@@ -19,21 +19,50 @@ const aura = {
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,md,mdx,ts,tsx}'],
 	theme: {
-		colors: {
-			aura: { ...aura },
-			black,
-			blue: blue['500'],
-			current: 'currentColor',
-			red: red['500'],
-			transparent: 'transparent',
-			white,
-			yellow: yellow['500'],
-		},
-		fontFamily: {
-			...fontFamily,
-			sans: ['Quicksand', ...fontFamily.sans],
-		},
 		extend: {
+			colors: {
+				aura: { ...aura },
+				black,
+				blue: blue['500'],
+				current: 'currentColor',
+				red: red['500'],
+				transparent: 'transparent',
+				white,
+				yellow: yellow['500'],
+			},
+			fontFamily: {
+				...fontFamily,
+				sans: ['Quicksand', ...fontFamily.sans],
+			},
+			// Defines the template areas using 'grid-template-areas':
+			// Generates:
+			// - grid-areas-mobile
+			// - grid-areas-desktop
+			gridTemplateAreas: {
+				mobile: ['header', 'main', 'nav', 'footer'],
+				desktop: [
+					'header header header header',
+					'main main main aside',
+					'nav nav nav nav',
+					'footer footer footer footer',
+				],
+			},
+			// Defines the template columns using 'grid-template-columns':
+			// Generates:
+			// - grid-cols-mobile
+			// - grid-cols-desktop
+			gridTemplateColumns: {
+				mobile: '1fr',
+				desktop: 'repeat(4, minmax(0, 1fr))',
+			},
+			// Defines the template rows using 'grid-template-rows':
+			// Generates:
+			// - grid-rows-mobile
+			// - grid-rows-desktop
+			gridTemplateRows: {
+				mobile: '1fr',
+				desktop: 'auto 1fr auto',
+			},
 			typography: ({ theme }) => ({
 				DEFAULT: {
 					css: {
@@ -108,6 +137,15 @@ module.exports = {
 			}),
 		},
 	},
-	plugins: [require('@tailwindcss/typography')],
-	variants: {},
+	plugins: [
+		require('@tailwindcss/typography'),
+		require('@savvywombat/tailwindcss-grid-areas'),
+	],
+	variants: {
+		// Will enable the ability to do the following:
+		// grid-areas-mobile md:grid-areas-tablet lg:grid-areas-desktop.
+		gridTemplateAreas: ['responsive'],
+		gridTemplateColumns: ['responsive'],
+		gridTemplateRows: ['responsive'],
+	},
 }

@@ -1,6 +1,11 @@
 ---
+import { twMerge } from 'tailwind-merge'
 import NavItem from './NavItem.astro'
 import type { Props as NavItemProps } from './NavItem.astro'
+
+export interface Props {
+	inPostLayout?: boolean
+}
 
 /**
  * This Navigation Implementation was taken from:
@@ -91,7 +96,7 @@ const UL_BASE_STYLES = [
 	'bg-aura-purple-fading/100',
 	'flex',
 	'items-center',
-	'max-w-sm',
+	'max-w-xs',
 	'mx-auto',
 	'overflow-x-scroll',
 	'p-2',
@@ -103,12 +108,15 @@ const UL_BASE_STYLES = [
 	'lg:max-w-fit',
 ]
 
+const { inPostLayout } = Astro.props
 const firstLinks = navigation.slice(0, 7)
 const socialLinks = navigation.slice(7)
+const navClassNames = twMerge(NAV_BASE_STYLES, inPostLayout && 'grid-in-nav')
+const ulClassNames = twMerge(UL_BASE_STYLES)
 ---
 
-<nav class={NAV_BASE_STYLES.join(' ')}>
-	<ul class={UL_BASE_STYLES.join(' ')}>
+<nav class={navClassNames}>
+	<ul class={ulClassNames}>
 		{firstLinks.map(props => <NavItem {...props} />)}
 		<hr class='h-16 border-l-2 border-aura-black/40' />
 		{socialLinks.map(props => <NavItem {...props} />)}

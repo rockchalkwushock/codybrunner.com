@@ -1,7 +1,23 @@
 ---
 import me from '@assets/me.jpg'
-import Card from '@components/Card.astro'
+import Posts from '@components/Posts.astro'
+import type { Frontmatter } from '@interfaces/post'
 import BaseLayout from '@layouts/BaseLayout.astro'
+import {
+	filterPosts,
+	isFeatured,
+	fetchAndBuildPosts,
+} from '@utils/post-helpers'
+
+const rawPosts = await Astro.glob<Frontmatter>('../data/posts/**/*.mdx')
+
+const posts = fetchAndBuildPosts(rawPosts)
+
+// Get Featured Posts
+const featuredPosts = filterPosts(posts, isFeatured)
+
+// Get Latest Posts
+const latestPosts = posts.slice(0, 3)
 ---
 
 <BaseLayout>
@@ -40,42 +56,17 @@ import BaseLayout from '@layouts/BaseLayout.astro'
 			</div>
 		</div>
 	</section>
-	<main class='flex-1 space-y-6 px-6 lg:px-0' slot='main'>
-		<section class=''>
+	<main class='flex flex-col space-y-8 px-6 grid-in-main lg:px-0' slot='main'>
+		<section class='flex flex-col space-y-6'>
 			<h2 class='text-2xl text-aura-green'>Featured Post</h2>
+			{!!featuredPosts.length && <Posts posts={featuredPosts} />}
 		</section>
-		<section class=''>
+		<section class='flex flex-col space-y-6'>
 			<h2 class='text-2xl text-aura-green'>Latest Posts</h2>
+			{!!latestPosts.length && <Posts posts={latestPosts} />}
 		</section>
-		<section class=''>
+		<section class='flex flex-col space-y-6'>
 			<h2 class='text-2xl text-aura-green'>Latest Projects</h2>
 		</section>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit beatae
-			provident quidem expedita fuga veritatis eaque vitae fugit deserunt! Nobis
-			vero nemo id debitis explicabo amet dolorem aut dolore cupiditate?
-		</p>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit beatae
-			provident quidem expedita fuga veritatis eaque vitae fugit deserunt! Nobis
-			vero nemo id debitis explicabo amet dolorem aut dolore cupiditate?
-		</p>
-		<Card>
-			<p>
-				Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit beatae
-				provident quidem expedita fuga veritatis eaque vitae fugit deserunt!
-				Nobis vero nemo id debitis explicabo amet dolorem aut dolore cupiditate?
-			</p>
-		</Card>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit beatae
-			provident quidem expedita fuga veritatis eaque vitae fugit deserunt! Nobis
-			vero nemo id debitis explicabo amet dolorem aut dolore cupiditate?
-		</p>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit beatae
-			provident quidem expedita fuga veritatis eaque vitae fugit deserunt! Nobis
-			vero nemo id debitis explicabo amet dolorem aut dolore cupiditate?
-		</p>
 	</main>
 </BaseLayout>

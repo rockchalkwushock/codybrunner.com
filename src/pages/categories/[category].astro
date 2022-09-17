@@ -1,6 +1,40 @@
 ---
+import Categories from '@components/Categories.astro'
+import Posts from '@components/Posts.astro'
+import type { Category, Frontmatter, Post } from '@interfaces/post'
 import BaseLayout from '@layouts/BaseLayout.astro'
+import {
+	fetchAndBuildPosts,
+	getCategories,
+	getPostsByTaxonomy,
+} from '@utils/post-helpers'
+
+export interface Props {
+	categories: Array<Category>
+	posts: Array<Post>
+}
+
+export async function getStaticPaths() {
+	const rawPosts = await Astro.glob<Frontmatter>('../../data/posts/**/*.mdx')
+
+	const posts = fetchAndBuildPosts(rawPosts)
+
+	const categories = getCategories(posts)
+
+	return categories.map(category => ({
+		// This is for tags like ci/cd
+		// Without this the router will thing  that is a nested
+		// route and not a /[param]/
+		params: { category },
+		props: {
+			categories,
+			posts: getPostsByTaxonomy(posts, category),
+		},
+	}))
+}
+
 const { category } = Astro.params
+const { categories, posts } = Astro.props
 ---
 
 <BaseLayout
@@ -8,6 +42,11 @@ const { category } = Astro.params
 	title={category as string}
 >
 	<main class='flex-1 space-y-6 px-6 lg:px-0' slot='main'>
-		<h1>Category Page: {category}</h1>
+		<h1 class='text-center text-2xl text-aura-purple'>
+			Posts from category of: <strong>{category}</strong>
+		</h1>
+		<Posts posts={posts} />
+		<hr class='border-aura-purple/50' />
+		<Categories categories={categories} />
 	</main>
 </BaseLayout>

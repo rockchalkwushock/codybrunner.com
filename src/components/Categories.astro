@@ -1,0 +1,28 @@
+---
+import type { Category } from '@interfaces/post'
+import Link from './Link.astro'
+
+export interface Props {
+	categories: Array<Category>
+}
+
+const { categories } = Astro.props
+---
+
+<ul class='grid grid-cols-3 gap-4 sm:grid-cols-4'>
+	{
+		categories.map(category => (
+			<li class='group transform-gpu cursor-pointer rounded-lg border  border-aura-green text-center transition duration-300 ease-in-out lg:hover:scale-95 lg:hover:border-transparent lg:hover:bg-aura-green'>
+				<Link
+					class='rounded-lg px-1 py-0.5 text-base'
+					href={`/categories/${category}`}
+					label={`Link to ${category} related posts.`}
+				>
+					<span class='font-bold text-aura-green lg:group-hover:text-aura-black'>
+						{category}
+					</span>
+				</Link>
+			</li>
+		))
+	}
+</ul>

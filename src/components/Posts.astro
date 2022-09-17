@@ -1,18 +1,23 @@
 ---
+import { twMerge } from 'tailwind-merge'
 import type { Post } from '@interfaces/post'
 import { formatDateTime } from '@utils/post-helpers'
 import Link from './Link.astro'
 import Tags from './Tags.astro'
 
 export interface Props {
+	forRelatedPosts?: boolean
 	posts: Array<Post>
 }
 
-const { posts } = Astro.props
+const { forRelatedPosts, posts } = Astro.props
 ---
 
 <ul
-	class='grid grid-cols-1 place-items-center justify-items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3'
+	class={twMerge(
+		'grid grid-cols-1 place-items-center justify-items-stretch gap-8 sm:grid-cols-2',
+		!forRelatedPosts && 'lg:grid-cols-3'
+	)}
 >
 	{
 		posts.map(({ frontmatter: post }) => (

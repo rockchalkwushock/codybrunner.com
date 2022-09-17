@@ -1,12 +1,25 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro'
+import type { Frontmatter } from '@interfaces/post'
+import Aside from '@components/Aside.astro'
+import PostLayout from '@layouts/PostLayout.astro'
+import { parseRawPost } from '@utils/post-helpers'
+import PostHeader from '@components/PostHeader.astro'
+
+const [rawPost] = await Astro.glob<Frontmatter>('../data/uses.mdx')
+
+const post = parseRawPost(rawPost)
+
+const { Content, frontmatter } = post
 ---
 
-<BaseLayout
-	description='The hardware & software I work with in my job as a Software Developer.'
-	title='Uses'
->
-	<main class='flex-1 space-y-6 px-6 lg:px-0' slot='main'>
-		<h1>Uses Page</h1>
-	</main>
-</BaseLayout>
+<PostLayout>
+	<Fragment slot='header'>
+		<PostHeader {...frontmatter} />
+	</Fragment>
+	<Fragment slot='main'>
+		<article class='prose-xl prose prose-invert max-w-none'>
+			<Content />
+		</article>
+	</Fragment>
+	<Aside {...frontmatter} slot='aside' />
+</PostLayout>

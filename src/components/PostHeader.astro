@@ -1,0 +1,35 @@
+---
+import type { Frontmatter } from '@interfaces/post'
+import me from '../assets/me.jpg'
+
+export type Props = Frontmatter
+
+const { author, createdAt, modifiedAt, publishedAt, readingTime, title } =
+	Astro.props
+---
+
+<h2
+	class='text-center text-3xl font-medium leading-tight text-aura-purple lg:text-4xl'
+>
+	{title}
+</h2>
+<div
+	class='flex w-full flex-col items-center lg:flex-row lg:items-start lg:justify-between'
+>
+	<div class='flex items-center space-x-2 lg:hidden'>
+		<div
+			class='relative h-9 w-9 rounded-full border border-indigo-600 bg-white dark:border-aura-purple'
+		>
+			<img alt='Cody Brunner Avatar' class='h-9 w-9 rounded-full' src={me} />
+		</div>
+		<div class='flex flex-col'>
+			<p>
+				{`${author} / ${publishedAt || createdAt}`}
+			</p>
+			{modifiedAt && <span>Updated: {modifiedAt}</span>}
+		</div>
+	</div>
+	<div class='flex items-center lg:hidden'>
+		<p>{readingTime}</p>
+	</div>
+</div>

@@ -76,6 +76,10 @@ export interface Frontmatter {
 	featured: boolean
 	keywords: Array<string>
 	modifiedAt?: string
+	/* Generated */
+	nextPost?: string
+	/* Generated */
+	previousPost?: string
 	publishedAt?: string
 	/* Generated */
 	readingTime: string

@@ -1,0 +1,26 @@
+---
+import { twMerge } from 'tailwind-merge'
+import Link from '@components/Link.astro'
+const year = new Date().getFullYear()
+
+export interface Props {
+	inPostLayout?: boolean
+}
+
+const { inPostLayout } = Astro.props
+const classNames = twMerge(
+	'flex w-full items-center justify-center px-6 lg:px-0',
+	inPostLayout && 'grid-in-footer'
+)
+---
+
+<footer class={classNames}>
+	<Link
+		class='text-center font-medium lg:hover:text-aura-red'
+		href='https://github.com/rockchalkwushock/codybrunner.com'
+		isExternal
+		label='Link to codybrunner.com source code on GitHub.'
+	>
+		All Content © {year}
+	</Link>
+</footer>

@@ -1,0 +1,24 @@
+---
+import { twMerge } from 'tailwind-merge'
+
+export interface Props {
+  class?: string
+}
+
+const BASE_STYLES = [
+  'bg-transparent',
+  'border',
+  'border-solid',
+  'border-transparent',
+  'rounded-lg',
+  'text-sm',
+  'text-white'
+]
+
+const { class: cls } = Astro.props
+const classNames = twMerge(BASE_STYLES, cls)
+---
+
+<span class={classNames}>
+  <slot />
+</span>
