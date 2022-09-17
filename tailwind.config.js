@@ -33,6 +33,80 @@ module.exports = {
 			...fontFamily,
 			sans: ['Quicksand', ...fontFamily.sans],
 		},
+		extend: {
+			typography: ({ theme }) => ({
+				DEFAULT: {
+					css: {
+						color: aura.white,
+						a: {
+							color: aura.green,
+							fontWeight: theme('fontWeight.semibold'),
+						},
+						'a code': {
+							color: aura.orange,
+						},
+						blockquote: {
+							backgroundColor: aura['purple-fading'],
+							borderLeftColor: aura.purple,
+							borderRadius: theme('borderRadius.lg'),
+							boxShadow: theme('boxShadow.md'),
+							fontWeight: theme('fontWeight.normal'),
+							quotes: 'unset',
+							textAlign: 'left',
+						},
+						'blockquote p:first-of-type::before': {
+							content: 'unset',
+						},
+						'blockquote p:last-of-type::after': {
+							content: 'unset',
+						},
+						'blockquote p': {
+							marginBottom: 'unset !important',
+							marginTop: 'unset !important',
+							padding: theme('spacing.3'),
+						},
+						'blockquote p code': {
+							color: aura.orange,
+						},
+						code: {
+							color: aura.orange,
+							fontWeight: theme('fontWeight.normal'),
+						},
+						del: {
+							color: aura.red,
+						},
+						em: {
+							color: aura.blue,
+							fontWeight: theme('fontWeight.medium'),
+						},
+						'h1 a': {
+							color: aura.orange,
+						},
+						'h2 a': {
+							color: aura.purple,
+						},
+						'h3 a': {
+							color: aura.purple,
+						},
+						'h4 a': {
+							color: aura.pink,
+						},
+						img: {
+							borderRadius: theme('borderRadius.lg'),
+							marginLeft: 'auto',
+							marginRight: 'auto',
+						},
+						p: {
+							letterSpacing: theme('letterSpacing.wide'),
+						},
+						strong: {
+							color: aura.red,
+							fontWeight: theme('fontWeight.bold'),
+						},
+					},
+				},
+			}),
+		},
 	},
 	plugins: [require('@tailwindcss/typography')],
 	variants: {},
