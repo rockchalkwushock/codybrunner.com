@@ -23,5 +23,7 @@ module.exports = {
 		},
 	],
 	root: true,
-	rules: {},
+	rules: {
+		'tailwindcss/no-custom-classname': 'off',
+	},
 }
