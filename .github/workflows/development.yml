@@ -1,0 +1,58 @@
+name: Development
+
+on:
+  pull_request:
+    branches:
+      - staging
+    types:
+      - edited
+      - opened
+      - synchronize
+
+jobs:
+  review_code:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16]
+        pnpm-version: [7.11.0]
+
+    steps:
+      - uses: styfle/cancel-workflow-action@0.10.0
+        with:
+          access_token: ${{ github.token }}
+
+      - uses: actions/checkout@v3
+
+      - uses: pnpm/action-setup@v2.2.2
+        with:
+          version: ${{ matrix.pnpm-version }}
+
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+        env:
+          CI: true
+
+      - name: Linting
+        run: pnpm lint
+
+      - name: Type checking
+        run: pnpm type-check
+
+      - name: Build
+        run: pnpm build
+        env:
+          NODE_ENV: production
+
+      - name: Bundlecheck
+        uses: carlesnunez/check-my-bundlephobia@v1.7.0
+        env:
+          NODE_ENV: production
+        with:
+          ignore-dev-dependencies: true
+          repo-token: ${{ github.token }}

@@ -1,0 +1,23 @@
+name: Bundlecheck
+
+on:
+  push:
+    branches:
+      - production
+      - staging
+  pull_request:
+    branches:
+      - staging
+
+jobs:
+  bundlecheck:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: carlesnunez/check-my-bundlephobia@v1.7.0
+        env:
+          NODE_ENV: production
+        with:
+          ignore-dev-dependencies: true
+          repo-token: ${{ github.token }}
