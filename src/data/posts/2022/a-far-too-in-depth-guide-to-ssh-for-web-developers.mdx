@@ -106,11 +106,11 @@ cat ~/.ssh/personal_github.pub | pbcopy # macOS
 cat ~/.ssh/personal_github.pub | xsel - clipboard - input # Linux
 ```
 
-This will pipe the output of the file to the clipboard. Navigate to the following [page](https://github.com/settings/keys) on your GitHub Settings. Then select add an _New SSH Key_ and paste the public key into the text area and click _Add SSH Key_.
+This will pipe the output of the file to the clipboard. Navigate to the following [page](https://github.com/settings/keys) on your GitHub Settings. Then select add an _New SSH Key_ and paste the public key into the ssh-config area and click _Add SSH Key_.
 
-> NOTE: You should **NOT** see either of the following in what you paste. If you do, you have copied the private key by accident and should **NOT** add the key. Instead clear the text area and go back to your terminal to copy the correct file.
+> NOTE: You should **NOT** see either of the following in what you paste. If you do, you have copied the private key by accident and should **NOT** add the key. Instead clear the ssh-config area and go back to your terminal to copy the correct file.
 
-```text
+```ssh-config
 -----BEGIN OPENSSH PRIVATE KEY-----
 super secret hashed key that if made public will cause you lots of headaches!
 -----END OPENSSH PRIVATE KEY-----
@@ -136,7 +136,7 @@ touch ~/.ssh/config
 
 You can then copy and paste the following, we will go over it shortly:
 
-```text:~/.ssh/config
+```ssh-config:~/.ssh/config
 Host *
   AddKeysToAgent yes
   UseKeychain yes
@@ -166,7 +166,7 @@ The [SSH Academy](https://www.ssh.com/academy) has great documentation and you c
 
 Below is an example of what a config with multiple identities could end up looking like:
 
-```text:~/.ssh/config
+```ssh-config:~/.ssh/config
 Host *
   AddKeysToAgent yes
   UseKeychain yes
@@ -248,7 +248,7 @@ When configuring your own server there are a few _low hanging fruit_ you can ena
 4. Explicitly define the users allowed to ssh into the server.
    - You can whitelist users who have permissions to remote access the server.
 
-```text:/etc/ssh/sshd_config
+```ssh-config:/etc/ssh/sshd_config
 Port 222
 AllowUsers cody
 PermitRootLogin no
