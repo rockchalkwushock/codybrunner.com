@@ -1,10 +1,13 @@
 ---
 ---
-<!-- Will inherit <html/> structure from <BaseLayout /> -->
 
-<header class="">
-  <slot name="header" />
-</header>
-<article class="prose-xl prose prose-invert max-w-none lg:prose-2xl">
-  <slot name="content" />
+<!-- Will inherit <html/> structure from <BaseLayout /> -->
+<section class=''>
+	<slot name='header' />
+</section>
+<article class='prose-xl prose prose-invert max-w-none'>
+	<slot name='content' />
 </article>
+<section class=''>
+	<slot name='related-posts' />
+</section>
