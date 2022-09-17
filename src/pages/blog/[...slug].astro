@@ -1,13 +1,45 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro'
-const { slug } = Astro.params
+import PostLayout from '@layouts/PostLayout.astro'
+import type { Frontmatter, Post } from '@interfaces/post'
+import { getRelatedPosts, parseRawPost } from '@utils/post-helpers'
+import Posts from '@components/Posts.astro'
+
+export interface Props {
+	post: Post
+}
+
+export async function getStaticPaths() {
+	const posts = await Astro.glob<Frontmatter>('../../data/posts/**/*.mdx')
+
+	return posts.map(raw => {
+		const post = parseRawPost(raw)
+		return {
+			params: { slug: post.frontmatter.slug },
+			props: {
+				post: {
+					...post,
+					frontmatter: {
+						...post.frontmatter,
+						relatedPosts: getRelatedPosts(post, posts),
+					},
+				},
+			},
+		}
+	})
+}
+
+const { Content, frontmatter: post } = Astro.props.post
 ---
 
-<BaseLayout
-	description={`// TODO: Add post description dynamically.`}
-	title={`// TODO: Add post title dynamically.`}
->
+<BaseLayout description={post.description} title={post.title}>
 	<main class='flex-1 space-y-6 px-6 lg:px-0' slot='main'>
-		<h1>Post Page: {slug}</h1>
+		<PostLayout>
+			<Fragment slot='header'>
+				<h1>{post.title}</h1>
+			</Fragment>
+			<Content slot='content' />
+			<Posts posts={post.relatedPosts} slot='related-posts' />
+		</PostLayout>
 	</main>
 </BaseLayout>
