@@ -26,6 +26,7 @@
 	},
 	"dependencies": {
 		"@astrojs/mdx": "0.11.1",
+		"@astrojs/rss": "~1.0.1",
 		"@astrojs/tailwind": "1.0.0",
 		"@fontsource/quicksand": "~4.5.10",
 		"astro": "1.2.1",
@@ -33,6 +34,7 @@
 	},
 	"devDependencies": {
 		"@evilmartians/lefthook": "1.1.1",
+		"@savvywombat/tailwindcss-grid-areas": "~2.1.0",
 		"@tailwindcss/typography": "~0.5.7",
 		"@typescript-eslint/eslint-plugin": "5.36.2",
 		"@typescript-eslint/parser": "5.36.2",
