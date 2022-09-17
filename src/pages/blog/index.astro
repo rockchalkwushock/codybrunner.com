@@ -1,12 +1,31 @@
 ---
+import type { Frontmatter } from '@interfaces/post'
 import BaseLayout from '@layouts/BaseLayout.astro'
+import {
+	byDate,
+	filterPosts,
+	parseRawPost,
+	sortPosts,
+} from '@utils/post-helpers'
+import Posts from '@components/Posts.astro'
+
+const rawPosts = await Astro.glob<Frontmatter>('../../data/posts/**/*.mdx')
+
+let posts = sortPosts(
+	rawPosts.map(raw => parseRawPost(raw)),
+	byDate
+)
+
+// When building for production remove all posts
+// still in "draft" status
+if (import.meta.env.PROD) {
+	posts = filterPosts(posts, ({ frontmatter }) => !frontmatter.draft)
+}
 ---
 
-<BaseLayout
-	description='My personal and technology blog.'
-	title='Blog'
->
+<BaseLayout description='My personal and technology blog.' title='Blog'>
 	<main class='flex-1 space-y-6 px-6 lg:px-0' slot='main'>
 		<h1>Blog Index Page</h1>
+		<Posts posts={posts} />
 	</main>
 </BaseLayout>
