@@ -1,0 +1,61 @@
+---
+import type { Post } from '@interfaces/post'
+import { formatDateTime } from '@utils/post-helpers'
+import Link from './Link.astro'
+import Tags from './Tags.astro'
+
+export interface Props {
+	posts: Array<Post>
+}
+
+const { posts } = Astro.props
+---
+
+<ul
+	class='grid grid-cols-1 place-items-center justify-items-stretch gap-8 sm:grid-cols-2 lg:grid-cols-3'
+>
+	{
+		posts.map(({ frontmatter: post }) => (
+			<li class='post-item h-full'>
+				<div class='post-card h-full'>
+					<span class={post.draft ? 'draft-badge' : 'hidden'}>Draft</span>
+					<div class='flex h-full flex-col justify-between space-y-2'>
+						<div class='flex items-center'>
+							<div class='space-y-2'>
+								<Link
+									class='z-10 lg:decoration-aura-purple-fading lg:hover:underline'
+									href={`/blog/${post.slug}`}
+									label={`Link to ${post.title} blog post.`}
+								>
+									<h1 class='text-left text-2xl font-bold text-aura-white'>
+										{post.title}
+									</h1>
+								</Link>
+								<dl>
+									<dt class='sr-only'>Published on</dt>
+									<dd class='text-base font-medium leading-6 text-aura-white'>
+										<time>
+											{formatDateTime(
+												post.modifiedAt || post.publishedAt || post.createdAt,
+												'date-medium'
+											)}
+										</time>
+									</dd>
+								</dl>
+								<p class='text-lg tracking-tight text-aura-white'>
+									{post.description}
+								</p>
+							</div>
+						</div>
+						<div class='flex items-center justify-between'>
+							<div class='relative h-12 w-12 shrink-0 rounded-full border border-aura-green bg-aura-white'>
+								<img alt='' class='absolute rounded-full' src='' />
+							</div>
+							<Tags tags={post.tags} />
+						</div>
+					</div>
+				</div>
+			</li>
+		))
+	}
+</ul>
