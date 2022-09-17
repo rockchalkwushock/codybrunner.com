@@ -29,7 +29,12 @@ const year = new Date().getFullYear()
 		<slot name='main' />
 		<Nav />
 		<footer class='flex w-full items-center justify-center px-6 lg:px-0'>
-			<Link class='text-center font-medium lg:hover:text-aura-red' href="https://github.com/rockchalkwushock/codybrunner.com" isExternal label="Link to codybrunner.com source code on GitHub.">
+			<Link
+				class='text-center font-medium lg:hover:text-aura-red'
+				href='https://github.com/rockchalkwushock/codybrunner.com'
+				isExternal
+				label='Link to codybrunner.com source code on GitHub.'
+			>
 				All Content © {year}
 			</Link>
 		</footer>
