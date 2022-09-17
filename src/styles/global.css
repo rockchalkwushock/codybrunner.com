@@ -6,3 +6,58 @@ html,
 body {
 	scroll-behavior: smooth;
 }
+
+@layer components {
+	.draft-badge {
+		@apply w-min absolute -right-2 md:-right-4 md:-top-4 -top-2 py-1 px-4 h-min text-white font-bold shadow-lg rounded-full bg-red;
+	}
+	.post-card {
+		@apply relative p-4 transition duration-300 ease-in-out rounded-md outline-none cursor-pointer lg:hover:bg-aura-purple;
+	}
+	.post-item {
+		@apply rounded-md shadow-md w-full bg-aura-purple-fading shadow-aura-gray hover:shadow-none;
+	}
+}
+
+.dracula-theme {
+	background-color: #282a36;
+	color: #f8f8f2;
+}
+
+/* @tailwindcss/typography */
+.prose {
+	kbd {
+		@apply border-2 border-aura-purple px-1.5 py-0.5 rounded-md text-base;
+	}
+	.contains-task-list {
+		@apply list-none pl-0 md:pl-4;
+		.task-list-item {
+			@apply leading-6 tracking-wide text-left pl-0;
+			&::before {
+				content: none; /* removes the dot */
+			}
+			*:first-child,
+			*:last-child {
+				@apply my-0.5;
+			}
+			input[type='checkbox'] {
+				@apply shrink-0 appearance-none border border-aura-purple h-4 w-4 rounded-full my-0 mr-1 checked:bg-aura-purple;
+			}
+			ul > li {
+				@apply text-base md:text-lg tracking-wide;
+				&::marker {
+					content: '-';
+					@apply text-aura-blue;
+				}
+			}
+		}
+	}
+
+	.remark-code-title:defined {
+		@apply border-b border-aura-purple break-words leading-7 dracula-theme px-6 py-2 rounded-tl-lg rounded-tr-lg text-lg;
+	}
+
+	.remark-code-title + pre {
+		@apply mt-0 dracula-theme rounded-bl-lg rounded-br-lg rounded-tl-none rounded-tr-none;
+	}
+}

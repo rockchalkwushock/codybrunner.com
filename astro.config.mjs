@@ -6,7 +6,7 @@ import tailwind from '@astrojs/tailwind'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
 import rehypeExternalLinks from 'rehype-external-links'
 import rehypeSlug from 'rehype-slug'
-import remarkNormalizeHeadings from 'remark-normalize-headings'
+import remarkCodeTitles from 'remark-code-titles'
 import remarkValidateLinks from 'remark-validate-links'
 // User-Rolled Plugins
 import { remarkReadingTime } from './src/utils/remark-reading-time'
@@ -15,13 +15,13 @@ import { remarkReadingTime } from './src/utils/remark-reading-time'
 export default defineConfig({
 	integrations: [mdx(), tailwind({ config: { applyBaseStyles: false } })],
 	markdown: {
-		rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeExternalLinks],
-		remarkPlugins: [
-			remarkNormalizeHeadings,
-			remarkReadingTime,
-			remarkValidateLinks,
-		],
 		extendDefaultPlugins: true,
+		rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, rehypeExternalLinks],
+		remarkPlugins: [remarkCodeTitles, remarkReadingTime, remarkValidateLinks],
+		shikiConfig: {
+			theme: 'dracula',
+			wrap: true,
+		},
 	},
 	site: 'https://codybrunner.com',
 	vite: {

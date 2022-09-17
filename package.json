@@ -29,8 +29,7 @@
 		"@astrojs/tailwind": "1.0.0",
 		"@fontsource/quicksand": "~4.5.10",
 		"astro": "1.2.1",
-		"astro-icon": "0.7.3",
-		"mdx-embed": "~1.0.0"
+		"astro-icon": "0.7.3"
 	},
 	"devDependencies": {
 		"@evilmartians/lefthook": "1.1.1",
@@ -52,7 +51,7 @@
 		"rehype-autolink-headings": "~6.1.1",
 		"rehype-external-links": "~2.0.1",
 		"rehype-slug": "~5.0.1",
-		"remark-normalize-headings": "~3.0.1",
+		"remark-code-titles": "~0.1.2",
 		"remark-validate-links": "~12.1.0",
 		"tailwind-merge": "1.6.0",
 		"ts-prune": "0.10.3"
