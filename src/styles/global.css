@@ -12,10 +12,10 @@ body {
 		@apply w-min absolute -right-2 md:-right-4 md:-top-4 -top-2 py-1 px-4 h-min text-white font-bold shadow-lg rounded-full bg-red;
 	}
 	.post-card {
-		@apply relative p-4 transition duration-300 ease-in-out rounded-md outline-none cursor-pointer lg:hover:bg-aura-purple;
+		@apply relative p-4 h-full transition duration-300 ease-in-out rounded-lg outline-none cursor-pointer lg:hover:bg-aura-purple-fading/100;
 	}
 	.post-item {
-		@apply rounded-md shadow-md w-full bg-aura-purple-fading shadow-aura-gray hover:shadow-none;
+		@apply rounded-lg h-full shadow-md w-full bg-aura-purple-fading shadow-aura-gray hover:shadow-none;
 	}
 }
 
