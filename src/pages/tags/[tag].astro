@@ -1,13 +1,49 @@
 ---
+import Posts from '@components/Posts.astro'
+import Tags from '@components/Tags.astro'
+import type { Frontmatter, Post, Tag } from '@interfaces/post'
 import BaseLayout from '@layouts/BaseLayout.astro'
+import {
+	fetchAndBuildPosts,
+	getPostsByTaxonomy,
+	getTags,
+} from '@utils/post-helpers'
+
+export interface Props {
+	posts: Array<Post>
+	tags: Array<Tag>
+}
+
+export async function getStaticPaths() {
+	const rawPosts = await Astro.glob<Frontmatter>('../../data/posts/**/*.mdx')
+
+	const posts = fetchAndBuildPosts(rawPosts)
+
+	const tags = getTags(posts)
+
+	return tags.map(tag => ({
+		// This is for tags like ci/cd
+		// Without this the router will thing  that is a nested
+		// route and not a /[param]/
+		params: { tag: tag.replace('/', '-') },
+		props: {
+			posts: getPostsByTaxonomy(posts, tag),
+			tags,
+		},
+	}))
+}
+
 const { tag } = Astro.params
+const { posts, tags } = Astro.props
 ---
 
-<BaseLayout
-	description={`All posts with the ${tag}.`}
-	title={tag as string}
->
+<BaseLayout description={`All posts with the ${tag}.`} title={tag as string}>
 	<main class='flex-1 space-y-6 px-6 lg:px-0' slot='main'>
-		<h1>Tag Page: {tag}</h1>
+		<h1 class='text-center text-2xl text-aura-purple'>
+			Posts tagged with: <strong>{tag}</strong>
+		</h1>
+		<Posts posts={posts} />
+		<hr class='border-aura-purple/50' />
+		<Tags tags={tags} />
 	</main>
 </BaseLayout>
