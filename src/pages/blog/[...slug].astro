@@ -57,7 +57,7 @@ const { Content, frontmatter: post } = Astro.props.post
 			{
 				post.previousPost && (
 					<Link
-						class='w-36 rounded-lg border py-2 text-center font-semibold transition-all duration-300 ease-in-out lg:hover:bg-aura-purple lg:hover:text-aura-black'
+						class='w-36 rounded-lg border py-2 text-center font-semibold transition-all duration-300 ease-in-out lg:hover:border-transparent lg:hover:bg-aura-purple lg:hover:text-aura-black'
 						href={`/blog/${post.previousPost}`}
 						label='Link to previous post.'
 					>
@@ -68,7 +68,7 @@ const { Content, frontmatter: post } = Astro.props.post
 			{
 				post.nextPost && (
 					<Link
-						class='w-36 rounded-lg border py-2 text-center font-semibold transition-all duration-300 ease-in-out lg:hover:bg-aura-purple lg:hover:text-aura-black'
+						class='w-36 rounded-lg border py-2 text-center font-semibold transition-all duration-300 ease-in-out lg:hover:border-transparent lg:hover:bg-aura-purple lg:hover:text-aura-black'
 						href={`/blog/${post.nextPost}`}
 						label='Link to next post.'
 					>
@@ -77,14 +77,16 @@ const { Content, frontmatter: post } = Astro.props.post
 				)
 			}
 		</section>
-		<section class='flex flex-col space-y-6'>
-			<h2
-				class='text-center text-3xl font-medium leading-tight text-aura-purple'
-			>
-				Reltated Posts
-			</h2>
-			<Posts forRelatedPosts posts={post.relatedPosts} />
-		</section>
+		{
+			!!post.relatedPosts.length && (
+				<section class='flex flex-col space-y-6'>
+					<h2 class='text-center text-3xl font-medium leading-tight text-aura-purple'>
+						Reltated Posts
+					</h2>
+					<Posts forRelatedPosts posts={post.relatedPosts} />
+				</section>
+			)
+		}
 	</Fragment>
 	<Fragment slot='aside'>
 		<Aside {...post} />

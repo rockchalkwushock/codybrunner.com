@@ -1,5 +1,6 @@
 ---
 import { twMerge } from 'tailwind-merge'
+import { Icon } from 'astro-icon'
 import Link from '@components/Link.astro'
 const year = new Date().getFullYear()
 
@@ -9,18 +10,66 @@ export interface Props {
 
 const { inPostLayout } = Astro.props
 const classNames = twMerge(
-	'flex w-full items-center justify-center px-6 lg:px-0',
+	'flex flex-col space-y-5 w-full items-center justify-center px-6 lg:px-0',
 	inPostLayout && 'grid-in-footer'
 )
 ---
 
 <footer class={classNames}>
+	<div class='rounded-lg bg-aura-purple-fading/100 px-4 py-1'>
+		<p class='flex w-full items-center space-x-3 text-xl'>
+			<span>Built with</span>
+			<Link
+				href='https://astro.build/'
+				isExternal
+				label='Link to AstroJS Website.'
+			>
+				<img
+					alt='AstroJS Icon'
+					class='h-10 w-10'
+					src='/assets/icons/astro.svg'
+				/>
+			</Link>,
+			<Link
+				href='https://www.cloudflare.com/'
+				isExternal
+				label='Link to Cloudflare Website.'
+			>
+				<Icon
+					aria-label='Cloudflare Icon'
+					class='h-10 w-10'
+					name='logos:cloudflare'
+				/>
+			</Link>,
+			<Link href='https://mdxjs.com/' isExternal label='Link to MDXjs Website.'>
+				<Icon aria-label='MDXjs Icon' class='h-10 w-10' name='logos:mdx' />
+			</Link>,
+			<Link
+				href='https://tailwindcss.com/'
+				isExternal
+				label='Link to TailwindCSS Website.'
+			>
+				<Icon
+					aria-label='TailwindCSS Icon'
+					class='h-10 w-10'
+					name='logos:tailwindcss-icon'
+				/>
+			</Link>
+		</p>
+	</div>
 	<Link
-		class='text-center font-medium lg:hover:text-aura-red'
+		class='text-center text-xl font-medium lg:hover:text-aura-red'
 		href='https://github.com/rockchalkwushock/codybrunner.com'
 		isExternal
 		label='Link to codybrunner.com source code on GitHub.'
 	>
 		All Content © {year}
+	</Link>
+	<Link
+		href='https://codybrunner.com/rss.xml'
+		isExternal
+		label='Link to codybrunner.com blog RSS Feed.'
+	>
+		<Icon class='h-6 w-6' name='fa-solid:rss' />
 	</Link>
 </footer>

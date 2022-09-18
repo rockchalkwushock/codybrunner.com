@@ -1,13 +1,21 @@
 ---
 import type { Frontmatter } from '@interfaces/post'
-import Link from './Link.astro'
+import Categories from './Categories.astro'
 import Tags from './Tags.astro'
 
 export type Props = Frontmatter
 
 const { pathname } = Astro.url
-const { category, createdAt, modifiedAt, publishedAt, readingTime, tags } =
-	Astro.props
+const isNotAboutPage = !pathname.includes('/about')
+const {
+	assetPath,
+	category,
+	createdAt,
+	modifiedAt,
+	publishedAt,
+	readingTime,
+	tags,
+} = Astro.props
 ---
 
 <div
@@ -16,10 +24,14 @@ const { category, createdAt, modifiedAt, publishedAt, readingTime, tags } =
 	<div
 		class='relative h-24 w-24 overflow-hidden rounded-full border border-aura-orange bg-aura-white'
 	>
-		<img alt='' class='absolute h-24 w-24 rounded-full' src='' />
+		<img
+			alt={`${assetPath.replace('/assets/icons/', '')} icon`}
+			class='absolute h-24 w-24 rounded-full'
+			src={assetPath}
+		/>
 	</div>
 
-	<div class='flex flex-col space-y-8'>
+	<div class='flex flex-col space-y-4'>
 		<dl class='flex flex-col space-y-1'>
 			<dt class='font-semibold text-aura-purple'>Published on</dt>
 			<dd class='text-base font-medium leading-6'>
@@ -47,22 +59,17 @@ const { category, createdAt, modifiedAt, publishedAt, readingTime, tags } =
 			</dd>
 		</dl>
 		{
-			pathname !== '/about' && (
+			isNotAboutPage && (
 				<dl class='flex flex-col space-y-1'>
 					<dt class='font-semibold text-aura-purple'>Category</dt>
 					<dd class='text-base font-medium leading-6'>
-						<Link
-							href={`/categories/${category}`}
-							label={`Link to ${category} related posts.`}
-						>
-							{category}
-						</Link>
+						<Categories categories={[category]} />
 					</dd>
 				</dl>
 			)
 		}
 		{
-			pathname !== '/about' && (
+			isNotAboutPage && (
 				<dl class='flex flex-col space-y-1'>
 					<dt class='font-semibold text-aura-purple'>Tags</dt>
 					<dd class='text-base font-medium leading-6'>
@@ -71,12 +78,5 @@ const { category, createdAt, modifiedAt, publishedAt, readingTime, tags } =
 				</dl>
 			)
 		}
-		<dl class='flex flex-col space-y-1'>
-			<dt class='font-semibold text-aura-purple'>Share</dt>
-			<dd>
-				{/* TODO: Add Sharing Feature */}
-			</dd>
-		</dl>
 	</div>
-	{/* TODO: Add Table Of Contents */}
 </div>

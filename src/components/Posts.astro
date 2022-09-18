@@ -21,14 +21,14 @@ const { forRelatedPosts, posts } = Astro.props
 >
 	{
 		posts.map(({ frontmatter: post }) => (
-			<li class='post-item h-full'>
-				<div class='post-card h-full'>
+			<li class='post-item'>
+				<div class='post-card'>
 					<span class={post.draft ? 'draft-badge' : 'hidden'}>Draft</span>
 					<div class='flex h-full flex-col justify-between space-y-2'>
 						<div class='flex items-center'>
 							<div class='space-y-2'>
 								<Link
-									class='z-10 lg:decoration-aura-purple-fading lg:hover:underline'
+									class='z-10 lg:decoration-aura-pink lg:hover:underline'
 									href={`/blog/${post.slug}`}
 									label={`Link to ${post.title} blog post.`}
 								>
@@ -52,9 +52,13 @@ const { forRelatedPosts, posts } = Astro.props
 								</p>
 							</div>
 						</div>
-						<div class='flex items-center justify-between'>
-							<div class='relative h-12 w-12 shrink-0 rounded-full border border-aura-green bg-aura-white'>
-								<img alt='' class='absolute rounded-full' src='' />
+						<div class='flex items-center justify-between space-x-3'>
+							<div class='relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-aura-green bg-aura-white'>
+								<img
+									alt={`${post.assetPath.replace('/assets/icons/', '')} icon`}
+									class='absolute h-12 w-12 overflow-hidden rounded-full'
+									src={post.assetPath}
+								/>
 							</div>
 							<Tags tags={post.tags} />
 						</div>
