@@ -68,6 +68,7 @@ export type Tag = TagTuple[number]
 
 export interface Frontmatter {
 	author: string
+	assetPath: string
 	category: Category
 	coverImage?: string
 	createdAt: string
