@@ -48,17 +48,24 @@ const navigation: Array<NavItemProps> = [
 		to: '/portfolio',
 	},
 	{
+		iconLabel: 'Tools Icon.',
+		iconName: 'uses',
+		linkLabel: 'Link to Uses Page.',
+		to: '/uses',
+	},
+	{
+		iconLabel: 'Resume Icon.',
+		iconName: 'cv',
+		isExternal: true,
+		linkLabel: "Link to Cody Brunner's Resume.",
+		to: '/resume.pdf',
+	},
+	{
 		iconLabel: 'Calendar Icon.',
 		iconName: 'schedule',
 		isExternal: true,
 		linkLabel: "Link to Cody Brunner's Appointlet Booking Page.",
 		to: 'https://appt.link/cody-brunner-dev/video-call/',
-	},
-	{
-		iconLabel: 'Tools Icon.',
-		iconName: 'uses',
-		linkLabel: 'Link to Uses Page.',
-		to: '/uses',
 	},
 	{
 		iconLabel: 'GitHub Icon.',
@@ -109,8 +116,8 @@ const UL_BASE_STYLES = [
 ]
 
 const { inPostLayout } = Astro.props
-const firstLinks = navigation.slice(0, 7)
-const socialLinks = navigation.slice(7)
+const firstLinks = navigation.slice(0, 8)
+const socialLinks = navigation.slice(8)
 const navClassNames = twMerge(NAV_BASE_STYLES, inPostLayout && 'grid-in-nav')
 const ulClassNames = twMerge(UL_BASE_STYLES)
 ---
