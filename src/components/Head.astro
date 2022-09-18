@@ -1,12 +1,17 @@
 ---
 import type { Post } from '@interfaces/post'
 import '@styles/global.css'
-import '@fontsource/quicksand'
+// https://fontsource.org/docs/variable-fonts
+import '@fontsource/quicksand/300.css'
+import '@fontsource/quicksand/400.css'
+import '@fontsource/quicksand/500.css'
+import '@fontsource/quicksand/600.css'
+import '@fontsource/quicksand/700.css'
 
 export interface Props {
-  description?: string
-  post?: Post,
-  title?: string
+	description?: string
+	post?: Post
+	title?: string
 }
 
 const { description, title } = Astro.props
@@ -18,31 +23,56 @@ const siteTitle = `${title} | codybrunner.com`
 <meta name='viewport' content='width=device-width,initial-scale=1' />
 <link rel='icon' type='image/svg+xml' href='/favicons/favicon.ico' />
 <meta name='generator' content={Astro.generator} />
+<meta name='robots' content='follow, index' />
+<link rel='canonical' href={Astro.url} />
 
 <!-- Primary Meta Tags -->
-<meta name='author' content="Cody Brunner" />
+<meta name='author' content='Cody Brunner' />
 <meta name='description' content={description} />
 <meta name='title' content={siteTitle} />
 <title>{siteTitle}</title>
 
 <!-- Open Graph / Facebook -->
 <meta property='og:description' content={description} />
-<meta property='og:image' content={new URL("", Astro.url)} />
-<meta property='og:image:alt' content="" />
+<meta property='og:image' content={new URL('/favicons/logo.jpg', Astro.url)} />
+<meta property='og:image:alt' content='' />
 <meta property='og:image:height' content='800' />
-<meta property='og:locale' content="en" />
+<meta property='og:locale' content='en_US' />
 <meta property='og:image:type' content='image/jpg' />
 <meta property='og:image:width' content='600' />
-<meta property='og:site_name' content="Cody Brunner" />
+<meta property='og:site_name' content='Cody Brunner' />
 <meta property='og:title' content={siteTitle} />
 <meta property='og:type' content='website' />
 <meta property='og:url' content={Astro.url} />
 
 <!-- Twitter -->
 <meta property='twitter:card' content='summary_large_image' />
-<meta property='twitter:creator' content="@RockChalkDev" />
+<meta property='twitter:creator' content='@RockChalkDev' />
 <meta property='twitter:description' content={description} />
-<meta property='twitter:image' content={new URL("", Astro.url)} />
-<meta property='twitter:site' content="@RockChalkDev" />
+<meta
+	property='twitter:image'
+	content={new URL('/favicons/logo.jpg', Astro.url)}
+/>
+<meta property='twitter:site' content='@RockChalkDev' />
 <meta property='twitter:title' content={siteTitle} />
 <meta property='twitter:url' content={Astro.url} />
+
+<!-- Favicons -->
+<link
+	rel='apple-touch-icon'
+	sizes='180x180'
+	href='/favicons/apple-touch-icon.png'
+/>
+<link
+	rel='icon'
+	type='image/png'
+	sizes='32x32'
+	href='/favicons/favicon-32x32.png'
+/>
+<link
+	rel='icon'
+	type='image/png'
+	sizes='16x16'
+	href='/favicons/favicon-16x16.png'
+/>
+<link href='/favicons/site.webmanifest' rel='manifest' />

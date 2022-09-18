@@ -38,6 +38,12 @@ export function formatDateTime(
 	return new Intl.DateTimeFormat(locale, options).format(date)
 }
 
+export function parsePostSlug(url?: string) {
+	return url
+		?.replace(/(src\/data\/)|(?:posts\/)/g, '')
+		.replace('.mdx', '') as string
+}
+
 /**
  * @name parseRawPost/1
  * @desc Util function for parsing post to desired interface.
@@ -45,9 +51,7 @@ export function formatDateTime(
  * @returns post {Post}
  */
 export function parseRawPost(post: Post): Post {
-	const slug = post.url
-		?.replace('src/data/posts/', '')
-		.replace('.mdx', '') as string
+	const slug = parsePostSlug(post.url) as string
 
 	return {
 		...post,

@@ -12,11 +12,11 @@ const post = parseRawPost(rawPost)
 const { Content, frontmatter } = post
 ---
 
-<PostLayout>
+<PostLayout post={post}>
 	<Fragment slot='header'>
 		<PostHeader {...frontmatter} />
 	</Fragment>
-	<Fragment slot="main">
+	<Fragment slot='main'>
 		<article class='prose-xl prose prose-invert max-w-none'>
 			<Content />
 		</article>

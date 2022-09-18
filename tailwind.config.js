@@ -108,16 +108,16 @@ module.exports = {
 							color: aura.blue,
 							fontWeight: theme('fontWeight.medium'),
 						},
-						'h1 a': {
+						h1: {
 							color: aura.orange,
 						},
-						'h2 a': {
+						h2: {
 							color: aura.purple,
 						},
-						'h3 a': {
+						h3: {
 							color: aura.purple,
 						},
-						'h4 a': {
+						h4: {
 							color: aura.pink,
 						},
 						img: {

@@ -33,32 +33,32 @@ export async function getStaticPaths() {
 	})
 }
 
-const { Content, frontmatter: post } = Astro.props.post
+const { post } = Astro.props
 ---
 
-<PostLayout>
+<PostLayout post={post}>
 	<Fragment slot='header'>
-		<PostHeader {...post} />
+		<PostHeader {...post.frontmatter} />
 	</Fragment>
 	<Fragment slot='main'>
 		<article class='prose-xl prose prose-invert max-w-none'>
-			<Content />
+			<post.Content />
 		</article>
 		<section
 			class={twMerge(
 				'flex items-center w-full md:max-w-lg md:mx-auto',
-				post.previousPost && post.nextPost
+				post.frontmatter.previousPost && post.frontmatter.nextPost
 					? 'justify-between'
-					: post.nextPost
+					: post.frontmatter.nextPost
 					? 'justify-end'
 					: 'justify-start'
 			)}
 		>
 			{
-				post.previousPost && (
+				post.frontmatter.previousPost && (
 					<Link
 						class='w-36 rounded-lg border py-2 text-center font-semibold transition-all duration-300 ease-in-out lg:hover:border-transparent lg:hover:bg-aura-purple lg:hover:text-aura-black'
-						href={`/blog/${post.previousPost}`}
+						href={`/blog/${post.frontmatter.previousPost}`}
 						label='Link to previous post.'
 					>
 						Previous
@@ -66,10 +66,10 @@ const { Content, frontmatter: post } = Astro.props.post
 				)
 			}
 			{
-				post.nextPost && (
+				post.frontmatter.nextPost && (
 					<Link
 						class='w-36 rounded-lg border py-2 text-center font-semibold transition-all duration-300 ease-in-out lg:hover:border-transparent lg:hover:bg-aura-purple lg:hover:text-aura-black'
-						href={`/blog/${post.nextPost}`}
+						href={`/blog/${post.frontmatter.nextPost}`}
 						label='Link to next post.'
 					>
 						Next
@@ -78,17 +78,17 @@ const { Content, frontmatter: post } = Astro.props.post
 			}
 		</section>
 		{
-			!!post.relatedPosts.length && (
+			!!post.frontmatter.relatedPosts.length && (
 				<section class='flex flex-col space-y-6'>
 					<h2 class='text-center text-3xl font-medium leading-tight text-aura-purple'>
 						Reltated Posts
 					</h2>
-					<Posts forRelatedPosts posts={post.relatedPosts} />
+					<Posts forRelatedPosts posts={post.frontmatter.relatedPosts} />
 				</section>
 			)
 		}
 	</Fragment>
 	<Fragment slot='aside'>
-		<Aside {...post} />
+		<Aside {...post.frontmatter} />
 	</Fragment>
 </PostLayout>
