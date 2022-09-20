@@ -20,6 +20,9 @@ module.exports = {
 	content: ['./src/**/*.{astro,html,js,md,mdx,ts,tsx}'],
 	theme: {
 		extend: {
+			animation: {
+				move: 'move 8s linear infinite',
+			},
 			colors: {
 				aura: { ...aura },
 				black,
@@ -29,6 +32,9 @@ module.exports = {
 				transparent: 'transparent',
 				white,
 				yellow: yellow['500'],
+			},
+			fill: {
+				spotify: 'rgba(30, 215, 96, 1)',
 			},
 			fontFamily: {
 				...fontFamily,
@@ -62,6 +68,9 @@ module.exports = {
 			gridTemplateRows: {
 				mobile: '1fr',
 				desktop: 'auto 1fr auto',
+			},
+			keyframes: {
+				move: { to: { transform: 'translateX(-100%)' } },
 			},
 			typography: ({ theme }) => ({
 				DEFAULT: {

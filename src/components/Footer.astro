@@ -2,6 +2,7 @@
 import { twMerge } from 'tailwind-merge'
 import { Icon } from 'astro-icon'
 import Link from '@components/Link.astro'
+import SpotifyNowPlaying from './SpotifyNowPlaying.astro'
 const year = new Date().getFullYear()
 
 export interface Props {
@@ -16,6 +17,7 @@ const classNames = twMerge(
 ---
 
 <footer class={classNames}>
+	<SpotifyNowPlaying />
 	<div class='rounded-lg bg-aura-purple-fading/100 px-4 py-1'>
 		<p class='flex w-full items-center space-x-3 text-xl'>
 			<span>Built with</span>
@@ -57,19 +59,22 @@ const classNames = twMerge(
 			</Link>
 		</p>
 	</div>
-	<Link
-		class='text-center text-xl font-medium lg:hover:text-aura-red'
-		href='https://github.com/rockchalkwushock/codybrunner.com'
-		isExternal
-		label='Link to codybrunner.com source code on GitHub.'
-	>
-		All Content © {year}
-	</Link>
-	<Link
-		href='https://codybrunner.com/rss.xml'
-		isExternal
-		label='Link to codybrunner.com blog RSS Feed.'
-	>
-		<Icon class='h-6 w-6' name='fa-solid:rss' />
-	</Link>
+	<div class='flex items-center space-x-3'>
+		<Link
+			class='text-center text-xl font-medium lg:hover:text-aura-red'
+			href='https://github.com/rockchalkwushock/codybrunner.com'
+			isExternal
+			label='Link to codybrunner.com source code on GitHub.'
+		>
+			All Content © {year}
+		</Link>
+		<Link
+			class='lg:hover:text-aura-red'
+			href='https://codybrunner.com/rss.xml'
+			isExternal
+			label='Link to codybrunner.com blog RSS Feed.'
+		>
+			<Icon class='h-5 w-5' name='fa-solid:rss' />
+		</Link>
+	</div>
 </footer>
