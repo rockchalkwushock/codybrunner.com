@@ -20,7 +20,6 @@
 		"dev": "astro dev",
 		"format": "prettier --cache --ignore-unknown --write ./src/**/*.{astro,css,ts}",
 		"lint": "eslint --cache --ext .astro src/",
-		"preinstall": "npx only-allow pnpm",
 		"preview": "astro preview",
 		"start": "astro dev",
 		"type-check": "astro check"
