@@ -1,0 +1,48 @@
+---
+import { Icon } from 'astro-icon'
+// Components
+import Link from "@components/Link.astro";
+// Assets
+import astroIcon from "@assets/icons/astro.svg";
+import mdxIcon from "@assets/icons/mdx.svg";
+import tailwindcssIcon from "@assets/icons/tailwindcss.svg";
+
+const year = new Date().getFullYear()
+---
+
+<footer class="flex flex-col flex-shrink-0 h-60 items-center justify-center py-4 space-y-4 w-full lg:flex-row-reverse lg:justify-between lg:space-y-0 lg:h-full">
+  <p class="bg-aura-purple-fading flex items-center px-4 py-2 rounded-3xl shadow-lg space-x-3">
+    <span class="text-white font-medium">Built with</span>
+    <Link
+      href="https://astro.build"
+      isExternal
+      label={`Built with ${Astro.generator}`}
+    >
+      <img alt="AstroJS Icon" class="h-6" src={astroIcon} />
+    </Link>
+    <Link
+      href="https://mdxjs.com"
+      isExternal
+      label="Built with MDXJS"
+    >
+      <img alt="MDXJS Icon" class="h-5" src={mdxIcon} />
+    </Link>
+    <Link
+      href="https://tailwindcss.com"
+      isExternal
+      label="Built with TailwindCSS"
+    >
+      <img alt="TailwindCSS Icon" class="h-5" src={tailwindcssIcon} />
+    </Link>
+  </p>
+  <Link
+    class="duration-200 ease-in-out flex items-center space-x-1 transform transition-all hover:font-bold hover:scale-105 hover:text-aura-orange"
+    href="http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1"
+    isExternal
+    label="Link to Creative Commons License"
+  >
+    <span>All Content</span>
+    <Icon class="h-4 w-4" name="mdi:copyright" />
+    <span>{year}</span>
+  </Link>
+</footer>

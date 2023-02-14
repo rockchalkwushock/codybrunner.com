@@ -1,7 +1,7 @@
 {
   "name": "codybrunner.com",
-  "version": "0.13.0",
-  "description": "My personal website and blog",
+  "version": "1.0.0",
+  "description": "My stretch of pipe in the world wide inter-tubes.",
   "author": {
     "email": "me@codybrunner.com",
     "name": "Cody Brunner",
@@ -18,17 +18,38 @@
     "astro": "astro",
     "build": "astro build",
     "dev": "astro dev",
-    "format": "prettier --write",
-    "lint": "next lint --cache --fix",
+    "format": "prettier --cache --ignore-unknown --write .",
+    "lint": "eslint --cache --ext .astro src/",
     "preinstall": "npx only-allow pnpm",
     "preview": "astro preview",
     "start": "astro dev",
-    "type-check": "tsc --noEmit"
+    "type-check": "astro check"
   },
   "dependencies": {
-    "astro": "2.0.10",
+    "@astrojs/image": "0.14.1",
     "@astrojs/mdx": "0.16.0",
     "@astrojs/rss": "2.1.0",
-    "@astrojs/sitemap": "1.0.1"
+    "@astrojs/sitemap": "1.0.1",
+    "@fontsource/inter": "4.5.15",
+    "astro": "2.0.10",
+    "astro-icon": "0.8.0",
+    "sharp": "0.31.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "~5.52.0",
+    "autoprefixer": "~10.4.13",
+    "eslint": "~8.34.0",
+    "eslint-config-standard-with-typescript": "~34.0.0",
+    "eslint-plugin-import": "~2.27.5",
+    "eslint-plugin-mdx": "~2.0.5",
+    "eslint-plugin-n": "~15.6.1",
+    "eslint-plugin-prettier": "~4.2.1",
+    "eslint-plugin-promise": "~6.1.1",
+    "eslint-plugin-tailwindcss": "~3.8.3",
+    "postcss": "~8.4.21",
+    "prettier": "~2.8.4",
+    "tailwind-merge": "~1.9.1",
+    "tailwindcss": "~3.2.6",
+    "typescript": "~4.9.5"
   }
 }
