@@ -1,0 +1,13 @@
+# EXAMPLE USAGE
+# Refer for explanation to following link:
+# https://github.com/evilmartians/lefthook/blob/master/docs/full_guide.md
+#
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "./src/**/*.{astro,ts,tsx}"
+      run: pnpm run lint {staged_files}
+    format:
+      glob: "./src/**/*.{astro,json,md,mdx,ts,tsx,yaml,yml}"
+      run: pnpm run format {staged_files}

@@ -5,6 +5,7 @@ specifiers:
   '@astrojs/mdx': 0.16.0
   '@astrojs/rss': 2.1.0
   '@astrojs/sitemap': 1.0.1
+  '@evilmartians/lefthook': ~1.2.9
   '@fontsource/inter': 4.5.15
   '@typescript-eslint/eslint-plugin': ~5.52.0
   '@typescript-eslint/parser': ~5.52.0
@@ -41,6 +42,7 @@ dependencies:
   sharp: 0.31.3
 
 devDependencies:
+  '@evilmartians/lefthook': 1.2.9
   '@typescript-eslint/eslint-plugin': 5.52.0_6cfvjsbua5ptj65675bqcn6oza
   '@typescript-eslint/parser': 5.52.0_7kw3g6rralp5ps6mg3uyzz6azm
   autoprefixer: 10.4.13_postcss@8.4.21
@@ -676,6 +678,14 @@ packages:
       strip-json-comments: 3.1.1
     transitivePeerDependencies:
       - supports-color
+    dev: true
+
+  /@evilmartians/lefthook/1.2.9:
+    resolution: {integrity: sha512-Fn5HmnV6WgQUT6tfPUaq+yVUG4LyJU2q4m5D7DmwnXCzFpR3Sp0SOVUtraKKDveZP85D/N2Gdukk3KLLv+jFvg==}
+    cpu: [x64, arm64, ia32]
+    os: [darwin, linux, win32]
+    hasBin: true
+    requiresBuild: true
     dev: true
 
   /@fontsource/inter/4.5.15:
