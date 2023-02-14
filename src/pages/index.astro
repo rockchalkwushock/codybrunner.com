@@ -1,44 +1,60 @@
 ---
-import Head from "@components/Head.astro";
-import Img from "@components/Img.astro";
-import BaseLayout from "@layouts/BaseLayout.astro";
+import Head from '@components/Head.astro'
+import Img from '@components/Img.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
 // Assets
 import me from '../assets/images/cody-brunner.jpg'
 
-const today = new Date();
+const today = new Date()
 
 const CONSTANTS = {
-  age: today.getMonth() > 3 ? today.getFullYear() - 1988 : today.getFullYear() - 1989,
-  location: 'Colombia',
-  yearsOfExperience: today.getFullYear() - 2018,
-};
+	age:
+		today.getMonth() > 3
+			? today.getFullYear() - 1988
+			: today.getFullYear() - 1989,
+	location: 'Colombia',
+	yearsOfExperience: today.getFullYear() - 2018,
+}
 ---
 
 <BaseLayout>
-  <Head slot="metadata" />
-  <main class="flex flex-col flex-1 space-x-16" slot="content">
-    <section class="flex flex-col pt-8 space-y-4 sm:block lg:pt-16">
-      <div class="flex items-center justify-center sm:block sm:float-left sm:mt-6 sm:mr-6">
-        <Img
-          alt="Cody Brunner"
-          aspectRatio="1:1"
-          class="h-80 w-60 rounded-2xl"
-          format="jpg"
-          src={me}
-        />
-      </div>
+	<Head slot='metadata' />
+	<main class='flex flex-1 flex-col space-x-16' slot='content'>
+		<section class='flex flex-col space-y-4 pt-8 sm:block lg:pt-16'>
+			<div
+				class='flex items-center justify-center sm:float-left sm:mt-6 sm:mr-6 sm:block'
+			>
+				<Img
+					alt='Cody Brunner'
+					aspectRatio='1:1'
+					class='h-80 w-60 rounded-2xl'
+					format='jpg'
+					src={me}
+				/>
+			</div>
 
-      <div class="flex flex-col space-y-4 text-justify sm:block">
-        <p>
-          Cody is a {CONSTANTS.age} year old American software developer and US Navy veteran hailing from Kansas. He now lives in {CONSTANTS.location} (the country, not a city in the USA) with his wife and golden boy doggo son.
-        </p>
-        <p>
-          He has {CONSTANTS.yearsOfExperience} years of experience designing, building, shipping, and maintaining production ready SaaS products. His experience ranges markets in scheduling, logistics, automation, and crypto-currency/fin-tech. He primarily works with React and TypeScript but has experience with a variety of other technologies including but not limited too: Elixir, GraphQL, NodeJS, PostgreSQL, Python, and Rust.
-        </p>
-        <p>
-          In his free time his hobbies include reading, running, hiking, playing guitar, weight lifting, Brazilian Jiu-Jitsu, smoking meats & cheeses, tinkering around with IoT devices, walking & playing with his dog, taking his wife out on fancy coffee dates, and enjoying some top shelf whisky while watching his Kansas Jayhawks cut down the nets in April.
-        </p>
-      </div>
-    </section>
-  </main>
+			<div class='flex flex-col space-y-4 text-justify sm:block'>
+				<p>
+					Cody is a {CONSTANTS.age} year old American software developer and US Navy
+					veteran hailing from Kansas. He now lives in {CONSTANTS.location} (the
+					country, not a city in the USA) with his wife and golden boy doggo son.
+				</p>
+				<p>
+					He has {CONSTANTS.yearsOfExperience} years of experience designing, building,
+					shipping, and maintaining production ready SaaS products. His experience
+					ranges markets in scheduling, logistics, automation, and crypto-currency/fin-tech.
+					He primarily works with React and TypeScript but has experience with a
+					variety of other technologies including but not limited too: Elixir, GraphQL,
+					NodeJS, PostgreSQL, Python, and Rust.
+				</p>
+				<p>
+					In his free time his hobbies include reading, running, hiking, playing
+					guitar, weight lifting, Brazilian Jiu-Jitsu, smoking meats & cheeses,
+					tinkering around with IoT devices, walking & playing with his dog,
+					taking his wife out on fancy coffee dates, and enjoying some top shelf
+					whisky while watching his Kansas Jayhawks cut down the nets in April.
+				</p>
+			</div>
+		</section>
+	</main>
 </BaseLayout>

@@ -14,11 +14,7 @@ const classNames = twMerge(
 	cls,
 	// If this is an external link don't apply the
 	// active link styles to the link.
-	isExternal
-		? undefined
-		: isActive
-		? 'text-aura-purple'
-		: 'text-aura-white'
+	isExternal ? undefined : isActive ? 'text-aura-purple' : 'text-aura-white'
 )
 ---
 

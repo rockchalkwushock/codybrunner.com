@@ -40,19 +40,12 @@ export interface Props {
 	to: string
 }
 
-const BASE_STYLES = [
-	'bg-aura-purple-fading',
-	'p-2',
-	'relative',
-	'rounded-xl',
-]
+const BASE_STYLES = ['bg-aura-purple-fading', 'p-2', 'relative', 'rounded-xl']
 
 const { pathname } = Astro.url
 const { iconLabel, iconName, isExternal, linkLabel, to } = Astro.props
 const icon = iconMap[iconName]
-const classNames = twMerge(
-	BASE_STYLES
-)
+const classNames = twMerge(BASE_STYLES)
 ---
 
 <!-- TODO: Add tooltip -->
@@ -63,6 +56,6 @@ const classNames = twMerge(
 		isExternal={!!isExternal}
 		label={linkLabel}
 	>
-		<Icon aria-label={iconLabel} class="h-10 w-10" name={icon} />
+		<Icon aria-label={iconLabel} class='h-10 w-10' name={icon} />
 	</Link>
 </li>

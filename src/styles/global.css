@@ -4,5 +4,5 @@
 
 html,
 body {
-  @apply antialiased bg-aura-black scroll-smooth text-lg text-aura-white;
+	@apply antialiased bg-aura-black scroll-smooth text-lg text-aura-white;
 }
