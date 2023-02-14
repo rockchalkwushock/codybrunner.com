@@ -1,0 +1,20 @@
+---
+// Components
+import Footer from '@components/Footer.astro'
+import Header from '@components/Header.astro'
+import Nav from '@components/Nav.astro'
+---
+
+<html lang='en'>
+	<head>
+		<slot name='metadata' />
+	</head>
+	<body
+		class='relative mx-auto flex min-h-screen max-w-2xl flex-col items-center px-4 sm:px-6 lg:items-start lg:px-8'
+	>
+		<Header />
+		<slot name='content' />
+		<Footer />
+		<Nav />
+	</body>
+</html>

@@ -1,0 +1,77 @@
+---
+import { Icon } from 'astro-icon'
+// Components
+import Img from '@components/Img.astro'
+import Link from '@components/Link.astro'
+---
+
+<header class='hidden w-full shrink-0 py-4 lg:block'>
+	<nav class='flex items-center justify-between'>
+		<div class=''>
+			<Link href='/' label='Go to Home Page.'>
+				<Img
+					alt='Logo'
+					height={40}
+					width={40}
+					src='/favicons/android-chrome-192x192.png'
+				/>
+			</Link>
+		</div>
+		<ul
+			class='flex items-center space-x-3 rounded-3xl bg-aura-purple-fading px-4 py-2 shadow-lg'
+		>
+			<li class='group transition-all duration-200 ease-in-out hover:scale-105'>
+				<Link
+					class='group-hover:font-bold group-hover:text-aura-orange'
+					href='/'
+					label='Go to Home Page.'
+				>
+					Home
+				</Link>
+			</li>
+			<li class='group transition-all duration-200 ease-in-out hover:scale-105'>
+				<Link
+					class="group-hover:font-bold group-hover:text-aura-orange"
+					href='/resume.pdf'
+					isExternal
+					label="Link to Cody Brunner's Resume."
+				>
+					Resume
+				</Link>
+			</li>
+			<li class='group transition-all duration-200 ease-in-out hover:scale-105'>
+				<Link
+					class='group-hover:font-bold group-hover:text-aura-orange'
+					href='https://appt.link/cody-brunner-dev/video-call/'
+					isExternal
+					label="Link to Cody Brunner's Appointlet Booking Page."
+				>
+					Chat
+				</Link>
+			</li>
+			<li class=''>
+				<hr class='h-5 border border-l-white' />
+			</li>
+			<li class='group transition-all duration-200 ease-in-out hover:scale-105'>
+				<Link
+					class='group-hover:font-bold group-hover:text-aura-orange'
+					href='https://github.com/rockchalkwushock'
+					isExternal
+					label="Link to Cody Brunner's GitHub Account."
+				>
+					<Icon alt='GitHub Icon' class='h-6 w-6' name='mdi:github' />
+				</Link>
+			</li>
+			<li class='group transition-all duration-200 ease-in-out hover:scale-105'>
+				<Link
+					class='group-hover:font-bold group-hover:text-aura-orange'
+					href='https://www.linkedin.com/in/cody-brunner'
+					isExternal
+					label="Link to Cody Brunner's LinkedIn Account."
+				>
+					<Icon alt='LinkedIn Icon' class='h-6 w-6' name='mdi:linkedin' />
+				</Link>
+			</li>
+		</ul>
+	</nav>
+</header>
