@@ -1,6 +1,6 @@
 {
 	"name": "codybrunner.com",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "My stretch of pipe in the world wide inter-tubes.",
 	"author": {
 		"email": "me@codybrunner.com",
@@ -13,7 +13,7 @@
 		"node": "18.13.0",
 		"pnpm": "7.27.0"
 	},
-	"packageManager": "pnpm@7.25.1",
+	"packageManager": "pnpm@7.27.0",
 	"scripts": {
 		"astro": "astro",
 		"build": "astro build",
@@ -25,12 +25,12 @@
 		"type-check": "astro check"
 	},
 	"dependencies": {
-		"@astrojs/image": "0.14.1",
-		"@astrojs/mdx": "0.16.0",
+		"@astrojs/image": "0.15.0",
+		"@astrojs/mdx": "0.16.2",
 		"@astrojs/rss": "2.1.0",
 		"@astrojs/sitemap": "1.0.1",
 		"@fontsource/inter": "4.5.15",
-		"astro": "2.0.10",
+		"astro": "2.0.12",
 		"astro-icon": "0.8.0",
 		"sharp": "0.31.3"
 	},
