@@ -1,0 +1,68 @@
+---
+import Head from '@components/Head.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { books } from '@data/books'
+
+const CONSTANTS = {
+	description: 'Recommended books and what I am currently reading.',
+	title: 'Bookshelf',
+}
+---
+
+<BaseLayout>
+	<Head
+		description={CONSTANTS.description}
+		slot='metadata'
+		title={CONSTANTS.title}
+	/>
+	<main class='flex flex-1 flex-col space-y-8 py-8' slot='content'>
+		<section class='flex flex-col space-y-4'>
+			<h1 class='text-2xl font-semibold text-aura-purple underline'>Currently Reading</h1>
+			<ul class='grid grid-cols-1 gap-4'>
+				{
+					books['currently-reading'].map(({ authors, image, title, url }) => (
+						<li class='flex space-x-4'>
+							<img alt={title} class='h-40' src={image} />
+							<div class='flex flex-col space-y-2'>
+								<a
+									aria-label={`Link to Amazon to buy ${title}`}
+									class='font-semibold hover:text-aura-orange'
+									href={url}
+									rel='noopener noreferrer'
+									target='_blank'
+								>
+									{title}
+								</a>
+								<span class='text-aura-gray'>By {authors.join(', ')}</span>
+							</div>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+		<hr class='border-aura-gray' />
+		<section class='flex flex-col space-y-4'>
+			<h1 class='text-2xl font-semibold text-aura-purple underline'>Recommended Reading</h1>
+			<ul class='flex flex-col space-y-3'>
+				{
+					books.recommended.map(({ authors, title, url }) => (
+						<a
+							aria-label={`Link to Amazon to buy ${title}`}
+							class='group flex flex-col items-start justify-between rounded-md px-1 transition-all delay-75 duration-500 ease-in-out md:flex-row lg:hover:bg-gradient-to-r lg:hover:from-aura-purple/70 lg:hover:via-aura-purple/20 lg:hover:to-aura-purple/0'
+							href={url}
+							rel='noopener noreferrer'
+							target='_blank'
+						>
+							<span class='font-semibold lg:group-hover:translate-x-4 lg:group-hover:text-aura-orange'>
+								{title}
+							</span>
+							<span class='text-aura-gray lg:truncate lg:group-hover:text-aura-orange'>
+								By {authors.join(', ')}
+							</span>
+						</a>
+					))
+				}
+			</ul>
+		</section>
+	</main>
+</BaseLayout>
