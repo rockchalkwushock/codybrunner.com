@@ -5,7 +5,7 @@ import type {
 	ImageComponentRemoteImageProps,
 } from '@astrojs/image/components'
 
-export type Props = ImageComponentLocalImageProps | ImageComponentRemoteImageProps
+type Props = ImageComponentLocalImageProps | ImageComponentRemoteImageProps
 
 const { alt, slot, src, ...rest } = Astro.props
 ---

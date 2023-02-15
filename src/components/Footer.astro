@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon'
 // Components
+import Img from './Img.astro'
 import Link from '@components/Link.astro'
 // Assets
 import astroIcon from '@assets/icons/astro.svg'
@@ -11,12 +12,37 @@ const CONSTANTS = {
 	nav: [
 		{ label: 'Link to Home', href: '/', isExternal: false, text: 'Home' },
 		// { label: 'Link to Blog', href: '/blog', isExternal: false, text: 'Blog' },
-		{ label: 'Link to Bookshelf', href: '/bookshelf', isExternal: false, text: 'Bookshelf' },
-		{ label: "Link to Cody Brunner's GitHub", href: 'https://github.com/rockchalkwushock', isExternal: true, text: 'GitHub' },
-		{ label: "Link to Cody Brunner's LinkedIn", href: 'https://www.linkedin.com/in/cody-brunner', isExternal: true, text: 'LinkedIn' },
-		{ label: "Link to Cody Brunner's Appointlet Booking Page", href: 'https://appt.link/cody-brunner-dev/video-call/', isExternal: true, text: 'Meet' },
+		{
+			label: 'Link to Bookshelf',
+			href: '/bookshelf',
+			isExternal: false,
+			text: 'Bookshelf',
+		},
+		{
+			label: "Link to Cody Brunner's GitHub",
+			href: 'https://github.com/rockchalkwushock',
+			isExternal: true,
+			text: 'GitHub',
+		},
+		{
+			label: "Link to Cody Brunner's LinkedIn",
+			href: 'https://www.linkedin.com/in/cody-brunner',
+			isExternal: true,
+			text: 'LinkedIn',
+		},
+		{
+			label: "Link to Cody Brunner's Appointlet Booking Page",
+			href: 'https://appt.link/cody-brunner-dev/video-call/',
+			isExternal: true,
+			text: 'Meet',
+		},
 		// { label: 'Link to Portfolio', href: '/portfolio', isExternal: false, text: 'Portfolio' },
-		{ label: "Link to Cody Brunner's Resume", href: '/resume.pdf', isExternal: true, text: 'Resume' },
+		{
+			label: "Link to Cody Brunner's Resume",
+			href: '/resume.pdf',
+			isExternal: true,
+			text: 'Resume',
+		},
 	],
 	year: new Date().getFullYear(),
 }
@@ -27,13 +53,18 @@ const CONSTANTS = {
 >
 	<div class='hidden flex-1 lg:block'>
 		<ul class='grid grid-cols-2 place-items-start gap-x-1'>
-			{CONSTANTS.nav.map(({ text, ...rest }) => (
-				<li class="group flex w-full rounded-lg bg-gradient-to-r py-1 text-left hover:from-aura-purple-fading/70 hover:via-aura-purple-fading/30 hover:to-aura-purple-fading/0">
-					<Link {...rest} class="flex-1 delay-75 duration-100 ease-in-out group-hover:translate-x-4 group-hover:scale-105 group-hover:font-semibold group-hover:text-aura-orange group-hover:transition-all">
-						{text}
-					</Link>
-				</li>
-			))}
+			{
+				CONSTANTS.nav.map(({ text, ...rest }) => (
+					<li class='group flex w-full rounded-lg bg-gradient-to-r py-1 text-left hover:from-aura-purple-fading/70 hover:via-aura-purple-fading/30 hover:to-aura-purple-fading/0'>
+						<Link
+							{...rest}
+							class='flex-1 delay-75 duration-100 ease-in-out group-hover:translate-x-4 group-hover:scale-105 group-hover:font-semibold group-hover:text-aura-orange group-hover:transition-all'
+						>
+							{text}
+						</Link>
+					</li>
+				))
+			}
 		</ul>
 	</div>
 
@@ -50,29 +81,38 @@ const CONSTANTS = {
 		</Link>
 
 		<p
-		class='flex items-center space-x-3 rounded-3xl bg-aura-purple-fading px-4 py-2 shadow-lg'
+			class='flex items-center space-x-3 rounded-3xl bg-aura-purple-fading px-4 py-2 shadow-lg'
 		>
 			<span class='font-medium text-white'>Built with</span>
 			<Link
-				class="transition-all duration-200 ease-in-out hover:scale-125"
+				class='transition-all duration-200 ease-in-out hover:scale-125'
 				href='https://astro.build'
 				isExternal
 				label={`Built with ${Astro.generator}`}
 			>
-				<img alt='AstroJS Icon' class='h-6' src={astroIcon} />
-			</Link>
-			<Link class="transition-all duration-200 ease-in-out hover:scale-125" href='https://mdxjs.com' isExternal label='Built with MDXJS'>
-				<img alt='MDXJS Icon' class='h-5' src={mdxIcon} />
+				<Img alt='AstroJS Icon' aspectRatio='1:1' height={30} src={astroIcon} />
 			</Link>
 			<Link
-				class="transition-all duration-200 ease-in-out hover:scale-125"
+				class='transition-all duration-200 ease-in-out hover:scale-125'
+				href='https://mdxjs.com'
+				isExternal
+				label='Built with MDXJS'
+			>
+				<Img alt='MDXJS Icon' aspectRatio='1:1' height={30} src={mdxIcon} />
+			</Link>
+			<Link
+				class='transition-all duration-200 ease-in-out hover:scale-125'
 				href='https://tailwindcss.com'
 				isExternal
 				label='Built with TailwindCSS'
 			>
-				<img alt='TailwindCSS Icon' class='h-5' src={tailwindcssIcon} />
+				<Img
+					alt='TailwindCSS Icon'
+					aspectRatio='1:1'
+					height={30}
+					src={tailwindcssIcon}
+				/>
 			</Link>
 		</p>
 	</div>
 </footer>
-
