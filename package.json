@@ -10,10 +10,10 @@
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "18.13.0",
-		"pnpm": "7.27.0"
+		"node": ">=18.x",
+		"pnpm": "7.27.1"
 	},
-	"packageManager": "pnpm@7.27.0",
+	"packageManager": "pnpm@7.27.1",
 	"scripts": {
 		"astro": "astro",
 		"build": "astro build",
