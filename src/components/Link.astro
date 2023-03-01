@@ -1,15 +1,14 @@
 ---
+import type { HTMLAttributes } from 'astro/types'
 import { twMerge } from 'tailwind-merge'
-export interface Props {
-	readonly class?: string
-	readonly href: string
+export interface Props extends HTMLAttributes<'a'> {
 	readonly isActive?: boolean
 	readonly isExternal?: boolean
-	readonly label: string
 }
+
 const BASE_STYLES = ['text-aura-white']
-const { class: cls, href, isActive, isExternal, label } = Astro.props
-const classNames = twMerge(
+const { class: cls, isActive, isExternal, ...rest } = Astro.props
+const styles = twMerge(
 	BASE_STYLES,
 	cls,
 	// If this is an external link don't apply the
@@ -21,16 +20,15 @@ const classNames = twMerge(
 {
 	isExternal ? (
 		<a
-			aria-label={label}
-			class={classNames}
-			href={href}
+			{...rest}
+			class={styles}
 			rel='noopener noreferrer'
 			target='_blank'
 		>
 			<slot />
 		</a>
 	) : (
-		<a aria-label={label} class={classNames} href={href} rel='prefetch'>
+		<a {...rest} class={styles} rel='prefetch'>
 			<slot />
 		</a>
 	)
