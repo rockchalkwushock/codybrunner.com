@@ -2,9 +2,9 @@
 import { Icon } from 'astro-icon'
 import { twMerge } from 'tailwind-merge'
 import Link from './Link.astro'
+import ListItem from './ListItem.astro'
 
 type IconName =
-	| 'about'
 	| 'blog'
 	| 'bookShelf'
 	| 'cv'
@@ -18,7 +18,6 @@ type IconName =
 	| 'uses'
 
 const iconMap: Record<IconName, string> = {
-	about: 'mdi:about',
 	blog: 'mdi:book-edit',
 	bookShelf: 'mdi:bookshelf',
 	cv: 'mdi:resume',
@@ -33,11 +32,11 @@ const iconMap: Record<IconName, string> = {
 }
 
 export interface Props {
-	iconLabel: string
-	iconName: IconName
-	isExternal?: boolean
-	linkLabel: string
-	to: string
+	readonly iconLabel: string
+	readonly iconName: IconName
+	readonly isExternal?: boolean
+	readonly linkLabel: string
+	readonly to: string
 }
 
 const BASE_STYLES = ['bg-aura-purple-fading', 'p-2', 'relative', 'rounded-xl']
@@ -45,17 +44,16 @@ const BASE_STYLES = ['bg-aura-purple-fading', 'p-2', 'relative', 'rounded-xl']
 const { pathname } = Astro.url
 const { iconLabel, iconName, isExternal, linkLabel, to } = Astro.props
 const icon = iconMap[iconName]
-const classNames = twMerge(BASE_STYLES)
+const styles = twMerge(BASE_STYLES)
 ---
 
-<!-- TODO: Add tooltip -->
-<li class={classNames}>
+<ListItem class={styles}>
 	<Link
+		aria-label={linkLabel}
 		href={to}
 		isActive={pathname === to}
 		isExternal={!!isExternal}
-		label={linkLabel}
 	>
 		<Icon aria-label={iconLabel} class='h-10 w-10' name={icon} />
 	</Link>
-</li>
+</ListItem>
