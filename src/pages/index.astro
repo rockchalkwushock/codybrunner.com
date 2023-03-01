@@ -8,10 +8,6 @@ import me from '../assets/images/cody-brunner.jpg'
 const today = new Date()
 
 const CONSTANTS = {
-	age:
-		today.getMonth() > 3
-			? today.getFullYear() - 1988
-			: today.getFullYear() - 1989,
 	location: 'Colombia',
 	yearsOfExperience: today.getFullYear() - 2018,
 }
@@ -35,7 +31,7 @@ const CONSTANTS = {
 
 			<div class='flex flex-col space-y-4 text-justify sm:block'>
 				<p>
-					Cody is a {CONSTANTS.age} year old American software developer and US Navy
+					Cody is an American software developer and US Navy
 					veteran hailing from Kansas. He now lives in {CONSTANTS.location} (the
 					country, not a city in the USA) with his wife and golden boy doggo son.
 				</p>
