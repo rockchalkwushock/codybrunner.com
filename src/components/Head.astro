@@ -1,10 +1,11 @@
 ---
 import '@styles/global.css'
 import '@fontsource/inter'
+import { routes } from 'routes-and-links'
 
 export interface Props {
-	description?: string
-	title?: string
+	readonly description?: string
+	readonly title?: string
 }
 
 const {
@@ -37,6 +38,9 @@ const siteTitle = `${title} | codybrunner.com`
 
 <!-- Canonical URL -->
 <link rel='canonical' href={canonicalURL} />
+
+<!-- RSS Feed -->
+<link href={routes.rss} rel='alternate' title="RSS Feed | codybrunner.com" type='application/rss+xml' />
 
 <!-- Open Graph / Facebook -->
 <meta property='og:description' content={description} />
@@ -80,3 +84,15 @@ const siteTitle = `${title} | codybrunner.com`
 	href='/favicons/favicon-16x16.png'
 />
 <link href='/favicons/site.webmanifest' rel='manifest' />
+
+<!-- Third Pary Scripts -->
+<!-- TODO: UPDATE TO USE CUSTOM DOMAIN IN FATHOM -->
+<!-- https://usefathom.com/docs/script/custom-domains -->
+<script
+	data-excluded-domains="localhost"
+	data-spa="auto"
+	data-site={import.meta.env.PUBLIC_FATHOM_SITE_ID}
+	defer
+	src="https://cdn.usefathom.com/script.js"
+	type="text/partytown"
+/>
