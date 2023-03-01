@@ -3,6 +3,7 @@ import type { Props as NavItemProps } from './NavItem.astro'
 import { twMerge } from 'tailwind-merge'
 import List from './List.astro'
 import NavItem from './NavItem.astro'
+import { links, routes } from 'routes-and-links'
 
 
 /**
@@ -18,76 +19,76 @@ const navigation: Array<NavItemProps> = [
 		iconLabel: 'Home Icon.',
 		iconName: 'home',
 		linkLabel: 'Link to Home Page.',
-		to: '/',
+		to: routes.home,
 	},
 	// {
 	// 	iconLabel: 'Book Icon.',
 	// 	iconName: 'blog',
 	// 	linkLabel: 'Link to Blog Page.',
-	// 	to: 'https://blog.codybrunner.com',
+	// 	to: routes.blog,
 	// },
 	{
 		iconLabel: 'Books Icon.',
 		iconName: 'bookShelf',
 		linkLabel: 'Link to Book Shelf Page.',
-		to: '/bookshelf',
+		to: routes.bookshelf,
 	},
 	// {
 	// 	iconLabel: 'Git Branch Icon.',
 	// 	iconName: 'portfolio',
 	// 	linkLabel: 'Link to Portfolio Page.',
-	// 	to: '/portfolio',
+	// 	to: routes.portfolio,
 	// },
 	// {
 	// 	iconLabel: 'Tools Icon.',
 	// 	iconName: 'uses',
 	// 	linkLabel: 'Link to Uses Page.',
-	// 	to: '/uses',
+	// 	to: routes.uses,
 	// },
 	{
 		iconLabel: 'Resume Icon.',
 		iconName: 'cv',
 		isExternal: true,
 		linkLabel: "Link to Cody Brunner's Resume.",
-		to: '/resume.pdf',
+		to: routes.resume,
 	},
 	{
 		iconLabel: 'Calendar Icon.',
 		iconName: 'schedule',
 		isExternal: true,
 		linkLabel: "Link to Cody Brunner's Appointlet Booking Page.",
-		to: 'https://appt.link/cody-brunner-dev/video-call/',
+		to: links.meet,
 	},
 	{
 		iconLabel: 'GitHub Icon.',
 		iconName: 'github',
 		isExternal: true,
 		linkLabel: "Link to Cody Brunner's GitHub Account.",
-		to: 'https://github.com/rockchalkwushock',
+		to: links.github,
 	},
 	// {
 	// 	iconLabel: 'Instagram Icon.',
 	// 	iconName: 'instagram',
 	// 	isExternal: true,
 	// 	linkLabel: "Link to Cody Brunner's Instagram Account.",
-	// 	to: 'https://www.instagram.com/rockchalkwushock',
+	// 	to: links.instagram,
 	// },
 	{
 		iconLabel: 'LinkedIn Icon.',
 		iconName: 'linkedIn',
 		isExternal: true,
 		linkLabel: "Link to Cody Brunner's LinkedIn Account.",
-		to: 'https://www.linkedin.com/in/cody-brunner',
+		to: links.linkedin,
 	},
-	// {
-	// 	iconLabel: 'Twitter Icon.',
-	// 	iconName: 'twitter',
-	// 	isExternal: true,
-	// 	linkLabel: "Link to Cody Brunner's Twitter Account.",
-	// 	to: 'https://twitter.com/RockChalkDev',
-	// },
+	{
+		iconLabel: 'Twitter Icon.',
+		iconName: 'twitter',
+		isExternal: true,
+		linkLabel: "Link to Cody Brunner's Twitter Account.",
+		to: links.twitter,
+	},
 ]
-const NAV_BASE_STYLES = ['bottom-0', 'pb-6', 'px-6', 'sticky', 'lg:px-0']
+const NAV_BASE_STYLES = ['bottom-0', 'pb-6', 'sticky']
 const UL_BASE_STYLES = [
 	'bg-black',
 	'flex',

@@ -9,41 +9,48 @@ import ListItem from './ListItem.astro'
 import astroIcon from '@assets/icons/astro.svg'
 import mdxIcon from '@assets/icons/mdx.svg'
 import tailwindcssIcon from '@assets/icons/tailwindcss.svg'
+import { links, routes } from 'routes-and-links'
 
 const CONSTANTS = {
 	nav: [
-		{ label: 'Link to Home', href: '/', isExternal: false, text: 'Home' },
+		{ label: 'Link to Home', href: routes.home, isExternal: false, text: 'Home' },
 		// { label: 'Link to Blog', href: 'https://blog.codybrunner.com', isExternal: false, text: 'Blog' },
 		{
 			label: 'Link to Bookshelf',
-			href: '/bookshelf',
+			href: routes.bookshelf,
 			isExternal: false,
 			text: 'Bookshelf',
 		},
 		{
 			label: "Link to Cody Brunner's GitHub",
-			href: 'https://github.com/rockchalkwushock',
+			href: links.github,
 			isExternal: true,
 			text: 'GitHub',
 		},
 		{
 			label: "Link to Cody Brunner's LinkedIn",
-			href: 'https://www.linkedin.com/in/cody-brunner',
+			href: links.linkedin,
 			isExternal: true,
 			text: 'LinkedIn',
 		},
 		{
 			label: "Link to Cody Brunner's Appointlet Booking Page",
-			href: 'https://appt.link/cody-brunner-dev/video-call/',
+			href: links.meet,
 			isExternal: true,
 			text: 'Meet',
 		},
-		// { label: 'Link to Portfolio', href: '/portfolio', isExternal: false, text: 'Portfolio' },
+		// { label: 'Link to Portfolio', href: routes.portfolio, isExternal: false, text: 'Portfolio' },
 		{
 			label: "Link to Cody Brunner's Resume",
-			href: '/resume.pdf',
+			href: routes.resume,
 			isExternal: true,
 			text: 'Resume',
+		},
+		{
+			label: "Link to Cody Brunner's Twitter",
+			href: links.twitter,
+			isExternal: true,
+			text: 'Twitter',
 		},
 	],
 	year: new Date().getFullYear(),
@@ -74,7 +81,7 @@ const CONSTANTS = {
 		<Link
 			aria-label='Link to Creative Commons License'
 			class='flex items-center space-x-1 transition-all duration-200 ease-in-out hover:scale-105 hover:font-bold hover:text-aura-orange'
-			href='http://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1'
+			href={links.copyright}
 			isExternal
 		>
 			<span>All Content</span>
@@ -85,7 +92,7 @@ const CONSTANTS = {
 		<!-- <Link
 			aria-label='Link to RSS Feed for codybrunner.com'
 			class='flex items-center space-x-1 transition-all duration-200 ease-in-out hover:scale-105 hover:font-bold hover:text-aura-orange'
-			href='/rss.xml'
+			href={routes.rss}
 		>
 			<span>RSS Feed</span>
 			<Icon class='h-5 w-5' name='mdi:rss' />
@@ -98,7 +105,7 @@ const CONSTANTS = {
 			<Link
 				aria-label={`Built with ${Astro.generator}`}
 				class='transition-all duration-200 ease-in-out hover:scale-125'
-				href='https://astro.build'
+				href={links.astro}
 				isExternal
 			>
 				<Img alt='AstroJS Icon' aspectRatio='1:1' height={30} src={astroIcon} />
@@ -106,7 +113,7 @@ const CONSTANTS = {
 			<Link
 				aria-label='Built with MDXJS'
 				class='transition-all duration-200 ease-in-out hover:scale-125'
-				href='https://mdxjs.com'
+				href={links.mdx}
 				isExternal
 			>
 				<Img alt='MDXJS Icon' aspectRatio='1:1' height={30} src={mdxIcon} />
@@ -114,7 +121,7 @@ const CONSTANTS = {
 			<Link
 				aria-label='Built with TailwindCSS'
 				class='transition-all duration-200 ease-in-out hover:scale-125'
-				href='https://tailwindcss.com'
+				href={links.tailwindcss}
 				isExternal
 			>
 				<Img

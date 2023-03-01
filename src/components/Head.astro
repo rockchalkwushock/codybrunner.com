@@ -1,10 +1,11 @@
 ---
 import '@styles/global.css'
 import '@fontsource/inter'
+import { routes } from 'routes-and-links'
 
 export interface Props {
-	description?: string
-	title?: string
+	readonly description?: string
+	readonly title?: string
 }
 
 const {
@@ -37,6 +38,9 @@ const siteTitle = `${title} | codybrunner.com`
 
 <!-- Canonical URL -->
 <link rel='canonical' href={canonicalURL} />
+
+<!-- RSS Feed -->
+<link href={routes.rss} rel='alternate' title="RSS Feed | codybrunner.com" type='application/rss+xml' />
 
 <!-- Open Graph / Facebook -->
 <meta property='og:description' content={description} />
