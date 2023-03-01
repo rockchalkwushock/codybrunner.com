@@ -3,12 +3,14 @@ import { Icon } from 'astro-icon'
 // Components
 import Img from '@components/Img.astro'
 import Link from '@components/Link.astro'
+import List from './List.astro'
+import ListItem from './ListItem.astro'
 ---
 
 <header class='hidden w-full shrink-0 py-4 lg:block'>
 	<nav class='flex items-center justify-between'>
-		<div class=''>
-			<Link href='/' label='Go to Home Page.'>
+		<div>
+			<Link aria-label='Go to Home Page.' href='/'>
 				<Img
 					alt='Logo'
 					height={40}
@@ -17,71 +19,72 @@ import Link from '@components/Link.astro'
 				/>
 			</Link>
 		</div>
-		<ul
+		<List
 			class='flex items-center space-x-3 rounded-3xl bg-aura-purple-fading px-4 py-2 shadow-lg'
+			kind="unordered"
 		>
-			<li
+			<ListItem
 				class='group transition-all duration-200 ease-in-out lg:hover:scale-105'
 			>
 				<Link
+					aria-label='Go to Home Page.'
 					class='group-hover:font-bold group-hover:text-aura-orange'
 					href='/'
-					label='Go to Home Page.'
 				>
 					Home
 				</Link>
-			</li>
-			<li
+			</ListItem>
+			<ListItem
 				class='group transition-all duration-200 ease-in-out lg:hover:scale-105'
 			>
 				<Link
+					aria-label="Link to Cody Brunner's Resume."
 					class='group-hover:font-bold group-hover:text-aura-orange'
 					href='/resume.pdf'
 					isExternal
-					label="Link to Cody Brunner's Resume."
 				>
 					Resume
 				</Link>
-			</li>
-			<li
+			</ListItem>
+			<ListItem
 				class='group transition-all duration-200 ease-in-out lg:hover:scale-105'
 			>
 				<Link
+					aria-label="Link to Cody Brunner's Appointlet Booking Page."
 					class='group-hover:font-bold group-hover:text-aura-orange'
 					href='https://appt.link/cody-brunner-dev/video-call/'
 					isExternal
-					label="Link to Cody Brunner's Appointlet Booking Page."
 				>
 					Meet
 				</Link>
-			</li>
-			<li class=''>
+			</ListItem>
+			<ListItem>
 				<hr class='h-5 border border-l-white' />
-			</li>
-			<li
+			</ListItem>
+			<ListItem
 				class='group transition-all duration-200 ease-in-out lg:hover:scale-125'
 			>
 				<Link
+					aria-label="Link to Cody Brunner's GitHub Account."
 					class='group-hover:font-bold group-hover:text-aura-orange'
 					href='https://github.com/rockchalkwushock'
 					isExternal
-					label="Link to Cody Brunner's GitHub Account."
 				>
 					<Icon alt='GitHub Icon' class='h-6 w-6' name='mdi:github' />
 				</Link>
-			</li>
-			<li
+			</ListItem>
+			<ListItem
 				class='group transition-all duration-200 ease-in-out lg:hover:scale-125'
 			>
 				<Link
+					aria-label="Link to Cody Brunner's LinkedIn Account."
 					class='group-hover:font-bold group-hover:text-aura-orange'
 					href='https://www.linkedin.com/in/cody-brunner'
 					isExternal
-					label="Link to Cody Brunner's LinkedIn Account."
 				>
 					<Icon alt='LinkedIn Icon' class='h-6 w-6' name='mdi:linkedin' />
 				</Link>
-			</li>
-		</ul>
+			</ListItem>
+		</List>
 	</nav>
 </header>
