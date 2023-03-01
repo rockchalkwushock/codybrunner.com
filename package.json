@@ -1,6 +1,6 @@
 {
 	"name": "codybrunner.com",
-	"version": "1.1.0",
+	"version": "1.2.0",
 	"description": "My stretch of pipe in the world wide inter-tubes.",
 	"author": {
 		"email": "me@codybrunner.com",
@@ -10,10 +10,10 @@
 	"license": "MIT",
 	"type": "module",
 	"engines": {
-		"node": "18.13.0",
-		"pnpm": "7.27.0"
+		"node": ">=18.x",
+		"pnpm": "7.27.1"
 	},
-	"packageManager": "pnpm@7.27.0",
+	"packageManager": "pnpm@7.27.1",
 	"scripts": {
 		"astro": "astro",
 		"build": "astro build",
@@ -25,21 +25,21 @@
 		"type-check": "astro check"
 	},
 	"dependencies": {
-		"@astrojs/image": "0.15.0",
-		"@astrojs/mdx": "0.16.2",
-		"@astrojs/rss": "2.1.0",
-		"@astrojs/sitemap": "1.0.1",
+		"@astrojs/image": "0.15.1",
+		"@astrojs/mdx": "0.17.2",
+		"@astrojs/rss": "2.1.1",
+		"@astrojs/sitemap": "1.1.0",
 		"@fontsource/inter": "4.5.15",
-		"astro": "2.0.12",
+		"astro": "2.0.16",
 		"astro-icon": "0.8.0",
 		"sharp": "0.31.3"
 	},
 	"devDependencies": {
-		"@evilmartians/lefthook": "~1.2.9",
-		"@typescript-eslint/eslint-plugin": "~5.52.0",
-		"@typescript-eslint/parser": "~5.52.0",
+		"@evilmartians/lefthook": "~1.3.2",
+		"@typescript-eslint/eslint-plugin": "~5.54.0",
+		"@typescript-eslint/parser": "~5.54.0",
 		"autoprefixer": "~10.4.13",
-		"eslint": "~8.34.0",
+		"eslint": "~8.35.0",
 		"eslint-config-prettier": "~8.6.0",
 		"eslint-config-standard-with-typescript": "~34.0.0",
 		"eslint-plugin-astro": "~0.23.0",
@@ -49,12 +49,12 @@
 		"eslint-plugin-n": "~15.6.1",
 		"eslint-plugin-prettier": "~4.2.1",
 		"eslint-plugin-promise": "~6.1.1",
-		"eslint-plugin-tailwindcss": "~3.8.3",
+		"eslint-plugin-tailwindcss": "~3.10.0",
 		"postcss": "~8.4.21",
 		"prettier": "~2.8.4",
 		"prettier-plugin-astro": "~0.8.0",
-		"tailwind-merge": "~1.9.1",
-		"tailwindcss": "~3.2.6",
+		"tailwind-merge": "~1.10.0",
+		"tailwindcss": "~3.2.7",
 		"typescript": "~4.9.5"
 	}
 }
