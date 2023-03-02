@@ -58,7 +58,7 @@ const CONSTANTS = {
 ---
 
 <footer
-	class='flex w-full flex-col space-y-8 border-t border-solid border-aura-gray pb-8 lg:flex-row lg:items-center lg:space-y-0 lg:pb-0 lg:pt-6'
+	class='flex w-full flex-col space-y-8 border-t border-solid border-aura-gray pb-8 lg:flex-row lg:space-y-0 lg:pb-0 lg:pt-6'
 >
 	<div class='hidden flex-1 lg:block'>
 		<List class='grid grid-cols-2 place-items-start gap-x-1' kind="unordered">
@@ -78,26 +78,6 @@ const CONSTANTS = {
 	</div>
 
 	<div class='flex flex-1 flex-col items-center space-y-4'>
-		<Link
-			aria-label='Link to Creative Commons License'
-			class='flex items-center space-x-1 transition-all duration-200 ease-in-out hover:scale-105 hover:font-bold hover:text-aura-orange'
-			href={links.copyright}
-			isExternal
-		>
-			<span>All Content</span>
-			<Icon class='h-4 w-4' name='mdi:copyright' />
-			<span>{CONSTANTS.year}</span>
-		</Link>
-
-		<!-- <Link
-			aria-label='Link to RSS Feed for codybrunner.com'
-			class='flex items-center space-x-1 transition-all duration-200 ease-in-out hover:scale-105 hover:font-bold hover:text-aura-orange'
-			href={routes.rss}
-		>
-			<span>RSS Feed</span>
-			<Icon class='h-5 w-5' name='mdi:rss' />
-		</Link> -->
-
 		<p
 			class='flex items-center space-x-3 rounded-3xl bg-aura-purple-fading px-4 py-2 shadow-lg'
 		>
@@ -132,5 +112,25 @@ const CONSTANTS = {
 				/>
 			</Link>
 		</p>
+
+		<Link
+			aria-label='Link to Creative Commons License'
+			class='flex items-center space-x-1 transition-all duration-200 ease-in-out hover:scale-105 hover:font-bold hover:text-aura-orange'
+			href={links.copyright}
+			isExternal
+		>
+			<span>All Content</span>
+			<Icon class='h-4 w-4' name='mdi:copyright' />
+			<span>{CONSTANTS.year}</span>
+		</Link>
+
+		<!-- <Link
+			aria-label='Link to RSS Feed for codybrunner.com'
+			class='flex items-center space-x-1 transition-all duration-200 ease-in-out hover:scale-105 hover:font-bold hover:text-aura-orange'
+			href={routes.rss}
+		>
+			<span>RSS Feed</span>
+			<Icon class='h-5 w-5' name='mdi:rss' />
+		</Link> -->
 	</div>
 </footer>
