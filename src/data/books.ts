@@ -10,10 +10,10 @@ type Shelf = 'currently-reading' | 'recommended'
 export const books: Record<Shelf, Book[]> = {
 	'currently-reading': [
 		{
-			authors: ['Ryan Michler'],
-			image: 'https://m.media-amazon.com/images/I/31OHqp1gjCL.jpg',
-			title: 'Sovereignty: The Battle for the Hearts and Minds of Men',
-			url: 'https://a.co/d/1pZdVHt',
+			authors: ['John Eldredge'],
+			image: 'https://m.media-amazon.com/images/I/41j0+fV9CHL.jpg',
+			title: 'Fathered by God: Learning What Your Dad Could Never Teach You',
+			url: 'https://a.co/d/80TnSAI',
 		},
 		{
 			authors: ['Eva A. Mendes'],
@@ -79,6 +79,11 @@ export const books: Record<Shelf, Book[]> = {
 			authors: ['Robert Kiyosaki'],
 			title: 'Rich Dad Poor Dad',
 			url: 'https://a.co/d/1HpPMo6',
+		},
+		{
+			authors: ['Ryan Michler'],
+			title: 'Sovereignty: The Battle for the Hearts and Minds of Men',
+			url: 'https://a.co/d/1pZdVHt',
 		},
 		{
 			authors: ['James Edward Gray, II', 'Bruce A. Tate'],
