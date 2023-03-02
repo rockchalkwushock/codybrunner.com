@@ -2,7 +2,3 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-html,
-body {
-	@apply antialiased bg-aura-black scroll-smooth text-lg text-aura-white;
-}
