@@ -1,6 +1,9 @@
 ---
 import Head from '@components/Head.astro'
 import Img from '@components/Img.astro'
+import Link from '@components/Link.astro'
+import Main from '@components/Main.astro'
+import Section from '@components/Section.astro'
 import BaseLayout from '@layouts/BaseLayout.astro'
 // Assets
 import me from '../assets/images/cody-brunner.jpg'
@@ -8,10 +11,6 @@ import me from '../assets/images/cody-brunner.jpg'
 const today = new Date()
 
 const CONSTANTS = {
-	age:
-		today.getMonth() > 3
-			? today.getFullYear() - 1988
-			: today.getFullYear() - 1989,
 	location: 'Colombia',
 	yearsOfExperience: today.getFullYear() - 2018,
 }
@@ -19,10 +18,10 @@ const CONSTANTS = {
 
 <BaseLayout>
 	<Head slot='metadata' />
-	<main class='flex flex-1 flex-col space-x-16' slot='content'>
-		<section class='flex flex-col space-y-4 pt-8 sm:block lg:pt-16'>
+	<Main slot='content'>
+		<Section class='space-y-8 sm:block'>
 			<div
-				class='flex items-center justify-center sm:float-left sm:mt-6 sm:mr-6 sm:block'
+				class='flex items-center justify-center sm:float-left sm:mt-10 sm:mr-6 sm:block'
 			>
 				<Img
 					alt='Cody Brunner'
@@ -35,7 +34,7 @@ const CONSTANTS = {
 
 			<div class='flex flex-col space-y-4 text-justify sm:block'>
 				<p>
-					Cody is a {CONSTANTS.age} year old American software developer and US Navy
+					Cody is an American software developer and US Navy
 					veteran hailing from Kansas. He now lives in {CONSTANTS.location} (the
 					country, not a city in the USA) with his wife and golden boy doggo son.
 				</p>
@@ -48,6 +47,16 @@ const CONSTANTS = {
 					NodeJS, PostgreSQL, Python, and Rust.
 				</p>
 				<p>
+					He is currently working as a Senior Frontend Developer at
+					<Link
+						class='text-aura-purple hover:text-aura-orange'
+						href='https://bitcoinira.com/'
+						isExternal
+					>
+						Bitcoin IRA
+				</Link>, the world's first and most trusted crypto IRA platform.
+				</p>
+				<p>
 					In his free time his hobbies include reading, running, hiking, playing
 					guitar, weight lifting, Brazilian Jiu-Jitsu, smoking meats & cheeses,
 					tinkering around with IoT devices, walking & playing with his dog,
@@ -55,6 +64,6 @@ const CONSTANTS = {
 					whisky while watching his Kansas Jayhawks cut down the nets in April.
 				</p>
 			</div>
-		</section>
-	</main>
+		</Section>
+	</Main>
 </BaseLayout>

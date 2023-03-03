@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { twMerge } from 'tailwind-merge'
+
+export type Props = HTMLAttributes<'main'>
+
+const BASE_STYLES = ['flex', 'flex-1', 'flex-col', 'py-16', 'w-full']
+
+const { class: cls, ...rest } = Astro.props
+const styles = twMerge(BASE_STYLES, cls)
+---
+
+<main {...rest} class={styles}>
+  <slot />
+</main>
