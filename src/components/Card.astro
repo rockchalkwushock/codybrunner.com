@@ -1,0 +1,50 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { twMerge } from 'tailwind-merge'
+
+export type Props = HTMLAttributes<'div'>
+
+const BASE_STYLES = [
+	'bg-aura-purple-fading',
+	'border',
+	'border-solid',
+	'border-transparent',
+	'flex',
+	'flex-col',
+	'h-full',
+	'justify-between',
+	'p-2',
+	'rounded-lg',
+	'shadow',
+	'shadow-aura-purple/50',
+	'space-y-2',
+	'[&>div:nth-child(1)]:flex',
+	'[&>div:nth-child(1)]:flex-col',
+	'[&>div:nth-child(1)>h2]:font-bold',
+	'[&>div:nth-child(1)>h2]:text-aura-orange',
+	'[&>div:nth-child(1)>p]:text-aura-blue',
+	'[&>div:nth-child(1)>p]:text-base',
+	'[&>div:nth-child(2)]:flex',
+	'[&>div:nth-child(2)]:flex-col',
+	'[&>div:nth-child(2)>p]:text-base',
+	'[&>div:nth-child(2)>p]:text-aura-white',
+	'lg:duration-300',
+	'lg:ease-in-out',
+	'lg:group',
+	'lg:p-4',
+	'lg:shadow-aura-purple/50',
+	'lg:shadow-md',
+	'lg:transition-all',
+	'lg:[&>div:nth-child(1)]:justify-between',
+	'[&>div:nth-child(2)]:flex-row',
+	'[&>div:nth-child(2)]:items-center',
+	'[&>div:nth-child(2)]:justify-between',
+]
+
+const { class: cls } = Astro.props
+const styles = twMerge(BASE_STYLES, cls)
+---
+
+<div class={styles}>
+	<slot />
+</div>
