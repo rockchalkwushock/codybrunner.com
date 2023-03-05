@@ -21,6 +21,12 @@ const CONSTANTS = [
 	// 	text: 'Blog'
 	// },
 	{
+		label: 'Link to Projects',
+		href: routes.projects,
+		isExternal: false,
+		text: 'Projects',
+	},
+	{
 		label: "Link to Cody Brunner's Appointlet Booking Page",
 		href: links.meet,
 		isExternal: true,
@@ -70,7 +76,7 @@ const CONSTANTS = [
 			kind='unordered'
 		>
 			{
-				CONSTANTS.slice(0, 3).map(({ href, isExternal, label, text }) => (
+				CONSTANTS.slice(0, 4).map(({ href, isExternal, label, text }) => (
 					<ListItem class='group transition-all duration-200 ease-in-out lg:hover:scale-105'>
 						<Link
 							aria-label={label}
@@ -87,7 +93,7 @@ const CONSTANTS = [
 				<hr class='h-5 border border-l-white' />
 			</ListItem>
 			{
-				CONSTANTS.slice(3).map(({ href, isExternal, label, text }) => (
+				CONSTANTS.slice(4).map(({ href, isExternal, label, text }) => (
 					<ListItem class='group transition-all duration-200 ease-in-out lg:hover:scale-125'>
 						<Link
 							aria-label={label}
