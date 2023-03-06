@@ -23,6 +23,9 @@ const CONSTANTS = {
 	<Main class='space-y-8 py-8' slot='content'>
 		<Section class='space-y-8'>
 			<h1 class='text-3xl font-bold text-aura-purple'>Hardware</h1>
+			<p class="text-aura-gray">
+				These are the hardware items I use on a daily basis. I've included links to Amazon for your convenience.
+			</p>
 			<List class='grid grid-cols-1 gap-4 md:grid-cols-2' kind='unordered'>
 				{
 					hardware.map(({ name, url }) => (
@@ -53,7 +56,7 @@ const CONSTANTS = {
 					dotfiles
 				</Link> repository.
 			</p>
-			<List class='grid grid-cols-1 gap-4 md:grid-cols-2' kind='unordered'>
+			<List class='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3' kind='unordered'>
 				{
 					software.map(({ name, url }) => (
 						<ListItem class='w-full'>

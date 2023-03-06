@@ -5,7 +5,7 @@ export const routes = {
 	blog: BLOG_DOMAIN,
 	bookshelf: `/bookshelf`,
 	home: `/`,
-	projects: `/projects`,
+	portfolio: `/portfolio`,
 	resume: `/resume.pdf`,
 	rss: `${BLOG_DOMAIN}/rss.xml`,
 	uses: `/uses`,

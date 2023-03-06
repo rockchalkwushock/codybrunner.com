@@ -10,7 +10,7 @@ import { projects } from '@data/projects'
 
 const CONSTANTS = {
 	description: "Personal, Enterprise, and Open Source projects I've worked on.",
-	title: 'Projects',
+	title: 'Portfolio',
 }
 ---
 
@@ -32,7 +32,7 @@ const CONSTANTS = {
 			>
 				{
 					projects.oss.map(project => (
-						<ListItem class='h-full'>
+						<ListItem class='self-stretch'>
 							<ProjectCard project={project} />
 						</ListItem>
 					))
@@ -52,7 +52,7 @@ const CONSTANTS = {
 			>
 				{
 					projects.personal.map(project => (
-						<ListItem class='h-full'>
+						<ListItem class='self-stretch'>
 							<ProjectCard project={project} />
 						</ListItem>
 					))
@@ -71,7 +71,7 @@ const CONSTANTS = {
 			>
 				{
 					projects.professional.map(project => (
-						<ListItem class='h-full'>
+						<ListItem class='self-stretch'>
 							<ProjectCard project={project} />
 						</ListItem>
 					))

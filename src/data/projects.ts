@@ -18,7 +18,7 @@ export const projects: Projects = {
 			description: 'Vkontakte OAuth strategy for Micro',
 			name: 'microauth-vkontakte',
 			source: 'https://github.com/microauth/microauth-vkontakte',
-			technologies: [],
+			technologies: ['JavaScript'],
 			url: 'https://www.npmjs.com/package/microauth-vkontakte',
 		},
 		{
