@@ -19,12 +19,7 @@ const styles = twMerge(
 
 {
 	isExternal ? (
-		<a
-			{...rest}
-			class={styles}
-			rel='noopener noreferrer'
-			target='_blank'
-		>
+		<a {...rest} class={styles} rel='noopener noreferrer' target='_blank'>
 			<slot />
 		</a>
 	) : (

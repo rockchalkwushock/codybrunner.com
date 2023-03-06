@@ -13,7 +13,12 @@ import { links, routes } from 'routes-and-links'
 
 const CONSTANTS = {
 	nav: [
-		{ label: 'Link to Home', href: routes.home, isExternal: false, text: 'Home' },
+		{
+			label: 'Link to Home',
+			href: routes.home,
+			isExternal: false,
+			text: 'Home',
+		},
 		// { label: 'Link to Blog', href: 'https://blog.codybrunner.com', isExternal: false, text: 'Blog' },
 		{
 			label: 'Link to Bookshelf',
@@ -52,6 +57,12 @@ const CONSTANTS = {
 			isExternal: true,
 			text: 'Twitter',
 		},
+		{
+			label: 'Link to Uses',
+			href: routes.uses,
+			isExternal: false,
+			text: 'Uses',
+		},
 	],
 	year: new Date().getFullYear(),
 }
@@ -61,7 +72,7 @@ const CONSTANTS = {
 	class='flex w-full flex-col space-y-8 border-t border-solid border-aura-gray pb-8 lg:flex-row lg:space-y-0 lg:pb-0 lg:pt-6'
 >
 	<div class='hidden flex-1 lg:block'>
-		<List class='grid grid-cols-2 place-items-start gap-x-1' kind="unordered">
+		<List class='grid grid-cols-2 place-items-start gap-x-1' kind='unordered'>
 			{
 				CONSTANTS.nav.map(({ text, ...rest }) => (
 					<ListItem class='group flex w-full rounded-lg bg-gradient-to-r py-1 text-left hover:from-aura-purple-fading/70 hover:via-aura-purple-fading/30 hover:to-aura-purple-fading/0'>
