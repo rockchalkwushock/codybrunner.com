@@ -56,15 +56,11 @@ export const software: Item[] = [
 		url: 'https://ohmyz.sh/',
 	},
 	{
-		name: 'Visual Studio Code',
-		url: 'https://code.visualstudio.com/',
-	},
-	{
 		name: 'Aura Theme',
 		url: 'https://github.com/daltonmenezes/aura-theme',
 	},
 	{
-		name: 'Codelia Ligatures Light Italic (iTerm & VSCode)',
+		name: 'Codelia Ligatures Light Italic',
 		url: 'https://www.myfonts.com/products/ligatures-light-italic-codelia-41078',
 	},
 	{

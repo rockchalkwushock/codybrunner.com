@@ -44,7 +44,12 @@ const CONSTANTS = {
 			isExternal: true,
 			text: 'Meet',
 		},
-		// { label: 'Link to Portfolio', href: routes.portfolio, isExternal: false, text: 'Portfolio' },
+		{
+			label: 'Link to Portfolio',
+			href: routes.portfolio,
+			isExternal: false,
+			text: 'Portfolio',
+		},
 		{
 			label: "Link to Cody Brunner's Resume",
 			href: routes.resume,
@@ -75,10 +80,10 @@ const CONSTANTS = {
 		<List class='grid grid-cols-2 place-items-start gap-x-1' kind='unordered'>
 			{
 				CONSTANTS.nav.map(({ text, ...rest }) => (
-					<ListItem class='group flex w-full rounded-lg bg-gradient-to-r py-1 text-left hover:from-aura-purple-fading/70 hover:via-aura-purple-fading/30 hover:to-aura-purple-fading/0'>
+					<ListItem class='group flex w-full rounded-lg bg-gradient-to-r hover:from-aura-purple-fading/70 hover:via-aura-purple-fading/30 hover:to-aura-purple-fading/0'>
 						<Link
 							{...rest}
-							class='flex-1 delay-75 duration-100 ease-in-out group-hover:translate-x-4 group-hover:scale-105 group-hover:font-semibold group-hover:text-aura-orange group-hover:transition-all'
+							class='flex-1 py-1 transition-all delay-75 duration-100 ease-in-out group-hover:translate-x-6 group-hover:scale-110 group-hover:text-aura-orange'
 						>
 							{text}
 						</Link>
@@ -126,7 +131,7 @@ const CONSTANTS = {
 
 		<Link
 			aria-label='Link to Creative Commons License'
-			class='flex items-center space-x-1 transition-all duration-200 ease-in-out hover:scale-105 hover:font-bold hover:text-aura-orange'
+			class='flex items-center space-x-1 transition-all duration-200 ease-in-out hover:scale-105 hover:text-aura-orange'
 			href={links.copyright}
 			isExternal
 		>
@@ -137,7 +142,7 @@ const CONSTANTS = {
 
 		<!-- <Link
 			aria-label='Link to RSS Feed for codybrunner.com'
-			class='flex items-center space-x-1 transition-all duration-200 ease-in-out hover:scale-105 hover:font-bold hover:text-aura-orange'
+			class='flex items-center space-x-1 transition-all duration-200 ease-in-out hover:scale-105 hover:text-aura-orange'
 			href={routes.rss}
 		>
 			<span>RSS Feed</span>
