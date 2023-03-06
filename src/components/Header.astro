@@ -21,6 +21,12 @@ const CONSTANTS = [
 	// 	text: 'Blog'
 	// },
 	{
+		label: 'Link to Portfolio',
+		href: routes.portfolio,
+		isExternal: false,
+		text: 'Portfolio',
+	},
+	{
 		label: "Link to Cody Brunner's Appointlet Booking Page",
 		href: links.meet,
 		isExternal: true,
@@ -67,55 +73,45 @@ const CONSTANTS = [
 		</div>
 		<List
 			class='flex flex-row items-center space-x-3 rounded-3xl bg-aura-purple-fading px-4 py-2 shadow-lg'
-			kind="unordered"
+			kind='unordered'
 		>
-			{CONSTANTS.slice(0, 3).map(({
-				href,
-				isExternal,
-				label,
-				text,
-			}) => (
-				<ListItem
-					class='group transition-all duration-200 ease-in-out lg:hover:scale-105'
-				>
-					<Link
-						aria-label={label}
-						class='group-hover:font-bold group-hover:text-aura-orange'
-						href={href}
-						isExternal={isExternal}
-					>
-						{text}
-					</Link>
-				</ListItem>
-			))}
+			{
+				CONSTANTS.slice(0, 4).map(({ href, isExternal, label, text }) => (
+					<ListItem class='group transition-all duration-200 ease-in-out lg:hover:scale-105'>
+						<Link
+							aria-label={label}
+							class='group-hover:text-aura-orange'
+							href={href}
+							isExternal={isExternal}
+						>
+							{text}
+						</Link>
+					</ListItem>
+				))
+			}
 			<ListItem>
 				<hr class='h-5 border border-l-white' />
 			</ListItem>
-			{CONSTANTS.slice(3).map(({
-				href,
-				isExternal,
-				label,
-				text,
-			}) => (
-				<ListItem
-					class='group transition-all duration-200 ease-in-out lg:hover:scale-125'
-				>
-					<Link
-						aria-label={label}
-						class='group-hover:font-bold group-hover:text-aura-orange'
-						href={href}
-						isExternal={isExternal}
-					>
-						{text === 'GitHub' ? (
-						<Icon alt='GitHub Icon' class='h-6 w-6' name='mdi:github' />
-						) : text === 'LinkedIn' ? (
-						<Icon alt='LinkedIn Icon' class='h-6 w-6' name='mdi:linkedin' />
-						) : (
-						<Icon alt='Twitter Icon' class='h-6 w-6' name='mdi:twitter' />
-						)}
-					</Link>
-				</ListItem>
-			))}
+			{
+				CONSTANTS.slice(4).map(({ href, isExternal, label, text }) => (
+					<ListItem class='group transition-all duration-200 ease-in-out lg:hover:scale-125'>
+						<Link
+							aria-label={label}
+							class='group-hover:font-bold group-hover:text-aura-orange'
+							href={href}
+							isExternal={isExternal}
+						>
+							{text === 'GitHub' ? (
+								<Icon alt='GitHub Icon' class='h-6 w-6' name='mdi:github' />
+							) : text === 'LinkedIn' ? (
+								<Icon alt='LinkedIn Icon' class='h-6 w-6' name='mdi:linkedin' />
+							) : (
+								<Icon alt='Twitter Icon' class='h-6 w-6' name='mdi:twitter' />
+							)}
+						</Link>
+					</ListItem>
+				))
+			}
 		</List>
 	</nav>
 </header>

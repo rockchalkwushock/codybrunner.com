@@ -22,10 +22,8 @@ const CONSTANTS = {
 	/>
 	<Main class='space-y-8 py-8' slot='content'>
 		<Section class='space-y-8'>
-			<h1 class='text-2xl font-semibold text-aura-purple underline'>
-				Currently Reading
-			</h1>
-			<List class='grid grid-cols-1 gap-4' kind="unordered">
+			<h1 class='text-3xl font-bold text-aura-purple'>Currently Reading</h1>
+			<List class='grid grid-cols-1 gap-4' kind='unordered'>
 				{
 					books['currently-reading'].map(({ authors, image, title, url }) => (
 						<ListItem class='flex space-x-4'>
@@ -48,10 +46,8 @@ const CONSTANTS = {
 		</Section>
 		<hr class='border-aura-gray' />
 		<Section class='space-y-8'>
-			<h1 class='text-2xl font-semibold text-aura-purple underline'>
-				Recommended Reading
-			</h1>
-			<List class='space-y-3' kind="unordered">
+			<h1 class='text-3xl font-bold text-aura-purple'>Recommended Reading</h1>
+			<List class='space-y-3' kind='unordered'>
 				{
 					books.recommended.map(({ authors, title, url }) => (
 						<ListItem>

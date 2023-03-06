@@ -1,0 +1,81 @@
+---
+import Head from '@components/Head.astro'
+import Link from '@components/Link.astro'
+import List from '@components/List.astro'
+import ListItem from '@components/ListItem.astro'
+import Main from '@components/Main.astro'
+import Section from '@components/Section.astro'
+import BaseLayout from '@layouts/BaseLayout.astro'
+import { hardware, software } from '@data/uses'
+
+const CONSTANTS = {
+	description: 'Hardware and Software I use to get things done.',
+	title: 'Uses',
+}
+---
+
+<BaseLayout>
+	<Head
+		description={CONSTANTS.description}
+		slot='metadata'
+		title={CONSTANTS.title}
+	/>
+	<Main class='space-y-8 py-8' slot='content'>
+		<Section class='space-y-8'>
+			<h1 class='text-3xl font-bold text-aura-purple'>Hardware</h1>
+			<p class='text-aura-gray'>
+				These are the hardware items I use on a daily basis. I've included links
+				to Amazon for your convenience.
+			</p>
+			<List class='grid grid-cols-1 gap-4 md:grid-cols-2' kind='unordered'>
+				{
+					hardware.map(({ name, url }) => (
+						<ListItem class='w-full'>
+							<Link
+								aria-label={`Link to Amazon to buy ${name}`}
+								class='group flex flex-col items-start justify-between rounded-md px-1 text-aura-orange transition-all delay-75 duration-500 ease-in-out md:flex-row lg:hover:bg-gradient-to-r lg:hover:from-aura-purple/70 lg:hover:via-aura-purple/20 lg:hover:to-aura-purple/0'
+								href={url}
+								isExternal
+							>
+								{name}
+							</Link>
+						</ListItem>
+					))
+				}
+			</List>
+		</Section>
+		<hr class='border-aura-gray' />
+		<Section class='space-y-8'>
+			<h1 class='text-3xl font-bold text-aura-purple'>Software</h1>
+			<p class='text-aura-gray'>
+				You can find all of my configuration files on my GitHub profile under my <Link
+					aria-label="Link to Cody Brunner's dotfiles"
+					class='text-aura-purple transition-colors duration-150 ease-in-out hover:text-aura-orange'
+					href='https://github.com/rockchalkwushock/dotfiles'
+					isExternal
+				>
+					dotfiles
+				</Link> repository.
+			</p>
+			<List
+				class='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'
+				kind='unordered'
+			>
+				{
+					software.map(({ name, url }) => (
+						<ListItem class='w-full'>
+							<Link
+								aria-label={`Link to Amazon to buy ${name}`}
+								class='group flex flex-col items-start justify-between rounded-md px-1 text-aura-orange transition-all delay-75 duration-500 ease-in-out md:flex-row lg:hover:bg-gradient-to-r lg:hover:from-aura-purple/70 lg:hover:via-aura-purple/20 lg:hover:to-aura-purple/0'
+								href={url}
+								isExternal
+							>
+								{name}
+							</Link>
+						</ListItem>
+					))
+				}
+			</List>
+		</Section>
+	</Main>
+</BaseLayout>

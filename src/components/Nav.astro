@@ -5,7 +5,6 @@ import List from './List.astro'
 import NavItem from './NavItem.astro'
 import { links, routes } from 'routes-and-links'
 
-
 /**
  * This Navigation Implementation was taken from:
  * - https://www.kevinzunigacuellar.com/
@@ -33,18 +32,18 @@ const navigation: Array<NavItemProps> = [
 		linkLabel: 'Link to Book Shelf Page.',
 		to: routes.bookshelf,
 	},
-	// {
-	// 	iconLabel: 'Git Branch Icon.',
-	// 	iconName: 'portfolio',
-	// 	linkLabel: 'Link to Portfolio Page.',
-	// 	to: routes.portfolio,
-	// },
-	// {
-	// 	iconLabel: 'Tools Icon.',
-	// 	iconName: 'uses',
-	// 	linkLabel: 'Link to Uses Page.',
-	// 	to: routes.uses,
-	// },
+	{
+		iconLabel: 'Git Branch Icon.',
+		iconName: 'portfolio',
+		linkLabel: 'Link to Portfolio Page.',
+		to: routes.portfolio,
+	},
+	{
+		iconLabel: 'Tools Icon.',
+		iconName: 'uses',
+		linkLabel: 'Link to Uses Page.',
+		to: routes.uses,
+	},
 	{
 		iconLabel: 'Resume Icon.',
 		iconName: 'cv',
@@ -108,14 +107,14 @@ const UL_BASE_STYLES = [
 	'lg:hidden',
 ]
 
-const firstLinks = navigation.slice(0, 3)
-const socialLinks = navigation.slice(3)
+const firstLinks = navigation.slice(0, 5)
+const socialLinks = navigation.slice(5)
 const navStyles = twMerge(NAV_BASE_STYLES)
 const ulStyles = twMerge(UL_BASE_STYLES)
 ---
 
 <nav class={navStyles}>
-	<List class={ulStyles} kind="unordered">
+	<List class={ulStyles} kind='unordered'>
 		{firstLinks.map(props => <NavItem {...props} />)}
 		<hr class='h-16 border-l-2 border-aura-purple-fading' />
 		{socialLinks.map(props => <NavItem {...props} />)}
