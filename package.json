@@ -11,9 +11,8 @@
 	"type": "module",
 	"engines": {
 		"node": ">=18.x",
-		"pnpm": "7.27.1"
+		"pnpm": ">=7.x"
 	},
-	"packageManager": "pnpm@7.27.1",
 	"scripts": {
 		"astro": "astro",
 		"build": "astro build",
