@@ -10,10 +10,10 @@ type Shelf = 'currently-reading' | 'recommended'
 export const books: Record<Shelf, Book[]> = {
 	'currently-reading': [
 		{
-			authors: ['John Eldredge'],
-			image: 'https://m.media-amazon.com/images/I/41j0+fV9CHL.jpg',
-			title: 'Fathered by God: Learning What Your Dad Could Never Teach You',
-			url: 'https://a.co/d/80TnSAI',
+			authors: ['Jeff Feldhahn', 'Shaunti Feldhahn'],
+			image: 'https://m.media-amazon.com/images/I/41T6Q0SU1vL.jpg',
+			title: 'For Men Only: A Straightforward Guide to the Inner Lives of Women',
+			url: 'https://a.co/d/bpcbrqV',
 		},
 		{
 			authors: ['Eva A. Mendes'],
