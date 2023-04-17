@@ -24,12 +24,12 @@
 		"type-check": "astro check"
 	},
 	"dependencies": {
-		"@astrojs/image": "0.16.4",
+		"@astrojs/image": "0.16.6",
 		"@astrojs/partytown": "1.2.0",
 		"@astrojs/rss": "2.3.2",
-		"@astrojs/sitemap": "1.2.1",
+		"@astrojs/sitemap": "1.2.2",
 		"@fontsource/inter": "4.5.15",
-		"astro": "2.1.9",
+		"astro": "2.3.0",
 		"astro-icon": "0.8.0",
 		"sharp": "0.31.3"
 	},
