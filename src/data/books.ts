@@ -10,10 +10,12 @@ type Shelf = 'currently-reading' | 'recommended'
 export const books: Record<Shelf, Book[]> = {
 	'currently-reading': [
 		{
-			authors: ['Jeff Feldhahn', 'Shaunti Feldhahn'],
-			image: 'https://m.media-amazon.com/images/I/41T6Q0SU1vL.jpg',
-			title: 'For Men Only: A Straightforward Guide to the Inner Lives of Women',
-			url: 'https://a.co/d/bpcbrqV',
+			authors: ['Connor Beaton'],
+			image:
+				'https://m.media-amazon.com/images/I/319FSwvuaWL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg',
+			title:
+				"Men's Work: A Practical Guide to Face Your Darkness, End Self-Sabotage, and Find Freedom",
+			url: 'https://a.co/d/97H7xq1',
 		},
 		{
 			authors: ['Eva A. Mendes'],
@@ -84,6 +86,12 @@ export const books: Record<Shelf, Book[]> = {
 			authors: ['Ryan Michler'],
 			title: 'Sovereignty: The Battle for the Hearts and Minds of Men',
 			url: 'https://a.co/d/1pZdVHt',
+		},
+		{
+			authors: ['Jeff Feldhahn', 'Shaunti Feldhahn'],
+			title:
+				'For Men Only: A Straightforward Guide to the Inner Lives of Women',
+			url: 'https://a.co/d/bpcbrqV',
 		},
 		{
 			authors: ['James Edward Gray, II', 'Bruce A. Tate'],
