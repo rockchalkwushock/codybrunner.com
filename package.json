@@ -30,7 +30,7 @@
 		"@fontsource/inter": "4.5.15",
 		"astro": "2.4.5",
 		"astro-icon": "0.8.0",
-		"sharp": "0.31.3"
+		"sharp": "0.32.1"
 	},
 	"devDependencies": {
 		"@evilmartians/lefthook": "~1.3.13",
