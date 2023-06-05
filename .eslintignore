@@ -37,3 +37,6 @@ package-lock.json
 yarn.lock
 server
 manifest.json
+package.json
+postcss.config.cjs
+tailwind.config.ts
