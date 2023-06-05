@@ -3,15 +3,6 @@ module.exports = {
 	bracketSameLine: false,
 	bracketSpacing: true,
 	jsxSingleQuote: true,
-	overrides: [
-		{
-			files: '*.astro',
-			options: {
-				parser: 'astro',
-			},
-		},
-	],
-	plugins: [require.resolve('prettier-plugin-astro')],
 	printWidth: 80,
 	quoteProps: 'as-needed',
 	semi: false,

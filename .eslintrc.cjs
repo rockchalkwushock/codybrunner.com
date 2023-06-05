@@ -1,67 +1,41 @@
 module.exports = {
+	root: true,
 	env: {
-		'astro/astro': true,
 		browser: true,
 		es2021: true,
+		node: true,
 	},
 	extends: [
-		'standard-with-typescript',
-		'plugin:astro/recommended',
-		'plugin:astro/jsx-a11y-strict',
-		'plugin:tailwindcss/recommended',
-		'plugin:prettier/recommended',
+		'eslint:recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:qwik/recommended',
 	],
-	ignorePatterns: [
-		'node_modules/',
-		'dist/',
-		'public/',
-		'package.json',
-		'tsconfig.json',
-	],
-	overrides: [
-		{
-			// Define the configuration for `.astro` file.
-			files: ['*.astro'],
-			// Allows Astro components to be parsed.
-			parser: 'astro-eslint-parser',
-			// Parse the script in `.astro` as TypeScript by adding the following configuration.
-			// It's the setting you need when using TypeScript.
-			parserOptions: {
-				extraFileExtensions: ['.astro'],
-				parser: '@typescript-eslint/parser',
-				project: ['./tsconfig.json'],
-				sourceType: 'module',
-			},
-			rules: {
-				'prettier/prettier': 'off',
-			},
-		},
-	],
+	parser: '@typescript-eslint/parser',
 	parserOptions: {
-		ecmaVersion: 'latest',
-		project: './tsconfig.json',
+		tsconfigRootDir: __dirname,
+		project: ['./tsconfig.json'],
+		ecmaVersion: 2021,
 		sourceType: 'module',
-	},
-	root: true,
-	rules: {},
-	settings: {
-		packageManager: 'pnpm',
-		tailwindcss: {
-			callees: ['classnames', 'clsx', 'ctl'],
-			classRegex: '^class(Name)?$',
-			config: './tailwind.config.cjs',
-			cssFiles: [
-				'**/*.css',
-				'!**/node_modules',
-				'!**/.*',
-				'!**/dist',
-				'!**/build',
-			],
-			cssFilesRefreshRate: 5_000,
-			removeDuplicates: true,
-			skipClassAttribute: false,
-			tags: [],
-			whitelist: [],
+		ecmaFeatures: {
+			jsx: true,
 		},
+	},
+	plugins: ['@typescript-eslint'],
+	rules: {
+		'@typescript-eslint/no-explicit-any': 'off',
+		'@typescript-eslint/explicit-module-boundary-types': 'off',
+		'@typescript-eslint/no-inferrable-types': 'off',
+		'@typescript-eslint/no-non-null-assertion': 'off',
+		'@typescript-eslint/no-empty-interface': 'off',
+		'@typescript-eslint/no-namespace': 'off',
+		'@typescript-eslint/no-empty-function': 'off',
+		'@typescript-eslint/no-this-alias': 'off',
+		'@typescript-eslint/ban-types': 'off',
+		'@typescript-eslint/ban-ts-comment': 'off',
+		'prefer-spread': 'off',
+		'no-case-declarations': 'off',
+		'no-console': 'off',
+		'@typescript-eslint/no-unused-vars': ['error'],
+		'@typescript-eslint/consistent-type-imports': 'warn',
 	},
 }
