@@ -301,5 +301,32 @@ export default {
 				},
 			},
 		}),
+		extend: {
+			animation: {
+				// utility: animation-wiggle
+				wiggle: 'wiggle 1s ease-in-out infinite',
+			},
+			backgroundImage: {
+				// bg-instagram || text-instagram
+				instagram:
+					'radial-gradient(circle at 30% 107%, #fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,+#285aeb 90%)',
+			},
+			colors: {
+				// bg-github || text-github
+				github: '#FFFFFF',
+				// bg-linkedIn || text-linkedIn
+				linkedIn: '#0072B1',
+				// bg-telegram || text-telegram
+				telegram: '#0088cc',
+				// bg-twitter || text-twitter
+				twitter: '#1DA1F2',
+			},
+			keyframes: {
+				wiggle: {
+					'0% 100%': { transform: 'rotate(-12deg) scale(0.95)' },
+					'50%': { transform: 'rotate(12deg) scale(0.95)' },
+				},
+			},
+		},
 	},
 } satisfies Config

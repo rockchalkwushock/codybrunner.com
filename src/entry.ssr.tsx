@@ -23,6 +23,7 @@ export default function (opts: RenderToStreamOptions) {
 		...opts,
 		// Use container attributes to set attributes on the html tag.
 		containerAttributes: {
+			class: 'antialiased h-full motion-safe:scroll-smooth dark',
 			lang: 'en-us',
 			...opts.containerAttributes,
 		},

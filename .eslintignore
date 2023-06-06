@@ -40,3 +40,5 @@ manifest.json
 package.json
 postcss.config.cjs
 tailwind.config.ts
+*.md
+*.mdx
