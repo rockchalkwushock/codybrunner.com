@@ -3,14 +3,15 @@ export const FEATURE_FLAGS = {
 }
 
 export const SITE = {
+	author: 'Cody Brunner',
 	basePathName: '/',
 	copyright: [
 		`© 2017-${new Date().getFullYear()} Cody Brunner.`,
 		'All rights reserved.',
 	],
-	description: 'A simple blog built with SvelteKit',
+	description: 'My stretch of pipe in the world wide inter-tubes.',
+	email: 'me@codybrunner.com',
 	lang: 'en-US',
-	name: '',
 	origin: 'https://codybrunner.com',
 	socials: {
 		github: 'https://github.com/rockchalkwushock',
@@ -19,7 +20,7 @@ export const SITE = {
 		telegram: 'https://t.me/rockchalkwushock',
 		twitter: 'https://twitter.com/RockChalkDev',
 	},
-	title: '',
+	title: 'codybrunner.com',
 	trailingSlash: true,
 }
 
