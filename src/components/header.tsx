@@ -5,6 +5,7 @@ import { Container } from './container'
 import { NavLink } from './nav-link'
 import { cx } from '~/utils/cx'
 import { isMenuItemVisible } from '~/utils/filters'
+import { ThemeToggle } from './theme-toggle'
 
 export const Header = component$(() => {
 	const { menu } = useContent()
@@ -46,13 +47,15 @@ export const Header = component$(() => {
 														<NavLink
 															class={cx(
 																'relative block px-3 py-2 transition',
-																href === url.pathname ? '// TODO' : '// TODO'
+																href === url.pathname
+																	? 'text-cyan-500 dark:text-cyan-400'
+																	: 'hover:text-cyan-500 dark:hover:text-cyan-400'
 															)}
 															href={href}
 														>
 															{text}
 															{url.pathname === href && (
-																<span class='absolute inset-x-1 -bottom-px h-px' />
+																<span class='absolute bg-gradient-to-r from-cyan-500 via-cyan-500/40 to-cyan-500 dark:from-cyan-400 dark:via-cyan-400/40 dark:to-cyan-400 inset-x-1 -bottom-px h-px' />
 															)}
 														</NavLink>
 													</li>
@@ -62,7 +65,9 @@ export const Header = component$(() => {
 							</nav>
 						</div>
 						<div class='flex justify-end md:flex-1'>
-							<div class='pointer-events-auto'>{/* TODO: Theme Toggle */}</div>
+							<div class='pointer-events-auto'>
+								<ThemeToggle />
+							</div>
 						</div>
 					</div>
 				</Container>
