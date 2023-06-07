@@ -1,5 +1,6 @@
-import { component$ } from '@builder.io/qwik'
+import { component$, useStore, useTask$ } from '@builder.io/qwik'
 import { type DocumentHead, useNavigate } from '@builder.io/qwik-city'
+import { isServer } from '@builder.io/qwik/build'
 
 import { Container } from '~/components/container'
 import {
@@ -12,112 +13,24 @@ import {
 	TelegramIcon,
 	TwitterIcon,
 } from '~/components/icons'
-import { PostCard } from '~/components/post-card'
 import { ResumeItem } from '~/components/resume-item'
 import { SocialLink } from '~/components/social-link'
 import { HOME, SITE } from '~/config.mjs'
+import { cx } from '~/utils/cx'
 
-const posts = [
-	{
-		createdAt: new Date('2022-01-01'),
-		description:
-			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel quidem magnam, vero beatae aperiam dolorem impedit dolore temporibus voluptatem perferendis veniam libero molestias iure fugit nihil. Iure, aliquam maxime! Praesentium.',
-		draft: true,
-		publishedAt: new Date('2021-01-07'),
-		slug: 'post-one',
-		title: 'Post #1',
-	},
-	{
-		createdAt: new Date('2021-01-01'),
-		description:
-			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel quidem magnam, vero beatae aperiam dolorem impedit dolore temporibus voluptatem perferendis veniam libero molestias iure fugit nihil. Iure, aliquam maxime! Praesentium.',
-		draft: false,
-		publishedAt: new Date('2021-03-11'),
-		slug: 'post-two',
-		title: 'Post #2',
-	},
-	{
-		createdAt: new Date('2023-01-01'),
-		description:
-			'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vel quidem magnam, vero beatae aperiam dolorem impedit dolore temporibus voluptatem perferendis veniam libero molestias iure fugit nihil. Iure, aliquam maxime! Praesentium.',
-		draft: false,
-		publishedAt: new Date('2023-04-20'),
-		slug: 'post-three',
-		title: 'Post #3',
-		updatedAt: new Date('2023-06-06'),
-	},
-]
-
-const resume = [
-	{
-		company: 'Bitcoin IRA',
-		end: {
-			date: new Date(),
-			label: 'Present',
-		},
-		logo: '/icons/bitcoin-ira.svg',
-		start: new Date(2022, 9, 16),
-		title: 'Senior Frontend Developer',
-	},
-	{
-		company: 'Appointlet',
-		end: {
-			date: new Date(),
-			label: 'Present',
-		},
-		logo: '/icons/appointlet.svg',
-		start: new Date(2022, 1, 1),
-		title: 'Frontend Developer',
-	},
-	{
-		company: 'JokinglyBadTech',
-		end: {
-			date: new Date(),
-			label: 'Present',
-		},
-		logo: '/icons/jbt.svg',
-		start: new Date(2022, 1, 1),
-		title: 'Owner',
-	},
-	{
-		company: 'Weeldi',
-		end: new Date(2022, 5, 31),
-		logo: '/icons/weeldi.svg',
-		start: new Date(2022, 3, 1),
-		title: 'Fullstack Developer',
-	},
-	{
-		company: 'Arrive Logistics',
-		end: new Date(2022, 2, 1),
-		logo: '/icons/arrive-logistics.svg',
-		start: new Date(2021, 8, 15),
-		title: 'Senior Frontend Developer',
-	},
-	{
-		company: 'Lean Tech',
-		end: new Date(2022, 2, 1),
-		logo: '/icons/lean-tech.svg',
-		start: new Date(2021, 9, 16),
-		title: 'Senior Frontend Developer',
-	},
-	{
-		company: 'DM.app',
-		end: new Date(2021, 9, 1),
-		logo: '/icons/dm.svg',
-		start: new Date(2021, 8, 1),
-		title: 'Frontend Developer',
-	},
-	{
-		company: 'Appointlet',
-		end: new Date(2021, 3, 1),
-		logo: '/icons/appointlet.svg',
-		start: new Date(2018, 8, 1),
-		title: 'Web Developer',
-	},
-]
+import { jobs } from './jobs'
 
 export default component$(() => {
 	const navigate = useNavigate()
+	const store = useStore<{ posts?: never[] }>({ posts: undefined })
+
+	useTask$(() => {
+		if (isServer) {
+			// TODO: Add fetchPosts() in the future.
+			store.posts = []
+		}
+	})
+
 	return (
 		<>
 			<Container class='mt-9'>
@@ -165,18 +78,40 @@ export default component$(() => {
 			<Container class='mt-24 md:mt-28'>
 				<div class='mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2'>
 					{/* Left Column */}
-					<ul class='flex flex-col gap-16' role='list'>
+					<ul
+						class={cx(
+							'flex flex-col gap-16',
+							(typeof store.posts === 'undefined' ||
+								store.posts.length === 0) &&
+								'items-center order-1 md:justify-center'
+						)}
+						role='list'
+					>
 						{/* Featured or Recent Posts */}
-						{posts.map(post => (
-							<li key={`post--${post.slug}`}>
-								<PostCard {...post} />
-							</li>
-						))}
+						{(typeof store.posts === 'undefined' ||
+							store.posts.length === 0) && (
+							<h2 class='flex text-lg text-slate-900 dark:text-slate-100 font-semibold'>
+								No Recent Posts
+							</h2>
+						)}
 					</ul>
 					{/* Right Column */}
-					<div class='space-y-10 lg:pl-16 xl:pl-24'>
+					<div
+						class={cx(
+							'space-y-10',
+							typeof store.posts === 'undefined' || store.posts.length === 0
+								? ''
+								: ' lg:pl-16 xl:pl-24'
+						)}
+					>
 						{/* Newsletter */}
-						<form class='rounded-2xl border-slate-100 dark:border-slate-700/40 border p-6'>
+						<form
+							class={cx(
+								typeof store.posts === 'undefined' || store.posts.length === 0
+									? 'hidden'
+									: 'rounded-2xl border-slate-100 dark:border-slate-700/40 border p-6'
+							)}
+						>
 							<h2 class='flex text-sm text-slate-900 dark:text-slate-100 font-semibold'>
 								<MailIcon />
 								<span class='ml-3'>Stay up to date</span>
@@ -203,7 +138,7 @@ export default component$(() => {
 								<span class='ml-3'>Work</span>
 							</h2>
 							<ol class='mt-6 space-y-4' role='list'>
-								{resume.map((entry, i) => (
+								{jobs.map((entry, i) => (
 									<li class='flex gap-4' key={i}>
 										<ResumeItem {...entry} />
 									</li>
