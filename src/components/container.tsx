@@ -6,7 +6,7 @@ interface Props {
 	style?: string | Record<string, number | string | undefined>
 }
 
-const OuterContainer = component$<Props>(({ class: cls, style }) => {
+export const OuterContainer = component$<Props>(({ class: cls, style }) => {
 	return (
 		<div class={cx(cls, 'sm:px-8')} style={style}>
 			<div class='mx-auto max-w-7xl lg:px-8'>
@@ -16,7 +16,7 @@ const OuterContainer = component$<Props>(({ class: cls, style }) => {
 	)
 })
 
-const InnerContainer = component$(() => {
+export const InnerContainer = component$(() => {
 	return (
 		<div class='relative px-4 sm:px-8 lg:px-12'>
 			<div class='mx-auto max-w-2xl lg:max-w-5xl'>
