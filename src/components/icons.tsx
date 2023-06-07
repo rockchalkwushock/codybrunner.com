@@ -6,20 +6,79 @@ interface IconProps {
 	class?: string
 }
 
+export const ArrowDown = component$<IconProps>(({ class: cls }) => {
+	return (
+		<svg
+			aria-hidden='true'
+			class={cx(
+				'h-4 w-4 fill-none transition stroke-slate-400 group-active:stroke-slate-600 dark:group-hover:stroke-slate-50 dark:group-active:stroke-slate-50',
+				cls
+			)}
+			view-box='0 0 16 16'
+		>
+			<path
+				d='M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5'
+				stroke-linecap='round'
+				stroke-linejoin='round'
+				stroke-width='1.5'
+			/>
+		</svg>
+	)
+})
+
+export const BriefCaseIcon = component$<IconProps>(({ class: cls }) => {
+	return (
+		<svg
+			aria-hidden='true'
+			class={cx('h-6 w-6 fill-none flex-none', cls)}
+			stroke-linecap='round'
+			stroke-linejoin='round'
+			stroke-width='1.5'
+			view-box='0 0 24 24'
+		>
+			<path
+				class='fill-slate-100 stroke-slate-400 dark:fill-slate-100/10 dark:stroke-slate-500'
+				d='M2.75 9.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z'
+			/>
+			<path
+				class='stroke-slate-400 dark:stroke-slate-500'
+				d='M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5'
+			/>
+		</svg>
+	)
+})
+
+export const ChevronRightIcon = component$<IconProps>(({ class: cls }) => {
+	return (
+		<svg
+			aria-hidden='true'
+			class={cx('ml-1 fill-none h-4 w-4 stroke-current', cls)}
+			view-box='0 0 16 16'
+		>
+			<path
+				d='M6.75 5.75 9.25 8l-2.5 2.25'
+				stroke-linecap='round'
+				stroke-linejoin='round'
+				stroke-width='1.5'
+			/>
+		</svg>
+	)
+})
+
 export const GitHubIcon = component$<IconProps>(({ class: cls }) => {
 	return (
 		<svg
 			aria-hidden='true'
 			class={cx(
-				'h-6 w-6 fill-zinc-500 duration-100 ease-in-out transition-all lg:group-hover:scale-125 lg:group-hover:animate-wiggle group-hover:fill-github dark:fill-zinc-400 dark:group-hover:fill-github',
+				'h-6 w-6 fill-slate-500 duration-100 ease-in-out transition-all lg:group-hover:scale-125 lg:group-hover:animate-wiggle group-hover:fill-cyan-500 dark:fill-slate-400 dark:group-hover:fill-cyan-400',
 				cls
 			)}
 			view-box='0 0 24 24'
 		>
 			<path
-				fillRule='evenodd'
-				clipRule='evenodd'
+				clip-rule='evenodd'
 				d='M12 2C6.475 2 2 6.588 2 12.253c0 4.537 2.862 8.369 6.838 9.727.5.09.687-.218.687-.487 0-.243-.013-1.05-.013-1.91C7 20.059 6.35 18.957 6.15 18.38c-.113-.295-.6-1.205-1.025-1.448-.35-.192-.85-.667-.013-.68.788-.012 1.35.744 1.538 1.051.9 1.551 2.338 1.116 2.912.846.088-.666.35-1.115.638-1.371-2.225-.256-4.55-1.14-4.55-5.062 0-1.115.387-2.038 1.025-2.756-.1-.256-.45-1.307.1-2.717 0 0 .837-.269 2.75 1.051.8-.23 1.65-.346 2.5-.346.85 0 1.7.115 2.5.346 1.912-1.333 2.75-1.05 2.75-1.05.55 1.409.2 2.46.1 2.716.637.718 1.025 1.628 1.025 2.756 0 3.934-2.337 4.806-4.562 5.062.362.32.675.936.675 1.897 0 1.371-.013 2.473-.013 2.82 0 .268.188.589.688.486a10.039 10.039 0 0 0 4.932-3.74A10.447 10.447 0 0 0 22 12.253C22 6.588 17.525 2 12 2Z'
+				fill-rule='evenodd'
 			/>
 		</svg>
 	)
@@ -30,7 +89,7 @@ export const InstagramIcon = component$<IconProps>(({ class: cls }) => {
 		<svg
 			aria-hidden='true'
 			class={cx(
-				'h-6 w-6 fill-zinc-500 duration-100 ease-in-out transition-all lg:group-hover:scale-125 lg:group-hover:animate-wiggle group-hover:fill-github dark:fill-zinc-400 dark:group-hover:fill-github',
+				'h-6 w-6 fill-slate-500 duration-100 ease-in-out transition-all lg:group-hover:scale-125 lg:group-hover:animate-wiggle group-hover:fill-cyan-500 dark:fill-slate-400 dark:group-hover:fill-cyan-400',
 				cls
 			)}
 			view-box='0 0 24 24'
@@ -46,7 +105,7 @@ export const LinkedInIcon = component$<IconProps>(({ class: cls }) => {
 		<svg
 			aria-hidden='true'
 			class={cx(
-				'h-6 w-6 fill-zinc-500 duration-100 ease-in-out transition-all lg:group-hover:scale-125 lg:group-hover:animate-wiggle group-hover:fill-linkedIn dark:fill-zinc-400 dark:group-hover:fill-linkedIn',
+				'h-6 w-6 fill-slate-500 duration-100 ease-in-out transition-all lg:group-hover:scale-125 lg:group-hover:animate-wiggle group-hover:fill-cyan-500 dark:fill-slate-400 dark:group-hover:fill-cyan-400',
 				cls
 			)}
 			view-box='0 0 24 24'
@@ -56,11 +115,75 @@ export const LinkedInIcon = component$<IconProps>(({ class: cls }) => {
 	)
 })
 
+export const MailIcon = component$<IconProps>(({ class: cls }) => {
+	return (
+		<svg
+			aria-hidden='true'
+			class={cx('h-6 w-6 fill-none flex-none', cls)}
+			stroke-linecap='round'
+			stroke-linejoin='round'
+			stroke-width='1.5'
+			view-box='0 0 24 24'
+		>
+			<path
+				class='fill-slate-100 stroke-slate-400 dark:fill-slate-100/10 dark:stroke-slate-500'
+				d='M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z'
+			/>
+			<path
+				class='stroke-slate-400 dark:stroke-slate-500'
+				d='m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6'
+			/>
+		</svg>
+	)
+})
+
+export const MoonIcon = component$<IconProps>(({ class: cls }) => {
+	return (
+		<svg
+			aria-hidden='true'
+			class={cx(
+				'hidden h-6 w-6 fill-slate-700 stroke-slate-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-slate-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500',
+				cls
+			)}
+			view-box='0 0 24 24'
+		>
+			<path
+				d='M17.25 16.22a6.937 6.937 0 0 1-9.47-9.47 7.451 7.451 0 1 0 9.47 9.47ZM12.75 7C17 7 17 2.75 17 2.75S17 7 21.25 7C17 7 17 11.25 17 11.25S17 7 12.75 7Z'
+				stroke-linecap='round'
+				stroke-linejoin='round'
+				stroke-width='1.5'
+			/>
+		</svg>
+	)
+})
+
+export const SunIcon = component$<IconProps>(({ class: cls }) => {
+	return (
+		<svg
+			aria-hidden='true'
+			class={cx(
+				'h-6 w-6 fill-slate-100 stroke-slate-500 transition group-hover:fill-slate-200 group-hover:stroke-slate-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600',
+				cls
+			)}
+			stroke-linecap='round'
+			stroke-linejoin='round'
+			stroke-width='1.5'
+			view-box='0 0 24 24'
+		>
+			<path d='M8 12.25A4.25 4.25 0 0 1 12.25 8v0a4.25 4.25 0 0 1 4.25 4.25v0a4.25 4.25 0 0 1-4.25 4.25v0A4.25 4.25 0 0 1 8 12.25v0Z' />
+			<path
+				class='fill-none'
+				d='M12.25 3v1.5M21.5 12.25H20M18.791 18.791l-1.06-1.06M18.791 5.709l-1.06 1.06M12.25 20v1.5M4.5 12.25H3M6.77 6.77 5.709 5.709M6.77 17.73l-1.061 1.061'
+			/>
+		</svg>
+	)
+})
+
 export const TelegramIcon = component$<IconProps>(({ class: cls }) => {
 	return (
 		<svg
 			class={cx(
-				'h-6 w-6 fill-zinc-500 duration-100 ease-in-out transition-all lg:group-hover:scale-125 lg:group-hover:animate-wiggle group-hover:fill-telegram dark:fill-zinc-400 dark:group-hover:fill-telegram',
+				'h-6 w-6 fill-slate-500 duration-100 ease-in-out transition-all lg:group-hover:scale-125 lg:group-hover:animate-wiggle group-hover:fill-cyan-500 dark:fill-slate-400 dark:group-hover:fill-cyan-400',
 				cls
 			)}
 			view-box='0 0 24 24'
@@ -85,7 +208,7 @@ export const TwitterIcon = component$<IconProps>(({ class: cls }) => {
 		<svg
 			aria-hidden='true'
 			class={cx(
-				'h-6 w-6 fill-zinc-500 duration-100 ease-in-out transition-all lg:group-hover:scale-125 lg:group-hover:animate-wiggle group-hover:fill-twitter dark:fill-zinc-400 dark:group-hover:fill-twitter',
+				'h-6 w-6 fill-slate-500 duration-100 ease-in-out transition-all lg:group-hover:scale-125 lg:group-hover:animate-wiggle group-hover:fill-cyan-500 dark:fill-slate-400 dark:group-hover:fill-cyan-400',
 				cls
 			)}
 			view-box='0 0 24 24'
