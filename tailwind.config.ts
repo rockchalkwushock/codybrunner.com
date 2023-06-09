@@ -323,8 +323,9 @@ export default {
 			},
 			keyframes: {
 				wiggle: {
-					'0% 100%': { transform: 'rotate(-12deg) scale(0.95)' },
+					'0%': { transform: 'rotate(-12deg) scale(1.25)' },
 					'50%': { transform: 'rotate(12deg) scale(0.95)' },
+					'100%': { transform: 'rotate(-12deg) scale(1.25)' },
 				},
 			},
 		},
