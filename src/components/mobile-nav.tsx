@@ -1,17 +1,12 @@
 import { $, component$, useOnDocument, useSignal } from '@builder.io/qwik'
-import { useContent, useLocation, useNavigate } from '@builder.io/qwik-city'
 
-import { cx } from '~/utils/cx'
 import { ChevronDownIcon, CloseIcon } from './icons'
-import { isMenuItemVisible } from '~/utils/filters'
+import { useMenu } from '~/hooks/use-menu'
+import { cx } from '~/utils/cx'
 
 export const MobileNav = component$(() => {
-	const navigate = useNavigate()
-	const { url } = useLocation()
+	const { isOpen, navigate, options, url } = useMenu()
 	const ref = useSignal<Element>()
-	const isOpen = useSignal(false)
-	const { menu } = useContent()
-	const options = useSignal(menu?.items?.filter(isMenuItemVisible) ?? [])
 
 	const handleClickOutside = $((event: Event) => {
 		if (!ref.value?.contains(event.target as Node)) {
@@ -74,7 +69,7 @@ export const MobileNav = component$(() => {
 				<nav class='mt-6'>
 					<ul
 						aria-activedescendant={
-							options.value.find(v => v.href === url.pathname)?.text
+							options.value.find(v => v.href === url)?.text
 						}
 						class='-my-2 divide-y divide-slate-100 text-base text-slate-800 dark:divide-slate-100/5 dark:text-slate-300'
 						role='listbox'
@@ -82,10 +77,10 @@ export const MobileNav = component$(() => {
 					>
 						{options.value.map(({ href, text }) => (
 							<li
-								aria-selected={href === url.pathname}
+								aria-selected={href === url}
 								class={cx(
 									'flex py-2',
-									href === url.pathname &&
+									href === url &&
 										'text-cyan-500 dark:text-cyan-400 font-semibold'
 								)}
 								data-menu-open={isOpen.value}
