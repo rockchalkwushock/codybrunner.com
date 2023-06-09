@@ -1,11 +1,12 @@
 import { component$ } from '@builder.io/qwik'
-import { useContent, useLocation } from '@builder.io/qwik-city'
+import { Link, useContent, useLocation } from '@builder.io/qwik-city'
 
 import { Container } from './container'
 import { NavLink } from './nav-link'
 import { cx } from '~/utils/cx'
 import { isMenuItemVisible } from '~/utils/filters'
 import { ThemeToggle } from './theme-toggle'
+import { MobileNav } from './mobile-nav'
 
 export const Header = component$(() => {
 	const { menu } = useContent()
@@ -29,10 +30,31 @@ export const Header = component$(() => {
 				>
 					<div class='relative flex gap-4'>
 						<div class='flex flex-1'>
-							<div class='bg-black h-8 w-8 rounded-full' />
+							{url.pathname !== '/' && (
+								<div
+									class={cx(
+										'h-10 w-10 rounded-full bg-white/90 p-0.5 flex items-center justify-center shadow-lg shadow-slate-800/5 ring-1 ring-slate-900/5 backdrop-blur dark:bg-slate-800/90 dark:ring-white/10'
+									)}
+								>
+									<Link
+										aria-label='Home'
+										class='flex h-10 w-10 items-center justify-center pointer-events-auto'
+										href='/'
+									>
+										<img
+											alt='Logo'
+											class='h-8 w-8 rounded-full bg-slate-100 object-cover dark:bg-slate-800'
+											height={32}
+											src='/icons/logo.svg'
+											width={32}
+										/>
+									</Link>
+								</div>
+							)}
 						</div>
 						<div class='flex flex-1 justify-end md:justify-center'>
-							{/* TODO: Mobile Navigation */}
+							{/* Mobile Navigation */}
+							<MobileNav />
 							{/* Desktop Navigation */}
 							<nav class='pointer-events-auto hidden md:block'>
 								<ul

@@ -48,6 +48,20 @@ export const BriefCaseIcon = component$<IconProps>(({ class: cls }) => {
 	)
 })
 
+export const ChevronDownIcon = component$<IconProps>(({ class: cls }) => {
+	return (
+		<svg aria-hidden='true' class={cx('h-2 w-2', cls)} view-box='0 0 8 6'>
+			<path
+				class='fill-none'
+				d='M1.75 1.75 4 4.25l2.25-2.5'
+				stroke-linecap='round'
+				stroke-linejoin='round'
+				stroke-width='1.5'
+			/>
+		</svg>
+	)
+})
+
 export const ChevronRightIcon = component$<IconProps>(({ class: cls }) => {
 	return (
 		<svg
@@ -57,6 +71,20 @@ export const ChevronRightIcon = component$<IconProps>(({ class: cls }) => {
 		>
 			<path
 				d='M6.75 5.75 9.25 8l-2.5 2.25'
+				stroke-linecap='round'
+				stroke-linejoin='round'
+				stroke-width='1.5'
+			/>
+		</svg>
+	)
+})
+
+export const CloseIcon = component$<IconProps>(({ class: cls }) => {
+	return (
+		<svg aria-hidden='true' class={cx('', cls)} view-box='0 0 24 24'>
+			<path
+				class='stroke-current fill-none'
+				d='m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5'
 				stroke-linecap='round'
 				stroke-linejoin='round'
 				stroke-width='1.5'
