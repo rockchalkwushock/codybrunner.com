@@ -34,48 +34,61 @@ export default component$(() => {
 	return (
 		<>
 			<Container class='mt-9'>
-				<div class='max-w-2xl'>
-					<h1 class='text-4xl text-slate-900 font-bold tracking-tight dark:text-slate-100 sm:text-5xl'>
-						{HOME.title}
-					</h1>
-					<p class='mt-6 text-slate-600 dark:text-slate-400 text-base'>
-						{HOME.description}
-					</p>
-					<ul class='mt-6 flex gap-3' role='list'>
-						<SocialLink
-							aria-label='Follow me on GitHub'
-							href={SITE.socials.github}
-						>
-							<GitHubIcon />
-						</SocialLink>
-						<SocialLink
-							aria-label='Follow me on Instagram'
-							href={SITE.socials.instagram}
-						>
-							<InstagramIcon />
-						</SocialLink>
-						<SocialLink
-							aria-label='Follow me on LinkedIn'
-							href={SITE.socials.linkedin}
-						>
-							<LinkedInIcon />
-						</SocialLink>
-						<SocialLink
-							aria-label='Follow me on Telegram'
-							href={SITE.socials.telegram}
-						>
-							<TelegramIcon />
-						</SocialLink>
-						<SocialLink
-							aria-label='Follow me on Twitter'
-							href={SITE.socials.twitter}
-						>
-							<TwitterIcon />
-						</SocialLink>
-					</ul>
+				<div class='grid grid-cols-1 place-items-center gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12'>
+					<div class='max-w-2xl'>
+						<h1 class='text-4xl text-slate-900 font-bold tracking-tight dark:text-slate-100 sm:text-5xl'>
+							{HOME.title}
+						</h1>
+						<p class='mt-6 text-slate-600 dark:text-slate-400 text-base'>
+							{HOME.description}
+						</p>
+						<ul class='mt-6 flex gap-3' role='list'>
+							<SocialLink
+								aria-label='Follow me on GitHub'
+								href={SITE.socials.github}
+							>
+								<GitHubIcon />
+							</SocialLink>
+							<SocialLink
+								aria-label='Follow me on Instagram'
+								href={SITE.socials.instagram}
+							>
+								<InstagramIcon />
+							</SocialLink>
+							<SocialLink
+								aria-label='Follow me on LinkedIn'
+								href={SITE.socials.linkedin}
+							>
+								<LinkedInIcon />
+							</SocialLink>
+							<SocialLink
+								aria-label='Follow me on Telegram'
+								href={SITE.socials.telegram}
+							>
+								<TelegramIcon />
+							</SocialLink>
+							<SocialLink
+								aria-label='Follow me on Twitter'
+								href={SITE.socials.twitter}
+							>
+								<TwitterIcon />
+							</SocialLink>
+						</ul>
+					</div>
+					<div class='lg:pl-12'>
+						<div class='max-w-xs px-2.5 lg:max-w-none'>
+							<img
+								alt='Image of Cody Brunner'
+								class='aspect-square rotate-3 rounded-2xl bg-slate-100 object-cover dark:bg-slate-800'
+								height={300}
+								src='/images/cody-brunner.jpg'
+								width={263}
+							/>
+						</div>
+					</div>
 				</div>
 			</Container>
-			<Container class='mt-24 md:mt-28'>
+			<Container class='mt-10'>
 				<div class='mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2'>
 					{/* Left Column */}
 					<ul
@@ -83,17 +96,11 @@ export default component$(() => {
 							'flex flex-col gap-16',
 							(typeof store.posts === 'undefined' ||
 								store.posts.length === 0) &&
-								'items-center order-1 md:justify-center'
+								'hidden'
 						)}
 						role='list'
 					>
 						{/* Featured or Recent Posts */}
-						{(typeof store.posts === 'undefined' ||
-							store.posts.length === 0) && (
-							<h2 class='flex text-lg text-slate-900 dark:text-slate-100 font-semibold'>
-								No Recent Posts
-							</h2>
-						)}
 					</ul>
 					{/* Right Column */}
 					<div
