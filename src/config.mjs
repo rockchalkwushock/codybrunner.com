@@ -1,5 +1,5 @@
 export const FEATURE_FLAGS = {
-	menu: /(home|uses)/i,
+	menu: /(about|home|uses)/i,
 }
 
 export const SITE = {
@@ -28,6 +28,17 @@ export const HOME = {
 	description:
 		"I’m Cody, an American software developer and entrepreneur based in Colombia. I'm a Senior Frontend Developer at Bitcoin IRA where we are building the world's first and most trusted crypto IRA platform.",
 	title: 'Software developer, veteran, and smoker of the meats.',
+}
+
+export const ABOUT = {
+	content: [
+		'I’ve loved making things for as long as I can remember, and wrote my first program when I was 6 years old, just two weeks after my mom brought home the brand new Macintosh LC 550 that I taught myself to type on.',
+		'The only thing I loved more than computers as a kid was space. When I was 8, I climbed the 40-foot oak tree at the back of our yard while wearing my older sister’s motorcycle helmet, counted down from three, and jumped — hoping the tree was tall enough that with just a bit of momentum I’d be able to get to orbit.',
+		'I met the love of my life here on the internet in 2013 in a language exchange chat room. After many years of being friends we tied the knot here in her home country of Colombia in 2020. I have called Colombia home ever since and am a very proud step dog dad to her golden retriever.',
+	],
+	description: '',
+	title:
+		'I’m Cody Brunner. I live in Bogota, Colombia, where I work on software of the future.',
 }
 
 export const USES = {
