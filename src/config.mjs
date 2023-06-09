@@ -31,6 +31,8 @@ export const HOME = {
 }
 
 export const USES = {
+	description:
+		'My workstation, development tools, and recommended productivity apps.',
 	devTools: [
 		{
 			description:

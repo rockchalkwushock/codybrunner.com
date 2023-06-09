@@ -59,7 +59,7 @@ export const head: DocumentHead = {
 	meta: [
 		{
 			name: 'description',
-			content: '// TODO',
+			content: USES.description,
 		},
 		{
 			name: 'og:title',
@@ -67,7 +67,7 @@ export const head: DocumentHead = {
 		},
 		{
 			name: 'og:description',
-			content: '// TODO',
+			content: USES.description,
 		},
 	],
 	links: [
