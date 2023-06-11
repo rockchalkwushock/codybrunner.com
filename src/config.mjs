@@ -1,5 +1,5 @@
 export const FEATURE_FLAGS = {
-	menu: /(about|bookshelf|home|uses)/i,
+	menu: /(about|bookshelf|home|projects|uses)/i,
 }
 
 export const SITE = {
@@ -304,4 +304,145 @@ export const BOOKSHELF = {
 		},
 	],
 	title: 'Bookshelf',
+}
+
+export const PROJECTS = {
+	description: 'My portfolio of projects I have worked on over the years.',
+	intro:
+		'After several years in the industry here is a few of the projects I have worked on over the years. From personal projects to open source contributions to professional work.',
+	portfolio: [
+		{
+			name: 'microauth-vkontakte',
+			description: 'Vkontakte OAuth strategy for the MicroJS framework.',
+			link: {
+				href: 'https://www.npmjs.com/package/microauth-vkontakte',
+				label: 'npmjs.com',
+			},
+			logo: '/icons/npm.svg',
+		},
+		{
+			name: 'pardall_markdown',
+			description:
+				'Reactive publishing framework, filesystem-based with support for Markdown, nested hierarchies, and instant content rebuilding. Written in Elixir.',
+			link: {
+				href: 'https://hex.pm/packages/pardall_markdown',
+				label: 'hex.pm',
+			},
+			logo: '/icons/hex.svg',
+		},
+		{
+			name: 'rehype-code-titles',
+			description:
+				'Rehype plugin for parsing code blocks and adding titles to code blocks.',
+			link: {
+				href: 'https://www.npmjs.com/package/rehype-code-titles',
+				label: 'npmjs.com',
+			},
+			logo: '/icons/npm.svg',
+		},
+		{
+			name: 'ectogram',
+			description: 'An Instagram clone written in Elixir and Ecto',
+			link: {
+				href: 'https://github.com/rockchalkwushock/ectogram',
+				label: 'github.com',
+			},
+			logo: '/icons/elixir.svg',
+		},
+		{
+			name: 'citax',
+			description: 'A Calendly clone written in Elixir and Phoenix LiveView.',
+			link: {
+				href: 'https://github.com/rockchalkwushock/citax',
+				label: 'github.com',
+			},
+			logo: '/icons/phoenix.svg',
+		},
+		{
+			name: 'weather-app',
+			description: 'Weather App that makes use of the OpenWeather API.',
+			link: {
+				href: 'https://weather-app-rockchalkwushock.vercel.app/',
+				label: 'vercel.app',
+			},
+			logo: '/icons/react.svg',
+		},
+		{
+			name: 'tic-tac-toe',
+			description: 'Tic-tac-toe written using the React Context API.',
+			link: {
+				href: 'https://tic-tac-toe-indol-chi.vercel.app/',
+				label: 'vercel.app',
+			},
+			logo: '/icons/react.svg',
+		},
+		{
+			name: '@appointlet/appointlet-js',
+			description: 'JavaScript SDK for Appointlet.',
+			link: {
+				href: 'https://www.npmjs.com/package/@appointlet/appointlet.js',
+				label: 'npmjs.com',
+			},
+			logo: '/icons/appointlet.svg',
+		},
+		{
+			name: 'Appointlet Chrome Extension',
+			description: 'Chrome Extension for Appointlet.',
+			link: {
+				href: 'https://chrome.google.com/webstore/detail/appointlet/oanmefncibhopinffldmcfpkhjfcnggo',
+				label: 'chrome.google.com',
+			},
+			logo: '/icons/appointlet.svg',
+		},
+		{
+			name: 'Appointlet Dashboard Application',
+			description:
+				"Dashboard for user's to manage their meetings and meeting types for Appointlet.",
+			link: {
+				href: 'https://www.appointlet.com/',
+				label: 'appointlet.com',
+			},
+			logo: '/icons/appointlet.svg',
+		},
+		{
+			name: 'XLR8',
+			description:
+				'Arrive Logistic offers scalable capacity solutions. Our customer-obsessed team strategically delivers unmatched scalable capacity solutions.',
+			link: {
+				href: 'https://www.arrivelogistics.com/',
+				label: 'arrivelogistics.com',
+			},
+			logo: '/icons/arrive-logistics.svg',
+		},
+		{
+			name: 'Bitcoin IRA',
+			description: "The world's first crypto investment platform.",
+			link: {
+				href: 'https://bitcoinira.com/',
+				label: 'bitcoinira.com',
+			},
+			logo: '/icons/bitcoin-ira.svg',
+		},
+		{
+			name: 'Weeldi',
+			description:
+				'Weeldi is the easiest way to automate any task you do on the web w/ NO coding required',
+			link: {
+				href: 'https://weeldi.com/',
+				label: 'weeldi.com',
+			},
+			logo: '/icons/weeldi.svg',
+		},
+		{
+			name: 'DM.app',
+			description:
+				'DM is the simplest free messaging platform to engage your community on web/mobile/SMS. No ads. No algorithms. No app download required.',
+			link: {
+				href: 'https://dm.app',
+				label: 'dm.app',
+			},
+			logo: '/icons/dm.svg',
+		},
+	],
+	title: 'My Portfolio',
 }
