@@ -154,11 +154,14 @@ export const MailIcon = component$<IconProps>(({ class: cls }) => {
 			view-box='0 0 24 24'
 		>
 			<path
-				class='fill-slate-100 stroke-slate-400 dark:fill-slate-100/10 dark:stroke-slate-500'
+				class={cx(
+					'fill-slate-100 stroke-slate-400 dark:fill-slate-100/10 dark:stroke-slate-500',
+					cls
+				)}
 				d='M2.75 7.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z'
 			/>
 			<path
-				class='stroke-slate-400 dark:stroke-slate-500'
+				class={cx('stroke-slate-400 dark:stroke-slate-500', cls)}
 				d='m4 6 6.024 5.479a2.915 2.915 0 0 0 3.952 0L20 6'
 			/>
 		</svg>

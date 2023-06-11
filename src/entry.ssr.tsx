@@ -20,11 +20,9 @@ import { cx } from './utils/cx'
 
 export default function (opts: RenderToStreamOptions) {
 	// Determine if the theme cookie is set.
-	const hasThemeCookie =
-		opts.serverData?.requestHeaders.cookie.includes('theme')
-	// Determine if the theme cookie is set to dark.
 	const setDarkTheme =
-		hasThemeCookie &&
+		opts.serverData?.requestHeaders.cookie &&
+		opts.serverData?.requestHeaders.cookie.includes('theme') &&
 		opts.serverData?.requestHeaders.cookie.substring(6) === 'dark'
 
 	return renderToStream(<Root />, {
