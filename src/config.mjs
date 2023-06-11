@@ -6,7 +6,7 @@ export const SITE = {
 	author: 'Cody Brunner',
 	basePathName: '/',
 	copyright: [
-		`© 2017-${new Date().getFullYear()} Cody Brunner.`,
+		`© 2016-${new Date().getFullYear()} Cody Brunner.`,
 		'All rights reserved.',
 	],
 	description: 'My stretch of pipe in the world wide inter-tubes.',
@@ -32,13 +32,15 @@ export const HOME = {
 
 export const ABOUT = {
 	content: [
-		'I’ve loved making things for as long as I can remember, and wrote my first program when I was 6 years old, just two weeks after my mom brought home the brand new Macintosh LC 550 that I taught myself to type on.',
-		'The only thing I loved more than computers as a kid was space. When I was 8, I climbed the 40-foot oak tree at the back of our yard while wearing my older sister’s motorcycle helmet, counted down from three, and jumped — hoping the tree was tall enough that with just a bit of momentum I’d be able to get to orbit.',
-		'I met the love of my life here on the internet in 2013 in a language exchange chat room. After many years of being friends we tied the knot here in her home country of Colombia in 2020. I have called Colombia home ever since and am a very proud step dog dad to her golden retriever.',
+		'After several failed attempts at higher education and a stint in the US Navy with a tour in Afghanistan. I found myself working graveyard shift as a CNC laser operator and hating my life. I started teaching myself how to code as early as 2012, but never really thought it could be a career. It was not until I was six months away from an engineering degree that my heart was not in anymore that I decided to take the plunge and go all in on teaching myself software development.',
+		'Growing up and spending roughly 30 uninterrupted years in the "middle of nowhere" Kansas; I made the choice to move across the country to Portland, Oregon in 2018. I spent two years there working my first job in the tech industry before moving to Colombia in 2020. I have been living outside of Bogotá and working on remote teams ever since.',
+		'I met the love of my life here on the "inter-tubes" in 2013 in a language exchange chat room. After many years of being friends we got the chance to meet in person in 2019 and began dating. We tied the knot here in her home country of Colombia in 2020. I have called Colombia home ever since and am a very proud step dog dad to her golden retriever. When I am not working I enjoy spending time with my wife and our dog, running, playing guitar, tinkering with my Raspberry Pi, and smoking meats and cheeses.',
 	],
-	description: '',
+	description: 'Learn more about me, my work, and my hobbies.',
+	history:
+		'I shipped the first iteration of this website in 2016 through GitHub Pages with just HTML & CSS. Over the years it has mostly been ReactJS using frameworks like NextJS, GatsbyJS, and Astro. Hosting for the most part has been through Vercel; however I now use Cloudflare Pages. This iteration has been built with Qwik/QwikCity & TailwindCSS with the blog running on MDX.',
 	title:
-		'I’m Cody Brunner. I live in Bogota, Colombia, where I work on software of the future.',
+		'I’m Cody Brunner. I live in Bogotá, Colombia, where I work on software of the future.',
 }
 
 export const USES = {
