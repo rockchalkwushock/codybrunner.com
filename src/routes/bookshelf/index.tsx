@@ -20,8 +20,6 @@ export default component$(() => {
 								<a
 									class='relative z-10 flex-shrink-0 w-32 h-48 overflow-hidden rounded-lg shadow-md group-hover:shadow-lg'
 									href={url}
-									target='_blank'
-									rel='noopener noreferrer'
 								>
 									<img
 										alt={`${title} by ${authors.join(', ')}`}
@@ -58,8 +56,6 @@ export default component$(() => {
 								<Link
 									class='text-base flex flex-col space-y-1 tracking-tight text-slate-800 dark:text-slate-100'
 									href={url}
-									target='_blank'
-									rel='noopener noreferrer'
 								>
 									<h3 class='text-base font-semibold tracking-tight text-slate-800 dark:text-slate-100 transition ease-in-out duration-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400'>
 										{title}
@@ -82,8 +78,6 @@ export default component$(() => {
 								<Link
 									class='text-base flex flex-col space-y-1 tracking-tight text-slate-800 dark:text-slate-100'
 									href={url}
-									target='_blank'
-									rel='noopener noreferrer'
 								>
 									<h3 class='text-base font-semibold tracking-tight text-slate-800 dark:text-slate-100 transition ease-in-out duration-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400'>
 										{title}
@@ -106,8 +100,6 @@ export default component$(() => {
 								<Link
 									class='text-base flex flex-col space-y-1 tracking-tight text-slate-800 dark:text-slate-100'
 									href={url}
-									target='_blank'
-									rel='noopener noreferrer'
 								>
 									<h3 class='text-base font-semibold tracking-tight text-slate-800 dark:text-slate-100 transition ease-in-out duration-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400'>
 										{title}
@@ -130,8 +122,6 @@ export default component$(() => {
 								<Link
 									class='text-base flex flex-col space-y-1 tracking-tight text-slate-800 dark:text-slate-100'
 									href={url}
-									target='_blank'
-									rel='noopener noreferrer'
 								>
 									<h3 class='text-base font-semibold tracking-tight text-slate-800 dark:text-slate-100 transition ease-in-out duration-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400'>
 										{title}
@@ -154,8 +144,6 @@ export default component$(() => {
 								<Link
 									class='text-base flex flex-col space-y-1 tracking-tight text-slate-800 dark:text-slate-100'
 									href={url}
-									target='_blank'
-									rel='noopener noreferrer'
 								>
 									<h3 class='text-base font-semibold tracking-tight text-slate-800 dark:text-slate-100 transition ease-in-out duration-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400'>
 										{title}
