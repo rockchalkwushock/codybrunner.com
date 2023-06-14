@@ -8,6 +8,11 @@ export const HOME = {
 	title: 'Software developer, veteran, and smoker of the meats.',
 }
 
+export const NOT_FOUND = {
+	description: 'Are you lost? There is nothing here. Go back home.',
+	title: 'Not Found',
+}
+
 export const SITE = {
 	author: 'Cody Brunner',
 	copyright: [
