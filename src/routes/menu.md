@@ -1,5 +1,6 @@
 # Menu
 
-- [Home](/)
+- [Home](//)
 - [Bookshelf](/bookshelf)
+- [Projects](/projects)
 - [Uses](/uses)
