@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss'
 import typography from '@tailwindcss/typography'
-import { black, cyan, slate, white } from 'tailwindcss/colors'
+import { black, cyan, orange, slate, white } from 'tailwindcss/colors'
 
 export default {
 	content: ['./src/**/*.{ts,tsx,mdx}'],
@@ -9,6 +9,7 @@ export default {
 	theme: {
 		colors: {
 			accent: cyan,
+			'secondary-accent': orange,
 			black,
 			current: 'currentColor',
 			primary: slate,
