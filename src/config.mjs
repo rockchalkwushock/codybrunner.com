@@ -1,5 +1,135 @@
+export const BOOKSHELF = {
+	current: [
+		{
+			authors: ['Jason Wilson'],
+			image: 'https://m.media-amazon.com/images/I/41QIpvJNnpL.jpg',
+			title:
+				'Cry Like a Man: Fighting for Freedom from Emotional Incarceration',
+			url: 'https://www.amazon.com/Cry-Like-Man-Emotional-Incarceration-ebook/dp/B07G1YJ7DZ/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=&sr=',
+		},
+		{
+			authors: ['Sean Moriarity'],
+			image:
+				'https://pragprog.com/titles/smgaelixir/genetic-algorithms-in-elixir/smgaelixir-500.jpg',
+			title: 'Genetic Algorithms in Elixir',
+			url: 'https://pragprog.com/titles/smgaelixir/genetic-algorithms-in-elixir/',
+		},
+	],
+	description: 'Recommended books and what I am currently reading.',
+	fiction: [
+		{
+			authors: ['Ayn Rand'],
+			title: 'Anthem',
+			url: 'https://a.co/d/8rHjOEy',
+		},
+		{
+			authors: ['Ayn Rand'],
+			title: 'Atlas Shrugged',
+			url: 'https://a.co/d/88pro3Y',
+		},
+		{
+			authors: ['Ayn Rand'],
+			title: 'The Fountainhead',
+			url: 'https://a.co/d/c3g8b5a',
+		},
+		{
+			authors: ['Victor Hugo'],
+			title: 'Les Misérables',
+			url: 'https://a.co/d/1fPgHbY',
+		},
+		{
+			authors: ['Paulo Coelho'],
+			title: 'The Alchemist',
+			url: 'https://a.co/d/h0a1C4I',
+		},
+		{
+			authors: ['Michael Crichton'],
+			title: 'State of Fear',
+			url: 'https://a.co/d/f9dhfEP',
+		},
+	],
+	finance: [
+		{
+			authors: ['Robert Kiyosaki'],
+			title: 'Rich Dad Poor Dad',
+			url: 'https://a.co/d/1HpPMo6',
+		},
+	],
+	intro:
+		'I do not read as much as I used to when I was a kid and I am working on changing that. I also am branching out and not just reading tech books. Here are some of my favorites over the 30 plus years I have been on this blue rock.',
+	marriage: [
+		{
+			authors: ['Jeff Feldhahn', 'Shaunti Feldhahn'],
+			title:
+				'For Men Only: A Straightforward Guide to the Inner Lives of Women',
+			url: 'https://a.co/d/bpcbrqV',
+		},
+		{
+			authors: ['Eva A. Mendes'],
+			title: "Marriage and Lasting Relationships with Asperger's Syndrome",
+			url: 'https://a.co/d/3v2WXtL',
+		},
+	],
+	selfHelp: [
+		{
+			authors: ['David Goggins'],
+			title: "Can't Hurt Me",
+			url: 'https://a.co/d/cnzBYda',
+		},
+		{
+			authors: ['Jocko Willink', 'Leif Babin'],
+			title: 'Extreme Ownership',
+			url: 'https://a.co/d/0wK7AXT',
+		},
+		{
+			authors: ['Connor Beaton'],
+			title:
+				"Men's Work: A Practical Guide to Face Your Darkness, End Self-Sabotage, and Find Freedom",
+			url: 'https://a.co/d/97H7xq1',
+		},
+		{
+			authors: ['Ryan Michler'],
+			title: 'Sovereignty: The Battle for the Hearts and Minds of Men',
+			url: 'https://a.co/d/1pZdVHt',
+		},
+		{
+			authors: ['Mel Robbins'],
+			title: 'The 5 Second Rule',
+			url: 'https://a.co/d/ak4pIOE',
+		},
+	],
+	technology: [
+		{
+			authors: ['James Edward Gray, II', 'Bruce A. Tate'],
+			title: 'Designing Elixir Systems with OTP',
+			url: 'https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/',
+		},
+		{
+			authors: ['Chris McCord', 'Bruce A. Tate', 'José Valim'],
+			title: 'Programming Phoenix 1.4',
+			url: 'https://pragprog.com/titles/phoenix14/programming-phoenix-1-4/',
+		},
+		{
+			authors: ['Darin Wilson', 'Eric Meadows-Jönsson'],
+			title: 'Programming Ecto',
+			url: 'https://pragprog.com/titles/wmecto/programming-ecto/',
+		},
+		{
+			authors: ['Bruce Williams', 'Ben Wilson'],
+			title: 'Craft GraphQL APIs in Elixir with Absinthe',
+			url: 'https://pragprog.com/titles/wwgraphql/craft-graphql-apis-in-elixir-with-absinthe/',
+		},
+		{
+			authors: ['Bruce A. Tate', 'Sophie DeBenedetto'],
+			title: 'Programming Phoenix LiveView',
+			url: 'https://pragprog.com/titles/liveview/programming-phoenix-liveview/',
+		},
+	],
+	title: 'Bookshelf',
+}
+
 export const FEATURE_FLAGS = {
-	menu: /(home|uses)/i,
+	menu: /(bookshelf|home|uses)/i,
 }
 
 export const HOME = {

@@ -69,7 +69,7 @@ export default component$(() => {
 })
 
 export const head: DocumentHead = {
-	title: 'Uses',
+	title: USES.title,
 	meta: [
 		{
 			name: 'description',
