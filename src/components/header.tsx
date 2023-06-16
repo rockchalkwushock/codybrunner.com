@@ -4,7 +4,7 @@ import { Link } from '@builder.io/qwik-city'
 import { Container } from './container'
 import { MobileNav } from './mobile-nav'
 import { NavLink } from './nav-link'
-import { ThemeToggle } from './theme-toggle'
+// import { ThemeToggle } from './theme-toggle'
 
 import { useMenu } from '~/hooks/use-menu'
 import { cx } from '~/utils/cx'
@@ -83,9 +83,9 @@ export const Header = component$(() => {
 							</nav>
 						</div>
 						<div class='flex justify-end md:flex-1'>
-							<div class='pointer-events-auto'>
+							{/* <div class='pointer-events-auto'>
 								<ThemeToggle />
-							</div>
+							</div> */}
 						</div>
 					</div>
 				</Container>
