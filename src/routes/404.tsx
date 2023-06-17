@@ -25,10 +25,6 @@ export const head: DocumentHead = {
 	title: NOT_FOUND.title,
 	meta: [
 		{
-			name: 'description',
-			content: NOT_FOUND.description,
-		},
-		{
 			name: 'og:description',
 			content: NOT_FOUND.description,
 		},

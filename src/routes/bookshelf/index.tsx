@@ -165,16 +165,48 @@ export const head: DocumentHead = {
 	title: BOOKSHELF.title,
 	meta: [
 		{
-			name: 'description',
+			property: 'og:description',
 			content: BOOKSHELF.description,
 		},
 		{
-			name: 'og:description',
-			content: BOOKSHELF.description,
+			property: 'og:image',
+			content: `/favicons/android-chrome-512x512.png`,
 		},
 		{
-			name: 'og:title',
+			property: 'og:title',
 			content: `${BOOKSHELF.title} | ${SITE.title}`,
+		},
+		{
+			property: 'og:type',
+			content: 'website',
+		},
+		{
+			property: 'og:url',
+			content: `${SITE.origin}/bookshelf`,
+		},
+		{
+			name: 'twitter:card',
+			content: 'summary_large_image',
+		},
+		{
+			name: 'twitter:description',
+			content: BOOKSHELF.description,
+		},
+		{
+			property: 'twitter:domain',
+			content: SITE.origin.replace('https://', ''),
+		},
+		{
+			name: 'twitter:image',
+			content: '/favicons/android-chrome-512x512.png',
+		},
+		{
+			name: 'twitter:title',
+			content: `${BOOKSHELF.title} | ${SITE.title}`,
+		},
+		{
+			property: 'twitter:url',
+			content: `${SITE.origin}/bookshelf`,
 		},
 	],
 }

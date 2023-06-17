@@ -321,6 +321,7 @@ export const SITE = {
 		tailwind: 'https://tailwindcss.com',
 	},
 	title: 'codybrunner.com',
+	twitter: '@RockChalkDev',
 }
 
 export const USES = {

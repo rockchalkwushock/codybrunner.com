@@ -72,16 +72,48 @@ export const head: DocumentHead = {
 	title: USES.title,
 	meta: [
 		{
-			name: 'description',
+			property: 'og:description',
 			content: USES.description,
 		},
 		{
-			name: 'og:description',
-			content: USES.description,
+			property: 'og:image',
+			content: `/favicons/android-chrome-512x512.png`,
 		},
 		{
-			name: 'og:title',
+			property: 'og:title',
 			content: `Uses | ${SITE.title}`,
+		},
+		{
+			property: 'og:type',
+			content: 'website',
+		},
+		{
+			property: 'og:url',
+			content: `${SITE.origin}/uses`,
+		},
+		{
+			name: 'twitter:card',
+			content: 'summary_large_image',
+		},
+		{
+			name: 'twitter:description',
+			content: USES.description,
+		},
+		{
+			property: 'twitter:domain',
+			content: SITE.origin.replace('https://', ''),
+		},
+		{
+			name: 'twitter:image',
+			content: '/favicons/android-chrome-512x512.png',
+		},
+		{
+			name: 'twitter:title',
+			content: `Uses | ${SITE.title}`,
+		},
+		{
+			property: 'twitter:url',
+			content: `${SITE.origin}/uses`,
 		},
 	],
 }

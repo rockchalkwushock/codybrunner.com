@@ -51,16 +51,48 @@ export const head: DocumentHead = {
 	title: PROJECTS.title,
 	meta: [
 		{
-			name: 'description',
+			property: 'og:description',
 			content: PROJECTS.description,
 		},
 		{
-			name: 'og:description',
+			property: 'og:image',
+			content: `/favicons/android-chrome-512x512.png`,
+		},
+		{
+			property: 'og:title',
+			content: `Projects | ${SITE.title}`,
+		},
+		{
+			property: 'og:type',
+			content: 'website',
+		},
+		{
+			property: 'og:url',
+			content: `${SITE.origin}/projects`,
+		},
+		{
+			name: 'twitter:card',
+			content: 'summary_large_image',
+		},
+		{
+			name: 'twitter:description',
 			content: PROJECTS.description,
 		},
 		{
-			name: 'og:title',
-			content: `${PROJECTS.title} | ${SITE.title}`,
+			property: 'twitter:domain',
+			content: SITE.origin.replace('https://', ''),
+		},
+		{
+			name: 'twitter:image',
+			content: '/favicons/android-chrome-512x512.png',
+		},
+		{
+			name: 'twitter:title',
+			content: `Projects | ${SITE.title}`,
+		},
+		{
+			property: 'twitter:url',
+			content: `${SITE.origin}/projects`,
 		},
 	],
 }

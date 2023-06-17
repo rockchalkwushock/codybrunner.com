@@ -41,16 +41,22 @@ export default component$(() => {
 						<p>
 							As of right now, I am working as a Senior Frontend Developer at{' '}
 							<Link
+								aria-aria-label='Link to Bitcoin IRA.'
 								class='text-secondary-accent-500 dark:text-secondary-accent-400'
 								href='https://bitcoinira.com'
+								rel='noopener noreferrer'
+								target='_blank'
 							>
 								Bitcoin IRA
 							</Link>
 							, where we are working on world's first and most trusted crypto
 							investment platform. I am also the owner and operator of{' '}
 							<Link
+								aria-label='Link to JokinglyBadTech LinkedIn Page.'
 								class='text-secondary-accent-500 dark:text-secondary-accent-400'
 								href='https://www.linkedin.com/company/jokinglybadtech/'
+								rel='noopener noreferrer'
+								target='_blank'
 							>
 								JokinglyBadTech LLC
 							</Link>
@@ -136,16 +142,48 @@ export const head: DocumentHead = {
 	title: 'About',
 	meta: [
 		{
-			name: 'description',
+			property: 'og:description',
 			content: ABOUT.description,
 		},
 		{
-			name: 'og:description',
-			content: ABOUT.description,
+			property: 'og:image',
+			content: `/favicons/android-chrome-512x512.png`,
 		},
 		{
-			name: 'og:title',
+			property: 'og:title',
 			content: `About | ${SITE.title}`,
+		},
+		{
+			property: 'og:type',
+			content: 'website',
+		},
+		{
+			property: 'og:url',
+			content: `${SITE.origin}/about`,
+		},
+		{
+			name: 'twitter:card',
+			content: 'summary_large_image',
+		},
+		{
+			name: 'twitter:description',
+			content: ABOUT.description,
+		},
+		{
+			property: 'twitter:domain',
+			content: SITE.origin.replace('https://', ''),
+		},
+		{
+			name: 'twitter:image',
+			content: '/favicons/android-chrome-512x512.png',
+		},
+		{
+			name: 'twitter:title',
+			content: `About | ${SITE.title}`,
+		},
+		{
+			property: 'twitter:url',
+			content: `${SITE.origin}/about`,
 		},
 	],
 }
