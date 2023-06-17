@@ -24,7 +24,6 @@ export const RouterHead = component$(() => {
 
 			{/* Primary Meta Tags*/}
 			<meta name='author' content={SITE.author} />
-			<meta name='description' content={SITE.description} />
 			<meta name='title' content={title} />
 			<title>{title}</title>
 
