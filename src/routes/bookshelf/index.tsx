@@ -174,6 +174,18 @@ export const head: DocumentHead = {
 			content: `/favicons/android-chrome-512x512.png`,
 		},
 		{
+			property: 'og:image:alt',
+			content: `Logo for ${SITE.title}`,
+		},
+		{
+			property: 'og:locale',
+			content: 'en_US',
+		},
+		{
+			property: 'og:site_name',
+			content: SITE.title,
+		},
+		{
 			property: 'og:title',
 			content: `${BOOKSHELF.title} | ${SITE.title}`,
 		},
@@ -188,26 +200,6 @@ export const head: DocumentHead = {
 		{
 			name: 'twitter:card',
 			content: 'summary_large_image',
-		},
-		{
-			name: 'twitter:description',
-			content: BOOKSHELF.description,
-		},
-		{
-			property: 'twitter:domain',
-			content: SITE.origin.replace('https://', ''),
-		},
-		{
-			name: 'twitter:image',
-			content: '/favicons/android-chrome-512x512.png',
-		},
-		{
-			name: 'twitter:title',
-			content: `${BOOKSHELF.title} | ${SITE.title}`,
-		},
-		{
-			property: 'twitter:url',
-			content: `${SITE.origin}/bookshelf`,
 		},
 	],
 }
