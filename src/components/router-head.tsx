@@ -14,34 +14,30 @@ export const RouterHead = component$(() => {
 		<>
 			<meta charSet='utf-8' />
 			<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-
 			<link href='/manifest.json' rel='manifest' />
+			<meta name='theme-color' content='#22d3ee' />
+			<meta name='msapplication-TileColor' content='#22d3ee' />
 
 			{/* Favicons */}
 			<link
-				href='/favicons/apple-touch-icon.png'
+				href='/apple-touch-icon.png'
 				rel='apple-touch-icon'
 				sizes='180x180'
 				type='image/png'
 			/>
 			<link
-				href='/favicons/favicon-32x32.png'
+				href='/favicon-32x32.png'
 				rel='icon'
 				sizes='32x32'
 				type='image/png'
 			/>
 			<link
-				href='/favicons/favicon-16x16.png'
+				href='/favicon-16x16.png'
 				rel='icon'
 				sizes='16x16'
 				type='image/png'
 			/>
-			<link
-				href='/favicons/favicon.ico'
-				rel='icon'
-				sizes='48x48'
-				type='image/svg+xml'
-			/>
+			<link href='/favicon.ico' rel='icon' sizes='48x48' type='image/svg+xml' />
 
 			{/* Bots */}
 			<meta name='robots' content='follow, index' />
