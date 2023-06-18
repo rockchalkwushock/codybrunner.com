@@ -77,7 +77,7 @@ export const head: DocumentHead = {
 		},
 		{
 			property: 'og:image',
-			content: `/favicons/android-chrome-512x512.png`,
+			content: `/android-chrome-512x512.png`,
 		},
 		{
 			property: 'og:image:alt',
