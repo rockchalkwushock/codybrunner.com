@@ -162,10 +162,7 @@ export const head: DocumentHead = {
 			property: 'og:locale',
 			content: 'en_US',
 		},
-		{
-			property: 'og:site_name',
-			content: SITE.title,
-		},
+
 		{
 			property: 'og:title',
 			content: `About | ${SITE.title}`,
