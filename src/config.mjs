@@ -4,7 +4,8 @@ export const ABOUT = {
 		'Growing up and spending roughly 30 uninterrupted years in the "middle of nowhere" Kansas; I made the choice to move across the country to Portland, Oregon in 2018. I spent two years there working my first job in the tech industry before moving to Colombia in 2020. I have been living outside of Bogotá and working on remote teams ever since.',
 		'I met the love of my life here on the "inter-tubes" in 2013 in a language exchange chat room. After many years of being friends we got the chance to meet in person in 2019 and began dating. We tied the knot here in her home country of Colombia in 2020. I have called Colombia home ever since and am a very proud step dog dad to her golden retriever. When I am not working I enjoy spending time with my wife and our dog, running, playing guitar, tinkering with my Raspberry Pi, and smoking meats and cheeses.',
 	],
-	description: 'Learn more about me, my work, and my hobbies.',
+	description:
+		'Cody Brunner is an American expat living in Bogotá, Colombia. He served in the US Navy and one tour in Afghanistan. He is a Senior Frontend Developer at Bitcoin IRA, the world’s first and most trusted crypto IRA platform. He primarily works with GraphQL, ReactJS, and TypeScript. He is also a contributor to the open source community. Other technologies he works with include Astro, Elixir, Phoenix, Python, Qwik, Rust, SolidJS, and tRPC.',
 	history:
 		'I shipped the first iteration of this website in 2016 through GitHub Pages with just HTML & CSS. Over the years it has mostly been ReactJS using frameworks like NextJS, GatsbyJS, and Astro. Hosting for the most part has been through Vercel; however I now use Cloudflare Pages. This iteration has been built with Qwik/QwikCity & TailwindCSS with the blog running on MDX.',
 	title:
@@ -28,7 +29,8 @@ export const BOOKSHELF = {
 			url: 'https://pragprog.com/titles/smgaelixir/genetic-algorithms-in-elixir/',
 		},
 	],
-	description: 'Recommended books and what I am currently reading.',
+	description:
+		'Welcome to my bookshelf, a curated list of recommended books that I have read or am currently reading. Dive into a diverse range of genres, spanning from captivating fiction to enlightening non-fiction, empowering self-help, insightful finance, and cutting-edge technology books. Whether you are seeking thrilling stories, expanding your knowledge, or exploring personal growth, this collection has something for everyone. Discover gripping narratives, thought-provoking insights, and practical guidance within these pages. From timeless classics to contemporary bestsellers, each book on this list has left a lasting impact on me and has the potential to enrich your life as well. So, grab a cup of coffee, browse through these literary treasures, and embark on a journey of inspiration and enlightenment. Happy reading!',
 	fiction: [
 		{
 			authors: ['Ayn Rand'],
@@ -157,7 +159,8 @@ export const NOT_FOUND = {
 }
 
 export const PROJECTS = {
-	description: 'My portfolio of projects I have worked on over the years.',
+	description:
+		'Welcome to my portfolio showcasing my journey as a software developer in the tech industry. Here, you will find a collection of my work that reflects my passion for coding and problem-solving. From personal side projects to enterprise-level applications and contributions to open source, this portfolio encompasses the breadth of my experience. I have leveraged an array of cutting-edge technologies throughout my projects, including JavaScript/TypeScript, ReactJS, TailwindCSS, Phoenix LiveView, Elixir, NextJS, and Remix. Each project represents a unique challenge and demonstrates my ability to build robust, scalable, and user-friendly solutions. Feel free to explore the diverse range of applications, delve into the code, and witness the creativity and craftsmanship that went into each endeavor.',
 	intro:
 		'After several years in the industry here is a few of the projects I have worked on over the years. From personal projects to open source contributions to professional work.',
 	portfolio: [
@@ -323,7 +326,7 @@ export const SITE = {
 
 export const USES = {
 	description:
-		'My workstation, development tools, and recommended productivity apps.',
+		'Welcome to my workstation and tools page, where you can discover the technology and tools that fuel my productivity and enable me to deliver exceptional results. At the heart of my setup is the powerful M1 MacBook Pro 14", providing me with unmatched performance and speed. For coding, I rely on the versatile and feature-rich Visual Studio Code (VS Code) editor, which enhances my development experience. To streamline my workflow and boost efficiency, I utilize productivity tools such as Alfred, a powerful search and automation tool, and Paste, a clipboard manager that helps me organize and access my copied content effortlessly. Additionally, I take advantage of Homebrew, a package manager for macOS, to effortlessly install and manage various software packages. Complementing my digital tools, I prioritize ergonomics with an Autonomous AI desk and chair, ensuring a comfortable and conducive work environment. To enhance my visual experience, I rely on a high-quality Dell monitor that offers crisp and vibrant colors. With this carefully curated combination of hardware and software, my workstation empowers me to achieve optimal productivity and deliver exceptional results.',
 	devTools: [
 		{
 			description:

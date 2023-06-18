@@ -147,6 +147,10 @@ export const head: DocumentHead = {
 	title: 'About',
 	meta: [
 		{
+			name: 'description',
+			content: ABOUT.description,
+		},
+		{
 			property: 'og:description',
 			content: ABOUT.description,
 		},
@@ -157,6 +161,14 @@ export const head: DocumentHead = {
 		{
 			property: 'og:image:alt',
 			content: `Logo for ${SITE.title}`,
+		},
+		{
+			property: 'og:image:height',
+			content: `512`,
+		},
+		{
+			property: 'og:image:width',
+			content: `512`,
 		},
 		{
 			property: 'og:locale',
@@ -178,6 +190,34 @@ export const head: DocumentHead = {
 		{
 			name: 'twitter:card',
 			content: 'summary_large_image',
+		},
+		{
+			name: 'twitter:creator',
+			content: SITE.twitter,
+		},
+		{
+			name: 'twitter:description',
+			content: ABOUT.description,
+		},
+		{
+			property: 'twitter:image',
+			content: `/android-chrome-512x512.png`,
+		},
+		{
+			property: 'twitter:image:alt',
+			content: `Logo for ${SITE.title}`,
+		},
+		{
+			name: 'twitter:site',
+			content: SITE.twitter,
+		},
+		{
+			name: 'twitter:title',
+			content: `About | ${SITE.title}`,
+		},
+		{
+			name: 'twitter:url',
+			content: `${SITE.origin}/about`,
 		},
 	],
 }

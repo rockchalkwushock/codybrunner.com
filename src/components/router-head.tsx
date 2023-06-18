@@ -14,8 +14,9 @@ export const RouterHead = component$(() => {
 		<>
 			<meta charSet='utf-8' />
 			<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-
 			<link href='/manifest.json' rel='manifest' />
+			<meta name='theme-color' content='#22d3ee' />
+			<meta name='msapplication-TileColor' content='#22d3ee' />
 
 			{/* Favicons */}
 			<link
