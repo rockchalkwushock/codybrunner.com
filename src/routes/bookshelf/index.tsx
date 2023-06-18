@@ -1,6 +1,7 @@
 import { component$ } from '@builder.io/qwik'
 import type { DocumentHead } from '@builder.io/qwik-city'
 import { Link } from '@builder.io/qwik-city'
+import { Image } from '@unpic/qwik'
 
 import { Section } from '~/components/section'
 import { SimpleLayout } from '~/components/simple-layout'
@@ -21,7 +22,7 @@ export default component$(() => {
 									class='relative z-10 flex-shrink-0 w-32 h-48 overflow-hidden rounded-lg shadow-md group-hover:shadow-lg'
 									href={url}
 								>
-									<img
+									<Image
 										alt={`${title} by ${authors.join(', ')}`}
 										class='object-cover w-full h-full'
 										height={40}
@@ -165,16 +166,40 @@ export const head: DocumentHead = {
 	title: BOOKSHELF.title,
 	meta: [
 		{
-			name: 'description',
+			property: 'og:description',
 			content: BOOKSHELF.description,
 		},
 		{
-			name: 'og:description',
-			content: BOOKSHELF.description,
+			property: 'og:image',
+			content: `/favicons/android-chrome-512x512.png`,
 		},
 		{
-			name: 'og:title',
+			property: 'og:image:alt',
+			content: `Logo for ${SITE.title}`,
+		},
+		{
+			property: 'og:locale',
+			content: 'en_US',
+		},
+		{
+			property: 'og:site_name',
+			content: SITE.title,
+		},
+		{
+			property: 'og:title',
 			content: `${BOOKSHELF.title} | ${SITE.title}`,
+		},
+		{
+			property: 'og:type',
+			content: 'website',
+		},
+		{
+			property: 'og:url',
+			content: `${SITE.origin}/bookshelf`,
+		},
+		{
+			name: 'twitter:card',
+			content: 'summary_large_image',
 		},
 	],
 }

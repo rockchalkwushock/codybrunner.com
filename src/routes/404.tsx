@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import { type DocumentHead } from '@builder.io/qwik-city'
+import { Image } from '@unpic/qwik'
 
 import { Container } from '~/components/container'
 import { NOT_FOUND, SITE } from '~/config.mjs'
@@ -10,7 +11,7 @@ export default component$(() => {
 			<div class='flex flex-col items-center justify-center w-full'>
 				<h1 class='sr-only'>{NOT_FOUND.title}</h1>
 				<p class='sr-only'>{NOT_FOUND.description}</p>
-				<img
+				<Image
 					alt='Not Found'
 					height={300}
 					src='/images/page-not-found.svg'
@@ -24,10 +25,6 @@ export default component$(() => {
 export const head: DocumentHead = {
 	title: NOT_FOUND.title,
 	meta: [
-		{
-			name: 'description',
-			content: NOT_FOUND.description,
-		},
 		{
 			name: 'og:description',
 			content: NOT_FOUND.description,

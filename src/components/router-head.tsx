@@ -14,7 +14,34 @@ export const RouterHead = component$(() => {
 		<>
 			<meta charSet='utf-8' />
 			<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-			<link rel='icon' type='image/svg+xml' href='/favicons/favicon.ico' />
+
+			<link href='/manifest.json' rel='manifest' />
+
+			{/* Favicons */}
+			<link
+				href='/favicons/apple-touch-icon.png'
+				rel='apple-touch-icon'
+				sizes='180x180'
+				type='image/png'
+			/>
+			<link
+				href='/favicons/favicon-32x32.png'
+				rel='icon'
+				sizes='32x32'
+				type='image/png'
+			/>
+			<link
+				href='/favicons/favicon-16x16.png'
+				rel='icon'
+				sizes='16x16'
+				type='image/png'
+			/>
+			<link
+				href='/favicons/favicon.ico'
+				rel='icon'
+				sizes='48x48'
+				type='image/svg+xml'
+			/>
 
 			{/* Bots */}
 			<meta name='robots' content='follow, index' />
@@ -24,7 +51,6 @@ export const RouterHead = component$(() => {
 
 			{/* Primary Meta Tags*/}
 			<meta name='author' content={SITE.author} />
-			<meta name='description' content={SITE.description} />
 			<meta name='title' content={title} />
 			<title>{title}</title>
 
