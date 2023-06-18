@@ -6,4 +6,4 @@ Allow: /
 Host: https://codybrunner.com
 
 # Sitemaps
-Sitemap: https://codybrunner.com/sitemap-index.xml
+Sitemap: https://codybrunner.com/sitemap.xml

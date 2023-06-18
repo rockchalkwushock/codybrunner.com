@@ -52,25 +52,34 @@ export const head: DocumentHead = {
 	title: PROJECTS.title,
 	meta: [
 		{
+			name: 'description',
+			content: PROJECTS.description,
+		},
+		{
 			property: 'og:description',
 			content: PROJECTS.description,
 		},
 		{
 			property: 'og:image',
-			content: `/favicons/android-chrome-512x512.png`,
+			content: `/android-chrome-512x512.png`,
 		},
 		{
 			property: 'og:image:alt',
 			content: `Logo for ${SITE.title}`,
 		},
 		{
+			property: 'og:image:height',
+			content: `512`,
+		},
+		{
+			property: 'og:image:width',
+			content: `512`,
+		},
+		{
 			property: 'og:locale',
 			content: 'en_US',
 		},
-		{
-			property: 'og:site_name',
-			content: SITE.title,
-		},
+
 		{
 			property: 'og:title',
 			content: `${PROJECTS.title} | ${SITE.title}`,
@@ -86,6 +95,34 @@ export const head: DocumentHead = {
 		{
 			name: 'twitter:card',
 			content: 'summary_large_image',
+		},
+		{
+			name: 'twitter:creator',
+			content: SITE.twitter,
+		},
+		{
+			name: 'twitter:description',
+			content: PROJECTS.description,
+		},
+		{
+			property: 'twitter:image',
+			content: `/android-chrome-512x512.png`,
+		},
+		{
+			property: 'twitter:image:alt',
+			content: `Logo for ${SITE.title}`,
+		},
+		{
+			name: 'twitter:site',
+			content: SITE.twitter,
+		},
+		{
+			name: 'twitter:title',
+			content: `${PROJECTS.title} | ${SITE.title}`,
+		},
+		{
+			name: 'twitter:url',
+			content: `${SITE.origin}/projects`,
 		},
 	],
 }
