@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import { type DocumentHead, Link } from '@builder.io/qwik-city'
+import { Image } from '@unpic/qwik'
 
 import { Container } from '~/components/container'
 import {
@@ -20,10 +21,14 @@ export default component$(() => {
 				{/* Image Block */}
 				<div class='flex items-center justify-center lg:pl-20 lg:items-start lg:justify-start'>
 					<div class='max-w-xs px-2.5 lg:max-w-none'>
-						<img
+						<Image
+							// TODO: In the future look at blur effects and placeholders
 							alt='Image of Cody Brunner'
 							class='aspect-auto rotate-3 rounded-2xl bg-primary-100 object-cover shadow-primary-800/30 shadow-2xl dark:shadow-primary-100/20 dark:bg-primary-800'
+							fetchpriority='high'
 							height={300}
+							layout='fixed'
+							priority
 							src='/images/cody-brunner-black-and-white.jpg'
 							width={300}
 						/>
@@ -41,16 +46,22 @@ export default component$(() => {
 						<p>
 							As of right now, I am working as a Senior Frontend Developer at{' '}
 							<Link
+								aria-aria-label='Link to Bitcoin IRA.'
 								class='text-secondary-accent-500 dark:text-secondary-accent-400'
 								href='https://bitcoinira.com'
+								rel='noopener noreferrer'
+								target='_blank'
 							>
 								Bitcoin IRA
 							</Link>
 							, where we are working on world's first and most trusted crypto
 							investment platform. I am also the owner and operator of{' '}
 							<Link
+								aria-label='Link to JokinglyBadTech LinkedIn Page.'
 								class='text-secondary-accent-500 dark:text-secondary-accent-400'
 								href='https://www.linkedin.com/company/jokinglybadtech/'
+								rel='noopener noreferrer'
+								target='_blank'
 							>
 								JokinglyBadTech LLC
 							</Link>
@@ -136,16 +147,40 @@ export const head: DocumentHead = {
 	title: 'About',
 	meta: [
 		{
-			name: 'description',
+			property: 'og:description',
 			content: ABOUT.description,
 		},
 		{
-			name: 'og:description',
-			content: ABOUT.description,
+			property: 'og:image',
+			content: `/favicons/android-chrome-512x512.png`,
 		},
 		{
-			name: 'og:title',
+			property: 'og:image:alt',
+			content: `Logo for ${SITE.title}`,
+		},
+		{
+			property: 'og:locale',
+			content: 'en_US',
+		},
+		{
+			property: 'og:site_name',
+			content: SITE.title,
+		},
+		{
+			property: 'og:title',
 			content: `About | ${SITE.title}`,
+		},
+		{
+			property: 'og:type',
+			content: 'website',
+		},
+		{
+			property: 'og:url',
+			content: `${SITE.origin}/about`,
+		},
+		{
+			name: 'twitter:card',
+			content: 'summary_large_image',
 		},
 	],
 }

@@ -147,7 +147,7 @@ export const FEATURE_FLAGS = {
 
 export const HOME = {
 	description:
-		"I’m Cody, an American software developer and entrepreneur based in Colombia. I'm a Senior Frontend Developer at Bitcoin IRA where we are building the world's first and most trusted crypto IRA platform.",
+		"I'm Cody, an American expat, US Navy Veteran, and software developer, calling Colombia home. I am a Senior Frontend Developer at Bitcoin IRA, where we are pioneering the world's first and most trusted crypto IRA platform. Outside work, I savor top-shelf single malt whisky and smoking ribs and brisket.",
 	title: 'Software developer, veteran, and smoker of the meats.',
 }
 
@@ -304,7 +304,8 @@ export const SITE = {
 		'All rights reserved.',
 	],
 	creativeCommons: 'http://creativecommons.org/licenses/by-nc-nd/4.0',
-	description: 'My stretch of pipe in the world wide inter-tubes.',
+	description:
+		"Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at Bitcoin IRA, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",
 	email: 'me@codybrunner.com',
 	lang: 'en-US',
 	origin: 'https://codybrunner.com',
@@ -321,6 +322,7 @@ export const SITE = {
 		tailwind: 'https://tailwindcss.com',
 	},
 	title: 'codybrunner.com',
+	twitter: '@RockChalkDev',
 }
 
 export const USES = {

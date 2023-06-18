@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import { type DocumentHead, Link } from '@builder.io/qwik-city'
+import { Image } from '@unpic/qwik'
 
 import { LinkIcon } from '~/components/icons'
 import { SimpleLayout } from '~/components/simple-layout'
@@ -18,7 +19,7 @@ export default component$(() => {
 						key={`${name}--${i}`}
 					>
 						<div class='relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-primary-800/5 ring-1 ring-primary-900/5 dark:border dark:border-primary-700/50 dark:bg-primary-800 dark:ring-0'>
-							<img
+							<Image
 								alt={`Logo for ${name}`}
 								class='h-9 rounded-full w-9'
 								height={36}
@@ -51,16 +52,40 @@ export const head: DocumentHead = {
 	title: PROJECTS.title,
 	meta: [
 		{
-			name: 'description',
+			property: 'og:description',
 			content: PROJECTS.description,
 		},
 		{
-			name: 'og:description',
-			content: PROJECTS.description,
+			property: 'og:image',
+			content: `/favicons/android-chrome-512x512.png`,
 		},
 		{
-			name: 'og:title',
+			property: 'og:image:alt',
+			content: `Logo for ${SITE.title}`,
+		},
+		{
+			property: 'og:locale',
+			content: 'en_US',
+		},
+		{
+			property: 'og:site_name',
+			content: SITE.title,
+		},
+		{
+			property: 'og:title',
 			content: `${PROJECTS.title} | ${SITE.title}`,
+		},
+		{
+			property: 'og:type',
+			content: 'website',
+		},
+		{
+			property: 'og:url',
+			content: `${SITE.origin}/projects`,
+		},
+		{
+			name: 'twitter:card',
+			content: 'summary_large_image',
 		},
 	],
 }
