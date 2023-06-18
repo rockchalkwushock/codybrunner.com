@@ -1,6 +1,7 @@
 import { component$ } from '@builder.io/qwik'
 import type { DocumentHead } from '@builder.io/qwik-city'
 import { Link } from '@builder.io/qwik-city'
+import { Image } from '@unpic/qwik'
 
 import { Section } from '~/components/section'
 import { SimpleLayout } from '~/components/simple-layout'
@@ -21,7 +22,7 @@ export default component$(() => {
 									class='relative z-10 flex-shrink-0 w-32 h-48 overflow-hidden rounded-lg shadow-md group-hover:shadow-lg'
 									href={url}
 								>
-									<img
+									<Image
 										alt={`${title} by ${authors.join(', ')}`}
 										class='object-cover w-full h-full'
 										height={40}

@@ -1,4 +1,5 @@
 import { component$ } from '@builder.io/qwik'
+import { Image } from '@unpic/qwik'
 
 interface Props {
 	company: string
@@ -13,7 +14,7 @@ export const ResumeItem = component$<Props>(
 		return (
 			<>
 				<div class='relative shadow-primary-800/5 ring-primary-900/5 dark:border dark:border-primary-700/50 dark:bg-white mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 dark:ring-0'>
-					<img
+					<Image
 						alt={`Logo for ${company}`}
 						class='rounded-full'
 						height={40}

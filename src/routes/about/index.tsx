@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import { type DocumentHead, Link } from '@builder.io/qwik-city'
+import { Image } from '@unpic/qwik'
 
 import { Container } from '~/components/container'
 import {
@@ -20,10 +21,14 @@ export default component$(() => {
 				{/* Image Block */}
 				<div class='flex items-center justify-center lg:pl-20 lg:items-start lg:justify-start'>
 					<div class='max-w-xs px-2.5 lg:max-w-none'>
-						<img
+						<Image
+							// TODO: In the future look at blur effects and placeholders
 							alt='Image of Cody Brunner'
 							class='aspect-auto rotate-3 rounded-2xl bg-primary-100 object-cover shadow-primary-800/30 shadow-2xl dark:shadow-primary-100/20 dark:bg-primary-800'
+							fetchpriority='high'
 							height={300}
+							layout='fixed'
+							priority
 							src='/images/cody-brunner-black-and-white.jpg'
 							width={300}
 						/>

@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import { type DocumentHead, useNavigate } from '@builder.io/qwik-city'
+import { Image } from '@unpic/qwik'
 
 import { Container } from '~/components/container'
 import {
@@ -66,10 +67,14 @@ export default component$(() => {
 					</div>
 					<div class='lg:pl-12'>
 						<div class='max-w-xs px-2.5 lg:max-w-none'>
-							<img
+							<Image
+								// TODO: In the future look at blur effects and placeholders
 								alt='Image of Cody Brunner'
 								class='aspect-square shadow-primary-800/30 shadow-2xl rotate-3 rounded-2xl bg-primary-100 object-cover dark:shadow-primary-100/20 dark:bg-primary-800'
+								fetchpriority='high'
 								height={300}
+								layout='fixed'
+								priority
 								src='/images/cody-brunner.jpg'
 								width={263}
 							/>
@@ -84,7 +89,8 @@ export default component$(() => {
 						<h2 class='text-3xl font-display font-bold'>
 							No Posts At This Time
 						</h2>
-						<img
+						<Image
+							// TODO: In the future look at blur effects and placeholders
 							alt='No Posts At This Time'
 							class='max-w-xs sm:max-w-sm'
 							height={400}

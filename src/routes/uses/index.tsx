@@ -81,7 +81,7 @@ export const head: DocumentHead = {
 		},
 		{
 			property: 'og:title',
-			content: `Uses | ${SITE.title}`,
+			content: `${USES.title} | ${SITE.title}`,
 		},
 		{
 			property: 'og:type',
@@ -109,7 +109,7 @@ export const head: DocumentHead = {
 		},
 		{
 			name: 'twitter:title',
-			content: `Uses | ${SITE.title}`,
+			content: `${USES.title} | ${SITE.title}`,
 		},
 		{
 			property: 'twitter:url',
