@@ -299,10 +299,6 @@ export const PROJECTS = {
 
 export const SITE = {
 	author: 'Cody Brunner',
-	copyright: [
-		`© 2016-${new Date().getFullYear()} Cody Brunner.`,
-		'All rights reserved.',
-	],
 	creativeCommons: 'http://creativecommons.org/licenses/by-nc-nd/4.0',
 	description:
 		"Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at Bitcoin IRA, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",

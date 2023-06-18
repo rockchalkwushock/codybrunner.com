@@ -1,4 +1,4 @@
-import { component$ } from '@builder.io/qwik'
+import { component$, useComputed$ } from '@builder.io/qwik'
 import { Link } from '@builder.io/qwik-city'
 
 import { InnerContainer, OuterContainer } from './container'
@@ -10,6 +10,7 @@ import { SITE } from '../config.mjs'
 
 export const Footer = component$(() => {
 	const { options, url } = useMenu()
+	const currentYear = useComputed$(() => new Date().getFullYear())
 	return (
 		<footer class='mt-32'>
 			<OuterContainer>
@@ -33,7 +34,7 @@ export const Footer = component$(() => {
 							</div>
 							<div class='flex flex-col items-center space-y-1 sm:items-end lg:flex-row lg:space-x-2 lg:space-y-0'>
 								<p class='text-center text-sm sm:text-right text-primary-400 dark:text-primary-500'>
-									{SITE.copyright[0]}
+									© 2016-{currentYear} {SITE.author}
 								</p>
 								<Link
 									aria-label='All Rights Reserved'
@@ -42,7 +43,7 @@ export const Footer = component$(() => {
 									rel='noopener noreferrer'
 									target='_blank'
 								>
-									{SITE.copyright[1]}
+									All rights reserved.
 								</Link>
 							</div>
 						</div>
