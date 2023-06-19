@@ -42,3 +42,4 @@ postcss.config.cjs
 tailwind.config.ts
 *.md
 *.mdx
+_routes.json
