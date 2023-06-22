@@ -26,12 +26,80 @@ export const head: DocumentHead = {
 	title: NOT_FOUND.title,
 	meta: [
 		{
-			name: 'og:description',
+			name: 'description',
 			content: NOT_FOUND.description,
 		},
 		{
-			name: 'og:title',
+			property: 'og:description',
+			content: NOT_FOUND.description,
+		},
+		{
+			property: 'og:image',
+			content: `/images/page-not-found.svg`,
+		},
+		{
+			property: 'og:image:alt',
+			content: `Logo for ${NOT_FOUND.title}`,
+		},
+		{
+			property: 'og:image:height',
+			content: `512`,
+		},
+		{
+			property: 'og:image:width',
+			content: `512`,
+		},
+		{
+			property: 'og:locale',
+			content: 'en_US',
+		},
+		{
+			property: 'og:title',
 			content: `${NOT_FOUND.title} | ${SITE.title}`,
+		},
+		{
+			property: 'og:type',
+			content: 'website',
+		},
+		{
+			property: 'og:url',
+			content: SITE.origin,
+		},
+		{
+			name: 'twitter:card',
+			content: 'summary_large_image',
+		},
+		{
+			name: 'twitter:creator',
+			content: SITE.twitter,
+		},
+		{
+			name: 'twitter:description',
+			content: NOT_FOUND.description,
+		},
+		{
+			name: 'twitter:domain',
+			content: SITE.origin.replace('https://', ''),
+		},
+		{
+			property: 'twitter:image',
+			content: `/images/page-not-found.svg`,
+		},
+		{
+			property: 'twitter:image:alt',
+			content: `Logo for ${NOT_FOUND.title}`,
+		},
+		{
+			name: 'twitter:site',
+			content: SITE.twitter,
+		},
+		{
+			name: 'twitter:title',
+			content: `${NOT_FOUND.title} | ${SITE.title}`,
+		},
+		{
+			name: 'twitter:url',
+			content: SITE.origin,
 		},
 	],
 }

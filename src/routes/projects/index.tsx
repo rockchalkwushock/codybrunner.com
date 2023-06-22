@@ -105,6 +105,10 @@ export const head: DocumentHead = {
 			content: PROJECTS.description,
 		},
 		{
+			name: 'twitter:domain',
+			content: SITE.origin.replace('https://', ''),
+		},
+		{
 			property: 'twitter:image',
 			content: `/android-chrome-512x512.png`,
 		},
