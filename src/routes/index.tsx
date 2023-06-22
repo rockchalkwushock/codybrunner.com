@@ -160,7 +160,6 @@ export const head: DocumentHead = {
 			property: 'og:locale',
 			content: 'en_US',
 		},
-
 		{
 			property: 'og:title',
 			content: `Home | ${SITE.title}`,
@@ -184,6 +183,10 @@ export const head: DocumentHead = {
 		{
 			name: 'twitter:description',
 			content: SITE.description,
+		},
+		{
+			name: 'twitter:domain',
+			content: SITE.origin.replace('https://', ''),
 		},
 		{
 			property: 'twitter:image',
