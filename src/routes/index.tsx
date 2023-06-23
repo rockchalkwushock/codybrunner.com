@@ -4,7 +4,7 @@ import { Image } from '@unpic/qwik'
 
 import { Container } from '~/components/container'
 import {
-	ArrowDown,
+	ArrowDownIcon,
 	BriefCaseIcon,
 	GitHubIcon,
 	InstagramIcon,
@@ -119,7 +119,7 @@ export default component$(() => {
 								onClick$={() => navigate('/resume.pdf')}
 							>
 								Download CV
-								<ArrowDown />
+								<ArrowDownIcon />
 							</button>
 						</div>
 					</div>
