@@ -9,7 +9,12 @@ import { BOOKSHELF, SITE } from '~/config.mjs'
 
 export default component$(() => {
 	return (
-		<SimpleLayout intro={BOOKSHELF.intro} title={BOOKSHELF.title}>
+		<SimpleLayout
+			imageAlt='Illustration of books.'
+			imageSrc='/images/books.svg'
+			intro={BOOKSHELF.intro}
+			title={BOOKSHELF.title}
+		>
 			<div class='space-y-20'>
 				<Section title='Currently Reading'>
 					<ul class='space-y-16' role='list'>

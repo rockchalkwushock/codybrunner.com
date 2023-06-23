@@ -27,7 +27,7 @@ export default component$(() => {
 							class='aspect-auto rotate-3 rounded-2xl bg-primary-100 object-cover shadow-primary-800/30 shadow-2xl dark:shadow-primary-100/20 dark:bg-primary-800'
 							fetchpriority='high'
 							height={300}
-							layout='fixed'
+							layout='constrained'
 							priority
 							src='/images/cody-brunner-black-and-white.jpg'
 							width={300}

@@ -1,4 +1,5 @@
-import { component$ } from '@builder.io/qwik'
+/* eslint-disable no-mixed-spaces-and-tabs */
+import { component$, useResource$, Resource } from '@builder.io/qwik'
 import { type DocumentHead, useNavigate } from '@builder.io/qwik-city'
 import { Image } from '@unpic/qwik'
 
@@ -16,11 +17,35 @@ import { ResumeItem } from '~/components/resume-item'
 import { SocialLink } from '~/components/social-link'
 
 import { jobs } from '~/data/jobs'
+import {
+	filterPosts,
+	getPosts,
+	isAfter,
+	isFeatured,
+	isPublished,
+	pickPosts,
+	sortPosts,
+} from '~/utils/posts'
 
 import { HOME, SITE } from '~/config.mjs'
+import { PostList } from '~/components/post-list'
+
+const HOME_POSTS = 3
 
 export default component$(() => {
 	const navigate = useNavigate()
+	const postsResource = useResource$(async () => {
+		const posts = await getPosts()
+		return import.meta.env.PROD
+			? pickPosts(
+					sortPosts(
+						filterPosts(filterPosts(posts, isPublished), isFeatured),
+						isAfter
+					),
+					HOME_POSTS
+			  )
+			: pickPosts(sortPosts(posts, isAfter), HOME_POSTS)
+	})
 	return (
 		<>
 			<Container class='mt-9'>
@@ -82,25 +107,20 @@ export default component$(() => {
 					</div>
 				</div>
 			</Container>
-			<Container class='mt-10'>
-				<div class='mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:gap-y-0 lg:gap-x-20 lg:max-w-none lg:grid-cols-2'>
+			<Container class='mt-24 md:mt-28'>
+				<div class='mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2'>
 					{/* Left Column */}
-					<div class='flex flex-col items-center justify-center order-last lg:order-first space-y-16  lg:justify-start lg:items-start lg:space-y-20'>
-						<h2 class='text-3xl font-display font-bold'>
-							No Posts At This Time
-						</h2>
-						<Image
-							// TODO: In the future look at blur effects and placeholders
-							alt='No Posts At This Time'
-							class='max-w-xs sm:max-w-sm'
-							height={400}
-							src='/images/articles.svg'
-							width={400}
+					<div class='flex flex-col gap-16'>
+						<Resource
+							onPending={() => <div>Loading...</div>}
+							onRejected={reason => <div>Error: {reason}</div>}
+							onResolved={posts => <PostList posts={posts} />}
+							value={postsResource}
 						/>
 					</div>
 
 					{/* Right Column */}
-					<div class='space-y-10'>
+					<div class='space-y-10 lg:pl-16 xl:pl-24'>
 						{/* Resume */}
 						<div class='rounded-2xl border p-6 border-primary-100 dark:border-primary-700/40'>
 							<h2 class='flex text-sm text-primary-900 dark:text-primary-100 font-semibold'>

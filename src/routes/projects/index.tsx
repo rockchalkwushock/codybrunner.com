@@ -8,7 +8,12 @@ import { PROJECTS, SITE } from '~/config.mjs'
 
 export default component$(() => {
 	return (
-		<SimpleLayout intro={PROJECTS.intro} title={PROJECTS.title}>
+		<SimpleLayout
+			imageAlt='Illustration of projects.'
+			imageSrc='/images/projects.svg'
+			intro={PROJECTS.intro}
+			title={PROJECTS.title}
+		>
 			<ul
 				class='grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3'
 				role='list'

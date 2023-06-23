@@ -34,7 +34,12 @@ const Tool = component$<ToolProps>(({ href, title }) => {
 
 export default component$(() => {
 	return (
-		<SimpleLayout intro={USES.intro} title={USES.title}>
+		<SimpleLayout
+			imageAlt='Illustration of workstation.'
+			imageSrc='/images/workstation.svg'
+			intro={USES.intro}
+			title={USES.title}
+		>
 			<div class='space-y-20'>
 				<Section title='Workstation'>
 					<ul class='space-y-16' role='list'>

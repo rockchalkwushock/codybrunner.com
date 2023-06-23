@@ -4,12 +4,28 @@ import { PostList } from '~/components/post-list'
 
 import { SimpleLayout } from '~/components/simple-layout'
 import { BLOG, SITE } from '~/config.mjs'
-import { getPosts } from '~/utils/posts'
+import {
+	filterPosts,
+	getPosts,
+	isAfter,
+	isPublished,
+	sortPosts,
+} from '~/utils/posts'
 
 export default component$(() => {
-	const resource = useResource$(getPosts)
+	const resource = useResource$(async () => {
+		const posts = await getPosts()
+		return import.meta.env.PROD
+			? sortPosts(filterPosts(posts, isPublished), isAfter)
+			: sortPosts(posts, isAfter)
+	})
 	return (
-		<SimpleLayout intro={BLOG.intro} title={BLOG.title}>
+		<SimpleLayout
+			imageAlt='Illustration of blog posts.'
+			imageSrc='/images/blog-post.svg'
+			intro={BLOG.intro}
+			title={BLOG.title}
+		>
 			<div class='md:border-l md:border-primary-100 md:pl-6 md:dark:border-primary-700/40'>
 				<div class='flex max-w-3xl flex-col space-y-16'>
 					<Resource
