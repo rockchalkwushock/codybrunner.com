@@ -12,6 +12,14 @@ export const ABOUT = {
 		'I’m Cody Brunner. I live in Bogotá, Colombia, where I work on software of the future.',
 }
 
+export const BLOG = {
+	description:
+		'lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+	intro:
+		'lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+	title: 'Blog',
+}
+
 export const BOOKSHELF = {
 	current: [
 		{
@@ -144,7 +152,7 @@ export const BOOKSHELF = {
 }
 
 export const FEATURE_FLAGS = {
-	menu: /(about|bookshelf|home|projects|uses)/i,
+	menu: /(about|blog|bookshelf|home|projects|uses)/i,
 }
 
 export const HOME = {
