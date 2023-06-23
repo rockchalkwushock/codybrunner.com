@@ -23,6 +23,70 @@ export interface Post {
 	updatedAt?: Date
 }
 
+export function filterPosts(
+	posts: Post[],
+	callback: (post: Post) => boolean
+): Post[] {
+	return posts.filter(callback)
+}
+
+export function pickPosts(posts: Post[], idx = 0): Post[] {
+	return posts.slice(0, idx)
+}
+
+export function sortPosts(
+	posts: Post[],
+	callback: (a: Post, b: Post) => number
+): Post[] {
+	return posts.sort(callback)
+}
+
+export function isDraft(post: Post): boolean {
+	return post.draft
+}
+
+export function isFeatured(post: Post): boolean {
+	return post.featured
+}
+
+export function isPublished(post: Post): boolean {
+	return post.publishedAt !== undefined && !post.draft
+}
+
+export function isAfter(a: Post, b: Post) {
+	const date1 =
+		a.updatedAt !== undefined
+			? a.updatedAt
+			: a.publishedAt !== undefined
+			? a.publishedAt
+			: a.createdAt
+	const date2 =
+		b.updatedAt !== undefined
+			? b.updatedAt
+			: b.publishedAt !== undefined
+			? b.publishedAt
+			: b.createdAt
+
+	return date1.getTime() < date2.getTime() ? 1 : -1
+}
+
+export function isBefore(a: Post, b: Post) {
+	const date1 =
+		a.updatedAt !== undefined
+			? a.updatedAt
+			: a.publishedAt !== undefined
+			? a.publishedAt
+			: a.createdAt
+	const date2 =
+		b.updatedAt !== undefined
+			? b.updatedAt
+			: b.publishedAt !== undefined
+			? b.publishedAt
+			: b.createdAt
+
+	return date1.getTime() > date2.getTime() ? 1 : -1
+}
+
 export async function getPosts(): Promise<Post[]> {
 	try {
 		const modules = await import.meta.glob('/src/routes/blog/**/*.mdx')
