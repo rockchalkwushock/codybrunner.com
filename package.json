@@ -31,10 +31,18 @@
 		"qwik": "qwik"
 	},
 	"dependencies": {
-		"@fontsource/poppins": "5.0.3",
 		"@fontsource-variable/playfair-display": "5.0.4",
+		"@fontsource/poppins": "5.0.3",
+		"@fontsource/victor-mono": "5.0.3",
 		"@unpic/core": "0.0.24",
-		"@unpic/qwik": "0.0.19"
+		"@unpic/qwik": "0.0.19",
+		"rehype-accessible-emojis": "0.3.2",
+		"rehype-autolink-headings": "6.1.1",
+		"rehype-external-links": "2.1.0",
+		"rehype-pretty-code": "0.9.11",
+		"rehype-slug": "5.1.0",
+		"remark-validate-links": "12.1.1",
+		"shiki": "~0.14.2"
 	},
 	"devDependencies": {
 		"@builder.io/qwik": "1.1.5",

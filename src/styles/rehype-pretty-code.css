@@ -1,0 +1,18 @@
+@import './tailwind.css';
+
+div[data-rehype-pretty-code-fragment] {
+  @apply relative;
+}
+
+div[data-rehype-pretty-code-title] {
+  @apply absolute text-sm bg-primary-950 shadow shadow-primary-800 px-3 py-1 -left-2 -top-4 rounded-full;
+}
+
+div[data-rehype-pretty-code-caption] {
+  @apply text-sm px-4 text-center pt-1.5 text-accent-500/90;
+}
+
+.icon-link {
+  @apply inline-block w-4 h-4 mr-1;
+  content: '🔗'
+}

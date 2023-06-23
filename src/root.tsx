@@ -7,8 +7,12 @@ import {
 import { RouterHead } from './components/router-head'
 
 import globalStyles from './styles/global.css?inline'
-import '@fontsource/poppins'
+import '@fontsource/poppins/200.css'
+import '@fontsource/poppins/300.css'
+import '@fontsource/poppins/400.css'
+import '@fontsource/poppins/500.css'
 import '@fontsource-variable/playfair-display'
+import '@fontsource/victor-mono'
 
 export default component$(() => {
 	/**

@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss'
 import typography from '@tailwindcss/typography'
 import { black, cyan, orange, slate, white } from 'tailwindcss/colors'
+import { fontFamily } from 'tailwindcss/defaultTheme'
 
 export default {
 	content: ['./src/**/*.{ts,tsx,mdx}'],
@@ -88,7 +89,7 @@ export default {
 					'--tw-prose-invert-counters': theme('colors.primary.200'),
 					'--tw-prose-invert-bullets': theme('colors.primary.200'),
 					'--tw-prose-invert-hr': theme('colors.primary.700 / 0.4'),
-					'--tw-prose-invert-quote-borders': theme('colors.primary.500'),
+					'--tw-prose-invert-quote-borders': theme('colors.accent.500'),
 					'--tw-prose-invert-captions': theme('colors.primary.500'),
 					'--tw-prose-invert-code': theme('colors.primary.300'),
 					'--tw-prose-invert-code-bg': theme('colors.primary.200 / 0.05'),
@@ -106,6 +107,7 @@ export default {
 						marginBottom: theme('spacing.10'),
 					},
 					p: {
+						fontWeight: theme('fontWeight.light'),
 						marginTop: theme('spacing.7'),
 						marginBottom: theme('spacing.7'),
 					},
@@ -136,6 +138,10 @@ export default {
 						borderRadius: theme('borderRadius.3xl'),
 					},
 
+					'p > img': {
+						margin: '0 auto',
+					},
+
 					// Inline elements
 					a: {
 						color: 'var(--tw-prose-links)',
@@ -163,6 +169,23 @@ export default {
 						borderRadius: theme('borderRadius.lg'),
 						paddingLeft: theme('spacing.1'),
 						paddingRight: theme('spacing.1'),
+						letterSpacing: theme('letterSpacing.wider'),
+						counterReset: 'line',
+					},
+					'pre code > .line::before': {
+						counterIncrement: 'line',
+						content: 'counter(line)',
+						display: 'inline-block',
+						color: 'var(--tw-prose-code)',
+						width: '1rem',
+						marginRight: '2rem',
+						textAlign: 'right',
+					},
+					'pre code[data-line-numbers-max-digits="2"] > .line::before': {
+						width: '2rem',
+					},
+					'pre code[data-line-numbers-max-digits="3"] > .line::before': {
+						width: '2rem',
 					},
 					'a code': {
 						color: 'inherit',
@@ -230,11 +253,12 @@ export default {
 						fontSize: theme('fontSize.sm')[0],
 						fontWeight: theme('fontWeight.medium'),
 						backgroundColor: 'var(--tw-prose-pre-bg)',
-						borderRadius: theme('borderRadius.3xl'),
+						borderRadius: theme('borderRadius.xl'),
 						padding: theme('spacing.8'),
 						overflowX: 'auto',
 						border: '1px solid',
 						borderColor: 'var(--tw-prose-pre-border)',
+						boxShadow: theme('boxShadow.md'),
 					},
 					'pre code': {
 						display: 'inline',
@@ -318,6 +342,7 @@ export default {
 			},
 			fontFamily: {
 				display: ['Playfair Display Variable', 'sans-serif'],
+				mono: ['Victor Mono', 'sans-serif', ...fontFamily.mono],
 			},
 			keyframes: {
 				wiggle: {
