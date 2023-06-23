@@ -6,7 +6,7 @@ import type { Post } from '~/utils/posts'
 import { formatDate } from '~/utils/strings'
 
 export const PostItem = component$<Post>(
-	({ createdAt, description, draft, slug, title }) => {
+	({ createdAt, description, draft, publishedAt, slug, title, updatedAt }) => {
 		return (
 			<article class='md:grid md:grid-cols-4 md:items-baseline'>
 				<div class='group relative flex flex-col items-start md:col-span-3'>
@@ -65,9 +65,13 @@ export const PostItem = component$<Post>(
 						'relative z-10 order-first mb-3 flex items-center text-sm text-primary-400 dark:text-primary-500',
 						'mt-1 hidden md:block'
 					)}
-					dateTime={createdAt.getTime().toString()}
+					dateTime={String(
+						updatedAt?.getTime() ??
+							publishedAt?.getTime() ??
+							createdAt.getTime()
+					)}
 				>
-					{formatDate(createdAt)}
+					{formatDate(updatedAt ?? publishedAt ?? createdAt)}
 					{draft && (
 						<span class='bg-[#ef4444] font-medium ml-2 text-white text-xs px-1 rounded-full'>
 							draft

@@ -35,13 +35,23 @@ export default component$(() => {
 							</h1>
 							<time
 								class='order-first flex items-center text-base text-primary-400 dark:text-primary-500'
-								// TODO: Update with publishedAt & updatedAt
-								dateTime={new Date(frontmatter.createdAt).getTime().toString()}
+								dateTime={new Date(
+									frontmatter.updatedAt ??
+										frontmatter.publishedAt ??
+										frontmatter.createdAt
+								)
+									.getTime()
+									.toString()}
 							>
 								<span class='h-4 w-0.5 rounded-full bg-primary-200 dark:bg-primary-500' />
-								{/* TODO: Update with publishedAt & updatedAt */}
 								<span class='ml-3'>
-									{formatDate(new Date(frontmatter.createdAt))}
+									{formatDate(
+										new Date(
+											frontmatter.updatedAt ??
+												frontmatter.publishedAt ??
+												frontmatter.createdAt
+										)
+									)}
 									{frontmatter.draft && (
 										<span class='bg-[#ef4444] ml-2 text-white text-xs px-1 rounded-full'>
 											draft
