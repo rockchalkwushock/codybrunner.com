@@ -13,3 +13,14 @@ export function formatDate(date: Date, format?: Format): string {
 		formatMap[format ?? 'medium']
 	).format(date)
 }
+
+export function extractSlugFromPath(path: string): string {
+	const regex = /.*\(mdx\)\/(.*\/)index\.mdx$/
+	const match = path.replace(regex, '$1')
+
+	if (match === path) {
+		throw new Error('The path does not match the expected format')
+	}
+
+	return match.endsWith('/') ? match.slice(0, -1) : match
+}

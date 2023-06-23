@@ -6,7 +6,7 @@ interface IconProps {
 	class?: string
 }
 
-export const ArrowDown = component$<IconProps>(({ class: cls }) => {
+export const ArrowDownIcon = component$<IconProps>(({ class: cls }) => {
 	return (
 		<svg
 			aria-hidden='true'
@@ -18,6 +18,19 @@ export const ArrowDown = component$<IconProps>(({ class: cls }) => {
 		>
 			<path
 				d='M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5'
+				stroke-linecap='round'
+				stroke-linejoin='round'
+				stroke-width='1.5'
+			/>
+		</svg>
+	)
+})
+
+export const ArrowLeftIcon = component$<IconProps>(({ class: cls }) => {
+	return (
+		<svg aria-hidden='true' class={cx('fill-none', cls)} viewBox='0 0 16 16'>
+			<path
+				d='M7.25 11.25 3.75 8m0 0 3.5-3.25M3.75 8h8.5'
 				stroke-linecap='round'
 				stroke-linejoin='round'
 				stroke-width='1.5'
