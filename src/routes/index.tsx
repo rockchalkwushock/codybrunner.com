@@ -13,10 +13,9 @@ import {
 	TelegramIcon,
 	TwitterIcon,
 } from '~/components/icons'
+import { PostList } from '~/components/post-list'
 import { ResumeItem } from '~/components/resume-item'
 import { SocialLink } from '~/components/social-link'
-
-import { jobs } from '~/data/jobs'
 import {
 	filterPosts,
 	getPosts,
@@ -26,9 +25,8 @@ import {
 	pickPosts,
 	sortPosts,
 } from '~/utils/posts'
-
+import { jobs } from '~/data/jobs'
 import { HOME, SITE } from '~/config.mjs'
-import { PostList } from '~/components/post-list'
 
 const HOME_POSTS = 3
 
@@ -44,7 +42,10 @@ export default component$(() => {
 					),
 					HOME_POSTS
 			  )
-			: pickPosts(sortPosts(posts, isAfter), HOME_POSTS)
+			: pickPosts(
+					sortPosts(filterPosts(posts, isFeatured), isAfter),
+					HOME_POSTS
+			  )
 	})
 	return (
 		<>
@@ -112,9 +113,29 @@ export default component$(() => {
 					{/* Left Column */}
 					<div class='flex flex-col gap-16'>
 						<Resource
+							// TODO: Add Loader Screen.
 							onPending={() => <div>Loading...</div>}
+							// TODO: Add Error Screen.
 							onRejected={reason => <div>Error: {reason}</div>}
-							onResolved={posts => <PostList posts={posts} />}
+							onResolved={posts =>
+								posts.length > 0 ? (
+									<PostList posts={posts} />
+								) : (
+									<div class='flex flex-col items-center justify-center order-last lg:order-first space-y-16  lg:justify-start lg:items-start lg:space-y-20'>
+										<h2 class='text-3xl font-display font-bold'>
+											No Posts At This Time
+										</h2>
+										<Image
+											// TODO: In the future look at blur effects and placeholders
+											alt='No Posts At This Time'
+											class='max-w-xs sm:max-w-sm'
+											height={400}
+											src='/images/articles.svg'
+											width={400}
+										/>
+									</div>
+								)
+							}
 							value={postsResource}
 						/>
 					</div>

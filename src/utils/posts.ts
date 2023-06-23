@@ -16,6 +16,7 @@ export interface Post {
 		src: string
 	}
 	language: string[]
+	published: boolean
 	publishedAt?: Date
 	slug: string
 	tags?: string[]
@@ -50,7 +51,7 @@ export function isFeatured(post: Post): boolean {
 }
 
 export function isPublished(post: Post): boolean {
-	return post.publishedAt !== undefined && !post.draft
+	return post.published && post.publishedAt !== undefined && !post.draft
 }
 
 export function isAfter(a: Post, b: Post) {
@@ -106,6 +107,7 @@ export async function getPosts(): Promise<Post[]> {
 					featured: head.frontmatter.featured,
 					heroImage: head.frontmatter.heroImage,
 					language: head.frontmatter.language,
+					published: head.frontmatter.published,
 					publishedAt: head.frontmatter.publishedAt
 						? new Date(head.frontmatter.publishedAt)
 						: undefined,
