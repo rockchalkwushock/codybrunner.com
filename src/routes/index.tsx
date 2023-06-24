@@ -7,6 +7,7 @@ import { Container } from '~/components/container'
 import {
 	ArrowDownIcon,
 	BriefCaseIcon,
+	CoffeeIcon,
 	GitHubIcon,
 	InstagramIcon,
 	LinkedInIcon,
@@ -59,6 +60,12 @@ export default component$(() => {
 							{HOME.description}
 						</p>
 						<ul class='mt-6 flex gap-3' role='list'>
+							<SocialLink
+								aria-label='Buy me a coffee'
+								href={SITE.socials.coffee}
+							>
+								<CoffeeIcon />
+							</SocialLink>
 							<SocialLink
 								aria-label='Follow me on GitHub'
 								href={SITE.socials.github}

@@ -317,6 +317,7 @@ export const SITE = {
 	lang: 'en-US',
 	origin: 'https://codybrunner.com',
 	socials: {
+		coffee: 'https://www.buymeacoffee.com/codyabrunner',
 		github: 'https://github.com/rockchalkwushock',
 		instagram: 'https://www.instagram.com/rockchalkwushock',
 		linkedin: 'https://www.linkedin.com/in/cody-brunner',

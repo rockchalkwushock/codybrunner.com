@@ -4,6 +4,7 @@ import { Image } from '@unpic/qwik'
 
 import { Container } from '~/components/container'
 import {
+	CoffeeIcon,
 	GitHubIcon,
 	InstagramIcon,
 	LinkedInIcon,
@@ -75,6 +76,16 @@ export default component$(() => {
 				{/* Content Block */}
 				<div class='lg:pl-20'>
 					<ul class='grid gap-4' role='list'>
+						<li class='flex'>
+							<SocialLink
+								aria-label='Buy me a coffee'
+								class='group flex space-x-2 text-primary-800 transition hover:text-accent-500 dark:text-primary-200 dark:hover:text-accent-500'
+								href={SITE.socials.coffee}
+							>
+								<CoffeeIcon class='h-6 w-6 flex-none dark:stroke-primary-200' />
+								<span>Buy me a coffee</span>
+							</SocialLink>
+						</li>
 						<li class='flex'>
 							<SocialLink
 								aria-label='Follow on GitHub'

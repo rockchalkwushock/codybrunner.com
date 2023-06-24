@@ -10,6 +10,7 @@ import { ArrowLeftIcon } from '~/components/icons'
 import { formatDate } from '~/utils/strings'
 import rehypePrettyCode from '~/styles/rehype-pretty-code.css?inline'
 import { SITE } from '~/config.mjs'
+import { BuyMeACoffee } from '~/components/buy-me-a-coffee'
 
 export default component$(() => {
 	useStyles$(rehypePrettyCode)
@@ -63,6 +64,7 @@ export default component$(() => {
 						<div class='mt-8 prose dark:prose-invert'>
 							<Slot />
 						</div>
+						<BuyMeACoffee />
 					</article>
 				</div>
 			</div>
