@@ -42,6 +42,8 @@ export default defineConfig(() => {
       headers: {
         'Cache-Control': 'public, max-age=600',
       },
+      open: true,
+      port: 4000,
     },
     server: {
       open: true,
