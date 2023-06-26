@@ -1,8 +1,7 @@
-import { component$, useResource$, Resource } from '@builder.io/qwik'
+import { component$, useResource$ } from '@builder.io/qwik'
 import type { DocumentHead } from '@builder.io/qwik-city'
-import { PostList } from '~/components/post-list'
-import { Image } from '@unpic/qwik'
 
+import { PostsLayout } from '~/components/posts-layout'
 import { SimpleLayout } from '~/components/simple-layout'
 import { BLOG, SITE } from '~/config.mjs'
 import {
@@ -27,39 +26,7 @@ export default component$(() => {
 			intro={BLOG.intro}
 			title={BLOG.title}
 		>
-			{/* TODO: Revert when posts exist in production.
-				md:border-l md:border-primary-100 md:pl-6 md:dark:border-primary-700/40
-			*/}
-			<div class=''>
-				<div class='flex max-w-3xl mx-auto flex-col space-y-16'>
-					<Resource
-						// TODO: Add Loader Screen.
-						onPending={() => <div>Loading...</div>}
-						// TODO: Add Error Screen.
-						onRejected={reason => <div>Error: {reason}</div>}
-						onResolved={posts =>
-							posts.length > 0 ? (
-								<PostList posts={posts} />
-							) : (
-								<div class='flex flex-col items-center justify-center space-y-16 lg:space-y-20'>
-									<h2 class='text-3xl font-display font-bold'>
-										No Posts At This Time
-									</h2>
-									<Image
-										// TODO: In the future look at blur effects and placeholders
-										alt='No Posts At This Time'
-										class=''
-										height={400}
-										src='/images/articles.svg'
-										width={400}
-									/>
-								</div>
-							)
-						}
-						value={resource}
-					/>
-				</div>
-			</div>
+			<PostsLayout posts={resource} />
 		</SimpleLayout>
 	)
 })

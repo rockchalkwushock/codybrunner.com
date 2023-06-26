@@ -1,6 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 
-import type { Post } from '~/utils/posts'
+import type { PostSchema as Post } from '~/utils/posts'
 import { PostItem } from './post-item'
 
 interface Props {
