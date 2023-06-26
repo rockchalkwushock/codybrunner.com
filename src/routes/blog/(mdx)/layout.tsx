@@ -12,7 +12,7 @@ import { ArrowLeftIcon } from '~/components/icons'
 import { formatDate } from '~/utils/strings'
 import rehypePrettyCode from '~/styles/rehype-pretty-code.css?inline'
 import { SITE } from '~/config.mjs'
-import type { Post } from '~/utils/posts'
+import type { PostSchema as Post } from '~/utils/posts'
 
 export default component$(() => {
 	useStyles$(rehypePrettyCode)
