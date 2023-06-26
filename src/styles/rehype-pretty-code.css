@@ -13,6 +13,5 @@ div[data-rehype-pretty-code-caption] {
 }
 
 .icon-link {
-  @apply inline-block w-4 h-4 mr-1;
-  content: '🔗'
+  @apply inline-block w-4 h-4 mr-3 before:content-['🔗'] hover:underline hover:underline-offset-4;
 }
