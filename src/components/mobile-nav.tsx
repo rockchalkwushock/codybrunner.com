@@ -79,7 +79,7 @@ export const MobileNav = component$(() => {
 							<li
 								aria-selected={href === url}
 								class={cx(
-									'flex py-2',
+									'cursor-pointer flex py-2',
 									href === url &&
 										'text-accent-500 dark:text-accent-400 font-semibold'
 								)}
