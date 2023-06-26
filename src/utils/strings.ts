@@ -8,10 +8,10 @@ const formatMap: Record<Format, Intl.DateTimeFormatOptions> = {
 
 export function formatDate(date: Date, format?: Format): string {
 	const { locale } = new Intl.DateTimeFormat().resolvedOptions()
-	return new Intl.DateTimeFormat(
-		locale ?? 'en-US',
-		formatMap[format ?? 'medium']
-	).format(date)
+	return new Intl.DateTimeFormat(locale ?? 'en-US', {
+		...formatMap[format ?? 'medium'],
+		timeZone: 'UTC',
+	}).format(date)
 }
 
 export function extractSlugFromPath(path: string): string {
