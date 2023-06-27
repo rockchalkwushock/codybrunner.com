@@ -98,7 +98,7 @@ const PostSchema = z.object({
 	heroImage: z
 		.object({
 			alt: z.string(),
-			src: z.string().url(),
+			src: z.string(),
 		})
 		.optional(),
 	// FIXME:

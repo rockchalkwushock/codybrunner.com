@@ -123,7 +123,9 @@ export default component$(() => {
 							// TODO: Add Loader Screen.
 							onPending={() => <div>Loading...</div>}
 							// TODO: Add Error Screen.
-							onRejected={reason => <div>Error: {reason}</div>}
+							onRejected={reason => (
+								<div>Error: {(reason as Error).message}</div>
+							)}
 							onResolved={posts =>
 								posts.length > 0 ? (
 									<PostList posts={posts} />

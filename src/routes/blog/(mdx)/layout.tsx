@@ -5,6 +5,7 @@ import {
 	useNavigate,
 	useLocation,
 } from '@builder.io/qwik-city'
+import { Image } from '@unpic/qwik'
 
 import { BuyMeACoffee } from '~/components/buy-me-a-coffee'
 import { Container } from '~/components/container'
@@ -89,6 +90,17 @@ export default component$(() => {
 										)}
 									</span>
 								</time>
+								{heroImage && (
+									<Image
+										alt={heroImage.alt}
+										class='mt-8 rounded-lg'
+										fetchpriority='high'
+										height={200}
+										layout='fullWidth'
+										priority
+										src={heroImage.src}
+									/>
+								)}
 							</header>
 							<div class='mt-8 prose dark:prose-invert'>
 								<Slot />
