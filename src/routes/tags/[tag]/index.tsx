@@ -20,6 +20,7 @@ import {
 	isPublished,
 	sortPosts,
 } from '~/utils/posts'
+import { SITE } from '~/config.mjs'
 
 export const useGetPostsByTagLoader = routeLoader$<Post[]>(
 	async ({ params, status }) => {
@@ -44,17 +45,36 @@ export const useGetPostsByTagLoader = routeLoader$<Post[]>(
 )
 
 export default component$(() => {
-	const { params } = useLocation()
+	const { params, url } = useLocation()
 	const resource = useGetPostsByTagLoader()
+	const jsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		description: `All posts associated with the ${params.tag} tag.`,
+		name: `${params.tag[0].toUpperCase()}${params.tag.slice(1)}`,
+		publisher: {
+			'@type': 'ProfilePage',
+			name: SITE.title,
+		},
+		url: url.href,
+	})
 	return (
-		<SimpleLayout
-			imageAlt='Illustration of blog posts.'
-			imageSrc='/images/blog-post.svg'
-			intro={`All posts associated with the ${params.tag} tag.`}
-			title={`${params.tag[0].toUpperCase()}${params.tag.slice(1)}`}
-		>
-			<PostsLayout posts={resource} />
-		</SimpleLayout>
+		<>
+			<script
+				dangerouslySetInnerHTML={jsonLd}
+				data-testid={url.href}
+				id={url.href}
+				type='application/ld+json'
+			/>
+			<SimpleLayout
+				imageAlt='Illustration of blog posts.'
+				imageSrc='/images/blog-post.svg'
+				intro={`All posts associated with the ${params.tag} tag.`}
+				title={`${params.tag[0].toUpperCase()}${params.tag.slice(1)}`}
+			>
+				<PostsLayout posts={resource} />
+			</SimpleLayout>
+		</>
 	)
 })
 
@@ -70,6 +90,7 @@ export const onStaticGenerate: StaticGenerateHandler = async () => {
 
 export const head: DocumentHead = ({ head }) => {
 	return {
+		// TODO
 		...head,
 	}
 }

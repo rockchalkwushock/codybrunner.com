@@ -19,8 +19,9 @@ export default component$(() => {
 	useStyles$(rehypePrettyCode)
 	const loc = useLocation()
 	const { frontmatter, meta, title } = useDocumentHead()
+	console.log({ frontmatter })
 	const description = meta.find(meta => meta.name === 'description')?.content
-	const { createdAt, draft, heroImage, publishedAt, slug, updatedAt } =
+	const { createdAt, draft, heroImage, publishedAt, updatedAt } =
 		frontmatter as Post
 
 	// TODO: Read more on BlogPosting JSON-LD
@@ -51,8 +52,8 @@ export default component$(() => {
 		<>
 			<script
 				dangerouslySetInnerHTML={jsonLd}
-				data-testid={slug}
-				id={slug}
+				data-testid={loc.url.href}
+				id={loc.url.href}
 				type='application/ld+json'
 			/>
 			<Container class='mt-16 lg:mt-32'>

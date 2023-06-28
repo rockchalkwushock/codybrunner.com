@@ -1,6 +1,10 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 import { component$, useResource$, Resource } from '@builder.io/qwik'
-import { type DocumentHead, useNavigate } from '@builder.io/qwik-city'
+import {
+	type DocumentHead,
+	useNavigate,
+	useLocation,
+} from '@builder.io/qwik-city'
 import { Image } from '@unpic/qwik'
 
 import { Container } from '~/components/container'
@@ -32,6 +36,7 @@ import { HOME, SITE } from '~/config.mjs'
 const HOME_POSTS = 3
 
 export default component$(() => {
+	const loc = useLocation()
 	const navigate = useNavigate()
 	const postsResource = useResource$(async () => {
 		const posts = await getPosts()
@@ -48,8 +53,26 @@ export default component$(() => {
 					HOME_POSTS
 			  )
 	})
+
+	const jsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		description: HOME.description,
+		name: HOME.title,
+		publisher: {
+			'@type': 'ProfilePage',
+			name: SITE.title,
+		},
+		url: loc.url.href,
+	})
 	return (
 		<>
+			<script
+				dangerouslySetInnerHTML={jsonLd}
+				data-testid={loc.url.href}
+				id={loc.url.href}
+				type='application/ld+json'
+			/>
 			<Container class='mt-9'>
 				<div class='grid grid-cols-1 place-items-center gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12'>
 					<div class='max-w-2xl'>
@@ -212,7 +235,7 @@ export const head: DocumentHead = {
 		},
 		{
 			property: 'og:title',
-			content: `Home | ${SITE.title}`,
+			content: 'Home',
 		},
 		{
 			property: 'og:type',
@@ -252,7 +275,7 @@ export const head: DocumentHead = {
 		},
 		{
 			name: 'twitter:title',
-			content: `Home | ${SITE.title}`,
+			content: 'Home',
 		},
 		{
 			name: 'twitter:url',

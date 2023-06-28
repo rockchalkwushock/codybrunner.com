@@ -1,5 +1,5 @@
 import { component$, useResource$ } from '@builder.io/qwik'
-import type { DocumentHead } from '@builder.io/qwik-city'
+import { type DocumentHead, useLocation } from '@builder.io/qwik-city'
 
 import { PostsLayout } from '~/components/posts-layout'
 import { SimpleLayout } from '~/components/simple-layout'
@@ -13,28 +13,48 @@ import {
 } from '~/utils/posts'
 
 export default component$(() => {
+	const loc = useLocation()
 	const resource = useResource$(async () => {
 		const posts = await getPosts()
 		return import.meta.env.PROD
 			? sortPosts(filterPosts(posts, isPublished), isAfter)
 			: sortPosts(posts, isAfter)
 	})
+	const jsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		description: BLOG.description,
+		name: BLOG.title,
+		publisher: {
+			'@type': 'ProfilePage',
+			name: SITE.title,
+		},
+		url: loc.url.href,
+	})
 	return (
-		<SimpleLayout
-			imageAlt='Illustration of blog posts.'
-			imageSrc='/images/blog-post.svg'
-			intro={BLOG.intro}
-			title={BLOG.title}
-		>
-			<PostsLayout posts={resource} />
-		</SimpleLayout>
+		<>
+			<script
+				dangerouslySetInnerHTML={jsonLd}
+				data-testid={loc.url.href}
+				id={loc.url.href}
+				type='application/ld+json'
+			/>
+			<SimpleLayout
+				imageAlt='Illustration of blog posts.'
+				imageSrc='/images/blog-post.svg'
+				intro={BLOG.intro}
+				title={BLOG.title}
+			>
+				<PostsLayout posts={resource} />
+			</SimpleLayout>
+		</>
 	)
 })
 
 export const head: DocumentHead = ({ head }) => {
 	return {
 		...head,
-		title: `${BLOG.title} | ${SITE.title}`,
+		title: BLOG.title,
 		meta: [
 			...head.meta,
 			{
@@ -67,7 +87,7 @@ export const head: DocumentHead = ({ head }) => {
 			},
 			{
 				property: 'og:title',
-				content: `${BLOG.title} | ${SITE.title}`,
+				content: BLOG.title,
 			},
 			{
 				property: 'og:type',
@@ -107,7 +127,7 @@ export const head: DocumentHead = ({ head }) => {
 			},
 			{
 				name: 'twitter:title',
-				content: `${BLOG.title} | ${SITE.title}`,
+				content: BLOG.title,
 			},
 			{
 				name: 'twitter:url',

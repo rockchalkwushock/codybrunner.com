@@ -1,5 +1,5 @@
 import { component$, Slot } from '@builder.io/qwik'
-import { type DocumentHead, Link } from '@builder.io/qwik-city'
+import { type DocumentHead, Link, useLocation } from '@builder.io/qwik-city'
 
 import { Section } from '~/components/section'
 import { SimpleLayout } from '~/components/simple-layout'
@@ -33,43 +33,63 @@ const Tool = component$<ToolProps>(({ href, title }) => {
 })
 
 export default component$(() => {
+	const loc = useLocation()
+	const jsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		description: USES.description,
+		name: USES.title,
+		publisher: {
+			'@type': 'ProfilePage',
+			name: SITE.title,
+		},
+		url: loc.url.href,
+	})
 	return (
-		<SimpleLayout
-			imageAlt='Illustration of workstation.'
-			imageSrc='/images/workstation.svg'
-			intro={USES.intro}
-			title={USES.title}
-		>
-			<div class='space-y-20'>
-				<Section title='Workstation'>
-					<ul class='space-y-16' role='list'>
-						{USES.workStation.map(({ description, href, title }, i) => (
-							<Tool href={href} key={`workstation-${i}`} title={title}>
-								{description}
-							</Tool>
-						))}
-					</ul>
-				</Section>
-				<Section title='Development Tools'>
-					<ul class='space-y-16' role='list'>
-						{USES.devTools.map(({ description, href, title }, i) => (
-							<Tool href={href} key={`devTools-${i}`} title={title}>
-								{description}
-							</Tool>
-						))}
-					</ul>
-				</Section>
-				<Section title='Productivity'>
-					<ul class='space-y-16' role='list'>
-						{USES.productivity.map(({ description, href, title }, i) => (
-							<Tool href={href} key={`productivity-${i}`} title={title}>
-								{description}
-							</Tool>
-						))}
-					</ul>
-				</Section>
-			</div>
-		</SimpleLayout>
+		<>
+			<script
+				dangerouslySetInnerHTML={jsonLd}
+				data-testid={loc.url.href}
+				id={loc.url.href}
+				type='application/ld+json'
+			/>
+			<SimpleLayout
+				imageAlt='Illustration of workstation.'
+				imageSrc='/images/workstation.svg'
+				intro={USES.intro}
+				title={USES.title}
+			>
+				<div class='space-y-20'>
+					<Section title='Workstation'>
+						<ul class='space-y-16' role='list'>
+							{USES.workStation.map(({ description, href, title }, i) => (
+								<Tool href={href} key={`workstation-${i}`} title={title}>
+									{description}
+								</Tool>
+							))}
+						</ul>
+					</Section>
+					<Section title='Development Tools'>
+						<ul class='space-y-16' role='list'>
+							{USES.devTools.map(({ description, href, title }, i) => (
+								<Tool href={href} key={`devTools-${i}`} title={title}>
+									{description}
+								</Tool>
+							))}
+						</ul>
+					</Section>
+					<Section title='Productivity'>
+						<ul class='space-y-16' role='list'>
+							{USES.productivity.map(({ description, href, title }, i) => (
+								<Tool href={href} key={`productivity-${i}`} title={title}>
+									{description}
+								</Tool>
+							))}
+						</ul>
+					</Section>
+				</div>
+			</SimpleLayout>
+		</>
 	)
 })
 
@@ -107,7 +127,7 @@ export const head: DocumentHead = {
 
 		{
 			property: 'og:title',
-			content: `${USES.title} | ${SITE.title}`,
+			content: USES.title,
 		},
 		{
 			property: 'og:type',
@@ -147,7 +167,7 @@ export const head: DocumentHead = {
 		},
 		{
 			name: 'twitter:title',
-			content: `${USES.title} | ${SITE.title}`,
+			content: USES.title,
 		},
 		{
 			name: 'twitter:url',

@@ -1,5 +1,6 @@
 import { component$ } from '@builder.io/qwik'
 import type { DocumentHead } from '@builder.io/qwik-city'
+import { useLocation } from '@builder.io/qwik-city'
 import { Link } from '@builder.io/qwik-city'
 import { Image } from '@unpic/qwik'
 
@@ -8,162 +9,182 @@ import { SimpleLayout } from '~/components/simple-layout'
 import { BOOKSHELF, SITE } from '~/config.mjs'
 
 export default component$(() => {
+	const loc = useLocation()
+	const jsonLd = JSON.stringify({
+		'@context': 'https://schema.org',
+		'@type': 'WebPage',
+		description: BOOKSHELF.description,
+		name: BOOKSHELF.title,
+		publisher: {
+			'@type': 'ProfilePage',
+			name: SITE.title,
+		},
+		url: loc.url.href,
+	})
 	return (
-		<SimpleLayout
-			imageAlt='Illustration of books.'
-			imageSrc='/images/books.svg'
-			intro={BOOKSHELF.intro}
-			title={BOOKSHELF.title}
-		>
-			<div class='space-y-20'>
-				<Section title='Currently Reading'>
-					<ul class='space-y-16' role='list'>
-						{BOOKSHELF.current.map(({ authors, image, title, url }, i) => (
-							<li
-								key={`current-${i}`}
-								class='group relative flex flex-col items-start'
-							>
-								<a
-									class='relative z-10 flex-shrink-0 w-32 h-48 overflow-hidden rounded-lg shadow-md group-hover:shadow-lg'
-									href={url}
+		<>
+			<script
+				dangerouslySetInnerHTML={jsonLd}
+				data-testid={loc.url.href}
+				id={loc.url.href}
+				type='application/ld+json'
+			/>
+			<SimpleLayout
+				imageAlt='Illustration of books.'
+				imageSrc='/images/books.svg'
+				intro={BOOKSHELF.intro}
+				title={BOOKSHELF.title}
+			>
+				<div class='space-y-20'>
+					<Section title='Currently Reading'>
+						<ul class='space-y-16' role='list'>
+							{BOOKSHELF.current.map(({ authors, image, title, url }, i) => (
+								<li
+									key={`current-${i}`}
+									class='group relative flex flex-col items-start'
 								>
-									<Image
-										alt={`${title} by ${authors.join(', ')}`}
-										class='object-cover w-full h-full'
-										height={40}
-										src={image}
-										width={32}
-									/>
-								</a>
-								<h3 class='relative z-10 mt-2 text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100'>
 									<a
-										class='relative z-10 text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100'
+										class='relative z-10 flex-shrink-0 w-32 h-48 overflow-hidden rounded-lg shadow-md group-hover:shadow-lg'
 										href={url}
-										target='_blank'
-										rel='noopener noreferrer'
 									>
-										{title}
+										<Image
+											alt={`${title} by ${authors.join(', ')}`}
+											class='object-cover w-full h-full'
+											height={40}
+											src={image}
+											width={32}
+										/>
 									</a>
-								</h3>
-								<p class='relative z-10 mt-2 text-sm text-primary-600 dark:text-primary-400'>
-									{authors.join(', ')}
-								</p>
-							</li>
-						))}
-					</ul>
-				</Section>
-				<Section title='Fiction'>
-					<ul class='space-y-8' role='list'>
-						{BOOKSHELF.fiction.map(({ authors, title, url }, i) => (
-							<li
-								class='group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40'
-								key={`fiction-${i}`}
-							>
-								<Link
-									class='text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100'
-									href={url}
-								>
-									<h3 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400'>
-										{title}
+									<h3 class='relative z-10 mt-2 text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100'>
+										<a
+											class='relative z-10 text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100'
+											href={url}
+											target='_blank'
+											rel='noopener noreferrer'
+										>
+											{title}
+										</a>
 									</h3>
-									<p class='text-sm text-primary-600 dark:text-primary-400'>
+									<p class='relative z-10 mt-2 text-sm text-primary-600 dark:text-primary-400'>
 										{authors.join(', ')}
 									</p>
-								</Link>
-							</li>
-						))}
-					</ul>
-				</Section>
-				<Section title='Finance'>
-					<ul class='space-y-8' role='list'>
-						{BOOKSHELF.finance.map(({ authors, title, url }, i) => (
-							<li
-								class='group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40'
-								key={`finance-${i}`}
-							>
-								<Link
-									class='text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100'
-									href={url}
+								</li>
+							))}
+						</ul>
+					</Section>
+					<Section title='Fiction'>
+						<ul class='space-y-8' role='list'>
+							{BOOKSHELF.fiction.map(({ authors, title, url }, i) => (
+								<li
+									class='group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40'
+									key={`fiction-${i}`}
 								>
-									<h3 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400'>
-										{title}
-									</h3>
-									<p class='text-sm text-primary-600 dark:text-primary-400'>
-										{authors.join(', ')}
-									</p>
-								</Link>
-							</li>
-						))}
-					</ul>
-				</Section>
-				<Section title='Relationship'>
-					<ul class='space-y-8' role='list'>
-						{BOOKSHELF.marriage.map(({ authors, title, url }, i) => (
-							<li
-								class='group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40'
-								key={`marriage-${i}`}
-							>
-								<Link
-									class='text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100'
-									href={url}
+									<Link
+										class='text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100'
+										href={url}
+									>
+										<h3 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400'>
+											{title}
+										</h3>
+										<p class='text-sm text-primary-600 dark:text-primary-400'>
+											{authors.join(', ')}
+										</p>
+									</Link>
+								</li>
+							))}
+						</ul>
+					</Section>
+					<Section title='Finance'>
+						<ul class='space-y-8' role='list'>
+							{BOOKSHELF.finance.map(({ authors, title, url }, i) => (
+								<li
+									class='group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40'
+									key={`finance-${i}`}
 								>
-									<h3 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400'>
-										{title}
-									</h3>
-									<p class='text-sm text-primary-600 dark:text-primary-400'>
-										{authors.join(', ')}
-									</p>
-								</Link>
-							</li>
-						))}
-					</ul>
-				</Section>
-				<Section title='Self Help'>
-					<ul class='space-y-8' role='list'>
-						{BOOKSHELF.selfHelp.map(({ authors, title, url }, i) => (
-							<li
-								class='group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40'
-								key={`self-help-${i}`}
-							>
-								<Link
-									class='text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100'
-									href={url}
+									<Link
+										class='text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100'
+										href={url}
+									>
+										<h3 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400'>
+											{title}
+										</h3>
+										<p class='text-sm text-primary-600 dark:text-primary-400'>
+											{authors.join(', ')}
+										</p>
+									</Link>
+								</li>
+							))}
+						</ul>
+					</Section>
+					<Section title='Relationship'>
+						<ul class='space-y-8' role='list'>
+							{BOOKSHELF.marriage.map(({ authors, title, url }, i) => (
+								<li
+									class='group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40'
+									key={`marriage-${i}`}
 								>
-									<h3 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400'>
-										{title}
-									</h3>
-									<p class='text-sm text-primary-600 dark:text-primary-400'>
-										{authors.join(', ')}
-									</p>
-								</Link>
-							</li>
-						))}
-					</ul>
-				</Section>
-				<Section title='Technology'>
-					<ul class='space-y-8' role='list'>
-						{BOOKSHELF.technology.map(({ authors, title, url }, i) => (
-							<li
-								class='group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40'
-								key={`technology-${i}`}
-							>
-								<Link
-									class='text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100'
-									href={url}
+									<Link
+										class='text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100'
+										href={url}
+									>
+										<h3 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400'>
+											{title}
+										</h3>
+										<p class='text-sm text-primary-600 dark:text-primary-400'>
+											{authors.join(', ')}
+										</p>
+									</Link>
+								</li>
+							))}
+						</ul>
+					</Section>
+					<Section title='Self Help'>
+						<ul class='space-y-8' role='list'>
+							{BOOKSHELF.selfHelp.map(({ authors, title, url }, i) => (
+								<li
+									class='group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40'
+									key={`self-help-${i}`}
 								>
-									<h3 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400'>
-										{title}
-									</h3>
-									<p class='text-sm text-primary-600 dark:text-primary-400'>
-										{authors.join(', ')}
-									</p>
-								</Link>
-							</li>
-						))}
-					</ul>
-				</Section>
-			</div>
-		</SimpleLayout>
+									<Link
+										class='text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100'
+										href={url}
+									>
+										<h3 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400'>
+											{title}
+										</h3>
+										<p class='text-sm text-primary-600 dark:text-primary-400'>
+											{authors.join(', ')}
+										</p>
+									</Link>
+								</li>
+							))}
+						</ul>
+					</Section>
+					<Section title='Technology'>
+						<ul class='space-y-8' role='list'>
+							{BOOKSHELF.technology.map(({ authors, title, url }, i) => (
+								<li
+									class='group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40'
+									key={`technology-${i}`}
+								>
+									<Link
+										class='text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100'
+										href={url}
+									>
+										<h3 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400'>
+											{title}
+										</h3>
+										<p class='text-sm text-primary-600 dark:text-primary-400'>
+											{authors.join(', ')}
+										</p>
+									</Link>
+								</li>
+							))}
+						</ul>
+					</Section>
+				</div>
+			</SimpleLayout>
+		</>
 	)
 })
 
@@ -201,7 +222,7 @@ export const head: DocumentHead = {
 
 		{
 			property: 'og:title',
-			content: `${BOOKSHELF.title} | ${SITE.title}`,
+			content: BOOKSHELF.title,
 		},
 		{
 			property: 'og:type',
@@ -241,7 +262,7 @@ export const head: DocumentHead = {
 		},
 		{
 			name: 'twitter:title',
-			content: `${BOOKSHELF.title} | ${SITE.title}`,
+			content: BOOKSHELF.title,
 		},
 		{
 			name: 'twitter:url',
