@@ -16,7 +16,9 @@ import {
 	getCategories,
 	getPosts,
 	hasCategory,
+	isAfter,
 	isPublished,
+	sortPosts,
 } from '~/utils/posts'
 
 export const useGetPostsByCategoryLoader = routeLoader$<Post[]>(
@@ -28,10 +30,16 @@ export const useGetPostsByCategoryLoader = routeLoader$<Post[]>(
 		const category = params.category as CategoryEnum
 
 		return import.meta.env.PROD
-			? filterPosts(filterPosts(posts, isPublished), post =>
-					hasCategory(post, category)
+			? sortPosts(
+					filterPosts(filterPosts(posts, isPublished), post =>
+						hasCategory(post, category)
+					),
+					isAfter
 			  )
-			: filterPosts(posts, post => hasCategory(post, category))
+			: sortPosts(
+					filterPosts(posts, post => hasCategory(post, category)),
+					isAfter
+			  )
 	}
 )
 

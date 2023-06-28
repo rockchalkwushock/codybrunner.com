@@ -16,7 +16,9 @@ import {
 	getPosts,
 	getTags,
 	hasTag,
+	isAfter,
 	isPublished,
+	sortPosts,
 } from '~/utils/posts'
 
 export const useGetPostsByTagLoader = routeLoader$<Post[]>(
@@ -28,8 +30,16 @@ export const useGetPostsByTagLoader = routeLoader$<Post[]>(
 		const tag = params.tag as TagEnum
 
 		return import.meta.env.PROD
-			? filterPosts(filterPosts(posts, isPublished), post => hasTag(post, tag))
-			: filterPosts(posts, post => hasTag(post, tag))
+			? sortPosts(
+					filterPosts(filterPosts(posts, isPublished), post =>
+						hasTag(post, tag)
+					),
+					isAfter
+			  )
+			: sortPosts(
+					filterPosts(posts, post => hasTag(post, tag)),
+					isAfter
+			  )
 	}
 )
 
