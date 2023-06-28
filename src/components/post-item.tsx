@@ -12,7 +12,7 @@ export const PostItem = component$<Post>(
 				<div class='group relative flex flex-col items-start md:col-span-3'>
 					<h2 class='text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100'>
 						<div class='absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-primary-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-primary-800/50 sm:-inset-x-6 sm:rounded-2xl' />
-						<PostLink aria-label='//TODO' href={slug}>
+						<PostLink aria-label={`Link to ${title} post`} href={slug}>
 							<span class='absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl' />
 							<span class='relative z-10'>{title}</span>
 						</PostLink>

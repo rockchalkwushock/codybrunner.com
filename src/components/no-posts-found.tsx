@@ -8,7 +8,6 @@ export const NoPostsFound = component$(() => {
 			<Image
 				// TODO: In the future look at blur effects and placeholders
 				alt='No Posts At This Time'
-				class=''
 				height={400}
 				src='/images/articles.svg'
 				width={400}

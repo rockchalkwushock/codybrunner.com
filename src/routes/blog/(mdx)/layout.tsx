@@ -2,7 +2,6 @@ import { component$, useStyles$, Slot } from '@builder.io/qwik'
 import {
 	type DocumentHead,
 	useDocumentHead,
-	useNavigate,
 	useLocation,
 } from '@builder.io/qwik-city'
 import { Image } from '@unpic/qwik'
@@ -14,14 +13,14 @@ import { formatDate } from '~/utils/strings'
 import rehypePrettyCode from '~/styles/rehype-pretty-code.css?inline'
 import { SITE } from '~/config.mjs'
 import type { PostSchema as Post } from '~/utils/posts'
+import { NavLink } from '~/components/nav-link'
 
 export default component$(() => {
 	useStyles$(rehypePrettyCode)
-	const navigate = useNavigate()
 	const loc = useLocation()
 	const { frontmatter, meta, title } = useDocumentHead()
 	const description = meta.find(meta => meta.name === 'description')?.content
-	const { createdAt, draft, heroImage, publishedAt, updatedAt } =
+	const { createdAt, draft, heroImage, publishedAt, slug, updatedAt } =
 		frontmatter as Post
 
 	// TODO: Read more on BlogPosting JSON-LD
@@ -52,21 +51,20 @@ export default component$(() => {
 		<>
 			<script
 				dangerouslySetInnerHTML={jsonLd}
-				data-testid=''
-				id=''
+				data-testid={slug}
+				id={slug}
 				type='application/ld+json'
 			/>
 			<Container class='mt-16 lg:mt-32'>
 				<div class='xl:relative'>
 					<div class='mx-auto max-w-2xl'>
-						<button
+						<NavLink
 							aria-label='Go back to articles'
 							class='group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md shadow-primary-800/5 ring-1 ring-primary-900/5 transition dark:border dark:border-primary-700/50 dark:bg-primary-800 dark:ring-0 dark:ring-white/10 dark:hover:border-primary-700 dark:hover:ring-white/20 lg:absolute lg:-left-5 lg:-mt-2 lg:mb-0 xl:-top-1.5 xl:left-0 xl:mt-0'
-							onClick$={() => navigate('/blog')}
-							type='button'
+							href='/blog'
 						>
 							<ArrowLeftIcon class='h-4 w-4 stroke-primary-500 transition group-hover:stroke-primary-700 dark:group-hover:stroke-primary-400' />
-						</button>
+						</NavLink>
 						<article>
 							<header class='flex flex-col'>
 								<h1 class='mt-6 text-4xl font-bold tracking-tight text-primary-800 dark:text-primary-100 sm:text-5xl'>
@@ -90,7 +88,7 @@ export default component$(() => {
 										)}
 									</span>
 								</time>
-								{heroImage && (
+								{!!heroImage && (
 									<Image
 										alt={heroImage.alt}
 										class='mt-8 rounded-lg'

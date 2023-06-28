@@ -9,7 +9,6 @@ export const RouterHead = component$(() => {
 	const head = useDocumentHead()
 	const loc = useLocation()
 
-	const title = `${head.title} | codybrunner.com`
 	return (
 		<>
 			<meta charSet='utf-8' />
@@ -47,8 +46,8 @@ export const RouterHead = component$(() => {
 
 			{/* Primary Meta Tags*/}
 			<meta name='author' content={SITE.author} />
-			<meta name='title' content={title} />
-			<title>{title}</title>
+			<meta name='title' content={head.title} />
+			<title>{head.title}</title>
 
 			{head.meta.map(m => (
 				<meta key={m.key} {...m} />
