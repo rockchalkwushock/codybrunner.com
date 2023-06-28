@@ -19,7 +19,6 @@ export default component$(() => {
 	useStyles$(rehypePrettyCode)
 	const loc = useLocation()
 	const { frontmatter, meta, title } = useDocumentHead()
-	console.log({ frontmatter })
 	const description = meta.find(meta => meta.name === 'description')?.content
 	const { createdAt, draft, heroImage, publishedAt, updatedAt } =
 		frontmatter as Post
