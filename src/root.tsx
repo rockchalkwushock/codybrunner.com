@@ -29,7 +29,7 @@ export default component$(() => {
 				<RouterHead />
 			</head>
 			<body
-				class='antialiased h-full w-full motion-safe:scroll-smooth flex flex-col dark:bg-primary-900 dark:text-primary-200'
+				class='antialiased h-full w-full motion-safe:scroll-smooth bg-primary-50 text-primary-950 flex flex-col dark:bg-primary-950 dark:text-primary-200'
 				lang='en'
 			>
 				<RouterOutlet />
