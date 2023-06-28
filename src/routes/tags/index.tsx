@@ -31,7 +31,10 @@ export default component$(() => {
 								<li class='group px-10 relative' key={tag}>
 									<h2 class='text-base flex justify-between items-center font-semibold tracking-tight text-primary-800 dark:text-primary-100'>
 										<div class='absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-primary-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-primary-800/50 sm:-inset-x-6 sm:rounded-2xl' />
-										<TagLink aria-label='//TODO' href={tag}>
+										<TagLink
+											aria-label={`Link to list of post with ${tag} tag.`}
+											href={tag}
+										>
 											<span class='absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl' />
 											<span class='relative z-10'>{tag}</span>
 										</TagLink>
