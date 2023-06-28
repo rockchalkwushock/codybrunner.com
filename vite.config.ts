@@ -18,26 +18,30 @@ const options: Options = {
 export default defineConfig(() => {
   return {
     base: '/',
-    plugins: [qwikCity({
-      mdx: {
-        rehypePlugins: [
-          rehypeSlug,
-          [rehypeAutolinkHeadings, { behavior: 'prepend', content: { type: 'element', tagName: 'span', properties: { className: ['icon', 'icon-link'] } } }],
-          rehypeAccessibleEmojis,
-          [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
-          [rehypePrettyCode, options]
-        ],
-        remarkPlugins: [
-          remarkValidateLinks
-        ]
-      },
-      mdxPlugins: {
-        rehypeAutolinkHeadings: false,
-        rehypeSyntaxHighlight: false,
-        remarkGfm: true,
-      },
-      trailingSlash: false,
-    }), qwikVite(), tsconfigPaths()],
+    plugins: [
+      qwikCity({
+        mdx: {
+          rehypePlugins: [
+            rehypeSlug,
+            [rehypeAutolinkHeadings, { behavior: 'prepend', content: { type: 'element', tagName: 'span', properties: { className: ['icon', 'icon-link'] } } }],
+            rehypeAccessibleEmojis,
+            [rehypeExternalLinks, { target: '_blank', rel: ['noopener', 'noreferrer'] }],
+            [rehypePrettyCode, options]
+          ],
+          remarkPlugins: [
+            remarkValidateLinks
+          ]
+        },
+        mdxPlugins: {
+          rehypeAutolinkHeadings: false,
+          rehypeSyntaxHighlight: false,
+          remarkGfm: true,
+        },
+        trailingSlash: false,
+      }),
+      qwikVite(),
+      tsconfigPaths()
+    ],
     preview: {
       headers: {
         'Cache-Control': 'public, max-age=600',
