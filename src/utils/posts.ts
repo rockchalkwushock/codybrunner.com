@@ -7,10 +7,6 @@ const CATEGORIES = ['expat', 'personal', 'technology', 'travel'] as const
 const CategoriesEnum = z.enum(CATEGORIES)
 export type CategoryEnum = z.infer<typeof CategoriesEnum>
 
-const LANGUAGES = ['en_US', 'es_CO'] as const
-const LanguagesEnum = z.enum(LANGUAGES)
-export type LangEnum = z.infer<typeof LanguagesEnum>
-
 const TAGS = [
 	'absinthe',
 	'asd',
@@ -85,8 +81,6 @@ export type TagEnum = z.infer<typeof TagsEnum>
 const PostSchema = z.object({
 	archived: z.boolean().default(false),
 	author: z.string().default('Cody Brunner'),
-	// FIXME:
-	// canonicalUrl: z.string().url(),
 	categories: z.array(CategoriesEnum).optional(),
 	createdAt: z.date({
 		invalid_type_error: 'createdAt is typeof Date',
@@ -101,8 +95,6 @@ const PostSchema = z.object({
 			src: z.string(),
 		})
 		.optional(),
-	// FIXME:
-	// language: z.array(LanguagesEnum).optional(),
 	published: z.boolean().default(false),
 	publishedAt: z
 		.date({
