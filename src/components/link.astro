@@ -1,0 +1,21 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { cn } from '~/utils/helpers';
+
+export interface Props extends Omit<HTMLAttributes<'a'>, "aria-label" | 'href' | 'hreflang'> {
+  "aria-label": string
+  href: string
+}
+
+const { "aria-label": label, class: cls, href, rel, target } = Astro.props
+---
+
+<a
+  aria-label={label}
+  class={cn('cursor-pointer', cls)}
+  href={href}
+  rel={rel}
+  target={target}
+>
+  <slot />
+</a>

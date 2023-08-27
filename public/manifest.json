@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
+  "background_color": "#22d3ee",
+  "description": "Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at Bitcoin IRA, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",
+  "dir": "ltr",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/favicons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "id": "/",
+  "lang": "en-US",
+  "name": "codybrunner.com",
+  "orientation": "portrait-primary",
+  "short_name": "codybrunner.com",
+  "start_url": ".",
+  "theme_color": "#22d3ee"
+}

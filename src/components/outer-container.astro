@@ -1,0 +1,14 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { cn } from "~/utils/helpers";
+
+export type Props = HTMLAttributes<'div'>
+
+const { class: cls, style } = Astro.props
+---
+
+<div class={cn('sm:px-8', cls)} style={style}>
+  <div class="mx-auto max-w-7xl lg:px-8">
+    <slot />
+  </div>
+</div>

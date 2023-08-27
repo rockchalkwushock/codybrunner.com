@@ -1,0 +1,336 @@
+---
+import { Image } from 'astro:assets'
+
+// Components
+import Head from '~/components/head.astro'
+import Link from '~/components/link.astro'
+import Section from '~/components/section.astro'
+import SimpleLayout from '~/components/simple-layout.astro'
+import BaseLayout from '~/layouts/base-layout.astro'
+
+const CONTENT = {
+  current: [
+  {
+      authors: ['John R. Rice'],
+      image: 'https://m.media-amazon.com/images/I/51X5QG-QDbL.SX150.jpg',
+      title: 'Prayer: Asking and Receiving',
+      url: 'https://www.amazon.com/gp/product/B01BX7KOAE/ref=kinw_myk_ro_title',
+    },
+    {
+      authors: ['John Kim', 'Vanessa Bennett'],
+      image: 'https://m.media-amazon.com/images/I/41e1k4h-IbL.SX150.jpg',
+      title:
+        "It's Not Me, It's You: Break the Blame Cycle. Relationship Better.",
+      url: 'https://www.amazon.com/gp/product/B09N8NYMB1/ref=kinw_myk_ro_title',
+    },
+  ],
+  fiction: [
+    {
+      authors: ['Ayn Rand'],
+      title: 'Anthem',
+      url: 'https://a.co/d/8rHjOEy',
+    },
+    {
+      authors: ['Ayn Rand'],
+      title: 'Atlas Shrugged',
+      url: 'https://a.co/d/88pro3Y',
+    },
+    {
+      authors: ['Ayn Rand'],
+      title: 'The Fountainhead',
+      url: 'https://a.co/d/c3g8b5a',
+    },
+    {
+      authors: ['Victor Hugo'],
+      title: 'Les Misérables',
+      url: 'https://a.co/d/1fPgHbY',
+    },
+    {
+      authors: ['Paulo Coelho'],
+      title: 'The Alchemist',
+      url: 'https://a.co/d/h0a1C4I',
+    },
+    {
+      authors: ['Michael Crichton'],
+      title: 'State of Fear',
+      url: 'https://a.co/d/f9dhfEP',
+    },
+  ],
+  finance: [
+    {
+      authors: ['Robert Kiyosaki'],
+      title: 'Rich Dad Poor Dad',
+      url: 'https://a.co/d/1HpPMo6',
+    },
+  ],
+  intro:
+    'I do not read as much as I used to when I was a kid and I am working on changing that. I also am branching out and not just reading tech books. Here are some of my favorites over the 30 plus years I have been on this blue rock.',
+  marriage: [
+    {
+      authors: ['Jeff Feldhahn', 'Shaunti Feldhahn'],
+      title:
+        'For Men Only: A Straightforward Guide to the Inner Lives of Women',
+      url: 'https://a.co/d/bpcbrqV',
+    },
+    {
+      authors: ['Eva A. Mendes'],
+      title: "Marriage and Lasting Relationships with Asperger's Syndrome",
+      url: 'https://a.co/d/3v2WXtL',
+    },
+  ],
+  selfHelp: [
+  {
+      authors: ['David Goggins'],
+      title: "Can't Hurt Me",
+      url: 'https://a.co/d/cnzBYda',
+    },
+    {
+      authors: ['Jason Wilson'],
+      title:
+        'Cry Like a Man: Fighting for Freedom from Emotional Incarceration',
+      url: 'https://www.amazon.com/Cry-Like-Man-Emotional-Incarceration-ebook/dp/B07G1YJ7DZ/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=&sr=',
+    },
+    {
+      authors: ['Jocko Willink', 'Leif Babin'],
+      title: 'Extreme Ownership',
+      url: 'https://a.co/d/0wK7AXT',
+    },
+    {
+      authors: ['Connor Beaton'],
+      title:
+        "Men's Work: A Practical Guide to Face Your Darkness, End Self-Sabotage, and Find Freedom",
+      url: 'https://a.co/d/97H7xq1',
+    },
+    {
+      authors: ['Ryan Michler'],
+      title: 'Sovereignty: The Battle for the Hearts and Minds of Men',
+      url: 'https://a.co/d/1pZdVHt',
+    },
+    {
+      authors: ['John Kim'],
+      title: 'I Used to Be a Miserable F*ck',
+      url: 'https://www.amazon.com/Used-Be-Miserable-Everymans-Meaningful-ebook/dp/B07BK3BYR4?ref_=ast_author_dp',
+    },
+    {
+      authors: ['John Kim'],
+      title:
+        'The Angry Therapist: A No BS Guide to Finding and Living Your Own Truth',
+      url: 'https://www.amazon.com/Angry-Therapist-Guide-Finding-Living-ebook/dp/B01IZT7YGA?ref_=ast_author_dp',
+    },
+    {
+      authors: ['Mel Robbins'],
+      title: 'The 5 Second Rule',
+      url: 'https://a.co/d/ak4pIOE',
+    },
+  ],
+  technology: [
+  {
+      authors: ['Sean Moriarity'],
+      title: 'Genetic Algorithms in Elixir',
+      url: 'https://pragprog.com/titles/smgaelixir/genetic-algorithms-in-elixir/',
+    },
+    {
+      authors: ['James Edward Gray, II', 'Bruce A. Tate'],
+      title: 'Designing Elixir Systems with OTP',
+      url: 'https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/',
+    },
+    {
+      authors: ['Chris McCord', 'Bruce A. Tate', 'José Valim'],
+      title: 'Programming Phoenix 1.4',
+      url: 'https://pragprog.com/titles/phoenix14/programming-phoenix-1-4/',
+    },
+    {
+      authors: ['Darin Wilson', 'Eric Meadows-Jönsson'],
+      title: 'Programming Ecto',
+      url: 'https://pragprog.com/titles/wmecto/programming-ecto/',
+    },
+    {
+      authors: ['Bruce Williams', 'Ben Wilson'],
+      title: 'Craft GraphQL APIs in Elixir with Absinthe',
+      url: 'https://pragprog.com/titles/wwgraphql/craft-graphql-apis-in-elixir-with-absinthe/',
+    },
+    {
+      authors: ['Bruce A. Tate', 'Sophie DeBenedetto'],
+      title: 'Programming Phoenix LiveView',
+      url: 'https://pragprog.com/titles/liveview/programming-phoenix-liveview/',
+    },
+  ],
+  title: 'Bookshelf',
+} as const
+
+const METADATA = {
+  description: 'Welcome to my bookshelf, a curated list of recommended books that I have read or am currently reading. Dive into a diverse range of genres, spanning from captivating fiction to enlightening non-fiction, empowering self-help, insightful finance, and cutting-edge technology books. Whether you are seeking thrilling stories, expanding your knowledge, or exploring personal growth, this collection has something for everyone. Discover gripping narratives, thought-provoking insights, and practical guidance within these pages. From timeless classics to contemporary bestsellers, each book on this list has left a lasting impact on me and has the potential to enrich your life as well. So, grab a cup of coffee, browse through these literary treasures, and embark on a journey of inspiration and enlightenment. Happy reading!',
+  title: 'Bookshelf',
+} as const
+---
+
+<BaseLayout>
+  <Head
+    description={METADATA.description}
+    slot="metadata"
+    title={METADATA.title}
+  />
+  <SimpleLayout intro={CONTENT.intro} slot="content" title={CONTENT.title}>
+    <div class="space-y-20">
+      <Section id="current" title="Currently Reading">
+        <ul class="space-y-16" role="list">
+          {
+            CONTENT.current.map(({ authors, image, title, url }) => (
+              <li class="group relative flex flex-col items-start">
+                <Link
+                  aria-label=""
+                  class="relative z-10 flex-shrink-0 w-32 h-48 overflow-hidden rounded-lg shadow-md group-hover:shadow-lg"
+                  href={url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <Image
+                    alt={title}
+                    class="object-cover w-full h-full"
+                    height={40}
+                    src={image}
+                    width={32}
+                  />
+                </Link>
+                <h3 class="relative z-10 mt-2 text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100">
+                  <Link
+                    aria-label=""
+                    class="relative z-10 text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100"
+                    href={url}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    {title}
+                  </Link>
+                </h3>
+                <p class="relative z-10 mt-2 text-sm text-primary-600 dark:text-primary-400">
+                  {authors.join(', ')}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
+      </Section>
+      <Section id="fiction" title="Fiction">
+        <ul class="space-y-8" role="list">
+          {
+            CONTENT.fiction.map(({ authors, title, url }) => (
+              <li class="group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40">
+                <Link
+                  aria-label=""
+                  class="text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100"
+                  href={url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <h3 class="text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400">
+                    {title}
+                  </h3>
+                  <p class="text-sm text-primary-600 dark:text-primary-400">
+                    {authors.join(', ')}
+                  </p>
+                </Link>
+              </li>
+            ))
+          }
+        </ul>
+      </Section>
+      <Section id="finance" title="Finance">
+        <ul class="space-y-8" role="list">
+          {
+            CONTENT.finance.map(({ authors, title, url }) => (
+              <li class="group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40">
+                <Link
+                  aria-label=""
+                  class="text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100"
+                  href={url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <h3 class="text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400">
+                    {title}
+                  </h3>
+                  <p class="text-sm text-primary-600 dark:text-primary-400">
+                    {authors.join(', ')}
+                  </p>
+                </Link>
+              </li>
+            ))
+          }
+        </ul>
+      </Section>
+      <Section id="relationship" title="Relationship">
+        <ul class="space-y-8" role="list">
+          {
+            CONTENT.marriage.map(({ authors, title, url }) => (
+              <li class="group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40">
+                <Link
+                  aria-label=""
+                  class="text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100"
+                  href={url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <h3 class="text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400">
+                    {title}
+                  </h3>
+                  <p class="text-sm text-primary-600 dark:text-primary-400">
+                    {authors.join(', ')}
+                  </p>
+                </Link>
+              </li>
+            ))
+          }
+        </ul>
+      </Section>
+      <Section id="self-help" title="Self Help">
+        <ul class="space-y-8" role="list">
+          {
+            CONTENT.selfHelp.map(({ authors, title, url }) => (
+              <li class="group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40">
+                <Link
+                  aria-label=""
+                  class="text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100"
+                  href={url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <h3 class="text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400">
+                    {title}
+                  </h3>
+                  <p class="text-sm text-primary-600 dark:text-primary-400">
+                    {authors.join(', ')}
+                  </p>
+                </Link>
+              </li>
+            ))
+          }
+        </ul>
+      </Section>
+      <Section id="technology" title="Technology">
+        <ul class="space-y-8" role="list">
+          {
+            CONTENT.technology.map(({ authors, title, url }) => (
+              <li class="group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40">
+                <Link
+                  aria-label=""
+                  class="text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100"
+                  href={url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <h3 class="text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400">
+                    {title}
+                  </h3>
+                  <p class="text-sm text-primary-600 dark:text-primary-400">
+                    {authors.join(', ')}
+                  </p>
+                </Link>
+              </li>
+            ))
+          }
+        </ul>
+      </Section>
+    </div>
+  </SimpleLayout>
+</BaseLayout>

@@ -1,7 +1,127 @@
 ---
-import '@fontsource-variable/playfair-display'
-import '@fontsource/poppins'
+import { Image } from 'astro:assets'
+// Assest
+import articles from '~/assets/articles.svg'
+import me from '~/assets/cody-brunner.jpg'
+// Components
+import Container from '~/components/container.astro'
+import Head from '~/components/head.astro'
+import Link from '~/components/link.astro'
+import ResumeList from '~/components/resume-list.astro'
+import Socials from '~/components/socials.astro'
+import BaseLayout from '~/layouts/base-layout.astro'
+
+const CONTENT = {
+  articlesTitle: 'No Articles At This Time',
+  cvButton: 'Download CV',
+  description: "I'm Cody, an American expat, US Navy Veteran, and software developer, calling Colombia home. I am a Senior Frontend Developer at Bitcoin IRA, where we are pioneering the world's first and most trusted crypto IRA platform. Outside work, you will find me smoking meats, in the gym, or learning guitar.",
+  resumeTitle: 'Work',
+  title: 'Software developer, veteran, and smoker of the meats.'
+} as const
 ---
 
-<h1 class="font-display">Hello</h1>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, hic illo ut id odit commodi excepturi nostrum, eaque sint officia magnam at nemo, provident atque dignissimos officiis cum sequi rerum.</p>
+<BaseLayout>
+  <Head slot="metadata" />
+  <Container class="mt-9" slot="content">
+    <div
+      class="grid grid-cols-1 place-items-center gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12"
+    >
+      <div class="max-w-2xl">
+        <h1
+          class="text-4xl font-display text-primary-900 font-bold tracking-tight dark:text-primary-100 sm:text-5xl"
+        >
+          {CONTENT.title}
+        </h1>
+        <p class="mt-6 text-primary-600 dark:text-primary-400 text-base">
+          {CONTENT.description}
+        </p>
+        <Socials />
+      </div>
+      <div class="lg:pl-12">
+        <div class="max-w-xs px-2.5 lg:max-w-none">
+          <Image
+            alt="Image of Cody Brunner"
+            class="aspect-square shadow-primary-800/30 shadow-2xl rotate-3 rounded-2xl bg-primary-100 object-cover dark:shadow-primary-100/20 dark:bg-primary-800"
+            fetchpriority="high"
+            height={300}
+            quality={100}
+            src={me}
+            width={263}
+          />
+        </div>
+      </div>
+    </div>
+  </Container>
+  <Container class="mt-10" slot="content">
+    <div
+      class="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:gap-y-0 lg:gap-x-20 lg:max-w-none lg:grid-cols-2"
+    >
+      <!-- Left Column -->
+      <div
+        class="flex flex-col items-center justify-center order-last lg:order-first space-y-16 lg:justify-start lg:items-start lg:space-y-20"
+      >
+        <h2 class="text-3xl font-bold font-display">
+          {CONTENT.articlesTitle}
+        </h2>
+        <Image
+          alt="No Articles At This Time"
+          class="max-w-xs sm:max-w-sm"
+          height={400}
+          src={articles}
+          width={400}
+        />
+      </div>
+      <!-- Right Column -->
+      <div class="space-y-10">
+        <!-- Resume -->
+        <div
+          class="rounded-2xl border p-6 border-primary-100 dark:border-primary-700/40"
+        >
+          <h2
+            class="flex items-center text-sm text-primary-900 dark:text-primary-100 font-semibold"
+          >
+            <svg
+              aria-hidden="true"
+              class="h-6 w-6 fill-none flex-none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              view-box="0 0 24 24"
+            >
+              <path
+                class="fill-primary-100 stroke-primary-400 dark:fill-primary-100/10 dark:stroke-primary-500"
+                d="M2.75 9.75a3 3 0 0 1 3-3h12.5a3 3 0 0 1 3 3v8.5a3 3 0 0 1-3 3H5.75a3 3 0 0 1-3-3v-8.5Z"
+              ></path>
+              <path
+                class="stroke-primary-400 dark:stroke-primary-500"
+                d="M3 14.25h6.249c.484 0 .952-.002 1.316.319l.777.682a.996.996 0 0 0 1.316 0l.777-.682c.364-.32.832-.319 1.316-.319H21M8.75 6.5V4.75a2 2 0 0 1 2-2h2.5a2 2 0 0 1 2 2V6.5"
+              ></path>
+            </svg>
+            <span class="ml-3">{CONTENT.resumeTitle}</span>
+          </h2>
+          <ResumeList />
+          <Link
+            aria-label="Download CV"
+            class="bg-primary-50 text-primary-900 hover:bg-primary-100 active:bg-primary-100 active:text-primary-900/60 dark:bg-primary-800/50 dark:text-primary-300 dark:hover:bg-primary-800 dark:hover:text-primary-50 dark:active:bg-primary-800/50 dark:active:text-primary-50/70 inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none font-medium group mt-6 w-full"
+            href="/resume.pdf"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            <span>{CONTENT.cvButton}</span>
+            <svg
+              aria-hidden="true"
+              class="h-4 w-4 fill-none transition stroke-primary-300 group-active:stroke-primary-600 dark:group-hover:stroke-primary-50 dark:group-active:stroke-primary-50"
+              view-box="0 0 16 16"
+            >
+              <path
+                d="M4.75 8.75 8 12.25m0 0 3.25-3.5M8 12.25v-8.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"></path>
+            </svg>
+          </Link>
+        </div>
+      </div>
+    </div>
+  </Container>
+</BaseLayout>
