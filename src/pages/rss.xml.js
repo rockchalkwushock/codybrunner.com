@@ -1,7 +1,7 @@
 import rss from '@astrojs/rss'
 
 // https://docs.astro.build/en/guides/rss/#setting-up-astrojsrss
-export function GET(context) {
+export async function GET(context) {
 	return rss({
 		// (optional) inject custom xml
 		customData: `<language>en-us</language>`,
@@ -14,6 +14,7 @@ export function GET(context) {
 		// Pull in your project "site" from the endpoint context
 		// https://docs.astro.build/en/reference/api-reference/#contextsite
 		site: context.site,
+		stylesheet: '/rss/styles.xsl',
 		// `<title>` field in output xml
 		title: 'RSS Feed | codybrunner.com',
 	})

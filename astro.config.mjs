@@ -8,7 +8,17 @@ export default defineConfig({
 	image: {
 		service: sharpImageService(),
 	},
-	integrations: [react(), tailwind(), sitemap()],
+	integrations: [
+		react(),
+		tailwind(),
+		// TODO: i18n sitemap
+		// @see https://docs.astro.build/en/guides/integrations-guide/sitemap/#i18n
+		sitemap({
+			changefreq: 'monthly',
+			lastmod: new Date(),
+			priority: 0.7,
+		}),
+	],
 	server: {
 		open: true,
 		port: 3000,
