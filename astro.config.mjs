@@ -11,10 +11,15 @@ export default defineConfig({
 	integrations: [
 		react(),
 		tailwind(),
-		// TODO: i18n sitemap
-		// @see https://docs.astro.build/en/guides/integrations-guide/sitemap/#i18n
 		sitemap({
 			changefreq: 'monthly',
+			i18n: {
+				defaultLocale: 'en',
+				locales: {
+					en: 'en-US',
+					es: 'es-CO',
+				},
+			},
 			lastmod: new Date(),
 			priority: 0.7,
 		}),

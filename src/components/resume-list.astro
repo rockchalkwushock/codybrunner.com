@@ -10,71 +10,77 @@ import jbt from '~/assets/icons/jbt.svg'
 import leanTech from '~/assets/icons/lean-tech.svg'
 import weeldi from '~/assets/icons/weeldi.svg'
 
+// Translations
+import { getLangFromUrl, useTranslations } from '~/i18n'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
 const jobs = [
   {
     company: 'Bitcoin IRA',
     end: {
       date: new Date(),
-      label: 'Present',
+      label: t('home.resume.item.present'),
     },
     logo: bitcoinIra,
     start: new Date(2022, 9, 16),
-    title: 'Senior Frontend Developer',
+    title: t('home.resume.item.senior'),
   },
   {
     company: 'Appointlet',
     end: {
       date: new Date(),
-      label: 'Present',
+      label: t('home.resume.item.present'),
     },
     logo: appointlet,
     start: new Date(2022, 1, 1),
-    title: 'Frontend Developer',
+    title: t('home.resume.item.frontend'),
   },
   {
     company: 'JokinglyBadTech',
     end: {
       date: new Date(),
-      label: 'Present',
+      label: t('home.resume.item.present'),
     },
     logo: jbt,
     start: new Date(2022, 1, 1),
-    title: 'Owner',
+    title: t('home.resume.item.owner'),
   },
   {
     company: 'Weeldi',
     end: new Date(2022, 5, 31),
     logo: weeldi,
     start: new Date(2022, 3, 1),
-    title: 'Fullstack Developer',
+    title: t('home.resume.item.fullstack'),
   },
   {
     company: 'Arrive Logistics',
     end: new Date(2022, 2, 1),
     logo: arriveLogistics,
     start: new Date(2021, 8, 15),
-    title: 'Senior Frontend Developer',
+    title: t('home.resume.item.senior'),
   },
   {
     company: 'Lean Tech',
     end: new Date(2022, 2, 1),
     logo: leanTech,
     start: new Date(2021, 9, 16),
-    title: 'Senior Frontend Developer',
+    title: t('home.resume.item.senior'),
   },
   {
     company: 'DM.app',
     end: new Date(2021, 9, 1),
     logo: dm,
     start: new Date(2021, 8, 1),
-    title: 'Frontend Developer',
+    title: t('home.resume.item.frontend'),
   },
   {
     company: 'Appointlet',
     end: new Date(2021, 3, 1),
     logo: appointlet,
     start: new Date(2018, 8, 1),
-    title: 'Web Developer',
+    title: t('home.resume.item.web'),
   },
 ]
 ---
