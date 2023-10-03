@@ -1,24 +1,5 @@
 import type { Schema } from './schema'
 
-/**
- * 'nav.about': 'Sobre',
-		'nav.about.label': 'Ir a la página de sobre.',
-		'nav.bookshelf': 'Librería',
-		'nav.bookshelf.label': 'Ir a la página Librería.',
-		'nav.home': 'Inicio',
-		'nav.home.label': 'Ir a la página de inicio.',
-		'nav.mobile.close': 'Cerrar',
-		'nav.mobile.close.label': 'Cerrar Menú de navegación.',
-		'nav.meet': 'Conozca',
-		'nav.meet.label': 'Ir a mi página de reservas Appointlet.',
-		'nav.mobile.subTitle': 'Navegación',
-		'nav.mobile.title': 'Menú',
-		'nav.projects': 'Proyectos',
-		'nav.projects.label': 'Ir a la página de proyectos.',
-		'nav.uses': 'Usa',
-		'nav.uses.label': 'Ir a la página de usos.',
- */
-
 export const defaultLang = 'en'
 export const routes: Record<Language, Record<AppRoutes, string>> = {
 	en: {

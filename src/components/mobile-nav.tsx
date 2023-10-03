@@ -1,6 +1,7 @@
 import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import { useTranslatedPath, useTranslations, type Lang } from '~/i18n'
+import { useTranslatedPath, useTranslations } from '~/i18n'
+import type { Language } from '~/i18n/config'
 import { cn } from '~/utils/helpers'
 import { ThemeToggle } from './theme-toggle'
 
@@ -9,7 +10,7 @@ export function MobileNav({
 	lang,
 }: {
 	currentPath: string
-	lang: Lang
+	lang: Language
 }): JSX.Element {
 	const t = useTranslations(lang)
 	const translatedPath = useTranslatedPath(lang)

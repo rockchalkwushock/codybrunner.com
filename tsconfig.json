@@ -1,12 +1,13 @@
 {
-  "extends": "astro/tsconfigs/strictest",
-  "compilerOptions": {
-    "allowImportingTsExtensions": true,
-    "baseUrl": ".",
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
-    "paths": {
-      "~/*": ["src/*"]
-    }
-  }
+	"extends": "astro/tsconfigs/strictest",
+	"compilerOptions": {
+		"allowImportingTsExtensions": true,
+		"baseUrl": ".",
+		"jsx": "react-jsx",
+		"jsxImportSource": "react",
+		"paths": {
+			"~/*": ["src/*"]
+		},
+		"strictNullChecks": true
+	}
 }
