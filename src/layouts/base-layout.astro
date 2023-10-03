@@ -12,6 +12,7 @@ import logo from '~/assets/icons/logo.svg'
 import Container from '~/components/container.astro'
 import InnerContainer from '~/components/inner-container.astro'
 import Link from '~/components/link.astro'
+import LocalePicker from '~/components/locale-picker.astro'
 import { MobileNav } from '~/components/mobile-nav'
 import OuterContainer from '~/components/outer-container.astro'
 import { ThemeToggle } from '~/components/theme-toggle'
@@ -20,8 +21,9 @@ import { ThemeToggle } from '~/components/theme-toggle'
 import { getLangFromUrl, useTranslatedPath, useTranslations } from '~/i18n'
 
 // Utils
-import { cn } from '~/utils/helpers'
-import LocalePicker from '~/components/locale-picker.astro'
+import { cn, enableTranslationSupport } from '~/utils/helpers'
+
+const isI18NEnabled = enableTranslationSupport()
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -225,7 +227,9 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 								</nav>
 							</div>
 							<div class='hidden md:flex md:items-center md:justify-end md:flex-1'>
-								<LocalePicker class="mr-3" />
+								{isI18NEnabled && (
+									<LocalePicker class="mr-3" />
+								)}
 								<ThemeToggle client:only='react' />
 							</div>
 						</div>
@@ -353,7 +357,9 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 									</div>
 								</div>
 								<div class="flex items-center justify-between md:justify-end">
-									<LocalePicker class="mr-3" />
+									{isI18NEnabled && (
+										<LocalePicker class="mr-3" />
+									)}
 									<ThemeToggle client:only='react' />
 								</div>
 							</div>
