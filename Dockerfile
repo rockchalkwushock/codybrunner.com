@@ -12,6 +12,7 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV="production"
 # Build related environment variables
+ENV ENABLE_BLOG="false"
 ENV ENABLE_I18N="false"
 
 # Install pnpm

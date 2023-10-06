@@ -21,8 +21,9 @@ import { ThemeToggle } from '~/components/theme-toggle'
 import { getLangFromUrl, useTranslatedPath, useTranslations } from '~/i18n'
 
 // Utils
-import { cn, enableTranslationSupport } from '~/utils/helpers'
+import { cn, enableBlog, enableTranslationSupport } from '~/utils/helpers'
 
+const isBlogEnabled = enableBlog()
 const isI18NEnabled = enableTranslationSupport()
 
 const lang = getLangFromUrl(Astro.url)
@@ -155,6 +156,19 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 												}
 											</Link>
 										</li>
+										{
+											isBlogEnabled && (
+												<li class='relative block px-3 py-2 transition'>
+													<Link
+														aria-label={t('nav.articles.label')}
+														class='hover:text-accent-500 dark:hover:text-accent-400'
+														href='https://blog.codybrunner.com'
+													>
+														{t('nav.articles')}
+													</Link>
+												</li>
+											)
+										}
 										<li class='relative block px-3 py-2 transition'>
 											<Link
 												aria-label={t('nav.bookshelf.label')}
@@ -226,10 +240,10 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 									</ul>
 								</nav>
 							</div>
-							<div class='hidden md:flex md:items-center md:justify-end md:flex-1'>
-								{isI18NEnabled && (
-									<LocalePicker class="mr-3" />
-								)}
+							<div
+								class='hidden md:flex md:flex-1 md:items-center md:justify-end'
+							>
+								{isI18NEnabled && <LocalePicker class='mr-3' />}
 								<ThemeToggle client:only='react' />
 							</div>
 						</div>
@@ -280,6 +294,19 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 												{t('nav.about')}
 											</Link>
 										</li>
+										{
+											isBlogEnabled && (
+												<li>
+													<Link
+														aria-label={t('nav.articles.label')}
+														class='hover:text-accent-500 dark:hover:text-accent-400'
+														href='https://blog.codybrunner.com'
+													>
+														{t('nav.articles')}
+													</Link>
+												</li>
+											)
+										}
 										<li>
 											<Link
 												aria-label={t('nav.bookshelf.label')}
@@ -297,7 +324,7 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 										<li>
 											<Link
 												aria-label={t('nav.meet.label')}
-												class="hover:text-accent-500 dark:hover:text-accent-400"
+												class='hover:text-accent-500 dark:hover:text-accent-400'
 												href='https://appt.link/cody-brunner-dev/video-call'
 												rel='noopener noreferrer'
 												target='_blank'
@@ -356,10 +383,8 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 										</div>
 									</div>
 								</div>
-								<div class="flex items-center justify-between md:justify-end">
-									{isI18NEnabled && (
-										<LocalePicker class="mr-3" />
-									)}
+								<div class='flex items-center justify-between md:justify-end'>
+									{isI18NEnabled && <LocalePicker class='mr-3' />}
 									<ThemeToggle client:only='react' />
 								</div>
 							</div>

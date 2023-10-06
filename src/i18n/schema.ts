@@ -43,6 +43,8 @@ const languageSchema = z.strictObject({
 	'locale.label': z.string(),
 	'nav.about': z.string(),
 	'nav.about.label': z.string(),
+	'nav.articles': z.string(),
+	'nav.articles.label': z.string(),
 	'nav.bookshelf': z.string(),
 	'nav.bookshelf.label': z.string(),
 	'nav.home': z.string(),
