@@ -59,7 +59,7 @@ export const translations: Schema = {
 		'home.articles.alt': 'No Articles At This Time',
 		'home.articles.heading': 'No Articles At This Time',
 		'home.hero.description':
-			"I'm Cody, an American expat, US Navy Veteran, and software developer, calling Colombia home. I am a Senior Frontend Developer at Bitcoin IRA, where we are pioneering the world's first and most trusted crypto IRA platform. Outside work, I savor top-shelf single malt whisky and smoking ribs and brisket.",
+			"Hey! I'm Cody, an American expat, US Navy Veteran, and software developer living in Colombia. I work as a Senior Frontend Developer at Bitcoin IRA, where we are pioneering the world's first and most trusted crypto IRA platform. When I am not working I can be found in the gym, teaching myself guitar, exploring Colombia, or smoking some brisket or ribs.",
 		'home.hero.heading':
 			'Software developer, veteran, and smoker of the meats.',
 		'home.profile.alt': 'Image of Cody Brunner',
@@ -151,7 +151,7 @@ export const translations: Schema = {
 		'home.articles.alt': 'No hay artículos en este momento',
 		'home.articles.heading': 'No hay artículos en este momento',
 		'home.hero.description':
-			'Soy Cody, un expatriado estadounidense, veterano de la marina de los EE.UU. y desarrollador de software, que vive en Colombia. Soy Desarrollador Frontend Senior en Bitcoin IRA, donde somos pioneros en la primera y más confiable plataforma cripto IRA del mundo. Fuera del trabajo, saboreo el mejor whisky de malta y ahumo costillas y falda.',
+			'Hola, soy Cody, un expatriado estadounidense, veterano de la Marina de los Estados Unidos y desarrollador de software que vive en Colombia. Trabajo como Desarrollador Frontend Senior en Bitcoin IRA, donde somos pioneros en la primera y más confiable plataforma cripto IRA del mundo. Cuando no estoy trabajando me pueden encontrar en el gimnasio, enseñándome guitarra, explorando Colombia, o ahumando unas costillas.',
 		'home.hero.heading':
 			'Desarrollador de software, veterano y ahumador de carnes.',
 		'home.profile.alt': 'Imagen de Cody Brunner',
