@@ -28,8 +28,6 @@ const CONTENT = {
 
 const METADATA = {
   description: t('about.metadata.description'),
-  image: new URL('../assets/cody-brunner-black-and-white.jpg', Astro.url),
-  imageAlt: t('about.metadata.imageAlt'),
   title: t('about.metadata.title'),
 } as const
 ---
@@ -37,8 +35,6 @@ const METADATA = {
 <BaseLayout>
   <Head
     description={METADATA.description}
-    image={METADATA.image}
-    imageAlt={METADATA.imageAlt}
     slot="metadata"
     title={METADATA.title}
   />
