@@ -1,26 +1,13 @@
 {
+	"extends": "astro/tsconfigs/strictest",
 	"compilerOptions": {
-		"allowJs": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"incremental": true,
-		"isolatedModules": true,
+		"allowImportingTsExtensions": true,
+		"baseUrl": ".",
 		"jsx": "react-jsx",
-		"jsxImportSource": "@builder.io/qwik",
-		"lib": ["es2022", "DOM", "WebWorker", "DOM.Iterable"],
-		"module": "ES2022",
-		"moduleResolution": "node",
-		"noEmit": true,
-		"outDir": "tmp",
+		"jsxImportSource": "react",
 		"paths": {
-			"~/*": ["./src/*"]
+			"~/*": ["src/*"]
 		},
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "ES2017",
-		"types": ["node", "vite/client"]
-	},
-	"files": ["./.eslintrc.cjs"],
-	"include": ["src", "./*.d.ts"]
+		"strictNullChecks": true
+	}
 }

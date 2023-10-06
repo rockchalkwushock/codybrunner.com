@@ -1,0 +1,45 @@
+# fly.toml app configuration file generated for codybrunner-web on 2023-08-27T18:21:56-05:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "codybrunner-web"
+primary_region = "dfw"
+
+# [build]
+
+# [http_service]
+#   internal_port = 3000
+#   force_https = true
+#   auto_stop_machines = true
+#   auto_start_machines = true
+#   min_machines_running = 0
+#   processes = ["app"]
+
+[[services]]
+  http_checks = []
+  internal_port = 8043
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+
+
+  [services.concurrency]
+    hard_limit = 25
+    soft_limit = 20
+    type = "connections"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+    force_https = true
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [[services.tcp_checks]]
+    grace_period = "1s"
+    interval = "15s"
+    restart_limit = 0
+    timeout = "2s"

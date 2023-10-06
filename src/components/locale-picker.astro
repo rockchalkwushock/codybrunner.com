@@ -1,0 +1,39 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+
+// Components
+import Link from './link.astro'
+
+// Translations
+import { getLangFromUrl, getRouteFromUrl, useTranslatedPath, useTranslations } from '~/i18n'
+
+// Utils
+import { cn } from '~/utils/helpers'
+
+export type Props = HTMLAttributes<'div'>
+
+const lang = getLangFromUrl(Astro.url)
+const route = getRouteFromUrl(Astro.url)
+const t = useTranslations(lang)
+const translatedPath = useTranslatedPath(lang)
+const { class: cls } = Astro.props
+---
+
+<div class={cn('flex items-center justify-center', cls)}>
+	<Link
+		aria-label={t('locale.label')}
+		class={cn('group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-primary-800/5 ring-1 ring-primary-900/5 backdrop-blur transition dark:bg-primary-800/90 dark:ring-white/10 dark:hover:ring-white/20 pointer-events-auto', lang === 'en' && 'hidden')}
+		href={translatedPath(`/${route ?? ''}`, 'en')}
+		hreflang='en'
+	>
+		<span>🇺🇸</span>
+	</Link>
+	<Link
+		aria-label={t('locale.label')}
+		class={cn('group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-primary-800/5 ring-1 ring-primary-900/5 backdrop-blur transition dark:bg-primary-800/90 dark:ring-white/10 dark:hover:ring-white/20 pointer-events-auto', lang === 'es' && 'hidden')}
+		href={translatedPath(`/${route ?? ''}`, 'es')}
+		hreflang='en'
+	>
+		<span>🇨🇴</span>
+	</Link>
+</div>

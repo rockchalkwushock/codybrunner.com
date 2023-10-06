@@ -1,0 +1,230 @@
+---
+import { Image } from 'astro:assets'
+
+// Assets
+import appointlet from '~/assets/icons/appointlet.svg'
+import arriveLogistics from '~/assets/icons/arrive-logistics.svg'
+import bitcoinIra from '~/assets/icons/bitcoin-ira.svg'
+import dm from '~/assets/icons/dm.svg'
+import elixir from '~/assets/icons/elixir.svg'
+import hex from '~/assets/icons/hex.svg'
+import npm from '~/assets/icons/npm.svg'
+import phoenix from '~/assets/icons/phoenix.svg'
+import react from '~/assets/icons/react.svg'
+import weeldi from '~/assets/icons/weeldi.svg'
+
+// Components
+import Head from '~/components/head.astro'
+import Link from '~/components/link.astro'
+import SimpleLayout from '~/components/simple-layout.astro'
+import BaseLayout from '~/layouts/base-layout.astro'
+
+// Translations
+import { getLangFromUrl, useTranslations } from '~/i18n'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const CONTENT = {
+  intro:
+    t('projects.content.intro'),
+  portfolio: [
+    {
+      name: 'microauth-vkontakte',
+      description: 'Vkontakte OAuth strategy for the MicroJS framework.',
+      link: {
+        href: 'https://www.npmjs.com/package/microauth-vkontakte',
+        label: 'npmjs.com',
+      },
+      logo: npm,
+    },
+    {
+      name: 'pardall_markdown',
+      description:
+        'Reactive publishing framework, filesystem-based with support for Markdown, nested hierarchies, and instant content rebuilding. Written in Elixir.',
+      link: {
+        href: 'https://hex.pm/packages/pardall_markdown',
+        label: 'hex.pm',
+      },
+      logo: hex,
+    },
+    {
+      name: 'rehype-code-titles',
+      description:
+        'Rehype plugin for parsing code blocks and adding titles to code blocks.',
+      link: {
+        href: 'https://www.npmjs.com/package/rehype-code-titles',
+        label: 'npmjs.com',
+      },
+      logo: npm,
+    },
+    {
+      name: 'ectogram',
+      description: 'An Instagram clone written in Elixir and Ecto',
+      link: {
+        href: 'https://github.com/rockchalkwushock/ectogram',
+        label: 'github.com',
+      },
+      logo: elixir,
+    },
+    {
+      name: 'citax',
+      description: 'A Calendly clone written in Elixir and Phoenix LiveView.',
+      link: {
+        href: 'https://github.com/rockchalkwushock/citax',
+        label: 'github.com',
+      },
+      logo: phoenix,
+    },
+    {
+      name: 'weather-app',
+      description: 'Weather App that makes use of the OpenWeather API.',
+      link: {
+        href: 'https://weather-app-rockchalkwushock.vercel.app/',
+        label: 'vercel.app',
+      },
+      logo: react,
+    },
+    {
+      name: 'tic-tac-toe',
+      description: 'Tic-tac-toe written using the React Context API.',
+      link: {
+        href: 'https://tic-tac-toe-indol-chi.vercel.app/',
+        label: 'vercel.app',
+      },
+      logo: react,
+    },
+    {
+      name: '@appointlet/appointlet-js',
+      description: 'JavaScript SDK for Appointlet.',
+      link: {
+        href: 'https://www.npmjs.com/package/@appointlet/appointlet.js',
+        label: 'npmjs.com',
+      },
+      logo: appointlet,
+    },
+    {
+      name: 'Appointlet Chrome Extension',
+      description: 'Chrome Extension for Appointlet.',
+      link: {
+        href: 'https://chrome.google.com/webstore/detail/appointlet/oanmefncibhopinffldmcfpkhjfcnggo',
+        label: 'chrome.google.com',
+      },
+      logo: appointlet,
+    },
+    {
+      name: 'Appointlet Dashboard Application',
+      description:
+        "Dashboard for user's to manage their meetings and meeting types for Appointlet.",
+      link: {
+        href: 'https://www.appointlet.com/',
+        label: 'appointlet.com',
+      },
+      logo: appointlet,
+    },
+    {
+      name: 'XLR8',
+      description:
+        'Arrive Logistic offers scalable capacity solutions. Our customer-obsessed team strategically delivers unmatched scalable capacity solutions.',
+      link: {
+        href: 'https://www.arrivelogistics.com/',
+        label: 'arrivelogistics.com',
+      },
+      logo: arriveLogistics,
+    },
+    {
+      name: 'Bitcoin IRA',
+      description: "The world's first crypto investment platform.",
+      link: {
+        href: 'https://bitcoinira.com/',
+        label: 'bitcoinira.com',
+      },
+      logo: bitcoinIra,
+    },
+    {
+      name: 'Weeldi',
+      description:
+        'Weeldi is the easiest way to automate any task you do on the web w/ NO coding required',
+      link: {
+        href: 'https://weeldi.com/',
+        label: 'weeldi.com',
+      },
+      logo: weeldi,
+    },
+    {
+      name: 'DM.app',
+      description:
+        'DM is the simplest free messaging platform to engage your community on web/mobile/SMS. No ads. No algorithms. No app download required.',
+      link: {
+        href: 'https://dm.app',
+        label: 'dm.app',
+      },
+      logo: dm,
+    },
+  ],
+  title: t('projects.content.title'),
+} as const
+
+const METADATA = {
+  description: t('projects.metadata.description'),
+  title: t('projects.metadata.title'),
+} as const
+---
+
+<BaseLayout>
+  <Head
+    description={METADATA.description}
+    slot="metadata"
+    title={METADATA.title}
+  />
+  <SimpleLayout intro={CONTENT.intro} slot="content" title={CONTENT.title}>
+    <ul
+      class="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3"
+      role="list"
+    >
+      {
+        CONTENT.portfolio.map(({ description, link, logo, name }) => (
+          <li class="group relative flex flex-col items-start">
+            <div class="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-primary-800/5 ring-1 ring-primary-900/5 dark:border dark:border-primary-700/50 dark:bg-primary-800 dark:ring-0">
+              <Image
+                alt={`Logo for ${name}`}
+                class="h-9 rounded-full w-9"
+                height={36}
+                src={logo}
+                width={36}
+              />
+            </div>
+            <h2 class="mt-6 text-base font-semibold text-primary-800 dark:text-primary-100">
+              <div class="absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-primary-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-primary-800/50 sm:-inset-x-6 sm:rounded-2xl" />
+              <Link
+                aria-label={`Link to ${name}`}
+                href={link.href}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <span class="absolute -inset-x-4 -inset-y-6 z-20 sm:-inset-x-6 sm:rounded-2xl" />
+                <span class="relative z-10">{name}</span>
+              </Link>
+            </h2>
+            <p class="relative z-10 mt-2 text-sm text-primary-600 dark:text-primary-400">
+              {description}
+            </p>
+            <p class="relative z-10 mt-6 flex text-sm font-medium text-primary-400 transition group-hover:text-accent-500 dark:text-primary-200">
+              <svg
+                aria-hidden="true"
+                class="h-6 w-6 flex-none"
+                view-box="0 0 24 24"
+              >
+                <path
+                  class="fill-current"
+                  d="M15.712 11.823a.75.75 0 1 0 1.06 1.06l-1.06-1.06Zm-4.95 1.768a.75.75 0 0 0 1.06-1.06l-1.06 1.06Zm-2.475-1.414a.75.75 0 1 0-1.06-1.06l1.06 1.06Zm4.95-1.768a.75.75 0 1 0-1.06 1.06l1.06-1.06Zm3.359.53-.884.884 1.06 1.06.885-.883-1.061-1.06Zm-4.95-2.12 1.414-1.415L12 6.344l-1.415 1.413 1.061 1.061Zm0 3.535a2.5 2.5 0 0 1 0-3.536l-1.06-1.06a4 4 0 0 0 0 5.656l1.06-1.06Zm4.95-4.95a2.5 2.5 0 0 1 0 3.535L17.656 12a4 4 0 0 0 0-5.657l-1.06 1.06Zm1.06-1.06a4 4 0 0 0-5.656 0l1.06 1.06a2.5 2.5 0 0 1 3.536 0l1.06-1.06Zm-7.07 7.07.176.177 1.06-1.06-.176-.177-1.06 1.06Zm-3.183-.353.884-.884-1.06-1.06-.884.883 1.06 1.06Zm4.95 2.121-1.414 1.414 1.06 1.06 1.415-1.413-1.06-1.061Zm0-3.536a2.5 2.5 0 0 1 0 3.536l1.06 1.06a4 4 0 0 0 0-5.656l-1.06 1.06Zm-4.95 4.95a2.5 2.5 0 0 1 0-3.535L6.344 12a4 4 0 0 0 0 5.656l1.06-1.06Zm-1.06 1.06a4 4 0 0 0 5.657 0l-1.061-1.06a2.5 2.5 0 0 1-3.535 0l-1.061 1.06Zm7.07-7.07-.176-.177-1.06 1.06.176.178 1.06-1.061Z"
+                />
+              </svg>
+              <span class="ml-2">{link.label}</span>
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </SimpleLayout>
+</BaseLayout>

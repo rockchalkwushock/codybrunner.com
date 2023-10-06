@@ -1,101 +1,190 @@
-import { $, component$, useOnDocument, useSignal } from '@builder.io/qwik'
+import { Popover, Transition } from '@headlessui/react'
+import { Fragment } from 'react'
+import { useTranslatedPath, useTranslations } from '~/i18n'
+import type { Language } from '~/i18n/config'
+import { cn, enableBlog } from '~/utils/helpers'
+import { ThemeToggle } from './theme-toggle'
 
-import { ChevronDownIcon, CloseIcon } from './icons'
-import { useMenu } from '~/hooks/use-menu'
-import { cx } from '~/utils/cx'
-
-export const MobileNav = component$(() => {
-	const { isOpen, navigate, options, url } = useMenu()
-	const ref = useSignal<Element>()
-
-	const handleClickOutside = $((event: Event) => {
-		if (!ref.value?.contains(event.target as Node)) {
-			isOpen.value = false
-		}
-	})
-
-	const selectMenuItem = $(({ href }: { href?: string }) => {
-		isOpen.value = false
-		navigate(href)
-	})
-
-	const toggleMenu = $(() => (isOpen.value = !isOpen.value))
-
-	useOnDocument('mousedown', handleClickOutside)
-
+export function MobileNav({
+	currentPath,
+	lang,
+}: {
+	currentPath: string
+	lang: Language
+}): JSX.Element {
+	const t = useTranslations(lang)
+	const translatedPath = useTranslatedPath(lang)
+	const isBlogEnabled = enableBlog()
 	return (
-		<div
-			class='pointer-events-auto md:hidden'
-			data-menu-open={isOpen.value}
-			ref={ref}
-		>
-			<button
-				aria-expanded={isOpen.value}
-				aria-haspopup='listbox'
-				aria-label='Open menu'
-				class='group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-primary-800 shadow-lg shadow-primary-800/5 ring-1 ring-primary-900/5 backdrop-blur dark:bg-primary-800/90 dark:text-primary-200 dark:ring-white/10 dark:hover:ring-white/20'
-				data-menu-open={isOpen.value}
-				onClick$={toggleMenu}
-				type='button'
-			>
-				<span>Menu</span>
-				<ChevronDownIcon class='ml-3 stroke-primary-500 group-hover:stroke-primary-700 dark:group-hover:stroke-primary-400' />
-			</button>
-			<div
-				aria-hidden='true'
-				class='hidden fixed inset-0 z-50 bg-primary-800/40 backdrop-blur-sm dark:bg-black/80 transition-all transform opacity-0 duration-150 ease-in-out data-[menu-open]:block data-[menu-open]:opacity-100'
-				data-menu-open={isOpen.value}
-			/>
-			<div
-				class='hidden fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-primary-900/5 transition-all transform opacity-0 scale-95 ease-in-out dark:bg-primary-900 dark:ring-primary-800 data-[menu-open]:block data-[menu-open]:opacity-100 data-[menu-open]:scale-100'
-				data-menu-open={isOpen.value}
-				tabIndex={-1}
-			>
-				<div class='flex flex-row-reverse items-center justify-between'>
-					<button
-						aria-label='Close menu'
-						class='-m-1 p-1'
-						data-menu-open={isOpen.value}
-						onClick$={toggleMenu}
-						tabIndex={isOpen.value ? 0 : -1}
-						type='button'
+		<Popover className='pointer-events-auto md:hidden'>
+			<Popover.Button className='group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-primary-800 shadow-lg shadow-primary-800/5 ring-1 ring-primary-900/5 backdrop-blur dark:bg-primary-800/90 dark:text-primary-200 dark:ring-white/10 dark:hover:ring-white/20'>
+				{t('nav.mobile.title')}
+				<svg
+					aria-hidden='true'
+					className='ml-3 h-auto w-2 stroke-primary-500 group-hover:stroke-primary-700 dark:group-hover:stroke-primary-400'
+					viewBox='0 0 8 6'
+				>
+					<path
+						className='fill-none'
+						d='M1.75 1.75 4 4.25l2.25-2.5'
+						strokeLinecap='round'
+						strokeLinejoin='round'
+						strokeWidth='1.5'
+					/>
+				</svg>
+			</Popover.Button>
+			<Transition.Root>
+				<Transition.Child
+					as={Fragment}
+					enter='duration-150 ease-out'
+					enterFrom='opacity-0'
+					enterTo='opacity-100'
+					leave='duration-150 ease-in'
+					leaveFrom='opacity-100'
+					leaveTo='opacity-0'
+				>
+					<Popover.Overlay className='fixed inset-0 z-50 bg-primary-800/40 backdrop-blur-sm dark:bg-black/80' />
+				</Transition.Child>
+				<Transition.Child
+					as={Fragment}
+					enter='duration-150 ease-out'
+					enterFrom='opacity-0 scale-95'
+					enterTo='opacity-100 scale-100'
+					leave='duration-150 ease-in'
+					leaveFrom='opacity-100 scale-100'
+					leaveTo='opacity-0 scale-95'
+				>
+					<Popover.Panel
+						className='fixed inset-x-4 top-8 z-50 origin-top rounded-3xl bg-white p-8 ring-1 ring-primary-900/5 dark:bg-primary-900 dark:ring-primary-800'
+						focus
 					>
-						<CloseIcon class='text-sm h-6 w-6 font-medium text-primary-600 dark:text-primary-400' />
-					</button>
-					<h2 class='text-sm font-medium text-primary-600 dark:text-primary-400'>
-						Navigation
-					</h2>
-				</div>
-				<nav class='mt-6'>
-					<ul
-						aria-activedescendant={
-							options.value.find(v => v.href === url)?.text
-						}
-						class='-my-2 divide-y divide-primary-100 text-base text-primary-800 dark:divide-primary-100/5 dark:text-primary-300'
-						role='listbox'
-						tabIndex={-1}
-					>
-						{options.value.map(({ href, text }) => (
-							<li
-								aria-selected={href === url}
-								class={cx(
-									'flex py-2',
-									href === url &&
-										'text-accent-500 dark:text-accent-400 font-semibold'
-								)}
-								data-menu-open={isOpen.value}
-								id={text}
-								key={`mobile-nav-link-${text}`}
-								onClick$={() => selectMenuItem({ href })}
-								role='option'
-								tabIndex={0}
+						<div className='flex flex-row-reverse items-center justify-between'>
+							<Popover.Button
+								aria-label={t('nav.mobile.close.label')}
+								className='-m-1 p-1'
 							>
-								<span class='w-full'>{text}</span>
-							</li>
-						))}
-					</ul>
-				</nav>
-			</div>
-		</div>
+								<svg
+									aria-hidden='true'
+									className='h-6 w-6 text-sm font-medium text-primary-600 dark:text-primary-400'
+									view-box='0 0 24 24'
+								>
+									<path
+										className='fill-none stroke-current'
+										d='m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5'
+										strokeLinecap='round'
+										strokeLinejoin='round'
+										strokeWidth='1.5'
+									/>
+								</svg>
+							</Popover.Button>
+							<h2 className='text-sm font-medium text-primary-600 dark:text-primary-400'>
+								{t('nav.mobile.subTitle')}
+							</h2>
+						</div>
+						<nav className='mt-6'>
+							<ul className='-my-2 divide-y divide-primary-100 text-base text-primary-800 dark:divide-primary-100/5 dark:text-primary-300'>
+								<li>
+									<Popover.Button
+										aria-label={t('nav.home.label')}
+										as='a'
+										className={cn(
+											'block py-2',
+											currentPath === '/' &&
+												'font-semibold text-accent-500 dark:text-accent-400'
+										)}
+										href={translatedPath('/')}
+									>
+										{t('nav.home')}
+									</Popover.Button>
+								</li>
+								<li>
+									<Popover.Button
+										aria-label={t('nav.about.label')}
+										as='a'
+										className={cn(
+											'block py-2',
+											currentPath.startsWith('/about') &&
+												'font-semibold text-accent-500 dark:text-accent-400'
+										)}
+										href={translatedPath('/about')}
+									>
+										{t('nav.about')}
+									</Popover.Button>
+								</li>
+								{isBlogEnabled && (
+									<li>
+										<Popover.Button
+											aria-label={t('nav.articles.label')}
+											as='a'
+											className='block py-2'
+											href='https://blog.codybrunner.com'
+										>
+											{t('nav.articles')}
+										</Popover.Button>
+									</li>
+								)}
+								<li>
+									<Popover.Button
+										aria-label={t('nav.bookshelf.label')}
+										as='a'
+										className={cn(
+											'block py-2',
+											currentPath.startsWith('/bookshelf') &&
+												'font-semibold text-accent-500 dark:text-accent-400'
+										)}
+										href={translatedPath('/bookshelf')}
+									>
+										{t('nav.bookshelf')}
+									</Popover.Button>
+								</li>
+								<li>
+									<Popover.Button
+										aria-label={t('nav.meet.label')}
+										as='a'
+										className='block py-2'
+										href='https://appt.link/cody-brunner-dev/video-call'
+										rel='noopener noreferrer'
+										target='_blank'
+									>
+										{t('nav.meet')}
+									</Popover.Button>
+								</li>
+								<li>
+									<Popover.Button
+										aria-label={t('nav.projects.label')}
+										as='a'
+										className={cn(
+											'block py-2',
+											currentPath.startsWith('/projects') &&
+												'font-semibold text-accent-500 dark:text-accent-400'
+										)}
+										href={translatedPath('/projects')}
+									>
+										{t('nav.projects')}
+									</Popover.Button>
+								</li>
+								<li>
+									<Popover.Button
+										aria-label={t('nav.uses.label')}
+										as='a'
+										className={cn(
+											'block py-2',
+											currentPath.startsWith('/uses') &&
+												'font-semibold text-accent-500 dark:text-accent-400'
+										)}
+										href={translatedPath('/uses')}
+									>
+										{t('nav.uses')}
+									</Popover.Button>
+								</li>
+							</ul>
+						</nav>
+						<div className='flex items-center justify-end'>
+							<ThemeToggle />
+						</div>
+					</Popover.Panel>
+				</Transition.Child>
+			</Transition.Root>
+		</Popover>
 	)
-})
+}

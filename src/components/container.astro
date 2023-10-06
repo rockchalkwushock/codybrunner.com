@@ -1,0 +1,15 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import InnerContainer from './inner-container.astro'
+import OuterContainer from './outer-container.astro'
+
+export type Props = HTMLAttributes<'div'>
+
+const { class: cls, style } = Astro.props
+---
+
+<OuterContainer class={cls} style={style}>
+  <InnerContainer>
+    <slot />
+  </InnerContainer>
+</OuterContainer>
