@@ -6,9 +6,9 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function enableBlog(): boolean {
-	return import.meta.env.ENABLE_BLOG === 'true'
+	return import.meta.env.VITE_ENABLE_BLOG === 'true'
 }
 
 export function enableTranslationSupport(): boolean {
-	return import.meta.env.ENABLE_I18N === 'true'
+	return import.meta.env.VITE_ENABLE_I18N === 'true'
 }

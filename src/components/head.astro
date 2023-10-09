@@ -2,22 +2,22 @@
 import { ViewTransitions } from 'astro:transitions'
 
 export type Props = {
-  readonly description?: string
-  readonly image?: URL
-  readonly imageAlt?: string
-  readonly title?: string
+	readonly description?: string
+	readonly image?: URL
+	readonly imageAlt?: string
+	readonly title?: string
 }
 
 const CONSTANTS = {
-  author: 'Cody Brunner',
-  twitter: '@RockChalkDev',
+	author: 'Cody Brunner',
+	twitter: '@RockChalkDev',
 } as const
 
 const {
-  description = "Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at Bitcoin IRA, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",
-  image = new URL('/favicons/logo.jpg', Astro.url),
-  imageAlt = 'Cody Brunner',
-  title = 'Home',
+	description = "Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at Bitcoin IRA, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",
+	image = new URL('/favicons/logo.jpg', Astro.url),
+	imageAlt = 'Cody Brunner',
+	title = 'Home',
 } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
@@ -25,21 +25,21 @@ const rssURL = new URL('/rss.xml', Astro.url)
 const siteTitle = `${title} | codybrunner.com`
 ---
 
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="generator" content={Astro.generator} />
+<meta charset='utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1' />
+<meta name='generator' content={Astro.generator} />
 
 <!-- Primary Meta Tags -->
-<meta name="author" content={CONSTANTS.author} />
-<meta name="description" content={description} />
-<meta name="title" content={siteTitle} />
+<meta name='author' content={CONSTANTS.author} />
+<meta name='description' content={description} />
+<meta name='title' content={siteTitle} />
 <title>{siteTitle}</title>
 
 <!-- Bots -->
 <meta name='robots' content='follow, index' />
 
 <!-- Sitemap -->
-<link href="/sitemap-index.xml" rel="sitemap" />
+<link href='/sitemap-index.xml' rel='sitemap' />
 
 <!-- Canonical URL -->
 <link href={canonicalURL} rel='canonical' />
@@ -53,27 +53,27 @@ const siteTitle = `${title} | codybrunner.com`
 />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:description" content={description} />
-<meta property="og:image" content={image} />
-<meta property="og:image:alt" content={imageAlt} />
-<meta property="og:image:height" content="512" />
-<meta property="og:image:type" content="image/jpg" />
-<meta property="og:image:width" content="512" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:site_name" content={CONSTANTS.author} />
-<meta property="og:title" content={siteTitle} />
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property='og:description' content={description} />
+<meta property='og:image' content={image} />
+<meta property='og:image:alt' content={imageAlt} />
+<meta property='og:image:height' content='512' />
+<meta property='og:image:type' content='image/jpg' />
+<meta property='og:image:width' content='512' />
+<meta property='og:locale' content='en_US' />
+<meta property='og:site_name' content={CONSTANTS.author} />
+<meta property='og:title' content={siteTitle} />
+<meta property='og:type' content='website' />
+<meta property='og:url' content={Astro.url} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:creator" content={CONSTANTS.twitter} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={image} />
-<meta property="twitter:image:alt" content={imageAlt} />
-<meta property="twitter:site" content={CONSTANTS.twitter} />
-<meta property="twitter:title" content={siteTitle} />
-<meta property="twitter:url" content={Astro.url} />
+<meta property='twitter:card' content='summary_large_image' />
+<meta property='twitter:creator' content={CONSTANTS.twitter} />
+<meta property='twitter:description' content={description} />
+<meta property='twitter:image' content={image} />
+<meta property='twitter:image:alt' content={imageAlt} />
+<meta property='twitter:site' content={CONSTANTS.twitter} />
+<meta property='twitter:title' content={siteTitle} />
+<meta property='twitter:url' content={Astro.url} />
 
 <!-- Favicons -->
 <link rel='icon' type='image/svg+xml' href='/favicons/favicon.ico' />
@@ -95,5 +95,13 @@ const siteTitle = `${title} | codybrunner.com`
 	href='/favicons/favicon-16x16.png'
 />
 <link href='/manifest.json' rel='manifest' />
+
+<script
+	data-excluded-domains='localhost'
+	data-honor-dnt='true'
+	data-site={import.meta.env.VITE_FATHOM_SITE}
+	defer
+	src='https://cdn.usefathom.com/script.js'
+	type='text/partytown'></script>
 
 <ViewTransitions />

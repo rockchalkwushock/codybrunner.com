@@ -11,9 +11,6 @@ WORKDIR /app
 
 # Set production environment
 ENV NODE_ENV="production"
-# Build related environment variables
-ENV ENABLE_BLOG="false"
-ENV ENABLE_I18N="false"
 
 # Install pnpm
 ARG PNPM_VERSION=8.6.10
@@ -22,6 +19,11 @@ RUN npm install -g pnpm@$PNPM_VERSION
 
 # Throw-away build stage to reduce size of final image
 FROM base as build
+
+# Build Arguments
+ARG VITE_ENABLE_BLOG = "false"
+ARG VITE_ENABLE_I18N = "false"
+ARG VITE_FATHOM_SITE = "HJSLUSUZ"
 
 # Install packages needed to build node modules
 RUN apt-get update -qq && \
