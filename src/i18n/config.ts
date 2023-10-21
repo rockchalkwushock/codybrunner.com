@@ -101,12 +101,8 @@ export const translations: Schema = {
 		'projects.metadata.description':
 			'Welcome to my portfolio showcasing my journey as a software developer in the tech industry. Here, you will find a collection of my work that reflects my passion for coding and problem-solving. From personal side projects to enterprise-level applications and contributions to open source, this portfolio encompasses the breadth of my experience. I have leveraged an array of cutting-edge technologies throughout my projects, including JavaScript/TypeScript, ReactJS, TailwindCSS, Phoenix LiveView, Elixir, NextJS, and Remix. Each project represents a unique challenge and demonstrates my ability to build robust, scalable, and user-friendly solutions. Feel free to explore the diverse range of applications, delve into the code, and witness the creativity and craftsmanship that went into each endeavor.',
 		'projects.metadata.title': 'Portfolio',
-		'socials.email': 'Email me directly',
 		'socials.github': 'Follow me on GitHub',
-		'socials.instagram': 'Follow me on Instagram',
 		'socials.linkedin': 'Follow me on LinkedIn',
-		'socials.telegram': 'Follow me on Telegram',
-		'socials.twitter': 'Follow me on Twitter',
 		'uses.content.intro':
 			'I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff.',
 		'uses.content.section-one.title': 'Workstation',
@@ -193,12 +189,8 @@ export const translations: Schema = {
 		'projects.metadata.description':
 			'Bienvenido a mi portafolio que muestra mi trayectoria como desarrollador de software en la industria de la tecnología. Aquí encontrarás una colección de mis trabajos que reflejan mi pasión por la programación y la resolución de problemas. Desde proyectos personales hasta aplicaciones empresariales y contribuciones al código abierto, este portafolio abarca la amplitud de mi experiencia. He aprovechado una serie de tecnologías de vanguardia a través de mis proyectos, incluyendo JavaScript / TypeScript, ReactJS, TailwindCSS, Phoenix LiveView, Elixir, NextJS, y Remix. Cada proyecto representa un desafío único y demuestra mi capacidad para construir soluciones robustas, escalables y fáciles de usar. Siéntase libre de explorar la diversa gama de aplicaciones, profundizar en el código, y ser testigo de la creatividad y la artesanía que entró en cada esfuerzo.',
 		'projects.metadata.title': 'Portafolio',
-		'socials.email': 'Envíeme un correo electrónico directamente',
 		'socials.github': 'Sígueme en GitHub',
-		'socials.instagram': 'Sígueme en Instagram',
 		'socials.linkedin': 'Sígueme en LinkedIn',
-		'socials.telegram': 'Sígueme en Telegram',
-		'socials.twitter': 'Sígueme en Twitter',
 		'uses.content.intro':
 			'Me preguntan mucho sobre las cosas que utilizo para crear software, mantenerme productivo o comprar para engañarme a mí mismo haciéndome creer que estoy siendo productivo cuando en realidad sólo estoy procrastinando. Aquí tienes una lista de mis cosas favoritas.',
 		'uses.content.section-one.title': 'Estación de trabajo',

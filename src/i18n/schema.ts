@@ -64,12 +64,8 @@ const languageSchema = z.strictObject({
 	'projects.content.title': z.string(),
 	'projects.metadata.description': z.string(),
 	'projects.metadata.title': z.string(),
-	'socials.email': z.string(),
 	'socials.github': z.string(),
-	'socials.instagram': z.string(),
 	'socials.linkedin': z.string(),
-	'socials.telegram': z.string(),
-	'socials.twitter': z.string(),
 	'uses.content.intro': z.string(),
 	// TODO: Add 'uses.content.XXX....'
 	'uses.content.section-one.title': z.string(),

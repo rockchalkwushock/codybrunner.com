@@ -1,6 +1,6 @@
 {
 	"name": "codybrunner.com",
-	"version": "3.0.0",
+	"version": "3.1.0",
 	"description": "My stretch of pipe in the world wide inter-tubes.",
 	"author": {
 		"email": "me@codybrunner.com",
@@ -17,6 +17,7 @@
 		"astro": "astro",
 		"build": "astro build",
 		"dev": "astro dev",
+		"format": "prettier . --write --ignore-unknown",
 		"preview": "astro preview",
 		"start": "astro dev"
 	},

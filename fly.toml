@@ -6,7 +6,9 @@
 app = "codybrunner-web"
 primary_region = "dfw"
 
-# [build]
+[build.args]
+  VITE_ENABLE_BLOG = "false"
+  VITE_ENABLE_I18N = "false"
 
 # [http_service]
 #   internal_port = 3000
