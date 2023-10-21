@@ -97,20 +97,6 @@ export function MobileNav({
 										{t('nav.home')}
 									</Popover.Button>
 								</li>
-								<li>
-									<Popover.Button
-										aria-label={t('nav.about.label')}
-										as='a'
-										className={cn(
-											'block py-2',
-											currentPath.startsWith('/about') &&
-												'font-semibold text-accent-500 dark:text-accent-400'
-										)}
-										href={translatedPath('/about')}
-									>
-										{t('nav.about')}
-									</Popover.Button>
-								</li>
 								{isBlogEnabled && (
 									<li>
 										<Popover.Button
