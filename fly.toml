@@ -9,7 +9,6 @@ primary_region = "dfw"
 [build.args]
   VITE_ENABLE_BLOG = "false"
   VITE_ENABLE_I18N = "false"
-  VITE_FATHOM_SITE = "HJSLUSUZ"
 
 # [http_service]
 #   internal_port = 3000
