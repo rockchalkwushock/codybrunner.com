@@ -59,7 +59,7 @@ export const translations: Schema = {
 		'home.articles.alt': 'No Articles At This Time',
 		'home.articles.heading': 'No Articles At This Time',
 		'home.hero.description':
-			"Hey! I'm Cody, an American expat, US Navy Veteran, and software developer living in Colombia. I work as a Senior Frontend Developer at Bitcoin IRA, where we are pioneering the world's first and most trusted crypto IRA platform. When I am not working I can be found in the gym, teaching myself guitar, exploring Colombia, or smoking some brisket or ribs.",
+			"Hey! I'm Cody, a Christian, US Navy Veteran, Jayhawk, and an American expat living outside of Bogotá, Colombia. I work as a Senior Frontend Developer at Bitcoin IRA, where we are pioneering the world's first and most trusted crypto IRA platform. When I am not working I can be found in the gym, teaching myself guitar, exploring Colombia, or smoking some brisket or ribs.",
 		'home.hero.heading':
 			'Software developer, veteran, and smoker of the meats.',
 		'home.profile.alt': 'Image of Cody Brunner',
@@ -147,7 +147,7 @@ export const translations: Schema = {
 		'home.articles.alt': 'No hay artículos en este momento',
 		'home.articles.heading': 'No hay artículos en este momento',
 		'home.hero.description':
-			'Hola, soy Cody, un expatriado estadounidense, veterano de la Marina de los Estados Unidos y desarrollador de software que vive en Colombia. Trabajo como Desarrollador Frontend Senior en Bitcoin IRA, donde somos pioneros en la primera y más confiable plataforma cripto IRA del mundo. Cuando no estoy trabajando me pueden encontrar en el gimnasio, enseñándome guitarra, explorando Colombia, o ahumando unas costillas.',
+			'Hola, soy Cody, un cristiano, veterano de la Marina de los Estados Unidos, Jayhawk, y un expatriado estadounidense que vive en las afueras de Bogotá, Colombia. Trabajo como Desarrollador Frontend Senior en Bitcoin IRA, donde somos pioneros en la primera y más confiable plataforma cripto IRA del mundo. Cuando no estoy trabajando me pueden encontrar en el gimnasio, enseñándome guitarra, explorando Colombia, o ahumando unas costillas.',
 		'home.hero.heading':
 			'Desarrollador de software, veterano y ahumador de carnes.',
 		'home.profile.alt': 'Imagen de Cody Brunner',
