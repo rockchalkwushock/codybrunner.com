@@ -17,119 +17,116 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 const jobs = [
-  {
-    company: 'Bitcoin IRA',
-    end: {
-      date: new Date(),
-      label: t('home.resume.item.present'),
-    },
-    logo: bitcoinIra,
-    start: new Date(2022, 9, 16),
-    title: t('home.resume.item.senior'),
-  },
-  {
-    company: 'Appointlet',
-    end: {
-      date: new Date(),
-      label: t('home.resume.item.present'),
-    },
-    logo: appointlet,
-    start: new Date(2022, 1, 1),
-    title: t('home.resume.item.frontend'),
-  },
-  {
-    company: 'JokinglyBadTech',
-    end: {
-      date: new Date(),
-      label: t('home.resume.item.present'),
-    },
-    logo: jbt,
-    start: new Date(2022, 1, 1),
-    title: t('home.resume.item.owner'),
-  },
-  {
-    company: 'Weeldi',
-    end: new Date(2022, 5, 31),
-    logo: weeldi,
-    start: new Date(2022, 3, 1),
-    title: t('home.resume.item.fullstack'),
-  },
-  {
-    company: 'Arrive Logistics',
-    end: new Date(2022, 2, 1),
-    logo: arriveLogistics,
-    start: new Date(2021, 8, 15),
-    title: t('home.resume.item.senior'),
-  },
-  {
-    company: 'Lean Tech',
-    end: new Date(2022, 2, 1),
-    logo: leanTech,
-    start: new Date(2021, 9, 16),
-    title: t('home.resume.item.senior'),
-  },
-  {
-    company: 'DM.app',
-    end: new Date(2021, 9, 1),
-    logo: dm,
-    start: new Date(2021, 8, 1),
-    title: t('home.resume.item.frontend'),
-  },
-  {
-    company: 'Appointlet',
-    end: new Date(2021, 3, 1),
-    logo: appointlet,
-    start: new Date(2018, 8, 1),
-    title: t('home.resume.item.web'),
-  },
+	{
+		company: 'Bitcoin IRA',
+		end: {
+			date: new Date(),
+			label: t('home.resume.item.present'),
+		},
+		logo: bitcoinIra,
+		start: new Date(2022, 9, 16),
+		title: t('home.resume.item.senior'),
+	},
+	{
+		company: 'JokinglyBadTech',
+		end: {
+			date: new Date(),
+			label: t('home.resume.item.present'),
+		},
+		logo: jbt,
+		start: new Date(2022, 1, 1),
+		title: t('home.resume.item.owner'),
+	},
+	{
+		company: 'Appointlet',
+		end: new Date(2023, 9, 16),
+		logo: appointlet,
+		start: new Date(2022, 1, 1),
+		title: t('home.resume.item.frontend'),
+	},
+	{
+		company: 'Weeldi',
+		end: new Date(2022, 5, 31),
+		logo: weeldi,
+		start: new Date(2022, 3, 1),
+		title: t('home.resume.item.fullstack'),
+	},
+	{
+		company: 'Arrive Logistics',
+		end: new Date(2022, 2, 1),
+		logo: arriveLogistics,
+		start: new Date(2021, 8, 15),
+		title: t('home.resume.item.senior'),
+	},
+	{
+		company: 'Lean Tech',
+		end: new Date(2022, 2, 1),
+		logo: leanTech,
+		start: new Date(2021, 9, 16),
+		title: t('home.resume.item.senior'),
+	},
+	{
+		company: 'DM.app',
+		end: new Date(2021, 9, 1),
+		logo: dm,
+		start: new Date(2021, 8, 1),
+		title: t('home.resume.item.frontend'),
+	},
+	{
+		company: 'Appointlet',
+		end: new Date(2021, 3, 1),
+		logo: appointlet,
+		start: new Date(2018, 8, 1),
+		title: t('home.resume.item.web'),
+	},
 ]
 ---
 
-<ol class="mt-6 space-y-4" role="list">
-  {
-    jobs.map(({ company, end, logo, start, title }) => (
-      <li class="flex gap-4" role="listitem">
-        <div class="relative shadow-primary-800/5 dark:border dark:border-primary-700/50 dark:bg-white mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md ring-1 dark:ring-0 ring-primary-900/5">
-          <Image
-            alt={`Logo for ${company}`}
-            class="rounded-full"
-            height={40}
-            src={logo}
-            width={40}
-          />
-        </div>
-        <dl class="flex flex-auto flex-wrap gap-x-2">
-          <dt class="sr-only">Company</dt>
-          <dd class="w-full text-primary-900 dark:text-primary-100 flex-none text-sm font-medium">
-            {company}
-          </dd>
-          <dt class="sr-only">Role</dt>
-          <dd class="text-xs text-primary-500 dark:text-primary-400">
-            {title}
-          </dd>
-          <dt class="sr-only">Date</dt>
-          <dd
-            aria-label={`${start.getFullYear().toString()} until ${
-              end instanceof Date ? end.getFullYear().toString() : end.label
-            }`}
-            class="ml-auto text-xs text-primary-500 dark:text-primary-400"
-          >
-            <time datetime={start.getFullYear().toString()}>
-              {start.getFullYear()}
-            </time>
-            <span aria-hidden="true">-</span>
-            <time
-              datetime={
-                end instanceof Date
-                  ? end.getFullYear().toString()
-                  : end.date.getFullYear().toString()
-              }
-            >
-              {end instanceof Date ? end.getFullYear() : end.label}
-            </time>
-          </dd>
-        </dl>
-      </li>
-    ))
-  }
+<ol class='mt-6 space-y-4' role='list'>
+	{
+		jobs.map(({ company, end, logo, start, title }) => (
+			<li class='flex gap-4' role='listitem'>
+				<div class='relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-primary-800/5 ring-1 ring-primary-900/5 dark:border dark:border-primary-700/50 dark:bg-white dark:ring-0'>
+					<Image
+						alt={`Logo for ${company}`}
+						class='rounded-full'
+						height={40}
+						src={logo}
+						width={40}
+					/>
+				</div>
+				<dl class='flex flex-auto flex-wrap gap-x-2'>
+					<dt class='sr-only'>Company</dt>
+					<dd class='w-full flex-none text-sm font-medium text-primary-900 dark:text-primary-100'>
+						{company}
+					</dd>
+					<dt class='sr-only'>Role</dt>
+					<dd class='text-xs text-primary-500 dark:text-primary-400'>
+						{title}
+					</dd>
+					<dt class='sr-only'>Date</dt>
+					<dd
+						aria-label={`${start.getFullYear().toString()} until ${
+							end instanceof Date ? end.getFullYear().toString() : end.label
+						}`}
+						class='ml-auto text-xs text-primary-500 dark:text-primary-400'
+					>
+						<time datetime={start.getFullYear().toString()}>
+							{start.getFullYear()}
+						</time>
+						<span aria-hidden='true'>-</span>
+						<time
+							datetime={
+								end instanceof Date
+									? end.getFullYear().toString()
+									: end.date.getFullYear().toString()
+							}
+						>
+							{end instanceof Date ? end.getFullYear() : end.label}
+						</time>
+					</dd>
+				</dl>
+			</li>
+		))
+	}
 </ol>
