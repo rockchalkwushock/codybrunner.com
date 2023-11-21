@@ -100,7 +100,7 @@ const t = useTranslations(lang)
           <ResumeList />
           <Link
             aria-label={t('home.resume.button.label')}
-            class="bg-primary-50 text-primary-900 hover:bg-primary-100 active:bg-primary-100 active:text-primary-900/60 dark:bg-primary-800/50 dark:text-primary-300 dark:hover:bg-primary-800 dark:hover:text-primary-50 dark:active:bg-primary-800/50 dark:active:text-primary-50/70 inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none font-medium group mt-6 w-full"
+            class="bg-primary-50 text-primary-900 hover:bg-accent-100/50 active:bg-primary-100 active:text-primary-900/60 hover:text-accent-600 dark:bg-primary-800/50 dark:text-primary-300 dark:hover:bg-accent-800 dark:hover:text-accent-50 dark:active:bg-primary-800/50 dark:active:text-primary-50/70 inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none font-medium group mt-6 w-full"
             data-astro-reload
             href="/resume.pdf"
             rel="noopener noreferrer"
@@ -109,7 +109,7 @@ const t = useTranslations(lang)
             <span>{t('home.resume.button')}</span>
             <svg
               aria-hidden="true"
-              class="h-4 w-4 fill-none transition stroke-primary-300 group-active:stroke-primary-600 dark:group-hover:stroke-primary-50 dark:group-active:stroke-primary-50"
+              class="h-4 w-4 fill-none transition stroke-primary-600 group-hover:stroke-accent-600 group-active:stroke-accent-600 dark:group-hover:stroke-accent-50 dark:group-active:stroke-accent-50"
               view-box="0 0 16 16"
             >
               <path
