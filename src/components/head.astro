@@ -10,6 +10,7 @@ export type Props = {
 
 const CONSTANTS = {
 	author: 'Cody Brunner',
+	twitter: '@codyencolombia',
 } as const
 
 const {
@@ -63,6 +64,16 @@ const siteTitle = `${title} | codybrunner.com`
 <meta property='og:title' content={siteTitle} />
 <meta property='og:type' content='website' />
 <meta property='og:url' content={Astro.url} />
+
+<!-- Twitter -->
+<meta property='twitter:card' content='summary_large_image' />
+<meta property='twitter:creator' content={CONSTANTS.twitter} />
+<meta property='twitter:description' content={description} />
+<meta property='twitter:image' content={image} />
+<meta property='twitter:image:alt' content={imageAlt} />
+<meta property='twitter:site' content={CONSTANTS.twitter} />
+<meta property='twitter:title' content={siteTitle} />
+<meta property='twitter:url' content={Astro.url} />
 
 <!-- Favicons -->
 <link rel='icon' type='image/svg+xml' href='/favicons/favicon.ico' />
