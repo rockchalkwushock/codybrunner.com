@@ -42,8 +42,7 @@ const { isOnAboutPage = false } = Astro.props
 			<li class={cn(isOnAboutPage ? 'flex' : undefined)}>
 				<Link
 					aria-label={label}
-					class={cn(
-						'group',
+					class={cn('group',
 						isOnAboutPage
 							? 'flex space-x-2 text-primary-800 transition hover:text-accent-500 dark:text-primary-200 dark:hover:text-accent-500'
 							: 'text-gray-400 hover:text-gray-500'
