@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { useTranslatedPath, useTranslations } from '~/i18n'
