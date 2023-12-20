@@ -1,3 +1,4 @@
+/** @jsxImportSource react */
 import { useEffect, useState } from 'react'
 
 function MoonIcon(): JSX.Element {
