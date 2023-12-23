@@ -64,6 +64,7 @@ const languageSchema = z.strictObject({
 	'projects.content.title': z.string(),
 	'projects.metadata.description': z.string(),
 	'projects.metadata.title': z.string(),
+	'socials.coffee': z.string(),
 	'socials.github': z.string(),
 	'socials.linkedin': z.string(),
 	'socials.twitter': z.string(),
