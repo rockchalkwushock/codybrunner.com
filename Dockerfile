@@ -21,7 +21,6 @@ RUN npm install -g pnpm@$PNPM_VERSION
 FROM base as build
 
 # Build Arguments
-ARG VITE_ENABLE_BLOG="false"
 ARG VITE_ENABLE_I18N="false"
 
 # Install packages needed to build node modules

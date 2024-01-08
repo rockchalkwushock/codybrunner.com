@@ -3,7 +3,7 @@ import { Popover, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import { useTranslatedPath, useTranslations } from '~/i18n'
 import type { Language } from '~/i18n/config'
-import { cn, enableBlog } from '~/utils/helpers'
+import { cn } from '~/utils/helpers'
 import { ThemeToggle } from './theme-toggle'
 
 export function MobileNav({
@@ -15,7 +15,6 @@ export function MobileNav({
 }): JSX.Element {
 	const t = useTranslations(lang)
 	const translatedPath = useTranslatedPath(lang)
-	const isBlogEnabled = enableBlog()
 	return (
 		<Popover className='pointer-events-auto md:hidden'>
 			<Popover.Button className='group flex items-center rounded-full bg-white/90 px-4 py-2 text-sm font-medium text-primary-800 shadow-lg shadow-primary-800/5 ring-1 ring-primary-900/5 backdrop-blur dark:bg-primary-800/90 dark:text-primary-200 dark:ring-white/10 dark:hover:ring-white/20'>
@@ -112,18 +111,16 @@ export function MobileNav({
 										{t('nav.about')}
 									</Popover.Button>
 								</li>
-								{isBlogEnabled && (
-									<li>
-										<Popover.Button
-											aria-label={t('nav.articles.label')}
-											as='a'
-											className='block py-2'
-											href='https://blog.codybrunner.com'
-										>
-											{t('nav.articles')}
-										</Popover.Button>
-									</li>
-								)}
+								<li>
+									<Popover.Button
+										aria-label={t('nav.articles.label')}
+										as='a'
+										className='block py-2'
+										href='https://blog.codybrunner.com'
+									>
+										{t('nav.articles')}
+									</Popover.Button>
+								</li>
 								<li>
 									<Popover.Button
 										aria-label={t('nav.bookshelf.label')}
