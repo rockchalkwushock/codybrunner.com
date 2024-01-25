@@ -61,6 +61,12 @@ const languageSchema = z.strictObject({
 	'nav.projects.label': z.string(),
 	'nav.uses': z.string(),
 	'nav.uses.label': z.string(),
+	'notfound.title': z.string(),
+	'notfound.image.alt': z.string(),
+	'notfound.link.content': z.string(),
+	'notfound.link.label': z.string(),
+	'notfound.metadata.description': z.string(),
+	'notfound.metadata.title': z.string(),
 	'projects.content.intro': z.string(),
 	// TODO: Add 'projects.content.portfolio....'
 	'projects.content.title': z.string(),
