@@ -56,6 +56,8 @@ export const translations: Schema = {
 		'bookshelf.section.six': 'Technology',
 		'footer.copyright': `2016-${currentYear} Cody Brunner`,
 		'footer.rights': 'All rights reserved',
+		'footer.rss': 'RSS Feed',
+		'footer.rss.label': 'Go to my RSS Feed.',
 		'home.articles.alt': 'No Articles At This Time',
 		'home.articles.heading': 'No Articles At This Time',
 		'home.hero.description':
@@ -94,6 +96,12 @@ export const translations: Schema = {
 		'nav.projects.label': 'Go to Projects Page.',
 		'nav.uses': 'Uses',
 		'nav.uses.label': 'Go to Uses Page.',
+		'notfound.image.alt': 'Page Not Found',
+		'notfound.link.content': 'Back to Home Page',
+		'notfound.link.label': 'Go to homepage',
+		'notfound.metadata.description': 'Oops! Looks like you are lost.',
+		'notfound.metadata.title': 'Not Found',
+		'notfound.title': 'Oops! Looks like you are lost.',
 		'projects.content.intro':
 			'After several years in the industry here is a few of the projects I have worked on over the years. From personal projects to open source contributions to professional work.',
 		// TODO: Add 'projects.content.portfolio....'
@@ -146,6 +154,8 @@ export const translations: Schema = {
 		'bookshelf.section.six': 'Tecnología',
 		'footer.copyright': `2016-${currentYear} Cody Brunner`,
 		'footer.rights': 'Derechos reservados',
+		'footer.rss': 'RSS',
+		'footer.rss.label': 'Ir a mi feed RSS.',
 		'home.articles.alt': 'No hay artículos en este momento',
 		'home.articles.heading': 'No hay artículos en este momento',
 		'home.hero.description':
@@ -184,6 +194,12 @@ export const translations: Schema = {
 		'nav.projects.label': 'Ir a la página de proyectos.',
 		'nav.uses': 'Usa',
 		'nav.uses.label': 'Ir a la página de usos.',
+		'notfound.image.alt': 'Página no encontrada',
+		'notfound.link.content': 'Volver a la página de inicio',
+		'notfound.link.label': 'Ir a la página de inicio',
+		'notfound.metadata.description': '¡Uy! Parece que te has perdido.',
+		'notfound.metadata.title': 'No encontrado',
+		'notfound.title': '¡Uy! Parece que te has perdido.',
 		'projects.content.intro':
 			'Después de varios años en el sector, he aquí algunos de los proyectos en los que he trabajado a lo largo de los años. Desde proyectos personales hasta contribuciones de código abierto y trabajos profesionales.',
 		// TODO: Add 'projects.content.portfolio....'

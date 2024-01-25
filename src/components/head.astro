@@ -21,7 +21,6 @@ const {
 } = Astro.props
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const rssURL = new URL('/rss.xml', Astro.url)
 const siteTitle = `${title} | codybrunner.com`
 ---
 
@@ -46,9 +45,9 @@ const siteTitle = `${title} | codybrunner.com`
 
 <!-- RSS Feed -->
 <link
-	href={rssURL}
+	href="https://blog.codybrunner.com/rss.xml"
 	rel='alternate'
-	title='RSS Feed | codybrunner.com'
+	title='RSS Feed | blog.codybrunner.com'
 	type='application/rss+xml'
 />
 

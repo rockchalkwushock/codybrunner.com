@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets'
+// Assest
+import notFound from '~/assets/page-not-found.svg'
+// Components
+import Container from '~/components/container.astro'
+import Head from '~/components/head.astro'
+import Link from '~/components/link.astro'
+import BaseLayout from '~/layouts/base-layout.astro'
+
+// Translations
+import { getLangFromUrl, useTranslations } from '~/i18n'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<BaseLayout>
+	<Head
+		description={t('notfound.metadata.description')}
+		slot='metadata'
+		title={t('notfound.metadata.title')}
+	/>
+	<Container class='mt-9' slot='content'>
+		<div class='flex flex-col items-center gap-10'>
+			<h1 class='text-center font-display text-4xl'>{t('notfound.title')}</h1>
+			<Image
+				alt={t('notfound.image.alt')}
+				class='max-h-fit max-w-md'
+				src={notFound}
+			/>
+			<Link
+				aria-label={t('notfound.link.label')}
+				class='rounded-md border border-accent-600 px-5 py-1.5 shadow-md shadow-accent-50 transition duration-300 hover:scale-95 hover:bg-accent-600 hover:text-white hover:shadow-none dark:border-accent-400 dark:text-accent-400 dark:shadow-accent-700 dark:hover:bg-accent-400 dark:hover:text-primary-800'
+				href='/'
+			>
+				{t('notfound.link.content')}
+			</Link>
+		</div>
+	</Container>
+</BaseLayout>
