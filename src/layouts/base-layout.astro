@@ -371,6 +371,13 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 											>
 												{t('footer.rights')}
 											</Link>
+											<Link
+												aria-label={t('footer.rss.label')}
+												class='text-center text-sm text-primary-400 hover:text-accent-500 dark:text-primary-500 dark:hover:text-accent-400 sm:text-right'
+												href='https://blog.codybrunner.com/rss.xml'
+											>
+												{t('footer.rss')}
+											</Link>
 										</div>
 									</div>
 								</div>

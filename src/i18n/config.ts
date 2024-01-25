@@ -56,6 +56,8 @@ export const translations: Schema = {
 		'bookshelf.section.six': 'Technology',
 		'footer.copyright': `2016-${currentYear} Cody Brunner`,
 		'footer.rights': 'All rights reserved',
+		'footer.rss': 'RSS Feed',
+		'footer.rss.label': 'Go to my RSS Feed.',
 		'home.articles.alt': 'No Articles At This Time',
 		'home.articles.heading': 'No Articles At This Time',
 		'home.hero.description':
@@ -146,6 +148,8 @@ export const translations: Schema = {
 		'bookshelf.section.six': 'Tecnología',
 		'footer.copyright': `2016-${currentYear} Cody Brunner`,
 		'footer.rights': 'Derechos reservados',
+		'footer.rss': 'RSS',
+		'footer.rss.label': 'Ir a mi feed RSS.',
 		'home.articles.alt': 'No hay artículos en este momento',
 		'home.articles.heading': 'No hay artículos en este momento',
 		'home.hero.description':

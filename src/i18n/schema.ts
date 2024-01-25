@@ -23,6 +23,8 @@ const languageSchema = z.strictObject({
 	'bookshelf.section.six': z.string(),
 	'footer.copyright': z.string(),
 	'footer.rights': z.string(),
+	'footer.rss': z.string(),
+	'footer.rss.label': z.string(),
 	'home.articles.alt': z.string(),
 	'home.articles.heading': z.string(),
 	'home.hero.description': z.string(),
