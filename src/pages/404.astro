@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets'
+// Assest
+import notFound from '~/assets/page-not-found.svg'
+// Components
+import Container from '~/components/container.astro'
+import Head from '~/components/head.astro'
+import Link from '~/components/link.astro'
+import BaseLayout from '~/layouts/base-layout.astro'
+
+// Translations
+import { getLangFromUrl, useTranslations } from '~/i18n'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+---
+
+<BaseLayout>
+  <Head slot="metadata" />
+  <Container class="mt-9" slot="content">
+    <div class="flex flex-col items-center gap-10">
+      <h1 class="text-4xl font-display text-center">Oops! Looks like you are lost.</h1>
+    <Image alt="Page Not Found" class="max-w-md max-h-fit" src={notFound} />
+    <Link aria-label='Go to homepage' class="border px-5 py-1.5 rounded-md border-accent-600 shadow-md shadow-accent-50 hover:text-white hover:bg-accent-600 hover:scale-95 hover:shadow-none transition duration-300 dark:border-accent-400 dark:shadow-accent-700 dark:text-accent-400 dark:hover:text-primary-800 dark:hover:bg-accent-400" href="/">Back to Home Page</Link>
+    </div>
+  </Container>
+</BaseLayout>
