@@ -7,7 +7,7 @@ import me from '~/assets/cody-brunner.jpg'
 import Container from '~/components/container.astro'
 import Head from '~/components/head.astro'
 import Link from '~/components/link.astro'
-import ResumeList from '~/components/resume-list.astro'
+// import ResumeList from '~/components/resume-list.astro'
 import Socials from '~/components/socials.astro'
 import BaseLayout from '~/layouts/base-layout.astro'
 
@@ -97,7 +97,7 @@ const t = useTranslations(lang)
             </svg>
             <span class="ml-3">{t('home.resume.heading')}</span>
           </h2>
-          <ResumeList />
+          <!-- <ResumeList /> -->
           <Link
             aria-label={t('home.resume.button.label')}
             class="bg-primary-50 text-primary-900 hover:bg-primary-100 active:bg-primary-100 active:text-primary-900/60 dark:bg-primary-800/50 dark:text-primary-300 dark:hover:bg-primary-800 dark:hover:text-primary-50 dark:active:bg-primary-800/50 dark:active:text-primary-50/70 inline-flex items-center gap-2 justify-center rounded-md py-2 px-3 text-sm outline-offset-2 transition active:transition-none font-medium group mt-6 w-full"
