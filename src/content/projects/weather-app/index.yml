@@ -1,0 +1,6 @@
+description: Weather App that makes use of the OpenWeather API.
+link:
+  href: https://weather-app-rockchalkwushock.vercel.app/
+  label: vercel.app
+logo: ./react.svg
+name: weather-app

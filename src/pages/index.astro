@@ -12,8 +12,11 @@ import ResumeList from '~/components/resume-list.astro'
 import Socials from '~/components/socials.astro'
 import BaseLayout from '~/layouts/base-layout.astro'
 
+const jobs = await getCollection('jobs')
+
 // Translations
 import { getLangFromUrl, useTranslations } from '~/i18n'
+import { getCollection } from 'astro:content'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -67,22 +70,22 @@ const t = useTranslations(lang)
 			<!-- Left Column -->
 			<div class='flex flex-col gap-16'>
 				<Article
-					date="January 22, 2024"
-					description="The chaos that is the JavaScript/TypeScript ecosystem has become too much to bear in my opinion. I have become unhappy with my direction in the tech industry and in late 2023 made the decision to begin teaching myself Go and pivoting my career out of the Frontend & away from JavaScript."
-					href="https://blog.codybrunner.com/2024/going-to-the-gopher-side"
-					title="Going to the Gopher Side"
+					date='January 22, 2024'
+					description='The chaos that is the JavaScript/TypeScript ecosystem has become too much to bear in my opinion. I have become unhappy with my direction in the tech industry and in late 2023 made the decision to begin teaching myself Go and pivoting my career out of the Frontend & away from JavaScript.'
+					href='https://blog.codybrunner.com/2024/going-to-the-gopher-side'
+					title='Going to the Gopher Side'
 				/>
 				<Article
-					date="January 15, 2024"
-					description="In 2023 I began making the move from NextJS to Astro for my personal website and blog. This is my experience with the transition."
-					href="https://blog.codybrunner.com/2024/from-nextjs-to-astro/"
-					title="From NextJS to Astro"
+					date='January 15, 2024'
+					description='In 2023 I began making the move from NextJS to Astro for my personal website and blog. This is my experience with the transition.'
+					href='https://blog.codybrunner.com/2024/from-nextjs-to-astro/'
+					title='From NextJS to Astro'
 				/>
 				<Article
-					date="January 08, 2024"
+					date='January 08, 2024'
 					description="In November of 2023 I traveled to Salento, Colombia for the adventure of a lifetime, climbing and summiting Colombia's second highest peak, Nevado del Tolima."
-					href="https://blog.codybrunner.com/2024/climbing-the-mountain/"
-					title="Climbing the Mountain"
+					href='https://blog.codybrunner.com/2024/climbing-the-mountain/'
+					title='Climbing the Mountain'
 				/>
 			</div>
 			<!-- Right Column -->
@@ -113,7 +116,7 @@ const t = useTranslations(lang)
 						</svg>
 						<span class='ml-3'>{t('home.resume.heading')}</span>
 					</h2>
-					<ResumeList />
+					<ResumeList jobs={jobs} />
 					<Link
 						aria-label={t('home.resume.button.label')}
 						class='group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary-50 px-3 py-2 text-sm font-medium text-primary-900 outline-offset-2 transition hover:bg-accent-100/50 hover:text-accent-600 active:bg-primary-100 active:text-primary-900/60 active:transition-none dark:bg-primary-800/50 dark:text-primary-300 dark:hover:bg-accent-800 dark:hover:text-accent-50 dark:active:bg-primary-800/50 dark:active:text-primary-50/70'

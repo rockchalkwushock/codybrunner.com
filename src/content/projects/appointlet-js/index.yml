@@ -1,0 +1,6 @@
+description: JavaScript SDK for Appointlet.
+link:
+  href: https://www.npmjs.com/package/@appointlet/appointlet.js
+  label: npmjs.com
+logo: ./appointlet.svg
+name: "@appointlet/appointlet-js"

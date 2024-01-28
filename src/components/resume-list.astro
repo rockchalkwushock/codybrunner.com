@@ -1,128 +1,72 @@
 ---
 import { Image } from 'astro:assets'
 
-// Assets
-import appointlet from '~/assets/icons/appointlet.svg'
-import arriveLogistics from '~/assets/icons/arrive-logistics.svg'
-import bitcoinIra from '~/assets/icons/bitcoin-ira.svg'
-import dm from '~/assets/icons/dm.svg'
-import jbt from '~/assets/icons/jbt.svg'
-import leanTech from '~/assets/icons/lean-tech.svg'
-import weeldi from '~/assets/icons/weeldi.svg'
+import type { Job } from '~/content/config'
 
-// Translations
-import { getLangFromUrl, useTranslations } from '~/i18n'
+interface Props {
+	jobs: Job[]
+}
 
-const lang = getLangFromUrl(Astro.url)
-const t = useTranslations(lang)
+const sortFn = (a: Job, b: Job): number => {
+	if (a.data.end === undefined && b.data.end === undefined) {
+    return 0;
+  } else if (a.data.end === undefined) {
+    return -1;
+  } else if (b.data.end === undefined) {
+    return 1;
+  } else {
+		const dateA = new Date(a.data.end)
+		const dateB = new Date(b.data.end)
+    return dateB.getTime() - dateA.getTime();
+  }
+}
 
-const jobs = [
-	{
-		company: 'Bitcoin IRA',
-		end: {
-			date: new Date(),
-			label: t('home.resume.item.present'),
-		},
-		logo: bitcoinIra,
-		start: new Date(2022, 9, 16),
-		title: t('home.resume.item.senior'),
-	},
-	{
-		company: 'JokinglyBadTech',
-		end: {
-			date: new Date(),
-			label: t('home.resume.item.present'),
-		},
-		logo: jbt,
-		start: new Date(2022, 1, 1),
-		title: t('home.resume.item.owner'),
-	},
-	{
-		company: 'Appointlet',
-		end: new Date(2023, 9, 16),
-		logo: appointlet,
-		start: new Date(2022, 1, 1),
-		title: t('home.resume.item.frontend'),
-	},
-	{
-		company: 'Weeldi',
-		end: new Date(2022, 5, 31),
-		logo: weeldi,
-		start: new Date(2022, 3, 1),
-		title: t('home.resume.item.fullstack'),
-	},
-	{
-		company: 'Arrive Logistics',
-		end: new Date(2022, 2, 1),
-		logo: arriveLogistics,
-		start: new Date(2021, 8, 15),
-		title: t('home.resume.item.senior'),
-	},
-	{
-		company: 'Lean Tech',
-		end: new Date(2022, 2, 1),
-		logo: leanTech,
-		start: new Date(2021, 9, 16),
-		title: t('home.resume.item.senior'),
-	},
-	{
-		company: 'DM.app',
-		end: new Date(2021, 9, 1),
-		logo: dm,
-		start: new Date(2021, 8, 1),
-		title: t('home.resume.item.frontend'),
-	},
-	{
-		company: 'Appointlet',
-		end: new Date(2021, 3, 1),
-		logo: appointlet,
-		start: new Date(2018, 8, 1),
-		title: t('home.resume.item.web'),
-	},
-]
+const { jobs } = Astro.props
 ---
 
 <ol class='mt-6 space-y-4' role='list'>
 	{
-		jobs.map(({ company, end, logo, start, title }) => (
+		jobs.sort(sortFn).map(({ data }) => (
 			<li class='flex gap-4' role='listitem'>
 				<div class='relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-primary-800/5 ring-1 ring-primary-900/5 dark:border dark:border-primary-700/50 dark:bg-white dark:ring-0'>
 					<Image
-						alt={`Logo for ${company}`}
+						alt={`Logo for ${data.company}`}
 						class='rounded-full'
 						height={40}
-						src={logo}
+						src={data.logo}
 						width={40}
 					/>
 				</div>
 				<dl class='flex flex-auto flex-wrap gap-x-2'>
 					<dt class='sr-only'>Company</dt>
 					<dd class='w-full flex-none text-sm font-medium text-primary-900 dark:text-primary-100'>
-						{company}
+						{data.company}
 					</dd>
 					<dt class='sr-only'>Role</dt>
 					<dd class='text-xs text-primary-500 dark:text-primary-400'>
-						{title}
+						{data.title}
 					</dd>
 					<dt class='sr-only'>Date</dt>
 					<dd
-						aria-label={`${start.getFullYear().toString()} until ${
-							end instanceof Date ? end.getFullYear().toString() : end.label
+						aria-label={`${new Date(data.start)
+							.getFullYear()
+							.toString()} until ${
+							data.end ? new Date(data.end).getFullYear().toString() : 'Present'
 						}`}
 						class='ml-auto text-xs text-primary-500 dark:text-primary-400'
 					>
-						<time datetime={start.getFullYear().toString()}>
-							{start.getFullYear()}
+						<time datetime={new Date(data.start).getFullYear().toString()}>
+							{new Date(data.start).getFullYear()}
 						</time>
 						<span aria-hidden='true'>-</span>
 						<time
 							datetime={
-								end instanceof Date
-									? end.getFullYear().toString()
-									: end.date.getFullYear().toString()
+								data.end
+									? new Date(data.end).getFullYear().toString()
+									: new Date().getFullYear().toString()
 							}
 						>
-							{end instanceof Date ? end.getFullYear() : end.label}
+							{data.end ? new Date(data.end).getFullYear() : 'Present'}
 						</time>
 					</dd>
 				</dl>

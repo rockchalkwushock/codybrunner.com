@@ -1,0 +1,6 @@
+description: An Instagram clone written in Elixir and Ecto
+link:
+  href: https://github.com/rockchalkwushock/ectogram
+  label: github.com
+logo: ./elixir.svg
+name: ectogram
