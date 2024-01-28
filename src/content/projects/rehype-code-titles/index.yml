@@ -1,0 +1,6 @@
+description: Rehype plugin for parsing code blocks and adding titles to code blocks.
+link:
+  href: https://www.npmjs.com/package/rehype-code-titles
+  label: npmjs.com
+logo: ./npm.svg
+name: rehype-code-titles

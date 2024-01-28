@@ -1,0 +1,6 @@
+description: Tic-tac-toe written using the React Context API.
+link:
+  href: https://tic-tac-toe-indol-chi.vercel.app/
+  label: vercel.app
+logo: ./react.svg
+name: tic-tac-toe

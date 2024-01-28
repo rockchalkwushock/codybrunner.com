@@ -1,0 +1,6 @@
+description: Vkontakte OAuth strategy for the MicroJS framework.
+link:
+  href: https://www.npmjs.com/package/microauth-vkontakte
+  label: npmjs.com
+logo: ./npm.svg
+name: microauth-vkontakte

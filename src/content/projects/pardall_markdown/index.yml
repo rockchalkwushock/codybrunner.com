@@ -1,0 +1,6 @@
+description: Reactive publishing framework, filesystem-based with support for Markdown, nested hierarchies, and instant content rebuilding. Written in Elixir.
+link:
+  href: https://hex.pm/packages/pardall_markdown
+  label: hex.pm
+logo: ./hex.svg
+name: pardall_markdown

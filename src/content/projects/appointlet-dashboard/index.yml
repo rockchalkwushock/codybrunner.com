@@ -1,0 +1,6 @@
+description: Dashboard for user's to manage their meetings and meeting types for Appointlet.
+link:
+  href: https://www.appointlet.com/
+  label: appointlet.com
+logo: ./appointlet.svg
+name: Appointlet Dashboard Application

@@ -1,0 +1,6 @@
+description: A Calendly clone written in Elixir and Phoenix LiveView.
+link:
+  href: https://github.com/rockchalkwushock/citax
+  label: github.com
+logo: ./phoenix.svg
+name: citax

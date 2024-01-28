@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets'
+import { getCollection } from 'astro:content'
 
 // Components
 import Head from '~/components/head.astro'
@@ -8,6 +8,27 @@ import Section from '~/components/section.astro'
 import SimpleLayout from '~/components/simple-layout.astro'
 import BaseLayout from '~/layouts/base-layout.astro'
 
+const books = await getCollection('bookshelf')
+
+const currentBooks = books.filter(({ data }) => {
+	return data.category === 'current'
+})
+const fictionBooks = books.filter(({ data }) => {
+	return data.category === 'fiction'
+})
+const financeBooks = books.filter(({ data }) => {
+	return data.category === 'finance'
+})
+const marriageBooks = books.filter(({ data }) => {
+	return data.category === 'marriage'
+})
+const selfHelpBooks = books.filter(({ data }) => {
+	return data.category === 'self-help'
+})
+const technologyBooks = books.filter(({ data }) => {
+	return data.category === 'technology'
+})
+
 // Translations
 import { getLangFromUrl, useTranslations } from '~/i18n'
 
@@ -15,328 +36,184 @@ const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 const CONTENT = {
-  current: [
-  {
-      authors: ['John R. Rice'],
-      image: 'https://m.media-amazon.com/images/I/51X5QG-QDbL.SX150.jpg',
-      title: 'Prayer: Asking and Receiving',
-      url: 'https://www.amazon.com/gp/product/B01BX7KOAE/ref=kinw_myk_ro_title',
-    },
-    {
-      authors: ['John Kim', 'Vanessa Bennett'],
-      image: 'https://m.media-amazon.com/images/I/41e1k4h-IbL.SX150.jpg',
-      title:
-        "It's Not Me, It's You: Break the Blame Cycle. Relationship Better.",
-      url: 'https://www.amazon.com/gp/product/B09N8NYMB1/ref=kinw_myk_ro_title',
-    },
-  ],
-  fiction: [
-    {
-      authors: ['Ayn Rand'],
-      title: 'Anthem',
-      url: 'https://a.co/d/8rHjOEy',
-    },
-    {
-      authors: ['Ayn Rand'],
-      title: 'Atlas Shrugged',
-      url: 'https://a.co/d/88pro3Y',
-    },
-    {
-      authors: ['Ayn Rand'],
-      title: 'The Fountainhead',
-      url: 'https://a.co/d/c3g8b5a',
-    },
-    {
-      authors: ['Victor Hugo'],
-      title: 'Les Misérables',
-      url: 'https://a.co/d/1fPgHbY',
-    },
-    {
-      authors: ['Paulo Coelho'],
-      title: 'The Alchemist',
-      url: 'https://a.co/d/h0a1C4I',
-    },
-    {
-      authors: ['Michael Crichton'],
-      title: 'State of Fear',
-      url: 'https://a.co/d/f9dhfEP',
-    },
-  ],
-  finance: [
-    {
-      authors: ['Robert Kiyosaki'],
-      title: 'Rich Dad Poor Dad',
-      url: 'https://a.co/d/1HpPMo6',
-    },
-  ],
-  intro:
-    t('bookshelf.content.intro'),
-  marriage: [
-    {
-      authors: ['Jeff Feldhahn', 'Shaunti Feldhahn'],
-      title:
-        'For Men Only: A Straightforward Guide to the Inner Lives of Women',
-      url: 'https://a.co/d/bpcbrqV',
-    },
-    {
-      authors: ['Eva A. Mendes'],
-      title: "Marriage and Lasting Relationships with Asperger's Syndrome",
-      url: 'https://a.co/d/3v2WXtL',
-    },
-  ],
-  selfHelp: [
-  {
-      authors: ['David Goggins'],
-      title: "Can't Hurt Me",
-      url: 'https://a.co/d/cnzBYda',
-    },
-    {
-      authors: ['Jason Wilson'],
-      title:
-        'Cry Like a Man: Fighting for Freedom from Emotional Incarceration',
-      url: 'https://www.amazon.com/Cry-Like-Man-Emotional-Incarceration-ebook/dp/B07G1YJ7DZ/ref=tmm_kin_swatch_0?_encoding=UTF8&qid=&sr=',
-    },
-    {
-      authors: ['Jocko Willink', 'Leif Babin'],
-      title: 'Extreme Ownership',
-      url: 'https://a.co/d/0wK7AXT',
-    },
-    {
-      authors: ['Connor Beaton'],
-      title:
-        "Men's Work: A Practical Guide to Face Your Darkness, End Self-Sabotage, and Find Freedom",
-      url: 'https://a.co/d/97H7xq1',
-    },
-    {
-      authors: ['Ryan Michler'],
-      title: 'Sovereignty: The Battle for the Hearts and Minds of Men',
-      url: 'https://a.co/d/1pZdVHt',
-    },
-    {
-      authors: ['John Kim'],
-      title: 'I Used to Be a Miserable F*ck',
-      url: 'https://www.amazon.com/Used-Be-Miserable-Everymans-Meaningful-ebook/dp/B07BK3BYR4?ref_=ast_author_dp',
-    },
-    {
-      authors: ['John Kim'],
-      title:
-        'The Angry Therapist: A No BS Guide to Finding and Living Your Own Truth',
-      url: 'https://www.amazon.com/Angry-Therapist-Guide-Finding-Living-ebook/dp/B01IZT7YGA?ref_=ast_author_dp',
-    },
-    {
-      authors: ['Mel Robbins'],
-      title: 'The 5 Second Rule',
-      url: 'https://a.co/d/ak4pIOE',
-    },
-  ],
-  technology: [
-  {
-      authors: ['Sean Moriarity'],
-      title: 'Genetic Algorithms in Elixir',
-      url: 'https://pragprog.com/titles/smgaelixir/genetic-algorithms-in-elixir/',
-    },
-    {
-      authors: ['James Edward Gray, II', 'Bruce A. Tate'],
-      title: 'Designing Elixir Systems with OTP',
-      url: 'https://pragprog.com/titles/jgotp/designing-elixir-systems-with-otp/',
-    },
-    {
-      authors: ['Chris McCord', 'Bruce A. Tate', 'José Valim'],
-      title: 'Programming Phoenix 1.4',
-      url: 'https://pragprog.com/titles/phoenix14/programming-phoenix-1-4/',
-    },
-    {
-      authors: ['Darin Wilson', 'Eric Meadows-Jönsson'],
-      title: 'Programming Ecto',
-      url: 'https://pragprog.com/titles/wmecto/programming-ecto/',
-    },
-    {
-      authors: ['Bruce Williams', 'Ben Wilson'],
-      title: 'Craft GraphQL APIs in Elixir with Absinthe',
-      url: 'https://pragprog.com/titles/wwgraphql/craft-graphql-apis-in-elixir-with-absinthe/',
-    },
-    {
-      authors: ['Bruce A. Tate', 'Sophie DeBenedetto'],
-      title: 'Programming Phoenix LiveView',
-      url: 'https://pragprog.com/titles/liveview/programming-phoenix-liveview/',
-    },
-  ],
-  title: t('bookshelf.content.title'),
+	intro: t('bookshelf.content.intro'),
+
+	title: t('bookshelf.content.title'),
 } as const
 
 const METADATA = {
-  description: t('bookshelf.metadata.description'),
-  title: t('bookshelf.metadata.title'),
+	description: t('bookshelf.metadata.description'),
+	title: t('bookshelf.metadata.title'),
 } as const
 ---
 
 <BaseLayout>
-  <Head
-    description={METADATA.description}
-    slot="metadata"
-    title={METADATA.title}
-  />
-  <SimpleLayout intro={CONTENT.intro} slot="content" title={CONTENT.title}>
-    <div class="space-y-20">
-      <Section id="current" title={t('bookshelf.section.one')}>
-        <ul class="space-y-16" role="list">
-          {
-            CONTENT.current.map(({ authors, image, title, url }) => (
-              <li class="group relative flex flex-col items-start">
-                <Link
-                  aria-label="// TODO"
-                  class="relative z-10 flex-shrink-0 w-32 h-48 overflow-hidden rounded-lg shadow-md group-hover:shadow-lg"
-                  href={url}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <Image
-                    alt={title}
-                    class="object-cover w-full h-full"
-                    height={40}
-                    src={image}
-                    width={32}
-                  />
-                </Link>
-                <h3 class="relative z-10 mt-2 text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100">
-                  <Link
-                    aria-label="// TODO"
-                    class="relative z-10 text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100"
-                    href={url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {title}
-                  </Link>
-                </h3>
-                <p class="relative z-10 mt-2 text-sm text-primary-600 dark:text-primary-400">
-                  {authors.join(', ')}
-                </p>
-              </li>
-            ))
-          }
-        </ul>
-      </Section>
-      <Section id="fiction" title={t('bookshelf.section.two')}>
-        <ul class="space-y-8" role="list">
-          {
-            CONTENT.fiction.map(({ authors, title, url }) => (
-              <li class="group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40">
-                <Link
-                  aria-label="// TODO"
-                  class="text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100"
-                  href={url}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <h3 class="text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400">
-                    {title}
-                  </h3>
-                  <p class="text-sm text-primary-600 dark:text-primary-400">
-                    {authors.join(', ')}
-                  </p>
-                </Link>
-              </li>
-            ))
-          }
-        </ul>
-      </Section>
-      <Section id="finance" title={t('bookshelf.section.three')}>
-        <ul class="space-y-8" role="list">
-          {
-            CONTENT.finance.map(({ authors, title, url }) => (
-              <li class="group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40">
-                <Link
-                  aria-label="// TODO"
-                  class="text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100"
-                  href={url}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <h3 class="text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400">
-                    {title}
-                  </h3>
-                  <p class="text-sm text-primary-600 dark:text-primary-400">
-                    {authors.join(', ')}
-                  </p>
-                </Link>
-              </li>
-            ))
-          }
-        </ul>
-      </Section>
-      <Section id="relationship" title={t('bookshelf.section.four')}>
-        <ul class="space-y-8" role="list">
-          {
-            CONTENT.marriage.map(({ authors, title, url }) => (
-              <li class="group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40">
-                <Link
-                  aria-label="// TODO"
-                  class="text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100"
-                  href={url}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <h3 class="text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400">
-                    {title}
-                  </h3>
-                  <p class="text-sm text-primary-600 dark:text-primary-400">
-                    {authors.join(', ')}
-                  </p>
-                </Link>
-              </li>
-            ))
-          }
-        </ul>
-      </Section>
-      <Section id="self-help" title={t('bookshelf.section.five')}>
-        <ul class="space-y-8" role="list">
-          {
-            CONTENT.selfHelp.map(({ authors, title, url }) => (
-              <li class="group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40">
-                <Link
-                  aria-label="// TODO"
-                  class="text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100"
-                  href={url}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <h3 class="text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400">
-                    {title}
-                  </h3>
-                  <p class="text-sm text-primary-600 dark:text-primary-400">
-                    {authors.join(', ')}
-                  </p>
-                </Link>
-              </li>
-            ))
-          }
-        </ul>
-      </Section>
-      <Section id="technology" title={t('bookshelf.section.six')}>
-        <ul class="space-y-8" role="list">
-          {
-            CONTENT.technology.map(({ authors, title, url }) => (
-              <li class="group p-2 transition ease-in-out duration-300 hover:bg-primary-100 hover:shadow-md rounded-md dark:hover:bg-primary-700/40">
-                <Link
-                  aria-label="// TODO"
-                  class="text-base flex flex-col space-y-1 tracking-tight text-primary-800 dark:text-primary-100"
-                  href={url}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  <h3 class="text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100 transition ease-in-out duration-300 group-hover:text-accent-600 dark:group-hover:text-accent-400">
-                    {title}
-                  </h3>
-                  <p class="text-sm text-primary-600 dark:text-primary-400">
-                    {authors.join(', ')}
-                  </p>
-                </Link>
-              </li>
-            ))
-          }
-        </ul>
-      </Section>
-    </div>
-  </SimpleLayout>
+	<Head
+		description={METADATA.description}
+		slot='metadata'
+		title={METADATA.title}
+	/>
+	<SimpleLayout intro={CONTENT.intro} slot='content' title={CONTENT.title}>
+		<div class='space-y-20'>
+			<Section id='current' title={t('bookshelf.section.one')}>
+				<ul class='space-y-16' role='list'>
+					{
+						currentBooks.map(({ data }) => (
+							<li class='group relative flex flex-col items-start'>
+								<Link
+									aria-label='// TODO'
+									class='relative z-10 h-48 w-32 flex-shrink-0 overflow-hidden rounded-lg shadow-md group-hover:shadow-lg'
+									href={data.url}
+									rel='noopener noreferrer'
+									target='_blank'
+								>
+									<img
+										alt={data.title}
+										class='h-full w-full object-cover'
+										height={40}
+										src={data.image}
+										width={32}
+									/>
+								</Link>
+								<h3 class='relative z-10 mt-2 text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100'>
+									<Link
+										aria-label='// TODO'
+										class='relative z-10 text-base font-semibold tracking-tight text-primary-800 dark:text-primary-100'
+										href={data.url}
+										rel='noopener noreferrer'
+										target='_blank'
+									>
+										{data.title}
+									</Link>
+								</h3>
+								<p class='relative z-10 mt-2 text-sm text-primary-600 dark:text-primary-400'>
+									{data.authors.join(', ')}
+								</p>
+							</li>
+						))
+					}
+				</ul>
+			</Section>
+			<Section id='fiction' title={t('bookshelf.section.two')}>
+				<ul class='space-y-8' role='list'>
+					{
+						fictionBooks.map(({ data }) => (
+							<li class='group rounded-md p-2 transition duration-300 ease-in-out hover:bg-primary-100 hover:shadow-md dark:hover:bg-primary-700/40'>
+								<Link
+									aria-label='// TODO'
+									class='flex flex-col space-y-1 text-base tracking-tight text-primary-800 dark:text-primary-100'
+									href={data.url}
+									rel='noopener noreferrer'
+									target='_blank'
+								>
+									<h3 class='text-base font-semibold tracking-tight text-primary-800 transition duration-300 ease-in-out group-hover:text-accent-600 dark:text-primary-100 dark:group-hover:text-accent-400'>
+										{data.title}
+									</h3>
+									<p class='text-sm text-primary-600 dark:text-primary-400'>
+										{data.authors.join(', ')}
+									</p>
+								</Link>
+							</li>
+						))
+					}
+				</ul>
+			</Section>
+			<Section id='finance' title={t('bookshelf.section.three')}>
+				<ul class='space-y-8' role='list'>
+					{
+						financeBooks.map(({ data }) => (
+							<li class='group rounded-md p-2 transition duration-300 ease-in-out hover:bg-primary-100 hover:shadow-md dark:hover:bg-primary-700/40'>
+								<Link
+									aria-label='// TODO'
+									class='flex flex-col space-y-1 text-base tracking-tight text-primary-800 dark:text-primary-100'
+									href={data.url}
+									rel='noopener noreferrer'
+									target='_blank'
+								>
+									<h3 class='text-base font-semibold tracking-tight text-primary-800 transition duration-300 ease-in-out group-hover:text-accent-600 dark:text-primary-100 dark:group-hover:text-accent-400'>
+										{data.title}
+									</h3>
+									<p class='text-sm text-primary-600 dark:text-primary-400'>
+										{data.authors.join(', ')}
+									</p>
+								</Link>
+							</li>
+						))
+					}
+				</ul>
+			</Section>
+			<Section id='relationship' title={t('bookshelf.section.four')}>
+				<ul class='space-y-8' role='list'>
+					{
+						marriageBooks.map(({ data }) => (
+							<li class='group rounded-md p-2 transition duration-300 ease-in-out hover:bg-primary-100 hover:shadow-md dark:hover:bg-primary-700/40'>
+								<Link
+									aria-label='// TODO'
+									class='flex flex-col space-y-1 text-base tracking-tight text-primary-800 dark:text-primary-100'
+									href={data.url}
+									rel='noopener noreferrer'
+									target='_blank'
+								>
+									<h3 class='text-base font-semibold tracking-tight text-primary-800 transition duration-300 ease-in-out group-hover:text-accent-600 dark:text-primary-100 dark:group-hover:text-accent-400'>
+										{data.title}
+									</h3>
+									<p class='text-sm text-primary-600 dark:text-primary-400'>
+										{data.authors.join(', ')}
+									</p>
+								</Link>
+							</li>
+						))
+					}
+				</ul>
+			</Section>
+			<Section id='self-help' title={t('bookshelf.section.five')}>
+				<ul class='space-y-8' role='list'>
+					{
+						selfHelpBooks.map(({ data }) => (
+							<li class='group rounded-md p-2 transition duration-300 ease-in-out hover:bg-primary-100 hover:shadow-md dark:hover:bg-primary-700/40'>
+								<Link
+									aria-label='// TODO'
+									class='flex flex-col space-y-1 text-base tracking-tight text-primary-800 dark:text-primary-100'
+									href={data.url}
+									rel='noopener noreferrer'
+									target='_blank'
+								>
+									<h3 class='text-base font-semibold tracking-tight text-primary-800 transition duration-300 ease-in-out group-hover:text-accent-600 dark:text-primary-100 dark:group-hover:text-accent-400'>
+										{data.title}
+									</h3>
+									<p class='text-sm text-primary-600 dark:text-primary-400'>
+										{data.authors.join(', ')}
+									</p>
+								</Link>
+							</li>
+						))
+					}
+				</ul>
+			</Section>
+			<Section id='technology' title={t('bookshelf.section.six')}>
+				<ul class='space-y-8' role='list'>
+					{
+						technologyBooks.map(({ data }) => (
+							<li class='group rounded-md p-2 transition duration-300 ease-in-out hover:bg-primary-100 hover:shadow-md dark:hover:bg-primary-700/40'>
+								<Link
+									aria-label='// TODO'
+									class='flex flex-col space-y-1 text-base tracking-tight text-primary-800 dark:text-primary-100'
+									href={data.url}
+									rel='noopener noreferrer'
+									target='_blank'
+								>
+									<h3 class='text-base font-semibold tracking-tight text-primary-800 transition duration-300 ease-in-out group-hover:text-accent-600 dark:text-primary-100 dark:group-hover:text-accent-400'>
+										{data.title}
+									</h3>
+									<p class='text-sm text-primary-600 dark:text-primary-400'>
+										{data.authors.join(', ')}
+									</p>
+								</Link>
+							</li>
+						))
+					}
+				</ul>
+			</Section>
+		</div>
+	</SimpleLayout>
 </BaseLayout>
