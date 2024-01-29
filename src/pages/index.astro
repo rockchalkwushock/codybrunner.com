@@ -30,7 +30,7 @@ const t = useTranslations(lang)
 		>
 			<div class='max-w-2xl'>
 				<h1
-					class='font-display text-4xl font-bold tracking-tight text-primary-900 sm:text-5xl dark:text-primary-100'
+					class='font-display text-4xl font-bold tracking-tight text-primary-900 dark:text-primary-100 sm:text-5xl'
 				>
 					{t('home.hero.heading')}
 				</h1>
@@ -70,6 +70,12 @@ const t = useTranslations(lang)
 			<!-- Left Column -->
 			<div class='flex flex-col gap-16'>
 				<Article
+					date='January 29, 2024'
+					description='In my journey into learning Go I have been learning how to use Makefiles within my Go projects. I had never worked with makefiles before and the post will touch on how to use them.'
+					href='https://blog.codybrunner.com/2024/working-with-makefiles'
+					title='Working with Makefiles'
+				/>
+				<Article
 					date='January 22, 2024'
 					description='The chaos that is the JavaScript/TypeScript ecosystem has become too much to bear in my opinion. I have become unhappy with my direction in the tech industry and in late 2023 made the decision to begin teaching myself Go and pivoting my career out of the Frontend & away from JavaScript.'
 					href='https://blog.codybrunner.com/2024/going-to-the-gopher-side'
@@ -80,12 +86,6 @@ const t = useTranslations(lang)
 					description='In 2023 I began making the move from NextJS to Astro for my personal website and blog. This is my experience with the transition.'
 					href='https://blog.codybrunner.com/2024/from-nextjs-to-astro/'
 					title='From NextJS to Astro'
-				/>
-				<Article
-					date='January 08, 2024'
-					description="In November of 2023 I traveled to Salento, Colombia for the adventure of a lifetime, climbing and summiting Colombia's second highest peak, Nevado del Tolima."
-					href='https://blog.codybrunner.com/2024/climbing-the-mountain/'
-					title='Climbing the Mountain'
 				/>
 			</div>
 			<!-- Right Column -->
