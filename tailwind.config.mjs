@@ -34,8 +34,8 @@ export default {
         wiggle: 'wiggle 1s ease-in-out infinite',
       },
       fontFamily: {
-        display: ['Playfair Display Variable', 'sans-serif'],
-        sans: ['Poppins', 'sans-serif'],
+        display: ['var(--font-play)'],
+        sans: ['var(--font-poppins)'],
       },
       keyframes: {
         wiggle: {
