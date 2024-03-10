@@ -7,7 +7,7 @@ export async function GET(context) {
 		customData: `<language>en-us</language>`,
 		// `<description>` field in output xml
 		description:
-			"Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at Bitcoin IRA, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",
+			"Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at WAO Holdings, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",
 		// Array of `<item>`s in output xml
 		// See "Generating items" section for examples using content collections and glob imports
 		items: [],
