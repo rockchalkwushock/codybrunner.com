@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
 	"background_color": "#22d3ee",
-	"description": "Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at Bitcoin IRA, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",
+	"description": "Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at WAO Holdings, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",
 	"dir": "ltr",
 	"display": "standalone",
 	"icons": [
