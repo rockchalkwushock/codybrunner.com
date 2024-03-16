@@ -2,8 +2,7 @@
 import { Image } from 'astro:assets'
 
 // Add fonts
-import '@fontsource-variable/playfair-display'
-import '@fontsource/poppins'
+import { AstroFont } from "astro-font";
 
 // Assets
 import logo from '~/assets/icons/logo.svg'
@@ -35,6 +34,28 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 
 <html lang={lang}>
 	<head>
+		<AstroFont
+		  config={[
+			{
+			  src: [],
+			  preload: false,
+			  name: "Poppins",
+			  display: "swap",
+			  fallback: "sans-serif",
+			  cssVariable: "font-poppins",
+			  googleFontsURL: 'https://fonts.googleapis.com/css2?family=Poppins',
+			},
+			{
+			  src: [],
+			  preload: false,
+			  display: "swap",
+			  fallback: "sans-serif",
+			  name: "Playfair Display",
+			  cssVariable: "font-play",
+			  googleFontsURL: 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900',
+			},
+		  ]}
+		/>
 		<slot name='metadata' />
 	</head>
 	<body
