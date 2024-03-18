@@ -69,24 +69,41 @@ const t = useTranslations(lang)
 		>
 			<!-- Left Column -->
 			<div class='flex flex-col gap-16'>
-				<Article
-					date='March 11, 2024'
-					description="Writing a simple HTTP Server using only what is provided via the Go Standard Library."
-					href='https://blog.codybrunner.com/2024/writing-a-http-server-with-go'
-					title='Writing a HTTP Server with Go'
-				/>
-				<Article
-					date='March 11, 2024'
-					description="An article to try my best and express who Tommie was and the happiness and love he brought my wife and myself."
-					href='https://blog.codybrunner.com/2024/tommie'
-					title='Tommie'
-				/>
-				<Article
-					date='March 04, 2024'
-					description="San Andrés is a little slice of paradise in the Caribbean owned by Colombia. The perfect place to celebrate all the new gray hairs that came with turning 36 years old."
-					href='https://blog.codybrunner.com/2024/the-city-of-the-seven-color-sea'
-					title='The City of the Seven Color Sea'
-				/>
+				<div class='flex flex-col gap-12'>
+					<h2 class='font-display text-3xl font-bold tracking-tight'>
+						Featured Article
+					</h2>
+					<Article
+						date='March 11, 2024'
+						description='An article to try my best and express who Tommie was and the happiness and love he brought my wife and myself.'
+						href='https://blog.codybrunner.com/2024/tommie'
+						title='Tommie'
+					/>
+				</div>
+				<hr class='border-primary-100 dark:border-primary-700/40' />
+				<div class='flex flex-col gap-12'>
+					<h2 class='font-display text-3xl font-bold tracking-tight'>
+						Latest Articles
+					</h2>
+					<Article
+						date='March 18, 2024'
+						description='That time I ran into issues with my certificates being invalid leading to problems communicating between Fly.io and my Turso database.'
+						href='https://blog.codybrunner.com/2024/certificate-issues-between-fly-and-turso'
+						title='Certificate Issues Between Fly & Turso'
+					/>
+					<Article
+						date='March 11, 2024'
+						description='Writing a simple HTTP Server using only what is provided via the Go Standard Library.'
+						href='https://blog.codybrunner.com/2024/writing-a-http-server-with-go'
+						title='Writing a HTTP Server with Go'
+					/>
+					<Article
+						date='March 04, 2024'
+						description='San Andrés is a little slice of paradise in the Caribbean owned by Colombia. The perfect place to celebrate all the new gray hairs that came with turning 36 years old.'
+						href='https://blog.codybrunner.com/2024/the-city-of-the-seven-color-sea'
+						title='The City of the Seven Color Sea'
+					/>
+				</div>
 			</div>
 			<!-- Right Column -->
 			<div class='space-y-10 lg:pl-16 xl:pl-24'>
