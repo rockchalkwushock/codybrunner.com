@@ -30,7 +30,7 @@
 		"@fontsource-variable/playfair-display": "5.0.19",
 		"@fontsource/poppins": "5.0.8",
 		"@headlessui/react": "1.7.18",
-		"astro": "4.2.6",
+		"astro": "4.6.1",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"sharp": "0.33.2",
