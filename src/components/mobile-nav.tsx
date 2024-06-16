@@ -121,7 +121,7 @@ export function MobileNav({
 										{t('nav.articles')}
 									</Popover.Button>
 								</li>
-								<li>
+								{/* <li>
 									<Popover.Button
 										aria-label={t('nav.bookshelf.label')}
 										as='a'
@@ -134,7 +134,7 @@ export function MobileNav({
 									>
 										{t('nav.bookshelf')}
 									</Popover.Button>
-								</li>
+								</li> */}
 								<li>
 									<Popover.Button
 										aria-label={t('nav.meet.label')}
@@ -161,7 +161,7 @@ export function MobileNav({
 										{t('nav.projects')}
 									</Popover.Button>
 								</li>
-								<li>
+								{/* <li>
 									<Popover.Button
 										aria-label={t('nav.uses.label')}
 										as='a'
@@ -174,7 +174,7 @@ export function MobileNav({
 									>
 										{t('nav.uses')}
 									</Popover.Button>
-								</li>
+								</li> */}
 							</ul>
 						</nav>
 						<div className='flex items-center justify-end'>
