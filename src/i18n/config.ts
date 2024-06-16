@@ -112,7 +112,6 @@ export const translations: Schema = {
 		'socials.coffee': 'Follow me on Buy Me a Coffee',
 		'socials.github': 'Follow me on GitHub',
 		'socials.linkedin': 'Follow me on LinkedIn',
-		'socials.twitter': 'Follow me on Twitter',
 		'uses.content.intro':
 			'I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff.',
 		'uses.content.section-one.title': 'Workstation',
@@ -210,7 +209,6 @@ export const translations: Schema = {
 		'socials.coffee': 'Sígueme en Buy Me a Coffee',
 		'socials.github': 'Sígueme en GitHub',
 		'socials.linkedin': 'Sígueme en LinkedIn',
-		'socials.twitter': 'Sígueme en Twitter',
 		'uses.content.intro':
 			'Me preguntan mucho sobre las cosas que utilizo para crear software, mantenerme productivo o comprar para engañarme a mí mismo haciéndome creer que estoy siendo productivo cuando en realidad sólo estoy procrastinando. Aquí tienes una lista de mis cosas favoritas.',
 		'uses.content.section-one.title': 'Estación de trabajo',

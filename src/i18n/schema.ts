@@ -75,7 +75,6 @@ const languageSchema = z.strictObject({
 	'socials.coffee': z.string(),
 	'socials.github': z.string(),
 	'socials.linkedin': z.string(),
-	'socials.twitter': z.string(),
 	'uses.content.intro': z.string(),
 	// TODO: Add 'uses.content.XXX....'
 	'uses.content.section-one.title': z.string(),
