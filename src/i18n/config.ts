@@ -61,7 +61,7 @@ export const translations: Schema = {
 		'home.articles.alt': 'No Articles At This Time',
 		'home.articles.heading': 'No Articles At This Time',
 		'home.hero.description':
-			"Hey! I'm Cody, a Christian, US Navy Veteran, Jayhawk, and an American expat living outside of Bogotá, Colombia. I work as a Senior Frontend Developer at WAO Fintech, where we are pioneering the world's first and most trusted crypto IRA platform. When I am not working I can be found in the gym, teaching myself guitar, exploring Colombia, or smoking some brisket or ribs.",
+			"Hey! I'm Cody, a Christian, US Navy Veteran, Jayhawk, and an American expat living outside of Bogotá, Colombia. I am currently seeking a new and exciting opportunity where I can leverage my skills and experience. In the meantime, when I'm not exploring new professional avenues, you can find me in the gym, teaching myself guitar, exploring Colombia, or smoking some brisket or ribs.",
 		'home.hero.heading':
 			'Software developer, veteran, and smoker of the meats.',
 		'home.profile.alt': 'Image of Cody Brunner',
