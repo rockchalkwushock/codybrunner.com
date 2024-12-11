@@ -61,7 +61,7 @@ export const translations: Schema = {
 		'home.articles.alt': 'No Articles At This Time',
 		'home.articles.heading': 'No Articles At This Time',
 		'home.hero.description':
-			"Hey! I'm Cody, a Christian, US Navy Veteran, Jayhawk, and an American expat living outside of Bogotá, Colombia. I currently work as a Senior Software Developer for Wazoku; where we are building the future of total innovation platforms. In my free time, you can find me in the gym, teaching myself guitar, exploring Colombia, or smoking some brisket or ribs.",
+			"Hey! I'm Cody, a Christian, US Navy Veteran, Jayhawk, and an American expat. I am currently searching for my next role in the industry. In my free time, you can find me in the gym, teaching myself guitar, or smoking some brisket or ribs.",
 		'home.hero.heading':
 			'Software developer, veteran, and smoker of the meats.',
 		'home.profile.alt': 'Image of Cody Brunner',
