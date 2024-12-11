@@ -97,7 +97,7 @@ export function MobileNav({
 										{t('nav.home')}
 									</Popover.Button>
 								</li>
-								<li>
+								{/* <li>
 									<Popover.Button
 										aria-label={t('nav.about.label')}
 										as='a'
@@ -110,7 +110,7 @@ export function MobileNav({
 									>
 										{t('nav.about')}
 									</Popover.Button>
-								</li>
+								</li> */}
 								<li>
 									<Popover.Button
 										aria-label={t('nav.articles.label')}
@@ -135,7 +135,7 @@ export function MobileNav({
 										{t('nav.bookshelf')}
 									</Popover.Button>
 								</li> */}
-								<li>
+								{/* <li>
 									<Popover.Button
 										aria-label={t('nav.meet.label')}
 										as='a'
@@ -146,7 +146,7 @@ export function MobileNav({
 									>
 										{t('nav.meet')}
 									</Popover.Button>
-								</li>
+								</li> */}
 								<li>
 									<Popover.Button
 										aria-label={t('nav.projects.label')}
