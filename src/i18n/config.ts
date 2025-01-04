@@ -39,7 +39,7 @@ export const translations: Schema = {
 		'about.content.title':
 			'I’m Cody Brunner. I live in Bogotá, Colombia, where I work on software of the future.',
 		'about.metadata.description':
-			'Cody Brunner is an American expat living in Bogotá, Colombia. He served in the US Navy and one tour in Afghanistan. He is a Senior Frontend Developer at WAO Fintech, the world’s first and most trusted crypto IRA platform. He primarily works with GraphQL, ReactJS, and TypeScript. He is also a contributor to the open source community. Other technologies he works with include Astro, Elixir, Golang, NextJS, Phoenix, Python, Qwik, ReactJS, Rust, SolidJS, tRPC, and TypeScript.',
+			'Cody is a Christian, USN Veteran, Jayhawk, and an American expat living outside of Bogotá, Colombia. He is currently looking for new opportunities in the tech industry.',
 		'about.metadata.imageAlt': 'Cody Brunner in Paipa, Colombia',
 		'about.metadata.title': 'About',
 		'bookshelf.content.intro':
@@ -111,6 +111,8 @@ export const translations: Schema = {
 		'projects.metadata.title': 'Portfolio',
 		'socials.github': 'Follow me on GitHub',
 		'socials.linkedin': 'Follow me on LinkedIn',
+		'socials.code-crafters': 'Follow me on Code Crafters',
+		'socials.upwork': 'Follow me on Upwork',
 		'uses.content.intro':
 			'I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff.',
 		'uses.content.section-one.title': 'Workstation',
@@ -207,6 +209,8 @@ export const translations: Schema = {
 		'projects.metadata.title': 'Portafolio',
 		'socials.github': 'Sígueme en GitHub',
 		'socials.linkedin': 'Sígueme en LinkedIn',
+		'socials.code-crafters': 'Sígueme en Code Crafters',
+		'socials.upwork': 'Sígueme en Upwork',
 		'uses.content.intro':
 			'Me preguntan mucho sobre las cosas que utilizo para crear software, mantenerme productivo o comprar para engañarme a mí mismo haciéndome creer que estoy siendo productivo cuando en realidad sólo estoy procrastinando. Aquí tienes una lista de mis cosas favoritas.',
 		'uses.content.section-one.title': 'Estación de trabajo',
