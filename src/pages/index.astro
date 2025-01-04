@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets'
-// Assest
+// Assets
 import me from '~/assets/cody-brunner-go.jpeg'
 import meDark from '~/assets/cody-brunner-go-dark.jpeg'
 // Components
@@ -137,7 +137,6 @@ const t = useTranslations(lang)
 					<Link
 						aria-label={t('home.resume.button.label')}
 						class='group mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-primary-50 px-3 py-2 text-sm font-medium text-primary-900 outline-offset-2 transition hover:bg-accent-100/50 hover:text-accent-600 active:bg-primary-100 active:text-primary-900/60 active:transition-none dark:bg-primary-800/50 dark:text-primary-300 dark:hover:bg-accent-800 dark:hover:text-accent-50 dark:active:bg-primary-800/50 dark:active:text-primary-50/70'
-						data-astro-reload
 						href='/resume.pdf'
 						rel='noopener noreferrer'
 						target='_blank'
