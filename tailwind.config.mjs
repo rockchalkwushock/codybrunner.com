@@ -1,6 +1,6 @@
-import type { Config } from 'tailwindcss'
 import { cyan, slate, black, white } from 'tailwindcss/colors'
 
+/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./src/**/*.{astro,tsx}'],
   darkMode: 'class',
@@ -46,4 +46,4 @@ export default {
       },
     },
   },
-} satisfies Config
+}
