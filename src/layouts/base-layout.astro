@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions'
 import { Image } from 'astro:assets'
 
 // Add fonts
@@ -12,7 +13,6 @@ import logo from '~/assets/icons/logo.svg'
 import Container from '~/components/container.astro'
 import InnerContainer from '~/components/inner-container.astro'
 import Link from '~/components/link.astro'
-import LocalePicker from '~/components/locale-picker.astro'
 import { MobileNav } from '~/components/mobile-nav'
 import OuterContainer from '~/components/outer-container.astro'
 import { ThemeToggle } from '~/components/theme-toggle'
@@ -21,20 +21,59 @@ import { ThemeToggle } from '~/components/theme-toggle'
 import { getLangFromUrl, useTranslatedPath, useTranslations } from '~/i18n'
 
 // Utils
-import { cn, enableTranslationSupport } from '~/utils/helpers'
-
-const isI18NEnabled = enableTranslationSupport()
+import { cn } from '~/utils/helpers'
+import ThemeScript from '~/components/scripts/theme-script.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 const translatedPath = useTranslatedPath(lang)
 const { pathname } = Astro.url
 const isActive = (path: string) => Astro.url.pathname.startsWith(path)
-const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
+const isHomePage = Astro.url.pathname === '/'
 ---
 
 <html lang={lang}>
 	<head>
+		<!-- Base Metadata -->
+		<meta charset='utf-8' />
+		<meta name='viewport' content='width=device-width, initial-scale=1' />
+		<meta name='generator' content={Astro.generator} />
+		<!-- Manifest -->
+		<link href='/manifest.json' rel='manifest' />
+		<!-- Sitemap -->
+		<link href='/sitemap-index.xml' rel='sitemap' />
+		<!-- RSS Feed -->
+		<link
+			href='https://blog.codybrunner.com/rss.xml'
+			rel='alternate'
+			title='RSS Feed | blog.codybrunner.com'
+			type='application/rss+xml'
+		/>
+		<!-- Bots -->
+		<meta name='robots' content='follow, index' />
+		<!-- Favicons -->
+		<link rel='icon' type='image/svg+xml' href='/favicons/favicon.ico' />
+		<link
+			rel='apple-touch-icon'
+			sizes='180x180'
+			href='/favicons/apple-touch-icon.png'
+		/>
+		<link
+			rel='icon'
+			type='image/png'
+			sizes='32x32'
+			href='/favicons/favicon-32x32.png'
+		/>
+		<link
+			rel='icon'
+			type='image/png'
+			sizes='16x16'
+			href='/favicons/favicon-16x16.png'
+		/>
+		<!-- Astro View Transitions -->
+		<ClientRouter />
+		<!-- Custom Scripts -->
+		<ThemeScript />
 		<slot name='metadata' />
 	</head>
 	<body
@@ -166,36 +205,6 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 										</li>
 										<li class='relative block px-3 py-2 transition'>
 											<Link
-												aria-label={t('nav.bookshelf.label')}
-												class={cn(
-													'',
-													isActive('/bookshelf')
-														? 'text-accent-500 dark:text-accent-400'
-														: 'hover:text-accent-500 dark:hover:text-accent-400'
-												)}
-												href={translatedPath('/bookshelf')}
-											>
-												{t('nav.bookshelf')}
-												{
-													isActive('/bookshelf') && (
-														<span class='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-accent-500 via-accent-500/40 to-accent-500 dark:from-accent-400 dark:via-accent-400/40 dark:to-accent-400' />
-													)
-												}
-											</Link>
-										</li>
-										<li class='relative block px-3 py-2 transition'>
-											<Link
-												aria-label={t('nav.meet.label')}
-												class='hover:text-accent-500 dark:hover:text-accent-400'
-												href='https://appt.link/cody-brunner-dev/video-call'
-												rel='noopener noreferrer'
-												target='_blank'
-											>
-												{t('nav.meet')}
-											</Link>
-										</li>
-										<li class='relative block px-3 py-2 transition'>
-											<Link
 												aria-label={t('nav.projects.label')}
 												class={cn(
 													'',
@@ -213,32 +222,12 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 												}
 											</Link>
 										</li>
-										<li class='relative block px-3 py-2 transition'>
-											<Link
-												aria-label={t('nav.uses.label')}
-												class={cn(
-													'',
-													isActive('/uses')
-														? 'text-accent-500 dark:text-accent-400'
-														: 'hover:text-accent-500 dark:hover:text-accent-400'
-												)}
-												href={translatedPath('/uses')}
-											>
-												{t('nav.uses')}
-												{
-													isActive('/uses') && (
-														<span class='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-accent-500 via-accent-500/40 to-accent-500 dark:from-accent-400 dark:via-accent-400/40 dark:to-accent-400' />
-													)
-												}
-											</Link>
-										</li>
 									</ul>
 								</nav>
 							</div>
 							<div
 								class='hidden md:flex md:flex-1 md:items-center md:justify-end'
 							>
-								{isI18NEnabled && <LocalePicker class='mr-3' />}
 								<ThemeToggle client:only='react' />
 							</div>
 						</div>
@@ -300,31 +289,6 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 										</li>
 										<li>
 											<Link
-												aria-label={t('nav.bookshelf.label')}
-												class={cn(
-													'',
-													isActive('/bookshelf')
-														? 'text-accent-500 dark:text-accent-400'
-														: 'hover:text-accent-500 dark:hover:text-accent-400'
-												)}
-												href={translatedPath('/bookshelf')}
-											>
-												{t('nav.bookshelf')}
-											</Link>
-										</li>
-										<li>
-											<Link
-												aria-label={t('nav.meet.label')}
-												class='hover:text-accent-500 dark:hover:text-accent-400'
-												href='https://appt.link/cody-brunner-dev/video-call'
-												rel='noopener noreferrer'
-												target='_blank'
-											>
-												{t('nav.meet')}
-											</Link>
-										</li>
-										<li>
-											<Link
 												aria-label={t('nav.projects.label')}
 												class={cn(
 													'',
@@ -337,20 +301,6 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 												{t('nav.projects')}
 											</Link>
 										</li>
-										<li>
-											<Link
-												aria-label={t('nav.uses.label')}
-												class={cn(
-													'',
-													isActive('/uses')
-														? 'text-accent-500 dark:text-accent-400'
-														: 'hover:text-accent-500 dark:hover:text-accent-400'
-												)}
-												href={translatedPath('/uses')}
-											>
-												{t('nav.uses')}
-											</Link>
-										</li>
 									</ul>
 									<div class='flex flex-col gap-4'>
 										<div
@@ -358,13 +308,13 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 										>
 											<div class='flex items-center space-x-1'>
 												<span
-													class='text-center text-sm text-primary-400 sm:text-right dark:text-primary-500'
+													class='text-center text-sm text-primary-400 dark:text-primary-500 sm:text-right'
 													>© {t('footer.copyright')}</span
 												>
 											</div>
 											<Link
 												aria-label={t('footer.rights')}
-												class='text-center text-sm text-primary-400 hover:text-accent-500 sm:text-right dark:text-primary-500 dark:hover:text-accent-400'
+												class='text-center text-sm text-primary-400 hover:text-accent-500 dark:text-primary-500 dark:hover:text-accent-400 sm:text-right'
 												href='http://creativecommons.org/licenses/by-nc-nd/4.0'
 												rel='noopener noreferrer'
 												target='_blank'
@@ -382,7 +332,6 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 									</div>
 								</div>
 								<div class='flex items-center justify-between md:justify-end'>
-									{isI18NEnabled && <LocalePicker class='mr-3' />}
 									<ThemeToggle client:only='react' />
 								</div>
 							</div>
@@ -391,27 +340,5 @@ const isHomePage = Astro.url.pathname === '/' || Astro.url.pathname === '/es/'
 				</OuterContainer>
 			</footer>
 		</div>
-		<!-- Themeing Script -->
-		<script is:inline>
-			const theme = (() => {
-				if (
-					typeof localStorage !== 'undefined' &&
-					localStorage.getItem('theme')
-				) {
-					return localStorage.getItem('theme')
-				}
-				if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-					return 'dark'
-				}
-				return 'light'
-			})()
-
-			if (theme === 'light') {
-				document.documentElement.classList.remove('dark')
-			} else {
-				document.documentElement.classList.add('dark')
-			}
-			window.localStorage.setItem('theme', theme)
-		</script>
 	</body>
 </html>

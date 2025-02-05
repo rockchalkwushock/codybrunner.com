@@ -1,0 +1,123 @@
+---
+import type { JSONLD } from '~/@types'
+export interface Props extends JSONLD {
+	occupation: {
+		description: string
+		employer: string
+		title: string
+	}
+	personDescription: string
+	siteDescription: string
+	siteName: string
+	skills: string[]
+	socials: string[]
+	universityName: string
+}
+const CONSTANTS = {
+	author: 'Cody Brunner',
+}
+const {
+	description,
+	occupation,
+	personDescription,
+	siteDescription,
+	siteName,
+	skills,
+	socials,
+	title,
+	universityName,
+	url,
+} = Astro.props
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Person',
+			'@id': `${url.origin}#Person`,
+			alumniOf: {
+				'@type': 'EducationalOrganization',
+				name: universityName,
+			},
+			description: personDescription,
+			hasOccupation: {
+				'@type': 'Occupation',
+				name: occupation.title,
+				description: occupation.description,
+			},
+			image: `${url.origin}/favicons/logo.jpg`,
+			jobTitle: occupation.title,
+			knowsAbout: skills,
+			memberOf: {
+				'@type': 'Organization',
+				name: 'US Navy',
+			},
+			name: CONSTANTS.author,
+			nationality: 'American',
+			sameAs: socials,
+			worksFor: {
+				'@type': 'Organization',
+				name: occupation.employer,
+				// url: '// TODO'
+			},
+			url: `${url.origin}/about`,
+		},
+		{
+			'@type': 'WebSite',
+			'@id': `${url.origin}#WebSite`,
+			description: siteDescription,
+			name: siteName,
+			publisher: {
+				'@id': `${url.origin}#Person`,
+			},
+			url: `${url.origin}`,
+		},
+		{
+			'@type': 'WebPage',
+			'@id': `${url.origin}/about#WebPage`,
+			about: {
+				'@id': `${url.origin}#Person`,
+			},
+			breadcrumb: {
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{
+						'@type': 'ListItem',
+						item: url.origin,
+						name: 'Home',
+						position: 1,
+					},
+					{
+						'@type': 'ListItem',
+						item: `${url.origin}/about`,
+						name: 'About',
+						position: 2,
+					},
+					{
+						'@type': 'ListItem',
+						item: 'https://blog.codybrunner.com',
+						name: 'Articles',
+						position: 3,
+					},
+					{
+						'@type': 'ListItem',
+						item: `${url.origin}/projects`,
+						name: 'Projects',
+						position: 4,
+					},
+				],
+			},
+			description,
+			isPartOf: {
+				'@id': `${url.origin}#WebSite`,
+			},
+			name: title,
+			url: `${url.origin}/about`,
+		},
+	],
+}
+
+const schemaString = JSON.stringify(schema, null, 2)
+---
+
+<script is:inline set:html={schemaString} type='application/ld+json' />

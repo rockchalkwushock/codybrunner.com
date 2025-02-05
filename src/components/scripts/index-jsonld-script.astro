@@ -1,0 +1,153 @@
+---
+import type { JSONLD } from '~/@types'
+export interface Props extends JSONLD {
+	articles: {
+		datePublished: string
+		description: string
+		headline: string
+		url: string
+	}[]
+	blogInformation: {
+		description: string
+		title: string
+		url: string
+	}
+	hobbies: string[]
+	occupation: {
+		description: string
+		employer: string
+		title: string
+	}
+	skills: string[]
+	socials: string[]
+	universityName: string
+}
+const CONSTANTS = {
+	author: 'Cody Brunner',
+}
+const {
+	articles,
+	blogInformation,
+	description,
+	hobbies,
+	occupation,
+	skills,
+	socials,
+	title,
+	universityName,
+	url,
+} = Astro.props
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Person',
+			'@id': `${url.origin}#Person`,
+			name: CONSTANTS.author,
+			url,
+			image: `${url.origin}/favicons/logo.jpg`,
+			sameAs: socials,
+			jobTitle: title,
+			description,
+			knowsAbout: skills,
+			worksFor: {
+				'@type': 'Organization',
+				name: occupation.employer,
+				// url: '// TODO',
+			},
+			alumniOf: {
+				'@type': 'EducationalOrganization',
+				name: universityName,
+			},
+			hasOccupation: {
+				'@type': 'Occupation',
+				name: occupation.title,
+				description: occupation.description,
+			},
+			memberOf: {
+				'@type': 'Organization',
+				name: 'US Navy',
+			},
+			hobby: hobbies,
+		},
+		{
+			'@type': 'WebSite',
+			'@id': `${url}#WebSite`,
+			name: CONSTANTS.author,
+			url,
+			publisher: {
+				'@id': `${url.origin}#Person`,
+			},
+		},
+		{
+			'@type': 'WebPage',
+			'@id': `${url.origin}#WebPage`,
+			url: url.origin,
+			name: title,
+			description,
+			isPartOf: {
+				'@id': `${url.origin}#WebSite`,
+			},
+			about: {
+				'@id': `${url.origin}#Person`,
+			},
+			breadcrumb: {
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{
+						'@type': 'ListItem',
+						position: 1,
+						name: 'Home',
+						item: url.origin,
+					},
+					{
+						'@type': 'ListItem',
+						position: 2,
+						name: 'About',
+						item: `${url}/about`,
+					},
+					{
+						'@type': 'ListItem',
+						position: 3,
+						name: 'Articles',
+						item: 'https://blog.codybrunner.com',
+					},
+					{
+						'@type': 'ListItem',
+						position: 4,
+						name: 'Projects',
+						item: `${url}/projects`,
+					},
+				],
+			},
+		},
+		{
+			'@type': 'Blog',
+			'@id': `${blogInformation.url}#Blog`,
+			url: blogInformation.url,
+			name: blogInformation.title,
+			description: blogInformation.description,
+			publisher: {
+				'@id': `${url.origin}#Person`,
+			},
+			blogPost: articles.map(
+				({ datePublished, description, headline, url: postURL }) => ({
+					'@type': 'BlogPosting',
+					author: {
+						'@id': `${url.origin}#Person`,
+					},
+					datePublished,
+					description,
+					headline,
+					url: postURL,
+				})
+			),
+		},
+	],
+}
+
+const schemaString = JSON.stringify(schema, null, 2)
+---
+
+<script is:inline set:html={schemaString} type='application/ld+json' />

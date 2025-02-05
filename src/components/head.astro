@@ -1,11 +1,11 @@
 ---
-import { ViewTransitions } from 'astro:transitions'
-
-export type Props = {
-	readonly description?: string
-	readonly image?: URL
-	readonly imageAlt?: string
-	readonly title?: string
+export interface Props {
+	readonly data?: {
+		readonly description?: string
+		readonly image?: URL | string | undefined
+		readonly imageAlt?: string
+		readonly title?: string
+	}
 }
 
 const CONSTANTS = {
@@ -14,19 +14,15 @@ const CONSTANTS = {
 } as const
 
 const {
-	description = "Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at WAO Fintech, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",
+	description = "Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Christian, USN Veteran, Jayhawk, and an American expat living outside of Bogotá, Colombia. He is currently looking for new opportunities in the tech industry. Explore his journey and insights in software development.",
 	image = new URL('/favicons/logo.jpg', Astro.url),
 	imageAlt = 'Cody Brunner',
 	title = 'Home',
-} = Astro.props
+} = Astro.props.data ?? {}
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
 const siteTitle = `${title} | codybrunner.com`
 ---
-
-<meta charset='utf-8' />
-<meta name='viewport' content='width=device-width, initial-scale=1' />
-<meta name='generator' content={Astro.generator} />
 
 <!-- Primary Meta Tags -->
 <meta name='author' content={CONSTANTS.author} />
@@ -34,22 +30,8 @@ const siteTitle = `${title} | codybrunner.com`
 <meta name='title' content={siteTitle} />
 <title>{siteTitle}</title>
 
-<!-- Bots -->
-<meta name='robots' content='follow, index' />
-
-<!-- Sitemap -->
-<link href='/sitemap-index.xml' rel='sitemap' />
-
 <!-- Canonical URL -->
 <link href={canonicalURL} rel='canonical' />
-
-<!-- RSS Feed -->
-<link
-	href='https://blog.codybrunner.com/rss.xml'
-	rel='alternate'
-	title='RSS Feed | blog.codybrunner.com'
-	type='application/rss+xml'
-/>
 
 <!-- Open Graph / Facebook -->
 <meta property='og:description' content={description} />
@@ -74,25 +56,4 @@ const siteTitle = `${title} | codybrunner.com`
 <meta property='twitter:title' content={siteTitle} />
 <meta property='twitter:url' content={Astro.url} />
 
-<!-- Favicons -->
-<link rel='icon' type='image/svg+xml' href='/favicons/favicon.ico' />
-<link
-	rel='apple-touch-icon'
-	sizes='180x180'
-	href='/favicons/apple-touch-icon.png'
-/>
-<link
-	rel='icon'
-	type='image/png'
-	sizes='32x32'
-	href='/favicons/favicon-32x32.png'
-/>
-<link
-	rel='icon'
-	type='image/png'
-	sizes='16x16'
-	href='/favicons/favicon-16x16.png'
-/>
-<link href='/manifest.json' rel='manifest' />
-
-<ViewTransitions />
+<slot />

@@ -1,23 +1,6 @@
 import { defineCollection, z, type CollectionEntry } from 'astro:content'
 
 export const collections = {
-	bookshelf: defineCollection({
-		schema: z.object({
-			authors: z.array(z.string()).default([]),
-			category: z.enum([
-				'current',
-				'fiction',
-				'finance',
-				'marriage',
-				'self-help',
-				'technology',
-			] as const),
-			image: z.string().optional(),
-			title: z.string(),
-			url: z.string().url(),
-		}),
-		type: 'data',
-	}),
 	jobs: defineCollection({
 		schema: ({ image }) =>
 			z.object({
@@ -40,15 +23,6 @@ export const collections = {
 				logo: image(),
 				name: z.string(),
 			}),
-		type: 'data',
-	}),
-	uses: defineCollection({
-		schema: z.object({
-			category: z.enum(['dev-tools', 'productivity', 'work-station'] as const),
-			description: z.string(),
-			href: z.string().url(),
-			title: z.string(),
-		}),
 		type: 'data',
 	}),
 }

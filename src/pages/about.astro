@@ -10,66 +10,124 @@ import BaseLayout from '~/layouts/base-layout.astro'
 
 // Translations
 import { getLangFromUrl, useTranslations } from '~/i18n'
+import AboutJsonldScript from '~/components/scripts/about-jsonld-script.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 
 const CONTENT = {
-  content: [
-    t('about.content.paragraph-one'),
-    t('about.content.paragraph-two'),
-    t('about.content.paragraph-three'),
-  ],
-  history:
-    t('about.content.history'),
-  title:
-    t('about.content.title'),
+	content: [
+		t('about.content.paragraph-one'),
+		t('about.content.paragraph-two'),
+		t('about.content.paragraph-three'),
+	],
+	history: t('about.content.history'),
+	title: t('about.content.title'),
 } as const
 
 const METADATA = {
-  description: t('about.metadata.description'),
-  title: t('about.metadata.title'),
+	description: t('about.metadata.description'),
+	title: t('about.metadata.title'),
 } as const
 ---
 
 <BaseLayout>
-  <Head
-    description={METADATA.description}
-    slot="metadata"
-    title={METADATA.title}
-  />
-  <Container class="mt-16 sm:mt-32" slot="content">
-    <div
-      class="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12"
-    >
-      <div class="lg:pl-20">
-        <div class="max-w-xs mx-auto px-2.5 lg:max-w-none">
-          <Image
-            alt="Image of Cody Brunner"
-            class="aspect-auto rotate-3 rounded-2xl bg-primary-100 object-cover shadow-primary-800/30 shadow-2xl dark:shadow-primary-100/20 dark:bg-primary-800"
-            height={300}
-            src={me}
-            width={300}
-          />
-        </div>
-      </div>
-      <div class="lg:order-first lg:row-span-2">
-        <h1
-          class="text-4xl font-display font-bold tracking-tight text-primary-800 dark:text-primary-100 sm:text-5xl"
-        >
-          {CONTENT.title}
-        </h1>
-        <div
-          class="mt-6 space-y-7 text-base text-primary-600 dark:text-primary-400"
-        >
-          {CONTENT.content.map(paragraph => <p>{paragraph}</p>)}
-          <hr class="border-primary-200 dark:border-primary-700/40" />
-          <p class="">{CONTENT.history}</p>
-        </div>
-      </div>
-      <div class="lg:pl-20">
-        <Socials isOnAboutPage />
-      </div>
-    </div>
-  </Container>
+	<Head
+		data={{
+			description: METADATA.description,
+			title: METADATA.title,
+		}}
+		slot='metadata'
+	>
+		<AboutJsonldScript
+			description={METADATA.description}
+			occupation={{
+				description: 'Principal developer and owner of JokinglyBadTech LLC.',
+				employer: 'JokinglyBadTech LLC',
+				title: 'Software Developer',
+			}}
+			personDescription='Cody Brunner is a software developer and blogger based in Bogotá, Colombia. A USN veteran and an American expat, he shares insights into software development, tech, and personal experiences through his website.'
+			siteDescription="Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Christian, USN Veteran, Jayhawk, and an American expat living outside of Bogotá, Colombia. He is currently looking for new opportunities in the tech industry. Explore his journey and insights in software development."
+			siteName='Home | codybrunner.com'
+			skills={[
+				'Astro',
+				'AWS Cloudfront',
+				'AWS DynamoDB',
+				'AWS EC2',
+				'AWS S3',
+				'Backend Development',
+				'Django',
+				'Docker',
+				'Elixir',
+				'Frontend Development',
+				'Fullstack Development',
+				'Go',
+				'Git',
+				'GraphQL',
+				'HTML/CSS/JavaScript',
+				'MongoDB',
+				'NextJS',
+				'Node',
+				'Phoenix Framework',
+				'PostgreSQL',
+				'Python',
+				'ReactJS',
+				'ReduxJS',
+				'Remix',
+				'Software Development',
+				'SQL',
+				'TailwindCSS',
+				'Turso',
+				'TypeScript',
+				'Vite',
+				'Webpack',
+				'Web Development',
+			]}
+			socials={[
+				'https://www.buymeacoffee.com/codyabrunner',
+				'https://github.com/rockchalkwushock',
+				'https://www.instagram.com/cody.en.colombia/',
+				'https://www.linkedin.com/in/cody-brunner',
+				'https://twitter.com/codyencolombia',
+				'https://www.upwork.com/freelancers/~01bfca196120eae300',
+			]}
+			title={METADATA.title}
+			universityName='Kansas Wesleyan University'
+			url={Astro.url}
+		/>
+	</Head>
+	<Container class='mt-16 sm:mt-32' slot='content'>
+		<div
+			class='grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12'
+		>
+			<div class='lg:pl-20'>
+				<div class='mx-auto max-w-xs px-2.5 lg:max-w-none'>
+					<Image
+						alt='Image of Cody Brunner'
+						class='aspect-auto rotate-3 rounded-2xl bg-primary-100 object-cover shadow-2xl shadow-primary-800/30 dark:bg-primary-800 dark:shadow-primary-100/20'
+						height={300}
+						src={me}
+						width={300}
+					/>
+				</div>
+			</div>
+			<div class='lg:order-first lg:row-span-2'>
+				<h1
+					class='font-display text-4xl font-bold tracking-tight text-primary-800 dark:text-primary-100 sm:text-5xl'
+				>
+					{CONTENT.title}
+				</h1>
+				<div
+					class='mt-6 space-y-7 text-base text-primary-600 dark:text-primary-400'
+				>
+					{CONTENT.content.map(paragraph => <p>{paragraph}</p>)}
+					<hr class='border-primary-200 dark:border-primary-700/40' />
+					<p class=''>{CONTENT.history}</p>
+				</div>
+			</div>
+			<div class='lg:pl-20'>
+				<Socials isOnAboutPage />
+			</div>
+		</div>
+	</Container>
 </BaseLayout>

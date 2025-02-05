@@ -1,7 +1,7 @@
 # syntax = docker/dockerfile:1
 
 # Adjust NODE_VERSION as desired
-ARG NODE_VERSION=20.9.0
+ARG NODE_VERSION=22.13.1
 FROM node:${NODE_VERSION}-slim as base
 
 LABEL fly_launch_runtime="Node.js"
@@ -13,15 +13,12 @@ WORKDIR /app
 ENV NODE_ENV="production"
 
 # Install pnpm
-ARG PNPM_VERSION=8.10.5
+ARG PNPM_VERSION=9.15.5
 RUN npm install -g pnpm@$PNPM_VERSION
 
 
 # Throw-away build stage to reduce size of final image
-FROM base as build
-
-# Build Arguments
-ARG VITE_ENABLE_I18N="false"
+FROM base AS build
 
 # Install packages needed to build node modules
 RUN apt-get update -qq && \

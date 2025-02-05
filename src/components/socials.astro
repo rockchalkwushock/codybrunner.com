@@ -27,6 +27,11 @@ const CONTENT = [
 		key: 'github',
 	},
 	{
+		label: t('socials.instagram'),
+		href: 'https://www.instagram.com/cody.en.colombia/',
+		key: 'instagram',
+	},
+	{
 		label: t('socials.linkedin'),
 		href: 'https://www.linkedin.com/in/cody-brunner',
 		key: 'linkedin',
@@ -35,6 +40,11 @@ const CONTENT = [
 		label: t('socials.twitter'),
 		href: 'https://twitter.com/codyencolombia',
 		key: 'twitter',
+	},
+	{
+		label: t('socials.upwork'),
+		href: 'https://www.upwork.com/freelancers/~01bfca196120eae300?mp_source=share',
+		key: 'upwork',
 	},
 ] as const
 
@@ -61,7 +71,7 @@ const { isOnAboutPage = false } = Astro.props
 						<>
 							<svg
 								aria-hidden='true'
-								class='h-6 w-6 fill-primary-500 transition-all duration-100 ease-in-out group-hover:fill-accent-500 lg:group-hover:scale-125 lg:group-hover:animate-wiggle dark:fill-primary-400 dark:group-hover:fill-accent-400'
+								class='h-6 w-6 fill-primary-500 transition-all duration-100 ease-in-out group-hover:fill-accent-500 dark:fill-primary-400 dark:group-hover:fill-accent-400 lg:group-hover:scale-125 lg:group-hover:animate-wiggle'
 								viewBox='0 0 884 1279'
 								xmlns='http://www.w3.org/2000/svg'
 							>
@@ -90,7 +100,7 @@ const { isOnAboutPage = false } = Astro.props
 						<>
 							<svg
 								aria-hidden='true'
-								class='h-6 w-6 fill-primary-500 transition-all duration-100 ease-in-out group-hover:fill-accent-500 lg:group-hover:scale-125 lg:group-hover:animate-wiggle dark:fill-primary-400 dark:group-hover:fill-accent-400'
+								class='h-6 w-6 fill-primary-500 transition-all duration-100 ease-in-out group-hover:fill-accent-500 dark:fill-primary-400 dark:group-hover:fill-accent-400 lg:group-hover:scale-125 lg:group-hover:animate-wiggle'
 								view-box='0 0 24 24'
 							>
 								<path
@@ -102,11 +112,23 @@ const { isOnAboutPage = false } = Astro.props
 							{isOnAboutPage && <span>{t('socials.github')}</span>}
 						</>
 					)}
+					{key === 'instagram' && (
+						<>
+							<svg
+								aria-hidden='true'
+								class='h-6 w-6 fill-primary-500 transition-all duration-100 ease-in-out group-hover:fill-accent-500 dark:fill-primary-400 dark:group-hover:fill-accent-400 lg:group-hover:scale-125 lg:group-hover:animate-wiggle'
+								view-box='0 0 24 24'
+							>
+								<path d='M17.34 5.46a1.2 1.2 0 1 0 1.2 1.2a1.2 1.2 0 0 0-1.2-1.2m4.6 2.42a7.6 7.6 0 0 0-.46-2.43a4.9 4.9 0 0 0-1.16-1.77a4.7 4.7 0 0 0-1.77-1.15a7.3 7.3 0 0 0-2.43-.47C15.06 2 14.72 2 12 2s-3.06 0-4.12.06a7.3 7.3 0 0 0-2.43.47a4.8 4.8 0 0 0-1.77 1.15a4.7 4.7 0 0 0-1.15 1.77a7.3 7.3 0 0 0-.47 2.43C2 8.94 2 9.28 2 12s0 3.06.06 4.12a7.3 7.3 0 0 0 .47 2.43a4.7 4.7 0 0 0 1.15 1.77a4.8 4.8 0 0 0 1.77 1.15a7.3 7.3 0 0 0 2.43.47C8.94 22 9.28 22 12 22s3.06 0 4.12-.06a7.3 7.3 0 0 0 2.43-.47a4.7 4.7 0 0 0 1.77-1.15a4.85 4.85 0 0 0 1.16-1.77a7.6 7.6 0 0 0 .46-2.43c0-1.06.06-1.4.06-4.12s0-3.06-.06-4.12M20.14 16a5.6 5.6 0 0 1-.34 1.86a3.06 3.06 0 0 1-.75 1.15a3.2 3.2 0 0 1-1.15.75a5.6 5.6 0 0 1-1.86.34c-1 .05-1.37.06-4 .06s-3 0-4-.06a5.7 5.7 0 0 1-1.94-.3a3.3 3.3 0 0 1-1.1-.75a3 3 0 0 1-.74-1.15a5.5 5.5 0 0 1-.4-1.9c0-1-.06-1.37-.06-4s0-3 .06-4a5.5 5.5 0 0 1 .35-1.9A3 3 0 0 1 5 5a3.1 3.1 0 0 1 1.1-.8A5.7 5.7 0 0 1 8 3.86c1 0 1.37-.06 4-.06s3 0 4 .06a5.6 5.6 0 0 1 1.86.34a3.06 3.06 0 0 1 1.19.8a3.1 3.1 0 0 1 .75 1.1a5.6 5.6 0 0 1 .34 1.9c.05 1 .06 1.37.06 4s-.01 3-.06 4M12 6.87A5.13 5.13 0 1 0 17.14 12A5.12 5.12 0 0 0 12 6.87m0 8.46A3.33 3.33 0 1 1 15.33 12A3.33 3.33 0 0 1 12 15.33' />
+							</svg>
+							{isOnAboutPage && <span>{t('socials.instagram')}</span>}
+						</>
+					)}
 					{key === 'linkedin' && (
 						<>
 							<svg
 								aria-hidden='true'
-								class='h-6 w-6 fill-primary-500 transition-all duration-100 ease-in-out group-hover:fill-accent-500 lg:group-hover:scale-125 lg:group-hover:animate-wiggle dark:fill-primary-400 dark:group-hover:fill-accent-400'
+								class='h-6 w-6 fill-primary-500 transition-all duration-100 ease-in-out group-hover:fill-accent-500 dark:fill-primary-400 dark:group-hover:fill-accent-400 lg:group-hover:scale-125 lg:group-hover:animate-wiggle'
 								view-box='0 0 24 24'
 							>
 								<path d='M18.335 18.339H15.67v-4.177c0-.996-.02-2.278-1.39-2.278-1.389 0-1.601 1.084-1.601 2.205v4.25h-2.666V9.75h2.56v1.17h.035c.358-.674 1.228-1.387 2.528-1.387 2.7 0 3.2 1.778 3.2 4.091v4.715zM7.003 8.575a1.546 1.546 0 01-1.548-1.549 1.548 1.548 0 111.547 1.549zm1.336 9.764H5.666V9.75H8.34v8.589zM19.67 3H4.329C3.593 3 3 3.58 3 4.297v15.406C3 20.42 3.594 21 4.328 21h15.338C20.4 21 21 20.42 21 19.703V4.297C21 3.58 20.4 3 19.666 3h.003z' />
@@ -118,13 +140,25 @@ const { isOnAboutPage = false } = Astro.props
 						<>
 							<svg
 								aria-hidden='true'
-								class='h-6 w-6 fill-primary-500 transition-all duration-100 ease-in-out group-hover:fill-accent-500 lg:group-hover:scale-125 lg:group-hover:animate-wiggle dark:fill-primary-400 dark:group-hover:fill-accent-400'
+								class='h-6 w-6 fill-primary-500 transition-all duration-100 ease-in-out group-hover:fill-accent-500 dark:fill-primary-400 dark:group-hover:fill-accent-400 lg:group-hover:scale-125 lg:group-hover:animate-wiggle'
 								viewBox='0 0 24 24'
 								xmlns='http://www.w3.org/2000/svg'
 							>
 								<path d='M8 2H1L9.26086 13.0145L1.44995 21.9999H4.09998L10.4883 14.651L16 22H23L14.3917 10.5223L21.8001 2H19.1501L13.1643 8.88578L8 2ZM17 20L5 4H7L19 20H17Z' />
 							</svg>
 							{isOnAboutPage && <span>{t('socials.twitter')}</span>}
+						</>
+					)}
+					{key === 'upwork' && (
+						<>
+							<svg
+								aria-hidden='true'
+								class='h-6 w-6 fill-primary-500 transition-all duration-100 ease-in-out group-hover:fill-accent-500 dark:fill-primary-400 dark:group-hover:fill-accent-400 lg:group-hover:scale-125 lg:group-hover:animate-wiggle'
+								viewBox='0 0 448 512'
+							>
+								<path d='M56 32h336c30.9 0 56 25.1 56 56v336c0 30.9-25.1 56-56 56H56c-30.9 0-56-25.1-56-56V88c0-30.9 25.1-56 56-56m214.9 242.2c6.6-52.9 25.9-69.5 51.4-69.5c25.3 0 44.9 20.2 44.9 49.7s-19.7 49.7-44.9 49.7c-27.9 0-46.3-21.5-51.4-29.9m-26.7-41.8c-8.2-15.5-14.3-36.3-19.2-55.6h-62.9v78.1c0 28.4-12.9 49.4-38.2 49.4S84.1 283.4 84.1 255l.3-78.1H48.2V255c0 22.8 7.4 43.5 20.9 58.2c13.9 15.2 32.8 23.2 54.8 23.2c43.7 0 74.2-33.5 74.2-81.5v-52.5c4.6 17.3 15.4 50.5 36.2 79.7L215 392.6h36.8l12.8-78.4c4.2 3.5 8.7 6.6 13.4 9.4c12.3 7.8 26.4 12.2 40.9 12.6h3.4c45.1 0 80.9-34.9 80.9-81.9s-35.9-82.2-80.9-82.2c-45.4 0-70.9 29.7-78.1 60.1z' />
+							</svg>
+							{isOnAboutPage && <span>{t('socials.upwork')}</span>}
 						</>
 					)}
 				</Link>
