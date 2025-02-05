@@ -6,9 +6,6 @@
 app = "codybrunner-web"
 primary_region = "dfw"
 
-[build.args]
-VITE_ENABLE_I18N = "false"
-
 # [http_service]
 #   internal_port = 3000
 #   force_https = true

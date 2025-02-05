@@ -13,13 +13,6 @@ export default defineConfig({
 		tailwind(),
 		sitemap({
 			changefreq: 'monthly',
-			i18n: {
-				defaultLocale: 'en',
-				locales: {
-					en: 'en-US',
-					es: 'es-CO',
-				},
-			},
 			lastmod: new Date(),
 			priority: 0.7,
 		}),
