@@ -1,0 +1,107 @@
+---
+import type { JSONLD } from '~/@types'
+export interface Props extends JSONLD {
+	projects: { description: string; name: string; url: string }[]
+	siteDescription: string
+	siteName: string
+	socials: string[]
+}
+const CONSTANTS = {
+	author: 'Cody Brunner',
+}
+const {
+	description,
+	projects,
+	siteDescription,
+	siteName,
+	socials,
+	title,
+	url,
+} = Astro.props
+
+const schema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Person',
+			'@id': `${url.origin}#Person`,
+			name: CONSTANTS.author,
+			url: `${url.origin}`,
+			sameAs: socials,
+		},
+		{
+			'@type': 'WebSite',
+			'@id': `${url.origin}#WebSite`,
+			url: `${url.origin}`,
+			name: siteName,
+			description: siteDescription,
+			publisher: {
+				'@id': `${url.origin}#Person`,
+			},
+		},
+		{
+			'@type': 'WebPage',
+			'@id': `${url.origin}/projects#WebPage`,
+			url: `${url.origin}/projects`,
+			name: title,
+			description,
+			isPartOf: {
+				'@id': `${url.origin}#WebSite`,
+			},
+			about: {
+				'@id': `${url.origin}#Person`,
+			},
+			breadcrumb: {
+				'@type': 'BreadcrumbList',
+				itemListElement: [
+					{
+						'@type': 'ListItem',
+						position: 1,
+						name: 'Home',
+						item: url.origin,
+					},
+					{
+						'@type': 'ListItem',
+						position: 2,
+						name: 'About',
+						item: `${url.origin}/about`,
+					},
+					{
+						'@type': 'ListItem',
+						position: 3,
+						name: 'Articles',
+						item: 'https://blog.codybrunner.com',
+					},
+					{
+						'@type': 'ListItem',
+						position: 4,
+						name: 'Projects',
+						item: `${url.origin}/projects`,
+					},
+				],
+			},
+		},
+		{
+			'@type': 'ItemList',
+			'@id': `${url.origin}#Projects`,
+			url: `${url.origin}/projects`,
+			name: 'My Portfolio',
+			itemListElement: projects.map(
+				({ description, name, url: projectURL }) => ({
+					'@type': 'SoftwareApplication',
+					author: {
+						'@id': `${url.origin}#Person`,
+					},
+					description,
+					name,
+					url: projectURL,
+				})
+			),
+		},
+	],
+}
+
+const schemaString = JSON.stringify(schema, null, 2)
+---
+
+<script is:inline set:html={schemaString} type='application/ld+json' />

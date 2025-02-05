@@ -130,32 +130,6 @@ export function MobileNav({
 								</li>
 								<li>
 									<PopoverButton
-										aria-label={t('nav.bookshelf.label')}
-										as='a'
-										className={cn(
-											'block py-2',
-											currentPath.startsWith('/bookshelf') &&
-												'font-semibold text-accent-500 dark:text-accent-400'
-										)}
-										href={translatedPath('/bookshelf')}
-									>
-										{t('nav.bookshelf')}
-									</PopoverButton>
-								</li>
-								<li>
-									<PopoverButton
-										aria-label={t('nav.meet.label')}
-										as='a'
-										className='block py-2'
-										href='https://appt.link/cody-brunner-dev/video-call'
-										rel='noopener noreferrer'
-										target='_blank'
-									>
-										{t('nav.meet')}
-									</PopoverButton>
-								</li>
-								<li>
-									<PopoverButton
 										aria-label={t('nav.projects.label')}
 										as='a'
 										className={cn(
@@ -166,20 +140,6 @@ export function MobileNav({
 										href={translatedPath('/projects')}
 									>
 										{t('nav.projects')}
-									</PopoverButton>
-								</li>
-								<li>
-									<PopoverButton
-										aria-label={t('nav.uses.label')}
-										as='a'
-										className={cn(
-											'block py-2',
-											currentPath.startsWith('/uses') &&
-												'font-semibold text-accent-500 dark:text-accent-400'
-										)}
-										href={translatedPath('/uses')}
-									>
-										{t('nav.uses')}
 									</PopoverButton>
 								</li>
 							</ul>

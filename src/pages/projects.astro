@@ -12,6 +12,7 @@ const projects = await getCollection('projects')
 // Translations
 import { getLangFromUrl, useTranslations } from '~/i18n'
 import { getCollection } from 'astro:content'
+import ProjectsJsonldScript from '~/components/scripts/projects-jsonld-script.astro'
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
@@ -29,10 +30,33 @@ const METADATA = {
 
 <BaseLayout>
 	<Head
-		description={METADATA.description}
+		data={{
+			description: METADATA.description,
+			title: METADATA.title,
+		}}
 		slot='metadata'
-		title={METADATA.title}
-	/>
+	>
+		<ProjectsJsonldScript
+			description={METADATA.description}
+			projects={projects.map(p => ({
+				description: p.data.description,
+				name: p.data.name,
+				url: p.data.link.href,
+			}))}
+			siteDescription="Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Christian, USN Veteran, Jayhawk, and an American expat living outside of Bogotá, Colombia. He is currently looking for new opportunities in the tech industry. Explore his journey and insights in software development."
+			siteName='Home | codybrunner.com'
+			socials={[
+				'https://www.buymeacoffee.com/codyabrunner',
+				'https://github.com/rockchalkwushock',
+				'https://www.instagram.com/cody.en.colombia/',
+				'https://www.linkedin.com/in/cody-brunner',
+				'https://twitter.com/codyencolombia',
+				'https://www.upwork.com/freelancers/~01bfca196120eae300',
+			]}
+			title={METADATA.title}
+			url={Astro.url}
+		/>
+	</Head>
 	<SimpleLayout intro={CONTENT.intro} slot='content' title={CONTENT.title}>
 		<ul
 			class='grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3'
@@ -51,7 +75,7 @@ const METADATA = {
 							/>
 						</div>
 						<h2 class='mt-6 text-base font-semibold text-primary-800 dark:text-primary-100'>
-							<div class='absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-primary-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 sm:-inset-x-6 sm:rounded-2xl dark:bg-primary-800/50' />
+							<div class='absolute -inset-x-4 -inset-y-6 z-0 scale-95 bg-primary-50 opacity-0 transition group-hover:scale-100 group-hover:opacity-100 dark:bg-primary-800/50 sm:-inset-x-6 sm:rounded-2xl' />
 							<Link
 								aria-label={`Link to ${project.name}`}
 								href={project.link.href}

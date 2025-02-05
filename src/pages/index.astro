@@ -17,13 +17,123 @@ const jobs = await getCollection('jobs')
 // Translations
 import { getLangFromUrl, useTranslations } from '~/i18n'
 import { getCollection } from 'astro:content'
+import IndexJsonldScript from '~/components/scripts/index-jsonld-script.astro'
+
+const ARTICLES = [
+	{
+		date: 'March 11, 2024',
+		description:
+			'An article to try my best and express who Tommie was and the happiness and love he brought my wife and myself.',
+		title: 'Tommie',
+		url: 'https://blog.codybrunner.com/2024/tommie',
+	},
+	{
+		date: 'March 18, 2024',
+		description:
+			'That time I ran into issues with my certificates being invalid leading to problems communicating between Fly.io and my Turso database.',
+		title: 'Certificate Issues Between Fly & Turso',
+		url: 'https://blog.codybrunner.com/2024/certificate-issues-between-fly-and-turso',
+	},
+	{
+		date: 'March 11, 2024',
+		description:
+			'Writing a simple HTTP Server using only what is provided via the Go Standard Library.',
+		title: 'Writing a HTTP Server with Go',
+		url: 'https://blog.codybrunner.com/2024/writing-a-http-server-with-go',
+	},
+	{
+		date: 'March 04, 2024',
+		description:
+			'San Andrés is a little slice of paradise in the Caribbean owned by Colombia. The perfect place to celebrate all the new gray hairs that came with turning 36 years old.',
+		title: 'The City of the Seven Color Sea',
+		url: 'https://blog.codybrunner.com/2024/the-city-of-the-seven-color-sea',
+	},
+]
 
 const lang = getLangFromUrl(Astro.url)
 const t = useTranslations(lang)
 ---
 
 <BaseLayout>
-	<Head slot='metadata' />
+	<Head slot='metadata'>
+		<IndexJsonldScript
+			articles={ARTICLES.map(({ date, description, title, url }) => ({
+				datePublished: new Date(date).toISOString().split('T')[0] as string,
+				description,
+				headline: title,
+				url,
+			}))}
+			blogInformation={{
+				description:
+					'Welcome to my blog where I write on software development, travel, and being an expat.',
+				title: "Cody's Blog",
+				url: 'https://blog.codybrunner.com',
+			}}
+			description="Welcome to Cody's personal website! Based in Colombia, Cody is a Christian, USN Veteran, Jayhawk, and an American expat living outside of Bogotá, Colombia. He is currently looking for new opportunities in the tech industry. Explore his journey and insights in software development."
+			hobbies={[
+				'Barbecuing',
+				'Cafe hopping',
+				'Cooking',
+				'IoT Programming',
+				'Playing Guitar',
+				'Playing Padel',
+				'Reading',
+				'Running',
+				'Traveling',
+				'Weight lifting',
+			]}
+			occupation={{
+				description: 'Principal developer and owner of JokinglyBadTech LLC.',
+				employer: 'JokinglyBadTech LLC',
+				title: 'Software Developer',
+			}}
+			skills={[
+				'Astro',
+				'AWS Cloudfront',
+				'AWS DynamoDB',
+				'AWS EC2',
+				'AWS S3',
+				'Backend Development',
+				'Django',
+				'Docker',
+				'Elixir',
+				'Frontend Development',
+				'Fullstack Development',
+				'Go',
+				'Git',
+				'GraphQL',
+				'HTML/CSS/JavaScript',
+				'MongoDB',
+				'NextJS',
+				'Node',
+				'Phoenix Framework',
+				'PostgreSQL',
+				'Python',
+				'ReactJS',
+				'ReduxJS',
+				'Remix',
+				'Software Development',
+				'SQL',
+				'TailwindCSS',
+				'Turso',
+				'TypeScript',
+				'Vite',
+				'Webpack',
+				'Web Development',
+			]}
+			socials={[
+				'https://www.buymeacoffee.com/codyabrunner',
+				'https://github.com/rockchalkwushock',
+				'https://www.instagram.com/cody.en.colombia/',
+				'https://www.linkedin.com/in/cody-brunner',
+				'https://twitter.com/codyencolombia',
+				'https://www.upwork.com/freelancers/~01bfca196120eae300',
+			]}
+			title='Home | codybrunner.com'
+			universityName='Kansas Wesleyan University'
+			url={Astro.url}
+		/>
+	</Head>
 	<Container class='mt-9' slot='content'>
 		<div
 			class='grid grid-cols-1 place-items-center gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12'
@@ -74,10 +184,10 @@ const t = useTranslations(lang)
 						Featured Article
 					</h2>
 					<Article
-						date='March 11, 2024'
-						description='An article to try my best and express who Tommie was and the happiness and love he brought my wife and myself.'
-						href='https://blog.codybrunner.com/2024/tommie'
-						title='Tommie'
+						date={ARTICLES[0]!.date}
+						description={ARTICLES[0]!.description}
+						href={ARTICLES[0]!.url}
+						title={ARTICLES[0]!.title}
 					/>
 				</div>
 				<hr class='border-primary-100 dark:border-primary-700/40' />
@@ -85,7 +195,17 @@ const t = useTranslations(lang)
 					<h2 class='font-display text-3xl font-bold tracking-tight'>
 						Latest Articles
 					</h2>
-					<Article
+					{
+						ARTICLES.slice(1).map(({ date, description, title, url }) => (
+							<Article
+								date={date}
+								description={description}
+								href={url}
+								title={title}
+							/>
+						))
+					}
+					<!-- <Article
 						date='March 18, 2024'
 						description='That time I ran into issues with my certificates being invalid leading to problems communicating between Fly.io and my Turso database.'
 						href='https://blog.codybrunner.com/2024/certificate-issues-between-fly-and-turso'
@@ -102,7 +222,7 @@ const t = useTranslations(lang)
 						description='San Andrés is a little slice of paradise in the Caribbean owned by Colombia. The perfect place to celebrate all the new gray hairs that came with turning 36 years old.'
 						href='https://blog.codybrunner.com/2024/the-city-of-the-seven-color-sea'
 						title='The City of the Seven Color Sea'
-					/>
+					/> -->
 				</div>
 			</div>
 			<!-- Right Column -->

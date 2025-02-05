@@ -1,7 +1,7 @@
 {
 	"$schema": "https://json.schemastore.org/web-manifest-combined.json",
 	"background_color": "#22d3ee",
-	"description": "Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Senior Frontend Developer at WAO Fintech, the world's first trusted crypto IRA platform. Explore his journey and insights in software development.",
+	"description": "Welcome to Cody's personal website and tech blog! Based in Colombia, Cody is a Christian, USN Veteran, Jayhawk, and an American expat living outside of Bogotá, Colombia. He is currently looking for new opportunities in the tech industry. Explore his journey and insights in software development.",
 	"dir": "ltr",
 	"display": "standalone",
 	"icons": [
