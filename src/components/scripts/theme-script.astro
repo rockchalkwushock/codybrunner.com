@@ -1,38 +1,32 @@
 <script is:inline>
-	const KEY = 'codybrunner-theme'
-	function getCookie(name) {
-		const value = `; ${document.cookie}`
-		const parts = value.split(`; ${name}=`)
-		if (parts.length === 2) return parts.pop().split(';').shift()
-	}
+	;(function () {
+		const KEY = 'codybrunner-theme'
 
-	function setCookie(name, value, days) {
-		let expires = ''
-		if (days) {
-			const date = new Date()
-			date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
-			expires = `; expires=${date.toUTCString()}`
+		function getCookie(name) {
+			const value = `; ${document.cookie}`
+			const parts = value.split(`; ${name}=`)
+			if (parts.length === 2) return parts.pop().split(';').shift()
+			return null
 		}
-		document.cookie = `${name}=${value}; path=/; domain=.codybrunner.com; SameSite=Lax`
-	}
 
-	const theme = (() => {
-		const savedTheme = getCookie(KEY) || localStorage.getItem(KEY)
-		if (savedTheme) {
-			return savedTheme
+		// Get theme with cookie priority
+		const theme =
+			getCookie(KEY) ||
+			localStorage.getItem(KEY) ||
+			(window.matchMedia('(prefers-color-scheme: dark)').matches
+				? 'dark'
+				: 'light')
+
+		// Apply theme immediately to prevent flash
+		if (theme === 'dark') {
+			document.documentElement.classList.add('dark')
 		}
-		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			return 'dark'
-		}
-		return 'light'
 	})()
+</script>
 
-	if (theme === 'light') {
-		document.documentElement.classList.remove('dark')
-	} else {
-		document.documentElement.classList.add('dark')
-	}
+<script>
+	import { themeManagerInstance } from '~/utils/theme-manager'
 
-	setCookie(KEY, theme, 365)
-	localStorage.setItem(KEY, theme)
+	// Initialize theme manager after the page loads
+	window.themeManager = themeManagerInstance
 </script>

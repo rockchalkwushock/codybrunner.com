@@ -1,5 +1,6 @@
 /** @jsxImportSource react */
 import { useEffect, useState } from 'react'
+import type { Theme } from '~/utils/theme-manager'
 
 function MoonIcon() {
 	return (
@@ -39,31 +40,27 @@ function SunIcon() {
 
 export function ThemeToggle() {
 	const [isMounted, setIsMounted] = useState(false)
-	const [theme, setTheme] = useState(localStorage.getItem('theme') ?? 'light')
+	const [theme, setTheme] = useState<Theme>('light')
 
 	const handleClick = () => {
-		setTheme(theme === 'light' ? 'dark' : 'light')
+		const newTheme = theme === 'light' ? 'dark' : 'light'
+		window.themeManager.setTheme(newTheme)
+		setTheme(newTheme)
 	}
 
 	useEffect(() => {
 		setIsMounted(true)
+		setTheme(window.themeManager.getCurrentTheme())
 	}, [])
-
-	useEffect(() => {
-		if (theme === 'dark') {
-			document.documentElement.classList.add('dark')
-		} else {
-			document.documentElement.classList.remove('dark')
-		}
-		localStorage.setItem('theme', theme)
-	}, [theme])
 
 	if (!isMounted) return <></>
 
 	return (
 		<button
+			aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
 			className='group pointer-events-auto rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-primary-800/5 ring-1 ring-primary-900/5 backdrop-blur transition dark:bg-primary-800/90 dark:ring-white/10 dark:hover:ring-white/20'
 			onClick={handleClick}
+			type='button'
 		>
 			<SunIcon />
 			<MoonIcon />
