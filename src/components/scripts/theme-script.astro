@@ -1,7 +1,25 @@
 <script is:inline>
+	const KEY = 'codybrunner-theme'
+	function getCookie(name) {
+		const value = `; ${document.cookie}`
+		const parts = value.split(`; ${name}=`)
+		if (parts.length === 2) return parts.pop().split(';').shift()
+	}
+
+	function setCookie(name, value, days) {
+		let expires = ''
+		if (days) {
+			const date = new Date()
+			date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000)
+			expires = `; expires=${date.toUTCString()}`
+		}
+		document.cookie = `${name}=${value}; path=/; domain=.codybrunner.com; SameSite=Lax`
+	}
+
 	const theme = (() => {
-		if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-			return localStorage.getItem('theme')
+		const savedTheme = getCookie(KEY) || localStorage.getItem(KEY)
+		if (savedTheme) {
+			return savedTheme
 		}
 		if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
 			return 'dark'
@@ -14,5 +32,7 @@
 	} else {
 		document.documentElement.classList.add('dark')
 	}
-	window.localStorage.setItem('theme', theme)
+
+	setCookie(KEY, theme, 365)
+	localStorage.setItem(KEY, theme)
 </script>
